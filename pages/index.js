@@ -1,17 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Page from '../layouts/main';
 import Logo from '../components/logo';
+import loadDB from '../lib/db';
 
-function Index() {
-    return (
-        <Page>
-            <RootView>
-                <Logo />
-            </RootView>
-        </Page>
-    );
+const propTypes = {
+    hike: PropTypes.object.isRequired,
+};
+
+class Index extends React.PureComponent {
+    render() {
+        const { hike } = this.props;
+
+        return (
+            <Page>
+                <RootView>
+                    <Logo />
+                    {hike.name}
+                </RootView>
+            </Page>
+        );
+    }
 }
+
+Index.getInitialProps = async function() {
+    const db = await loadDB();
+
+    const hikeData = await db
+        .firestore()
+        .collection('hikes')
+        .doc('zvXj5WRBdxrlRTLm65SD')
+        .get();
+
+    return {
+        hike: hikeData.data(),
+    };
+};
+
+Index.propTypes = propTypes;
 
 export default Index;
 

@@ -41,6 +41,7 @@ module.exports = {
         'react/forbid-prop-types': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/no-array-index-key': 'off',
+        'func-names': 'off',
         'react/static-property-placement': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
         'comma-dangle': ['error', 'always-multiline'],
