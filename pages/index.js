@@ -2,18 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Page from '../layouts/main';
 import Logo from '../components/logo';
-import colors from '../styles/colors';
-import { fontSize, typeface } from '../styles/type';
-import spacing from '../styles/spacing';
-
-const LOGO_DIMENSION = '125px';
 
 function Index() {
     return (
         <Page>
             <RootView>
                 <Logo />
-                <HeaderText>Hikearound is coming soon</HeaderText>
             </RootView>
         </Page>
     );
@@ -21,15 +15,7 @@ function Index() {
 
 export default Index;
 
-const HeaderText = styled.span`
-    font-size: ${fontSize.md};
-    color: ${colors.blackText};
-    display: block;
-    margin: ${spacing.sm} auto 0;
-`;
-
 const RootView = styled.div`
-    font-family: ${typeface.sansSerif};
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -39,7 +25,5 @@ const RootView = styled.div`
 
     img {
         margin: 0 auto;
-        width: ${LOGO_DIMENSION};
-        height: ${LOGO_DIMENSION};
     }
 `;

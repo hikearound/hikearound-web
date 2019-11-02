@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { typeface } from '../styles/type';
-import colors from '../styles/colors';
+import { typeface } from '../constants/type';
+import colors from '../constants/colors';
 
 function Header() {
     return (
