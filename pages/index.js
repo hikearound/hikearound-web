@@ -1,33 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import Page from '../layouts/main';
+import Logo from '../components/logo';
+import colors from '../styles/colors';
+import { fontSize, typeface } from '../styles/type';
+import spacing from '../styles/spacing';
 
-export default function Index() {
+const logoDimension = '125px';
+
+function Index() {
     return (
-        <RootView>
-            <Head>
-                <meta
-                    name='viewport'
-                    content='width=device-width, initial-scale=1'
-                />
-                <meta charSet='utf-8' />
-            </Head>
-            <style jsx global>{`
-                body {
-                    background: #fff;
-                    color: #000;
-                }
-            `}</style>
-            <Title>Hikearound</Title>
-        </RootView>
+        <Page>
+            <RootView>
+                <Logo />
+                <HeaderText>Hikearound is coming soon</HeaderText>
+            </RootView>
+        </Page>
     );
 }
 
-const Title = styled.h1`
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.primary};
+export default Index;
+
+const HeaderText = styled.span`
+    font-size: ${fontSize.md};
+    color: ${colors.blackText};
+    display: block;
+    margin: ${spacing.sm} auto 0;
 `;
 
 const RootView = styled.div`
-    background-color: #fff;
+    font-family: ${typeface.sansSerif};
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin: 0 auto;
+
+    img {
+        margin: 0 auto;
+        width: ${logoDimension};
+        height: ${logoDimension};
+    }
 `;
