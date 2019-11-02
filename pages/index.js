@@ -6,7 +6,7 @@ import colors from '../styles/colors';
 import { fontSize, typeface } from '../styles/type';
 import spacing from '../styles/spacing';
 
-const logoDimension = '125px';
+const LOGO_DIMENSION = '125px';
 
 function Index() {
     return (
@@ -39,7 +39,7 @@ const RootView = styled.div`
 
     img {
         margin: 0 auto;
-        width: ${logoDimension};
-        height: ${logoDimension};
+        width: ${LOGO_DIMENSION};
+        height: ${LOGO_DIMENSION};
     }
 `;

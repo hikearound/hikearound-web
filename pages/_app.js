@@ -8,6 +8,7 @@ const theme = {};
 class MyApp extends App {
     render() {
         const { Component, pageProps } = this.props;
+
         return (
             <ThemeProvider theme={theme}>
                 <Reset />

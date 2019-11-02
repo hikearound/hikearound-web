@@ -5,7 +5,7 @@ import colors from '../styles/colors';
 
 function Header() {
     return (
-        <>
+        <div>
             <Head>
                 <title>Hikearound - Get out there and hike something</title>
                 <meta
@@ -21,7 +21,7 @@ function Header() {
                     font-family: ${typeface.sansSerif};
                 }
             `}</style>
-        </>
+        </div>
     );
 }
 

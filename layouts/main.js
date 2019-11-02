@@ -7,10 +7,10 @@ const propTypes = {
 };
 
 const Page = ({ children }) => (
-    <>
+    <div>
         <Header />
         {children}
-    </>
+    </div>
 );
 
 Page.propTypes = propTypes;
