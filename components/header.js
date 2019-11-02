@@ -7,6 +7,7 @@ function Header() {
     return (
         <>
             <Head>
+                <title>Hikearound - Get out there and hike something</title>
                 <meta
                     name='viewport'
                     content='width=device-width, initial-scale=1'
