@@ -1,10 +1,15 @@
 import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import Fire from '../lib/db';
 
 const theme = {};
 
-class MyApp extends App {
+class HikeAround extends App {
+    async componentDidMount() {
+        await new Fire();
+    }
+
     render() {
         const { Component, pageProps } = this.props;
 
@@ -16,4 +21,4 @@ class MyApp extends App {
     }
 }
 
-export default MyApp;
+export default HikeAround;

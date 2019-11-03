@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import firebase from '@firebase/app';
 import Page from '../layouts/main';
 import Logo from '../components/logo';
-import loadDB from '../lib/db';
+import '@firebase/firestore';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
@@ -25,9 +26,7 @@ class Index extends React.PureComponent {
 }
 
 Index.getInitialProps = async function() {
-    const db = await loadDB();
-
-    const hikeData = await db
+    const hikeData = await firebase
         .firestore()
         .collection('hikes')
         .doc('zvXj5WRBdxrlRTLm65SD')
