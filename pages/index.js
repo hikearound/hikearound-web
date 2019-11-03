@@ -3,16 +3,14 @@ import styled from 'styled-components';
 import Page from '../layouts/main';
 import Logo from '../components/logo';
 
-class HomePage extends React.PureComponent {
-    render() {
-        return (
-            <Page>
-                <RootView>
-                    <Logo />
-                </RootView>
-            </Page>
-        );
-    }
+function HomePage() {
+    return (
+        <Page>
+            <RootView>
+                <Logo />
+            </RootView>
+        </Page>
+    );
 }
 
 export default HomePage;
