@@ -17,15 +17,17 @@ function HikePage({ hike }) {
 }
 
 HikePage.getInitialProps = async function({ query }) {
-    const hikeId = query.id;
+    let hike = {};
 
-    const hikeData = await firebase
-        .firestore()
-        .collection('hikes')
-        .doc(hikeId)
-        .get();
+    if (query.id) {
+        const hikeData = await firebase
+            .firestore()
+            .collection('hikes')
+            .doc(query.id)
+            .get();
 
-    const hike = hikeData.data();
+        hike = hikeData.data();
+    }
 
     return { hike };
 };
