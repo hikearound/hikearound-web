@@ -18,10 +18,8 @@ class HikePage extends React.Component {
                 .collection('hikes')
                 .doc(query.id)
                 .get();
-
             hike = hikeData.data();
         }
-
         return { hike };
     }
 
