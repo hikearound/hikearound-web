@@ -8,29 +8,33 @@ const propTypes = {
     hike: PropTypes.object.isRequired,
 };
 
-function HikePage({ hike }) {
-    return (
-        <Page>
-            <RootView>{hike.name}</RootView>
-        </Page>
-    );
-}
+class HikePage extends React.Component {
+    static async getInitialProps({ query }) {
+        let hike = {};
 
-HikePage.getInitialProps = async function({ query }) {
-    let hike = {};
+        if (query.id) {
+            const hikeData = await firebase
+                .firestore()
+                .collection('hikes')
+                .doc(query.id)
+                .get();
 
-    if (query.id) {
-        const hikeData = await firebase
-            .firestore()
-            .collection('hikes')
-            .doc(query.id)
-            .get();
+            hike = hikeData.data();
+        }
 
-        hike = hikeData.data();
+        return { hike };
     }
 
-    return { hike };
-};
+    render() {
+        const { hike } = this.props;
+
+        return (
+            <Page>
+                <RootView>{hike.name}</RootView>
+            </Page>
+        );
+    }
+}
 
 HikePage.propTypes = propTypes;
 
