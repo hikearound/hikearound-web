@@ -13,10 +13,8 @@ class PrivacyPage extends React.Component {
     static async getInitialProps(context) {
         const { req } = context;
         const privacy = await this.getPrivacyPage(req);
-
-        return {
-            doc: privacy,
-        };
+        const doc = privacy.data;
+        return { doc };
     }
 
     static async getPrivacyPage(req) {
@@ -26,12 +24,11 @@ class PrivacyPage extends React.Component {
 
     render() {
         const { doc } = this.props;
-        const { data } = doc;
 
         return (
             <Page>
-                <h1>{RichText.asText(data.title)}</h1>
-                <div>{RichText.asText(data.description)}</div>
+                <h1>{RichText.asText(doc.title)}</h1>
+                <div>{RichText.asText(doc.description)}</div>
             </Page>
         );
     }
