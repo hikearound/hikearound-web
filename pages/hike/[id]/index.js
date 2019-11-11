@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import firebase from '@firebase/app';
 import Page from '../../../layouts/main';
+import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
@@ -10,16 +10,7 @@ const propTypes = {
 
 class HikePage extends React.Component {
     static async getInitialProps({ query }) {
-        let hike = {};
-
-        if (query.id) {
-            const hikeData = await firebase
-                .firestore()
-                .collection('hikes')
-                .doc(query.id)
-                .get();
-            hike = hikeData.data();
-        }
+        const hike = await getHikeData(query.id);
         return { hike };
     }
 

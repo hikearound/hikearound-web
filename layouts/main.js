@@ -4,15 +4,21 @@ import Header from '../components/header';
 import '../css/reset.css';
 
 const propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.array.isRequired,
 };
 
-const Page = ({ children }) => (
-    <div>
-        <Header />
-        {children}
-    </div>
-);
+class Page extends React.PureComponent {
+    render() {
+        const { children } = this.props;
+
+        return (
+            <div>
+                <Header />
+                {children}
+            </div>
+        );
+    }
+}
 
 Page.propTypes = propTypes;
 
