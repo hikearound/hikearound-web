@@ -6,29 +6,37 @@ import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
 
 const propTypes = {
-    doc: PropTypes.object.isRequired,
+    title: PropTypes.array.isRequired,
+    description: PropTypes.array.isRequired,
 };
 
 class PrivacyPage extends React.Component {
     static async getInitialProps(context) {
         const { req } = context;
-        const privacy = await this.getPrivacyPage(req);
-        const doc = privacy.data;
-        return { doc };
+        const page = await this.getPrivacyPage(req);
+
+        return {
+            title: page.data.title,
+            description: page.data.description,
+        };
     }
 
     static async getPrivacyPage(req) {
-        const API = await Prismic.getApi(apiEndpoint, req);
-        return API.getSingle('privacy');
+        const data = await Prismic.getApi(apiEndpoint, req);
+        return data.getSingle('privacy');
     }
 
     render() {
-        const { doc } = this.props;
+        const { title, description } = this.props;
 
         return (
             <Page>
-                <h1>{RichText.asText(doc.title)}</h1>
-                <div>{RichText.asText(doc.description)}</div>
+                <h1>
+                    <RichText render={title} />
+                </h1>
+                <div>
+                    <RichText render={description} />
+                </div>
             </Page>
         );
     }
