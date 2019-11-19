@@ -15,13 +15,21 @@ class HikePage extends React.Component {
         return { hike };
     }
 
-    render() {
+    mainColumn() {
         const { hike } = this.props;
+        return <Header name={hike.name} city={hike.city} />;
+    }
 
+    rightColumn() {
+        const { hike } = this.props;
+        return <RelatedHikes id={hike.id} />;
+    }
+
+    render() {
         return (
             <Page
-                mainColumn={<Header name={hike.name} city={hike.city} />}
-                rightColumn={<RelatedHikes />}
+                mainColumn={this.mainColumn()}
+                rightColumn={this.rightColumn()}
             />
         );
     }
