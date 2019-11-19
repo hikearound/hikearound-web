@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Page from '../layouts/main';
-import Logo from '../components/logo';
+import Logo from '../components/Logo';
 
 class HomePage extends React.PureComponent {
     render() {

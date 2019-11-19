@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageHeader from '../components/PageHeader';
+import Header from '../components/page/Header';
 import '../css/reset.css';
 
 const propTypes = {
@@ -13,7 +13,7 @@ class Page extends React.PureComponent {
 
         return (
             <div>
-                <PageHeader />
+                <Header />
                 {children}
             </div>
         );

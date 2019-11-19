@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Page from '../../../layouts/main';
-import HikeHeader from '../../../components/HikeHeader';
+import Header from '../../../components/hike/Header';
 import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
@@ -19,7 +19,7 @@ class HikePage extends React.Component {
 
         return (
             <Page>
-                <HikeHeader name={hike.name} city={hike.city} />
+                <Header name={hike.name} city={hike.city} />
             </Page>
         );
     }

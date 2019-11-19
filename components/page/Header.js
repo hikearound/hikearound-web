@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import { typeface } from '../constants/type';
-import colors from '../constants/colors';
+import { typeface } from '../../constants/type';
+import colors from '../../constants/colors';
 
-class PageHeader extends React.PureComponent {
+class Header extends React.PureComponent {
     render() {
         return (
             <div>
@@ -27,4 +27,4 @@ class PageHeader extends React.PureComponent {
     }
 }
 
-export default PageHeader;
+export default Header;

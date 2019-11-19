@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import colors from '../constants/colors';
-import spacing from '../constants/spacing';
-import { fontSize, fontWeight } from '../constants/type';
-import { borderRadius } from '../constants/dimensions';
+import colors from '../../constants/colors';
+import spacing from '../../constants/spacing';
+import { fontSize, fontWeight } from '../../constants/type';
+import { borderRadius } from '../../constants/dimensions';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
 };
 
-class HikeHeader extends React.PureComponent {
+class Header extends React.PureComponent {
     render() {
         const { name, city } = this.props;
 
@@ -24,9 +24,9 @@ class HikeHeader extends React.PureComponent {
     }
 }
 
-HikeHeader.propTypes = propTypes;
+Header.propTypes = propTypes;
 
-export default HikeHeader;
+export default Header;
 
 const HikeName = styled.div`
     font-size: ${fontSize.xl};
