@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Logo = () => <LogoImage src='/images/logo.svg' alt='Hikearound logo' />;
+class Logo extends React.PureComponent {
+    render() {
+        return <LogoImage src='/images/logo.svg' alt='Hikearound logo' />;
+    }
+}
 
 export default Logo;
 

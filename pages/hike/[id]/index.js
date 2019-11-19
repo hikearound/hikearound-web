@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Page from '../../../layouts/main';
+import HikeHeader from '../../../components/HikeHeader';
 import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
@@ -19,7 +19,7 @@ class HikePage extends React.Component {
 
         return (
             <Page>
-                <RootView>{hike.name}</RootView>
+                <HikeHeader name={hike.name} city={hike.city} />
             </Page>
         );
     }
@@ -28,7 +28,3 @@ class HikePage extends React.Component {
 HikePage.propTypes = propTypes;
 
 export default HikePage;
-
-const RootView = styled.div`
-    display: flex;
-`;

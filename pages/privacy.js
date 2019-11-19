@@ -31,12 +31,8 @@ class PrivacyPage extends React.Component {
 
         return (
             <Page>
-                <h1>
-                    <RichText render={title} />
-                </h1>
-                <div>
-                    <RichText render={description} />
-                </div>
+                <RichText render={title} />
+                <RichText render={description} />
             </Page>
         );
     }
