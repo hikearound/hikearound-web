@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Page from '../../../layouts/main';
 import Header from '../../../components/hike/Header';
+import RelatedHikes from '../../../components/RelatedHikes';
 import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
@@ -18,9 +19,10 @@ class HikePage extends React.Component {
         const { hike } = this.props;
 
         return (
-            <Page>
-                <Header name={hike.name} city={hike.city} />
-            </Page>
+            <Page
+                mainColumn={<Header name={hike.name} city={hike.city} />}
+                rightColumn={<RelatedHikes />}
+            />
         );
     }
 }

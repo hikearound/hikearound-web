@@ -1,6 +1,5 @@
 export const borderRadius = {
-    small: '4px',
-    medium: '6px',
+    sm: '4px',
 };
 
 export default { borderRadius };
