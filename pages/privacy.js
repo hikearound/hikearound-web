@@ -4,6 +4,7 @@ import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
+import { PrimaryHeading } from '../styles/headings';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -31,7 +32,7 @@ class PrivacyPage extends React.Component {
 
         return (
             <div>
-                <RichText render={title} />
+                <PrimaryHeading>{RichText.asText(title)}</PrimaryHeading>
                 <RichText render={description} />
             </div>
         );
