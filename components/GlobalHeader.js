@@ -27,10 +27,12 @@ const HeaderContainer = styled.div`
     justify-content: center;
     background-color: ${colors.purple};
     margin-bottom: ${grid.gutter};
+    padding: 0 ${grid.gutter};
 `;
 
 const HeaderInterior = styled.div`
-    width: ${grid.main};
+    width: 100%;
+    max-width: ${grid.main};
     margin: 0 auto;
     display: flex;
     flex-direction: row;

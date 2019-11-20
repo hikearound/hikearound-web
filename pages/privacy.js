@@ -26,14 +26,24 @@ class PrivacyPage extends React.Component {
         return data.getSingle('privacy');
     }
 
-    render() {
+    renderMainColumn() {
         const { title, description } = this.props;
 
         return (
-            <Page>
+            <div>
                 <RichText render={title} />
                 <RichText render={description} />
-            </Page>
+            </div>
+        );
+    }
+
+    render() {
+        return (
+            <Page
+                singleColumn
+                title='Privacy Policy'
+                mainColumn={this.renderMainColumn()}
+            />
         );
     }
 }

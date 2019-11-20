@@ -26,8 +26,11 @@ class HikePage extends React.Component {
     }
 
     render() {
+        const { hike } = this.props;
+
         return (
             <Page
+                title={hike.name}
                 mainColumn={this.renderMainColumn()}
                 rightColumn={this.renderRightColumn()}
             />

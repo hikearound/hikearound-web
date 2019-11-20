@@ -28,7 +28,7 @@ const GlobalLink = styled.a`
     color: ${colors.white};
     cursor: pointer;
     text-decoration: none;
-    margin-left: ${spacing.sm};
+    margin-left: ${spacing.md};
     font-size: ${fontSize.md};
 
     &:hover {

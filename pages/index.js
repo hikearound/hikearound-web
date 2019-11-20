@@ -11,9 +11,18 @@ function renderMainColumn() {
     );
 }
 
+const title = 'Hikearound - Get out there and hike something';
+
 class HomePage extends React.PureComponent {
     render() {
-        return <Page hideHeader singleColumn mainColumn={renderMainColumn()} />;
+        return (
+            <Page
+                hideHeader
+                singleColumn
+                title={title}
+                mainColumn={renderMainColumn()}
+            />
+        );
     }
 }
 

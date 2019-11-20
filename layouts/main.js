@@ -10,13 +10,14 @@ import '../css/reset.css';
 const propTypes = {
     mainColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
         .isRequired,
-    rightColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-        .isRequired,
+    rightColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     hideHeader: PropTypes.bool,
     singleColumn: PropTypes.bool,
+    title: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
+    rightColumn: [],
     hideHeader: false,
     singleColumn: false,
 };
@@ -28,12 +29,13 @@ class Page extends React.PureComponent {
             rightColumn,
             hideHeader,
             singleColumn,
+            title,
         } = this.props;
 
         return (
             <div>
                 <GlobalStyle />
-                <Header hideHeader={hideHeader} />
+                <Header hideHeader={hideHeader} title={title} />
                 <ContentGrid>
                     <MainColumn singleColumn={singleColumn}>
                         {mainColumn}
@@ -60,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
 
 const ContentGrid = styled.div`
     max-width: ${grid.main};
+    padding: 0 ${grid.gutter};
     margin: 0 auto;
     vertical-align: top;
     display: flex;
