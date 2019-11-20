@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     background-color: ${colors.purple};
-    margin-bottom: 30px;
+    margin-bottom: ${grid.gutter};
 `;
 
 const HeaderInterior = styled.div`

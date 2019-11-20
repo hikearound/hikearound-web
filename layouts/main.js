@@ -73,5 +73,5 @@ const MainColumn = styled.div`
 const RightColumn = styled.div`
     width: ${grid.rightCol};
     display: inline-block;
-    margin-left: 30px;
+    margin-left: ${grid.gutter};
 `;
