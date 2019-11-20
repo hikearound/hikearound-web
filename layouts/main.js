@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/page/Header';
 import { typeface } from '../constants/type';
+import { grid } from '../constants/dimensions';
 import colors from '../constants/colors';
 import '../css/reset.css';
 
@@ -43,19 +44,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const ContentGrid = styled.div`
-    max-width: 970px;
+    max-width: ${grid.main};
     margin: 0 auto;
     vertical-align: top;
     display: flex;
 `;
 
 const MainColumn = styled.div`
-    width: 670px;
+    width: ${grid.centerCol};
     display: inline-block;
 `;
 
 const RightColumn = styled.div`
-    width: 270px;
+    width: ${grid.rightCol};
     display: inline-block;
     margin-left: 30px;
 `;
