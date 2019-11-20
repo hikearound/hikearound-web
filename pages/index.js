@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import Page from '../layouts/main';
-import Logo from '../components/Logo';
+import AppIcon from '../components/AppIcon';
+
+function renderMainColumn() {
+    return (
+        <RootView>
+            <AppIcon />
+        </RootView>
+    );
+}
 
 class HomePage extends React.PureComponent {
     render() {
-        return (
-            <Page>
-                <RootView>
-                    <Logo />
-                </RootView>
-            </Page>
-        );
+        return <Page hideHeader singleColumn mainColumn={renderMainColumn()} />;
     }
 }
 

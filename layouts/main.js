@@ -12,19 +12,33 @@ const propTypes = {
         .isRequired,
     rightColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
         .isRequired,
+    hideHeader: PropTypes.bool,
+    singleColumn: PropTypes.bool,
+};
+
+const defaultProps = {
+    hideHeader: false,
+    singleColumn: false,
 };
 
 class Page extends React.PureComponent {
     render() {
-        const { mainColumn, rightColumn } = this.props;
+        const {
+            mainColumn,
+            rightColumn,
+            hideHeader,
+            singleColumn,
+        } = this.props;
 
         return (
             <div>
                 <GlobalStyle />
-                <Header />
+                <Header hideHeader={hideHeader} />
                 <ContentGrid>
-                    <MainColumn>{mainColumn}</MainColumn>
-                    <RightColumn>{rightColumn}</RightColumn>
+                    <MainColumn singleColumn={singleColumn}>
+                        {mainColumn}
+                    </MainColumn>
+                    {!singleColumn && <RightColumn>{rightColumn}</RightColumn>}
                 </ContentGrid>
             </div>
         );
@@ -32,6 +46,7 @@ class Page extends React.PureComponent {
 }
 
 Page.propTypes = propTypes;
+Page.defaultProps = defaultProps;
 
 export default Page;
 
@@ -51,7 +66,7 @@ const ContentGrid = styled.div`
 `;
 
 const MainColumn = styled.div`
-    width: ${grid.centerCol};
+    width: ${(props) => (props.singleColumn ? grid.main : grid.centerCol)};
     display: inline-block;
 `;
 

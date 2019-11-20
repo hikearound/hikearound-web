@@ -10,6 +10,8 @@ class Logo extends React.PureComponent {
 export default Logo;
 
 const LogoImage = styled.img`
-    height: 125px;
-    width: 125px;
+    height: 20px;
+    width: 166px;
+    position: relative;
+    top: -1px;
 `;
