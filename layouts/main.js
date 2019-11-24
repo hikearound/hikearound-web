@@ -6,6 +6,7 @@ import { typeface } from '../constants/type';
 import { grid } from '../constants/dimensions';
 import colors from '../constants/colors';
 import '../css/reset.css';
+import { device } from '../constants/breakpoints';
 
 const propTypes = {
     mainColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
@@ -66,15 +67,28 @@ const ContentGrid = styled.div`
     margin: 0 auto;
     vertical-align: top;
     display: flex;
+
+    @media ${device.tablet} {
+        flex-direction: column;
+    }
 `;
 
 const MainColumn = styled.div`
     width: ${(props) => (props.singleColumn ? grid.main : grid.centerCol)};
     display: inline-block;
+
+    @media ${device.tablet} {
+        width: 100%;
+    }
 `;
 
 const RightColumn = styled.div`
     width: ${grid.rightCol};
     display: inline-block;
     margin-left: ${grid.gutter};
+
+    @media ${device.tablet} {
+        width: 100%;
+        margin-left: 0;
+    }
 `;
