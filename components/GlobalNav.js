@@ -4,6 +4,7 @@ import Link from 'next/link';
 import colors from '../constants/colors';
 import spacing from '../constants/spacing';
 import { fontSize } from '../constants/type';
+import { device } from '../constants/breakpoints';
 
 class GlobalNav extends React.PureComponent {
     render() {
@@ -33,5 +34,9 @@ const GlobalLink = styled.a`
 
     &:hover {
         text-decoration: underline;
+    }
+
+    @media ${device.tablet} {
+        display: none;
     }
 `;

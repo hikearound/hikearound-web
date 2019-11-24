@@ -4,6 +4,7 @@ import colors from '../constants/colors';
 import { grid } from '../constants/dimensions';
 import Logo from './Logo';
 import GlobalNav from './GlobalNav';
+import { device } from '../constants/breakpoints';
 
 class GlobalHeader extends React.PureComponent {
     render() {
@@ -28,6 +29,10 @@ const HeaderContainer = styled.div`
     background-color: ${colors.purple};
     margin-bottom: ${grid.gutter};
     padding: 0 ${grid.gutter};
+
+    @media ${device.tablet} {
+        margin-bottom: 0;
+    }
 `;
 
 const HeaderInterior = styled.div`

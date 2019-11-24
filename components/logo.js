@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { device } from '../constants/breakpoints';
 
 class Logo extends React.PureComponent {
     render() {
@@ -22,5 +23,9 @@ const LogoImage = styled.img`
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+        margin: 0 auto;
     }
 `;

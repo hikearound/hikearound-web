@@ -70,6 +70,7 @@ const ContentGrid = styled.div`
 
     @media ${device.tablet} {
         flex-direction: column;
+        padding: 0;
     }
 `;
 
