@@ -11,7 +11,7 @@ function renderMainColumn() {
     );
 }
 
-const title = 'Hikearound - Get out there and hike something';
+const title = 'Hikearound - Get out and hike something';
 
 class HomePage extends React.PureComponent {
     render() {

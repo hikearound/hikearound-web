@@ -9,31 +9,13 @@ const propTypes = {
 };
 
 class Header extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pageTitle: null,
-        };
-    }
-
-    async componentDidMount() {
-        const { title } = this.props;
-        if (!title.includes('Hikearound')) {
-            const pageTitle = `${title} - Hikearound`;
-            await this.setState({
-                pageTitle,
-            });
-        }
-    }
-
     render() {
-        const { hideHeader } = this.props;
-        const { pageTitle } = this.state;
+        const { hideHeader, title } = this.props;
 
         return (
             <>
                 <Head>
-                    <title>{pageTitle}</title>
+                    <title>{title}</title>
                     <meta
                         name='viewport'
                         content='width=device-width, initial-scale=1'

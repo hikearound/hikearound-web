@@ -1,10 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
 import { PrimaryHeading } from '../styles/headings';
+import { Card } from '../styles/card';
+import spacing from '../constants/spacing';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -31,10 +34,12 @@ class PrivacyPage extends React.Component {
         const { title, description } = this.props;
 
         return (
-            <div>
-                <PrimaryHeading>{RichText.asText(title)}</PrimaryHeading>
-                <RichText render={description} />
-            </div>
+            <RootView>
+                <Card>
+                    <PrimaryHeading>{RichText.asText(title)}</PrimaryHeading>
+                    <RichText render={description} />
+                </Card>
+            </RootView>
         );
     }
 
@@ -52,3 +57,9 @@ class PrivacyPage extends React.Component {
 PrivacyPage.propTypes = propTypes;
 
 export default PrivacyPage;
+
+const RootView = styled.div`
+    h1 {
+        margin-bottom: ${spacing.md};
+    }
+`;

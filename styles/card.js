@@ -9,11 +9,13 @@ export const Card = styled.div`
     border: 1px solid ${colors.gray};
     border-radius: ${borderRadius.sm};
     padding: ${spacing.md};
+    margin-bottom: ${spacing.md};
 
     @media ${device.tablet} {
         border-radius: 0;
         border: none;
         border-bottom: 3px solid ${colors.grayLight};
+        margin-bottom: 0;
     }
 `;
 

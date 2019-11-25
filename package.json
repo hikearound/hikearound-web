@@ -8,13 +8,13 @@
     "export": "next export"
   },
   "dependencies": {
-    "@firebase/app": "^0.4.24",
-    "@firebase/firestore": "^1.7.1",
+    "@firebase/app": "^0.4.25",
+    "@firebase/firestore": "^1.8.0",
     "@zeit/next-css": "^1.0.1",
-    "firebase": "^7.4.0",
+    "firebase": "^7.5.0",
     "next": "^9.1.4",
     "prismic-javascript": "^2.1.1",
-    "prismic-reactjs": "^1.1.1",
+    "prismic-reactjs": "^1.1.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^4.4.1"

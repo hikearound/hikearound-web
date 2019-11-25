@@ -23,6 +23,7 @@ export default GlobalNav;
 
 const LinkContainer = styled.div`
     display: inline;
+    margin: auto 0;
 `;
 
 const GlobalLink = styled.a`

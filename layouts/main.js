@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/page/Header';
-import { typeface } from '../constants/type';
+import Footer from '../components/page/Footer';
+import { typeface, fontSize } from '../constants/type';
 import { grid } from '../constants/dimensions';
 import colors from '../constants/colors';
 import '../css/reset.css';
 import { device } from '../constants/breakpoints';
 
+const columnType = [PropTypes.object, PropTypes.array];
+
 const propTypes = {
-    mainColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-        .isRequired,
-    rightColumn: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    mainColumn: PropTypes.oneOfType(columnType).isRequired,
+    rightColumn: PropTypes.oneOfType(columnType),
     hideHeader: PropTypes.bool,
     singleColumn: PropTypes.bool,
     title: PropTypes.string.isRequired,
@@ -24,24 +26,47 @@ const defaultProps = {
 };
 
 class Page extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const { title } = this.props;
+        this.state = {
+            pageTitle: title,
+        };
+    }
+
+    async componentDidMount() {
+        const { title } = this.props;
+        if (!title.includes('Hikearound')) {
+            const pageTitle = `${title} - Hikearound`;
+            await this.setState({
+                pageTitle,
+            });
+        }
+    }
+
+    renderRightColumn() {
+        const { rightColumn } = this.props;
+        return (
+            <RightColumn>
+                {rightColumn}
+                <Footer />
+            </RightColumn>
+        );
+    }
+
     render() {
-        const {
-            mainColumn,
-            rightColumn,
-            hideHeader,
-            singleColumn,
-            title,
-        } = this.props;
+        const { mainColumn, hideHeader, singleColumn } = this.props;
+        const { pageTitle } = this.state;
 
         return (
             <div>
                 <GlobalStyle />
-                <Header hideHeader={hideHeader} title={title} />
+                <Header hideHeader={hideHeader} title={pageTitle} />
                 <ContentGrid>
                     <MainColumn singleColumn={singleColumn}>
                         {mainColumn}
                     </MainColumn>
-                    {!singleColumn && <RightColumn>{rightColumn}</RightColumn>}
+                    {!singleColumn && this.renderRightColumn()}
                 </ContentGrid>
             </div>
         );
@@ -58,6 +83,10 @@ const GlobalStyle = createGlobalStyle`
         background: ${colors.grayUltraLight};
         color: ${colors.blackText};
         font-family: ${typeface.sansSerif};
+    }
+
+    div, span {
+        font-size: ${fontSize.md};
     }
 `;
 

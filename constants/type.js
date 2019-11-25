@@ -3,6 +3,7 @@ export const typeface = {
 };
 
 export const lineHeight = {
+    lh_13: '1.3',
     lh_14: '1.4',
 };
 
