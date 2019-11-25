@@ -20,7 +20,7 @@ const footerLinks = [
         link: '/privacy',
     },
     {
-        text: 'Terms of Service',
+        text: 'Terms',
         link: '/terms',
     },
 ];
@@ -38,8 +38,8 @@ class Footer extends React.PureComponent {
     render() {
         return (
             <Card>
-                {footerLinks.map(({ text, link }) => (
-                    <Link href={link}>
+                {footerLinks.map(({ text, link }, index) => (
+                    <Link href={link} key={index}>
                         <FooterLink>{text}</FooterLink>
                     </Link>
                 ))}
@@ -69,5 +69,5 @@ const CopyrightText = styled.div`
     display: block;
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};
-    margin-top: ${spacing.sm};
+    margin-top: ${spacing.xs};
 `;
