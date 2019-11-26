@@ -37,7 +37,7 @@ class Footer extends React.PureComponent {
 
     render() {
         return (
-            <Card>
+            <Card hideGutter>
                 {footerLinks.map(({ text, link }, index) => (
                     <Link href={link} key={index}>
                         <FooterLink>{text}</FooterLink>

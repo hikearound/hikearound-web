@@ -14,7 +14,8 @@ export const Card = styled.div`
     @media ${device.tablet} {
         border-radius: 0;
         border: none;
-        border-bottom: 3px solid ${colors.grayLight};
+        border-bottom: solid ${colors.grayLight};
+        border-width: ${(props) => (props.hideGutter ? 0 : '3px')};
         margin-bottom: 0;
     }
 `;
