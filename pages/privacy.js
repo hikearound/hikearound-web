@@ -45,11 +45,7 @@ class PrivacyPage extends React.Component {
 
     render() {
         return (
-            <Page
-                singleColumn
-                title='Privacy Policy'
-                mainColumn={this.renderMainColumn()}
-            />
+            <Page title='Privacy Policy' mainColumn={this.renderMainColumn()} />
         );
     }
 }
