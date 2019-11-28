@@ -9,10 +9,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { Card } from '../../styles/card';
-import { SubHeading } from '../../styles/headings';
+import { borderRadius } from '../../constants/dimensions';
+import { device } from '../../constants/breakpoints';
+import colors from '../../constants/colors';
+import { SecondaryHeading } from '../../styles/headings';
 
 const googleMapUrl =
-    'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places';
+    'https://maps.googleapis.com/maps/api/js?key=AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
 
 const propTypes = {
     defaultCenter: PropTypes.object,
@@ -33,6 +36,7 @@ const Map = compose(
     <GoogleMap
         defaultZoom={props.defaultZoom}
         defaultCenter={props.defaultCenter}
+        options={props.mapOptions}
     >
         {props.isMarkerShown && <Marker position={props.position} />}
     </GoogleMap>
@@ -73,13 +77,22 @@ class MapCard extends React.PureComponent {
         return <MapElement />;
     };
 
+    createMapOptions = () => {
+        return {
+            panControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            mapTypeId: 'terrain',
+        };
+    };
+
     render() {
         const { isMarkerShown } = this.state;
         const { defaultCenter, position, defaultZoom } = this.props;
 
         return (
-            <Card>
-                <SubHeading>Map</SubHeading>
+            <Card noPadding>
+                <SecondaryHeading isCard>Trail Map</SecondaryHeading>
                 <Map
                     isMarkerShown={isMarkerShown}
                     onMarkerClick={this.handleMarkerClick}
@@ -90,6 +103,7 @@ class MapCard extends React.PureComponent {
                     defaultCenter={defaultCenter}
                     position={position}
                     defaultZoom={defaultZoom}
+                    mapOptions={this.createMapOptions()}
                 />
             </Card>
         );
@@ -102,16 +116,24 @@ MapCard.defaultProps = defaultProps;
 export default MapCard;
 
 const LoadingElement = styled.div`
-    display: block;
     height: 100%;
 `;
 
 const ContainerElement = styled.div`
-    display: block;
-    height: 400px;
+    height: 350px;
+
+    @media ${device.tablet} {
+        height: 250px;
+    }
 `;
 
 const MapElement = styled.div`
-    display: block;
     height: 100%;
+    border-bottom-left-radius: ${borderRadius.sm};
+    border-bottom-right-radius: ${borderRadius.sm};
+    border-top: 1px solid ${colors.gray};
+
+    @media ${device.tablet} {
+        border-radius: 0;
+    }
 `;

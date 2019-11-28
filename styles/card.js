@@ -8,7 +8,7 @@ export const Card = styled.div`
     background-color: ${colors.white};
     border: 1px solid ${colors.gray};
     border-radius: ${borderRadius.sm};
-    padding: ${spacing.md};
+    padding: ${(props) => (props.noPadding ? 0 : spacing.md)};
     margin-bottom: ${spacing.md};
 
     @media ${device.tablet} {

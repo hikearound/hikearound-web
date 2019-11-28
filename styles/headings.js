@@ -10,7 +10,9 @@ export const PrimaryHeading = styled.h1`
 export const SecondaryHeading = styled.h2`
     font-size: ${fontSize.sm};
     font-weight: ${fontWeight.medium};
+    color: ${colors.grayDark};
     text-transform: uppercase;
+    padding: ${(props) => (props.isCard ? '16px' : '0')};
 `;
 
 export const SubHeading = styled.h3`
