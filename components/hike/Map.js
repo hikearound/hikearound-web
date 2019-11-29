@@ -1,21 +1,14 @@
 import React from 'react';
-import {
-    GoogleMap,
-    withGoogleMap,
-    withScriptjs,
-    Marker,
-} from 'react-google-maps';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { compose } from 'recompose';
 import { Card } from '../../styles/card';
 import { borderRadius } from '../../constants/dimensions';
 import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
 
-const googleMapUrl =
-    'https://maps.googleapis.com/maps/api/js?key=AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
+const mapApiKey = 'AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
 
 const propTypes = {
     defaultCenter: PropTypes.object,
@@ -29,20 +22,7 @@ const defaultProps = {
     defaultZoom: 8,
 };
 
-const Map = compose(
-    withScriptjs,
-    withGoogleMap,
-)((props) => (
-    <GoogleMap
-        defaultZoom={props.defaultZoom}
-        defaultCenter={props.defaultCenter}
-        options={props.mapOptions}
-    >
-        {props.isMarkerShown && <Marker position={props.position} />}
-    </GoogleMap>
-));
-
-class MapCard extends React.PureComponent {
+class HikeMap extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -65,19 +45,7 @@ class MapCard extends React.PureComponent {
         this.delayedShowMarker();
     };
 
-    renderLoadingElement = () => {
-        return <LoadingElement />;
-    };
-
-    renderContainerElement = () => {
-        return <ContainerElement />;
-    };
-
-    renderMapElement = () => {
-        return <MapElement />;
-    };
-
-    createMapOptions = () => {
+    mapOptions = () => {
         return {
             panControl: false,
             mapTypeControl: false,
@@ -93,47 +61,39 @@ class MapCard extends React.PureComponent {
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
-                <Map
-                    isMarkerShown={isMarkerShown}
-                    onMarkerClick={this.handleMarkerClick}
-                    googleMapURL={googleMapUrl}
-                    loadingElement={this.renderLoadingElement()}
-                    containerElement={this.renderContainerElement()}
-                    mapElement={this.renderMapElement()}
-                    defaultCenter={defaultCenter}
-                    position={position}
-                    defaultZoom={defaultZoom}
-                    mapOptions={this.createMapOptions()}
-                />
+                <LoadScript googleMapsApiKey={mapApiKey}>
+                    <MapContainer>
+                        <GoogleMap
+                            mapContainerClassName='hikeMap'
+                            options={this.mapOptions()}
+                            isMarkerShown={isMarkerShown}
+                            onMarkerClick={this.handleMarkerClick}
+                            center={defaultCenter}
+                            position={position}
+                            zoom={defaultZoom}
+                        >
+                            {isMarkerShown && <Marker position={position} />}
+                        </GoogleMap>
+                    </MapContainer>
+                </LoadScript>
             </Card>
         );
     }
 }
 
-MapCard.propTypes = propTypes;
-MapCard.defaultProps = defaultProps;
+HikeMap.propTypes = propTypes;
+HikeMap.defaultProps = defaultProps;
 
-export default MapCard;
+export default HikeMap;
 
-const LoadingElement = styled.div`
-    height: 100%;
-`;
+const MapContainer = styled.div`
+    .hikeMap {
+        border-top: 1px solid ${colors.gray};
+        height: 350px;
+        width: 100%;
 
-const ContainerElement = styled.div`
-    height: 350px;
-
-    @media ${device.tablet} {
-        height: 250px;
-    }
-`;
-
-const MapElement = styled.div`
-    height: 100%;
-    border-bottom-left-radius: ${borderRadius.sm};
-    border-bottom-right-radius: ${borderRadius.sm};
-    border-top: 1px solid ${colors.gray};
-
-    @media ${device.tablet} {
-        border-radius: 0;
+        @media ${device.tablet} {
+            height: 250px;
+        }
     }
 `;
