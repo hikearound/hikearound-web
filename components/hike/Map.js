@@ -37,7 +37,7 @@ class HikeMap extends React.PureComponent {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            coordinates: null,
+            path: null,
             center: null,
         };
     }
@@ -92,28 +92,28 @@ class HikeMap extends React.PureComponent {
 
     parseCoordinates() {
         const { hikeData } = this.state;
-        const coordinates = [];
         const coordinateCount = hikeData.gpx.rte[0].rtept.length;
+        const path = [];
 
         for (let i = 0, len = coordinateCount; i < len; i += 1) {
             const coordinate = hikeData.gpx.rte[0].rtept[i].$;
-            coordinates.push({
+            path.push({
                 lat: parseFloat(coordinate.lat),
                 lng: parseFloat(coordinate.lon),
             });
         }
 
-        this.setState({ coordinates });
+        this.setState({ path });
     }
 
     render() {
-        const { coordinates, center } = this.state;
+        const { path, center } = this.state;
         const { mapOptions, pathOptions, zoom } = this.props;
 
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
-                {coordinates && center && (
+                {path && center && (
                     <LoadScript googleMapsApiKey={mapApiKey}>
                         <MapContainer>
                             <GoogleMap
@@ -122,10 +122,7 @@ class HikeMap extends React.PureComponent {
                                 center={center}
                                 zoom={zoom}
                             >
-                                <Polyline
-                                    path={coordinates}
-                                    options={pathOptions}
-                                />
+                                <Polyline path={path} options={pathOptions} />
                             </GoogleMap>
                         </MapContainer>
                     </LoadScript>
