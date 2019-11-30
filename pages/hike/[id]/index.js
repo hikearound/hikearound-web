@@ -8,20 +8,24 @@ import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 class HikePage extends React.Component {
     static async getInitialProps({ query }) {
         const hike = await getHikeData(query.id);
-        return { hike };
+        return {
+            hike,
+            id: query.id,
+        };
     }
 
     renderMainColumn() {
-        const { hike } = this.props;
+        const { hike, id } = this.props;
         return (
             <div>
                 <Header name={hike.name} city={hike.city} />
-                <HikeMap />
+                <HikeMap id={id} />
             </div>
         );
     }

@@ -1,0 +1,11 @@
+[
+  {
+    "origin": [
+        "https://tryhikearound.com",
+        "https://www.tryhikearound.com",
+        "http://localhost:3000"
+    ],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]
