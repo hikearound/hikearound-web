@@ -2,12 +2,11 @@ import React from 'react';
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { parseString } from 'xml2js';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
-import { getHikeXmlUrl } from '../../utils/hike';
+import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 
 const mapApiKey = 'AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
 
@@ -47,8 +46,11 @@ class HikeMap extends React.PureComponent {
     }
 
     setMapCenter() {
-        const { lat, lng } = this.state;
-        const center = { lat, lng };
+        const { centerLat, centerLng } = this.state;
+        const center = {
+            lat: centerLat,
+            lng: centerLng,
+        };
 
         if (center) {
             this.setState({ center });
@@ -58,30 +60,20 @@ class HikeMap extends React.PureComponent {
     getHikeData = async () => {
         const { id } = this.props;
         const hikeXmlUrl = await getHikeXmlUrl(id);
+        const hikeData = await parseHikeXml(hikeXmlUrl);
 
-        await fetch(hikeXmlUrl)
-            .then((response) => response.text())
-            .then((response) => {
-                parseString(response, (err, result) => {
-                    const hikeData = JSON.stringify(result);
-                    this.setHikeData(JSON.parse(hikeData));
-                });
-            });
-
+        this.setHikeData(hikeData);
         this.parseCoordinates();
         this.setMapCenter();
     };
 
     setHikeData(hikeData) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
-        const maxlat = parseFloat(hikeMetaData.maxlat);
-        const minlat = parseFloat(hikeMetaData.minlat);
-        const minlon = parseFloat(hikeMetaData.minlon);
-        const maxlon = parseFloat(hikeMetaData.maxlon);
+        const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
         this.setState({
-            lat: (maxlat + minlat) / 2,
-            lng: (maxlon + minlon) / 2,
+            centerLat: (parseFloat(maxlat) + parseFloat(minlat)) / 2,
+            centerLng: (parseFloat(maxlon) + parseFloat(minlon)) / 2,
             hikeData,
         });
     }

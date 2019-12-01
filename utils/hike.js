@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { parseString } from 'xml2js';
 
 global.XMLHttpRequest = require('xhr2');
 
@@ -20,6 +21,20 @@ export async function getHikeXmlUrl(id) {
         .getDownloadURL();
 
     return hikeXmlUrl;
+}
+
+export async function parseHikeXml(hikeXmlUrl) {
+    let hikeData = {};
+
+    await fetch(hikeXmlUrl)
+        .then((response) => response.text())
+        .then((response) => {
+            parseString(response, (err, result) => {
+                hikeData = JSON.parse(JSON.stringify(result));
+            });
+        });
+
+    return hikeData;
 }
 
 export default {
