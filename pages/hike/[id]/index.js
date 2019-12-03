@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Page from '../../../layouts/main';
 import Header from '../../../components/hike/Header';
+import Description from '../../../components/hike/Description';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
 import { getHikeData } from '../../../utils/hike';
@@ -26,6 +27,7 @@ class HikePage extends React.Component {
             <div>
                 <Header name={hike.name} city={hike.city} />
                 <HikeMap id={id} />
+                <Description description={hike.description} />
             </div>
         );
     }

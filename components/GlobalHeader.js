@@ -22,13 +22,17 @@ class GlobalHeader extends React.PureComponent {
 export default GlobalHeader;
 
 const HeaderContainer = styled.div`
-    height: 50px;
+    height: ${grid.header};
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: ${colors.purple};
     margin-bottom: ${grid.gutter};
     padding: 0 ${grid.gutter};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
     @media ${device.tablet} {
         margin-bottom: 0;

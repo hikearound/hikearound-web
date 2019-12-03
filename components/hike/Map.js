@@ -36,7 +36,7 @@ class HikeMap extends React.PureComponent {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            path: null,
+            path: [],
             center: null,
         };
     }
@@ -98,6 +98,10 @@ class HikeMap extends React.PureComponent {
         this.setState({ path });
     }
 
+    renderEmptyState = () => {
+        return <MapEmptyState />;
+    };
+
     render() {
         const { path, center } = this.state;
         const { mapOptions, pathOptions, zoom } = this.props;
@@ -105,20 +109,21 @@ class HikeMap extends React.PureComponent {
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
-                {path && center && (
-                    <LoadScript googleMapsApiKey={mapApiKey}>
-                        <MapContainer>
-                            <GoogleMap
-                                mapContainerClassName='hikeMap'
-                                options={mapOptions}
-                                center={center}
-                                zoom={zoom}
-                            >
-                                <Polyline path={path} options={pathOptions} />
-                            </GoogleMap>
-                        </MapContainer>
-                    </LoadScript>
-                )}
+                <LoadScript
+                    googleMapsApiKey={mapApiKey}
+                    loadingElement={this.renderEmptyState()}
+                >
+                    <MapContainer>
+                        <GoogleMap
+                            mapContainerClassName='hikeMap'
+                            options={mapOptions}
+                            center={center}
+                            zoom={zoom}
+                        >
+                            <Polyline path={path} options={pathOptions} />
+                        </GoogleMap>
+                    </MapContainer>
+                </LoadScript>
             </Card>
         );
     }
@@ -129,14 +134,22 @@ HikeMap.defaultProps = defaultProps;
 
 export default HikeMap;
 
+const mapStyle = `
+    border-top: 1px solid ${colors.gray};
+    height: 350px;
+    width: 100%;
+
+    @media ${device.tablet} {
+        height: 250px;
+    }
+`;
+
+const MapEmptyState = styled.div`
+    ${mapStyle};
+`;
+
 const MapContainer = styled.div`
     .hikeMap {
-        border-top: 1px solid ${colors.gray};
-        height: 350px;
-        width: 100%;
-
-        @media ${device.tablet} {
-            height: 250px;
-        }
+        ${mapStyle};
     }
 `;

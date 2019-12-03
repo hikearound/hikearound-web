@@ -78,6 +78,8 @@ Page.defaultProps = defaultProps;
 
 export default Page;
 
+const headerOffset = `calc(${grid.header} + ${grid.gutter})`;
+
 const GlobalStyle = createGlobalStyle`
     body {
         background: ${colors.grayUltraLight};
@@ -96,14 +98,14 @@ const GlobalStyle = createGlobalStyle`
 
 const ContentGrid = styled.div`
     max-width: ${grid.main};
-    padding: 0 ${grid.gutter};
+    padding: ${headerOffset} ${grid.gutter} 0 ${grid.gutter};
     margin: 0 auto;
     vertical-align: top;
     display: flex;
 
     @media ${device.tablet} {
         flex-direction: column;
-        padding: 0;
+        padding: ${grid.header} 0 0 0;
     }
 `;
 

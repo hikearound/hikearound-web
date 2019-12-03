@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import spacing from '../constants/spacing';
-import { borderRadius } from '../constants/dimensions';
+import { borderRadius, grid } from '../constants/dimensions';
+import { lineHeight } from '../constants/type';
 import { device } from '../constants/breakpoints';
 
 export const Card = styled.div`
@@ -9,7 +10,7 @@ export const Card = styled.div`
     border: 1px solid ${colors.gray};
     border-radius: ${borderRadius.sm};
     padding: ${(props) => (props.noPadding ? 0 : spacing.md)};
-    margin-bottom: ${spacing.md};
+    margin-bottom: ${(props) => (props.lastChild ? grid.gutter : spacing.md)};
 
     @media ${device.tablet} {
         border-radius: 0;
@@ -20,4 +21,10 @@ export const Card = styled.div`
     }
 `;
 
-export default { Card };
+export const CardContent = styled.div`
+    border-top: 1px solid ${colors.gray};
+    padding: ${spacing.md};
+    line-height: ${lineHeight.lh_13};
+`;
+
+export default { Card, CardContent };
