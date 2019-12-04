@@ -33,20 +33,24 @@ class RecentHikes extends React.PureComponent {
         }
     }
 
-    render() {
+    renderRecentHikeLinks() {
         const { recentHikes } = this.state;
 
+        return recentHikes.map(({ name, id }, index) => (
+            <HikeLinkParent key={index}>
+                <Link href={id}>
+                    <HikeLink>{name}</HikeLink>
+                </Link>
+            </HikeLinkParent>
+        ));
+    }
+
+    render() {
         return (
             <Card>
                 <SecondaryHeading>Recent Hikes</SecondaryHeading>
                 <HikeLinkContainer>
-                    {recentHikes.map(({ name, id }, index) => (
-                        <HikeLinkParent key={index}>
-                            <Link href={id}>
-                                <HikeLink>{name}</HikeLink>
-                            </Link>
-                        </HikeLinkParent>
-                    ))}
+                    {this.renderRecentHikeLinks()}
                 </HikeLinkContainer>
             </Card>
         );
