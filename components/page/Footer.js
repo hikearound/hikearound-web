@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import colors from '../../constants/colors';
 import spacing from '../../constants/spacing';
-import { fontSize, lineHeight } from '../../constants/type';
+import { fontSize } from '../../constants/type';
 import { Card } from '../../styles/card';
+import { RightRailLink } from '../../styles/links';
 
 const footerLinks = [
     {
@@ -40,7 +41,7 @@ class Footer extends React.PureComponent {
             <Card hideGutter>
                 {footerLinks.map(({ text, link }, index) => (
                     <Link href={link} key={index}>
-                        <FooterLink>{text}</FooterLink>
+                        <RightRailLink>{text}</RightRailLink>
                     </Link>
                 ))}
                 {this.renderCopyrightText()}
@@ -50,20 +51,6 @@ class Footer extends React.PureComponent {
 }
 
 export default Footer;
-
-const FooterLink = styled.a`
-    display: inline-block;
-    color: ${colors.grayDark};
-    line-height: ${lineHeight.lh_13};
-    cursor: pointer;
-    text-decoration: none;
-    margin-right: ${spacing.sm};
-    font-size: ${fontSize.sm};
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
 
 const CopyrightText = styled.div`
     display: block;

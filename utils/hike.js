@@ -37,7 +37,34 @@ export async function parseHikeXml(hikeXmlUrl) {
     return hikeData;
 }
 
+export async function getRecentHikes(size) {
+    const hikeRef = firebase
+        .firestore()
+        .collection('hikes')
+        .orderBy('timestamp', 'desc')
+        .limit(size);
+
+    const querySnapshot = await hikeRef.get();
+    const recentHikes = [];
+
+    querySnapshot.forEach((hike) => {
+        if (hike.exists) {
+            const hikeData = hike.data() || {};
+            hikeData.id = hike.id;
+            const reduced = {
+                key: hike.id,
+                ...hikeData,
+            };
+            recentHikes.push(reduced);
+        }
+    });
+
+    return recentHikes;
+}
+
 export default {
     getHikeData,
     getHikeXmlUrl,
+    parseHikeXml,
+    getRecentHikes,
 };

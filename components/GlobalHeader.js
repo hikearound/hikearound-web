@@ -22,12 +22,12 @@ class GlobalHeader extends React.PureComponent {
 export default GlobalHeader;
 
 const HeaderContainer = styled.div`
+    z-index: 1;
     height: ${grid.header};
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: ${colors.purple};
-    margin-bottom: ${grid.gutter};
     padding: 0 ${grid.gutter};
     position: fixed;
     top: 0;

@@ -48,8 +48,10 @@ class Page extends React.PureComponent {
         const { rightColumn } = this.props;
         return (
             <RightColumn>
-                {rightColumn}
-                <Footer />
+                <StickyContainer>
+                    {rightColumn}
+                    <Footer />
+                </StickyContainer>
             </RightColumn>
         );
     }
@@ -116,6 +118,11 @@ const MainColumn = styled.div`
     @media ${device.tablet} {
         width: 100%;
     }
+`;
+
+const StickyContainer = styled.div`
+    position: sticky;
+    top: ${headerOffset};
 `;
 
 const RightColumn = styled.div`

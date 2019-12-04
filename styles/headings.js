@@ -18,7 +18,7 @@ export const SecondaryHeading = styled.h2`
 export const SubHeading = styled.h3`
     font-size: ${fontSize.md};
     font-weight: ${fontWeight.regular};
-    color: ${colors.grayDark};
+    color: ${colors.grayMedium};
 `;
 
 export default { PrimaryHeading, SecondaryHeading, SubHeading };
