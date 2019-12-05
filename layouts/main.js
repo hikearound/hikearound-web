@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../components/page/Header';
 import Footer from '../components/page/Footer';
-import Ad from '../components/page/Ad';
 import { typeface, fontSize } from '../constants/type';
 import { grid } from '../constants/dimensions';
 import colors from '../constants/colors';
@@ -38,7 +37,7 @@ class Page extends React.PureComponent {
     async componentDidMount() {
         const { title } = this.props;
         if (!title.includes('Hikearound')) {
-            const pageTitle = `${title} - Hikearound`;
+            const pageTitle = `${title} | Hikearound`;
             await this.setState({
                 pageTitle,
             });
@@ -51,7 +50,6 @@ class Page extends React.PureComponent {
             <RightColumn>
                 <StickyContainer>
                     {rightColumn}
-                    <Ad />
                     <Footer />
                 </StickyContainer>
             </RightColumn>

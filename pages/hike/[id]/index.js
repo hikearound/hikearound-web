@@ -5,6 +5,7 @@ import Header from '../../../components/hike/Header';
 import Description from '../../../components/hike/Description';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
+import Ad from '../../../components/page/Ad';
 import { getHikeData } from '../../../utils/hike';
 
 const propTypes = {
@@ -34,7 +35,12 @@ class HikePage extends React.Component {
 
     renderRightColumn() {
         const { hike } = this.props;
-        return <RecentHikes id={hike.id} />;
+        return (
+            <div>
+                <RecentHikes id={hike.id} />
+                <Ad />
+            </div>
+        );
     }
 
     render() {
