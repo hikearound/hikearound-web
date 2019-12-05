@@ -21,6 +21,11 @@ class Header extends React.PureComponent {
                         content='width=device-width, initial-scale=1'
                     />
                     <meta charSet='utf-8' />
+                    <script
+                        data-ad-client='ca-pub-0600907327424384'
+                        async
+                        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+                    />
                 </Head>
                 {!hideHeader && <GlobalHeader />}
             </>
