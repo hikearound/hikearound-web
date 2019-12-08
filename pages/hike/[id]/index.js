@@ -11,6 +11,11 @@ import { getHikeData } from '../../../utils/hike';
 const propTypes = {
     hike: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    shouldShowAd: PropTypes.bool,
+};
+
+const defaultProps = {
+    shouldShowAd: true,
 };
 
 class HikePage extends React.Component {
@@ -34,11 +39,11 @@ class HikePage extends React.Component {
     }
 
     renderRightColumn() {
-        const { hike } = this.props;
+        const { hike, shouldShowAd } = this.props;
         return (
             <div>
                 <RecentHikes id={hike.id} />
-                <Ad />
+                {shouldShowAd && <Ad />}
             </div>
         );
     }
@@ -57,5 +62,6 @@ class HikePage extends React.Component {
 }
 
 HikePage.propTypes = propTypes;
+HikePage.defaultProps = defaultProps;
 
 export default HikePage;
