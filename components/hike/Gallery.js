@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImage } from '../../utils/hike';
@@ -21,6 +22,8 @@ class Gallery extends React.PureComponent {
 
         this.state = {
             imageArray: [],
+            modalIsOpen: false,
+            currentImage: 0,
         };
     }
 
@@ -35,7 +38,7 @@ class Gallery extends React.PureComponent {
         for (let i = 0; i < images.length; i += 1) {
             const imageUrl = await getHikeImage(id, i);
             imageArray.push({
-                uri: imageUrl,
+                src: imageUrl,
                 attribution: images[i],
             });
         }
@@ -43,15 +46,66 @@ class Gallery extends React.PureComponent {
         this.setState({ imageArray });
     };
 
+    openModal = (index) => {
+        this.setState({
+            modalIsOpen: true,
+            currentImage: index,
+        });
+    };
+
+    closeModal = () => {
+        this.setState({
+            modalIsOpen: false,
+            currentImage: 0,
+        });
+    };
+
+    renderFooterCount = () => {
+        return <div />;
+    };
+
     renderGallery() {
-        const { imageArray } = this.state;
+        const { imageArray, modalIsOpen, currentImage } = this.state;
 
         return (
-            <PhotoGallery>
-                {imageArray.map((image, index) => (
-                    <Thumbnail image={image} imageIndex={index} key={index} />
-                ))}
-            </PhotoGallery>
+            <div>
+                <PhotoGallery>
+                    {imageArray.map((image, index) => (
+                        <ThumbnailButton
+                            onClick={() => {
+                                this.openModal(index);
+                            }}
+                            key={index}
+                            type='button'
+                        >
+                            <Thumbnail
+                                image={image}
+                                imageIndex={index}
+                                key={index}
+                            />
+                        </ThumbnailButton>
+                    ))}
+                </PhotoGallery>
+                <ModalGateway>
+                    {modalIsOpen ? (
+                        <Modal
+                            onClose={() => {
+                                this.closeModal();
+                            }}
+                            allowFullscreen={false}
+                        >
+                            <Carousel
+                                components={{
+                                    FooterCount: () => null,
+                                    Navigation: () => null,
+                                }}
+                                views={imageArray}
+                                currentIndex={currentImage}
+                            />
+                        </Modal>
+                    ) : null}
+                </ModalGateway>
+            </div>
         );
     }
 
@@ -74,4 +128,15 @@ const PhotoGallery = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+`;
+
+const ThumbnailButton = styled.button`
+    background-color: initial;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    &: hover {
+        cursor: pointer;
+    }
 `;

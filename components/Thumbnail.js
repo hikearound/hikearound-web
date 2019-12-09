@@ -14,7 +14,7 @@ const propTypes = {
 class Thumbnail extends React.PureComponent {
     render() {
         const { image } = this.props;
-        return <ThumbnailImage src={image.uri} />;
+        return <ThumbnailImage src={image.src} />;
     }
 }
 
