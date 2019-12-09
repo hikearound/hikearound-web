@@ -127,7 +127,7 @@ const ThumbnailButton = styled.button`
     padding: 0;
     border: none;
 
-    &: hover {
+    &:hover {
         cursor: pointer;
     }
 `;
