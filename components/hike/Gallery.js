@@ -64,23 +64,25 @@ class Gallery extends React.PureComponent {
         const { imageArray } = this.state;
 
         return (
-            <PhotoGallery>
-                {imageArray.map((image, index) => (
-                    <ThumbnailButton
-                        onClick={() => {
-                            this.openModal(index);
-                        }}
-                        key={index}
-                        type='button'
-                    >
-                        <Thumbnail
-                            image={image}
-                            imageIndex={index}
+            <CardContent>
+                <PhotoGallery>
+                    {imageArray.map((image, index) => (
+                        <ThumbnailButton
+                            onClick={() => {
+                                this.openModal(index);
+                            }}
                             key={index}
-                        />
-                    </ThumbnailButton>
-                ))}
-            </PhotoGallery>
+                            type='button'
+                        >
+                            <Thumbnail
+                                image={image}
+                                imageIndex={index}
+                                key={index}
+                            />
+                        </ThumbnailButton>
+                    ))}
+                </PhotoGallery>
+            </CardContent>
         );
     }
 
@@ -101,7 +103,7 @@ class Gallery extends React.PureComponent {
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
-                <CardContent>{this.renderGallery()}</CardContent>
+                {this.renderGallery()}
                 {this.renderModal()}
             </Card>
         );
