@@ -65,47 +65,52 @@ class Gallery extends React.PureComponent {
     };
 
     renderGallery() {
+        const { imageArray } = this.state;
+
+        return (
+            <PhotoGallery>
+                {imageArray.map((image, index) => (
+                    <ThumbnailButton
+                        onClick={() => {
+                            this.openModal(index);
+                        }}
+                        key={index}
+                        type='button'
+                    >
+                        <Thumbnail
+                            image={image}
+                            imageIndex={index}
+                            key={index}
+                        />
+                    </ThumbnailButton>
+                ))}
+            </PhotoGallery>
+        );
+    }
+
+    renderModal() {
         const { imageArray, modalIsOpen, currentImage } = this.state;
 
         return (
-            <div>
-                <PhotoGallery>
-                    {imageArray.map((image, index) => (
-                        <ThumbnailButton
-                            onClick={() => {
-                                this.openModal(index);
+            <ModalGateway>
+                {modalIsOpen ? (
+                    <Modal
+                        onClose={() => {
+                            this.closeModal();
+                        }}
+                        allowFullscreen={false}
+                    >
+                        <Carousel
+                            components={{
+                                FooterCount: () => null,
+                                Navigation: () => null,
                             }}
-                            key={index}
-                            type='button'
-                        >
-                            <Thumbnail
-                                image={image}
-                                imageIndex={index}
-                                key={index}
-                            />
-                        </ThumbnailButton>
-                    ))}
-                </PhotoGallery>
-                <ModalGateway>
-                    {modalIsOpen ? (
-                        <Modal
-                            onClose={() => {
-                                this.closeModal();
-                            }}
-                            allowFullscreen={false}
-                        >
-                            <Carousel
-                                components={{
-                                    FooterCount: () => null,
-                                    Navigation: () => null,
-                                }}
-                                views={imageArray}
-                                currentIndex={currentImage}
-                            />
-                        </Modal>
-                    ) : null}
-                </ModalGateway>
-            </div>
+                            views={imageArray}
+                            currentIndex={currentImage}
+                        />
+                    </Modal>
+                ) : null}
+            </ModalGateway>
         );
     }
 
@@ -114,6 +119,7 @@ class Gallery extends React.PureComponent {
             <Card noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
                 <CardContent>{this.renderGallery()}</CardContent>
+                {this.renderModal()}
             </Card>
         );
     }
