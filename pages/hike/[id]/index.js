@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Page from '../../../layouts/main';
 import Header from '../../../components/hike/Header';
 import Description from '../../../components/hike/Description';
+import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
 import Ad from '../../../components/page/Ad';
@@ -15,7 +16,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    shouldShowAd: true,
+    shouldShowAd: false,
 };
 
 class HikePage extends React.Component {
@@ -33,6 +34,7 @@ class HikePage extends React.Component {
             <div>
                 <Header name={hike.name} city={hike.city} />
                 <HikeMap id={id} />
+                <Gallery id={id} images={hike.images} />
                 <Description description={hike.description} />
             </div>
         );

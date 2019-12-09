@@ -62,9 +62,17 @@ export async function getRecentHikes(size) {
     return recentHikes;
 }
 
+export async function getHikeImage(id, index) {
+    return firebase
+        .storage()
+        .ref(`hikes/${id}/images/${index}.jpg`)
+        .getDownloadURL();
+}
+
 export default {
     getHikeData,
     getHikeXmlUrl,
     parseHikeXml,
     getRecentHikes,
+    getHikeImage,
 };
