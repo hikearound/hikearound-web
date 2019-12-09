@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImage } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
+import ImageModal from './ImageModal';
 
 const propTypes = {
     images: PropTypes.array,
@@ -60,10 +60,6 @@ class Gallery extends React.PureComponent {
         });
     };
 
-    renderFooterCount = () => {
-        return <div />;
-    };
-
     renderGallery() {
         const { imageArray } = this.state;
 
@@ -92,25 +88,12 @@ class Gallery extends React.PureComponent {
         const { imageArray, modalIsOpen, currentImage } = this.state;
 
         return (
-            <ModalGateway>
-                {modalIsOpen ? (
-                    <Modal
-                        onClose={() => {
-                            this.closeModal();
-                        }}
-                        allowFullscreen={false}
-                    >
-                        <Carousel
-                            components={{
-                                FooterCount: () => null,
-                                Navigation: () => null,
-                            }}
-                            views={imageArray}
-                            currentIndex={currentImage}
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <ImageModal
+                imageArray={imageArray}
+                modalIsOpen={modalIsOpen}
+                currentImage={currentImage}
+                closeModal={this.closeModal}
+            />
         );
     }
 
