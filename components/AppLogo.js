@@ -7,15 +7,21 @@ class AppLogo extends React.PureComponent {
     render() {
         return (
             <Link href='/'>
-                <a href='/'>
+                <LogoLink href='/'>
                     <LogoImage src='/images/logo.svg' alt='Hikearound logo' />
-                </a>
+                </LogoLink>
             </Link>
         );
     }
 }
 
 export default AppLogo;
+
+const LogoLink = styled.a`
+    @media ${device.tablet} {
+        margin: 0 auto;
+    }
+`;
 
 const LogoImage = styled.img`
     height: 20px;
@@ -25,9 +31,5 @@ const LogoImage = styled.img`
 
     &:hover {
         cursor: pointer;
-    }
-
-    @media ${device.tablet} {
-        margin: 0 auto;
     }
 `;
