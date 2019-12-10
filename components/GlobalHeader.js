@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import { grid } from '../constants/dimensions';
-import Logo from './Logo';
+import AppLogo from './AppLogo';
 import GlobalNav from './GlobalNav';
 import { device } from '../constants/breakpoints';
 
@@ -11,7 +11,7 @@ class GlobalHeader extends React.PureComponent {
         return (
             <HeaderContainer>
                 <HeaderInterior>
-                    <Logo />
+                    <AppLogo />
                     <GlobalNav />
                 </HeaderInterior>
             </HeaderContainer>
