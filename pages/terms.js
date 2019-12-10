@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Prismic from 'prismic-javascript';
-import { apiEndpoint } from '../config/prismic';
 import PageBase from '../components/PageBase';
+import { getPageData } from '../utils/page';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -12,17 +11,12 @@ const propTypes = {
 class TermsPage extends React.Component {
     static async getInitialProps(context) {
         const { req } = context;
-        const page = await this.getPageData(req);
+        const page = await getPageData(req, 'terms');
 
         return {
             title: page.data.title,
             description: page.data.description,
         };
-    }
-
-    static async getPageData(req) {
-        const data = await Prismic.getApi(apiEndpoint, req);
-        return data.getSingle('terms');
     }
 
     render() {
