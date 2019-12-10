@@ -96,12 +96,6 @@ const GlobalStyle = createGlobalStyle`
     div, span {
         font-size: ${fontSize.md};
     }
-
-    .react-images__header {
-        div {
-            opacity: 1;
-        }
-    }
 `;
 
 const ContentGrid = styled.div`

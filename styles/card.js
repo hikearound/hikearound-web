@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from '../constants/colors';
 import spacing from '../constants/spacing';
 import { borderRadius, grid } from '../constants/dimensions';
-import { lineHeight } from '../constants/type';
+import { lineHeight, fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
 
 export const Card = styled.div`
@@ -28,6 +28,7 @@ export const CardContent = styled.div`
 
     @media ${device.tablet} {
         border-top: 3px solid ${colors.grayLight};
+        font-size: ${fontSize.sm};
     }
 `;
 

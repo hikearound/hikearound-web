@@ -62,9 +62,11 @@ class HikeMap extends React.PureComponent {
         const hikeXmlUrl = await getHikeXmlUrl(id);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
-        this.setHikeData(hikeData);
-        this.parseCoordinates();
-        this.setMapCenter();
+        if (hikeData) {
+            this.setHikeData(hikeData);
+            this.parseCoordinates();
+            this.setMapCenter();
+        }
     };
 
     setHikeData(hikeData) {
@@ -140,6 +142,7 @@ const mapStyle = `
     width: 100%;
 
     @media ${device.tablet} {
+        border-top: 3px solid ${colors.grayLight};
         height: 250px;
     }
 `;

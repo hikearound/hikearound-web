@@ -7,6 +7,8 @@ import { SecondaryHeading } from '../styles/headings';
 import { getRecentHikes } from '../utils/hike';
 import { RightRailLink } from '../styles/links';
 import spacing from '../constants/spacing';
+import { device } from '../constants/breakpoints';
+import colors from '../constants/colors';
 
 const propTypes = {
     hikeCount: PropTypes.number,
@@ -39,7 +41,7 @@ class RecentHikes extends React.PureComponent {
         return recentHikes.map(({ name, id }, index) => (
             <HikeLinkParent key={index}>
                 <Link href={id}>
-                    <HikeLink>{name}</HikeLink>
+                    <HikeLink href={id}>{name}</HikeLink>
                 </Link>
             </HikeLinkParent>
         ));
@@ -47,8 +49,8 @@ class RecentHikes extends React.PureComponent {
 
     render() {
         return (
-            <Card>
-                <SecondaryHeading>Recent Hikes</SecondaryHeading>
+            <Card noPadding>
+                <RecentHikesHeading>Recent Hikes</RecentHikesHeading>
                 <HikeLinkContainer>
                     {this.renderRecentHikeLinks()}
                 </HikeLinkContainer>
@@ -63,7 +65,12 @@ RecentHikes.defaultProps = defaultProps;
 export default RecentHikes;
 
 const HikeLinkContainer = styled.div`
-    margin-top: ${spacing.sm};
+    padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
+
+    @media ${device.tablet} {
+        border-top: 3px solid ${colors.grayLight};
+        padding-top: ${spacing.md};
+    }
 `;
 
 const HikeLinkParent = styled.div`
@@ -72,6 +79,14 @@ const HikeLinkParent = styled.div`
 
     &:first-child {
         margin-top: 0;
+    }
+`;
+
+const RecentHikesHeading = styled(SecondaryHeading)`
+    padding: ${spacing.md} ${spacing.md} ${spacing.sm} ${spacing.md};
+
+    @media ${device.tablet} {
+        padding-bottom: ${spacing.md};
     }
 `;
 

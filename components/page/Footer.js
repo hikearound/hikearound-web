@@ -41,7 +41,7 @@ class Footer extends React.PureComponent {
             <Card hideGutter>
                 {footerLinks.map(({ text, link }, index) => (
                     <Link href={link} key={index}>
-                        <RightRailLink>{text}</RightRailLink>
+                        <RightRailLink href={link}>{text}</RightRailLink>
                     </Link>
                 ))}
                 {this.renderCopyrightText()}
@@ -52,7 +52,7 @@ class Footer extends React.PureComponent {
 
 export default Footer;
 
-const CopyrightText = styled.div`
+const CopyrightText = styled.a`
     display: block;
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};
