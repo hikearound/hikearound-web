@@ -8,7 +8,8 @@
     "export": "next export"
   },
   "engines": {
-    "node": "12.12.0"
+    "node": "12.12.0",
+    "npm": "6.13.2"
   },
   "dependencies": {
     "@firebase/app": "^0.4.26",
