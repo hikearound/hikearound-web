@@ -1,13 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
-import { PrimaryHeading } from '../styles/headings';
-import { Card } from '../styles/card';
-import spacing from '../constants/spacing';
+import PageContent from '../components/PageContent';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -32,15 +28,7 @@ class TermsPage extends React.Component {
 
     renderMainColumn() {
         const { title, description } = this.props;
-
-        return (
-            <RootView>
-                <Card>
-                    <PrimaryHeading>{RichText.asText(title)}</PrimaryHeading>
-                    <RichText render={description} />
-                </Card>
-            </RootView>
-        );
+        return <PageContent title={title} description={description} />;
     }
 
     render() {
@@ -56,9 +44,3 @@ class TermsPage extends React.Component {
 TermsPage.propTypes = propTypes;
 
 export default TermsPage;
-
-const RootView = styled.div`
-    h1 {
-        margin-bottom: ${spacing.md};
-    }
-`;
