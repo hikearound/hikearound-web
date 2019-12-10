@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
+import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
 import PageContent from '../components/PageContent';
@@ -32,7 +33,13 @@ class AboutPage extends React.Component {
     }
 
     render() {
-        return <Page title='About' mainColumn={this.renderMainColumn()} />;
+        const { title } = this.props;
+        return (
+            <Page
+                title={RichText.asText(title)}
+                mainColumn={this.renderMainColumn()}
+            />
+        );
     }
 }
 

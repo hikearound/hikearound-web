@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
+import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
 import Page from '../layouts/main';
 import PageContent from '../components/PageContent';
@@ -32,8 +33,12 @@ class PrivacyPage extends React.Component {
     }
 
     render() {
+        const { title } = this.props;
         return (
-            <Page title='Privacy Policy' mainColumn={this.renderMainColumn()} />
+            <Page
+                title={RichText.asText(title)}
+                mainColumn={this.renderMainColumn()}
+            />
         );
     }
 }
