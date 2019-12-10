@@ -25,6 +25,10 @@ export const CardContent = styled.div`
     border-top: 1px solid ${colors.gray};
     padding: ${spacing.md};
     line-height: ${lineHeight.lh_13};
+
+    @media ${device.tablet} {
+        border-top: 3px solid ${colors.grayLight};
+    }
 `;
 
 export default { Card, CardContent };
