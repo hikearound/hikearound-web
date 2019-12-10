@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
-import Page from '../layouts/main';
-import PageContent from '../components/PageContent';
+import PageBase from '../components/PageBase';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -14,7 +12,7 @@ const propTypes = {
 class AboutPage extends React.Component {
     static async getInitialProps(context) {
         const { req } = context;
-        const page = await this.getAboutPage(req);
+        const page = await this.getPageData(req);
 
         return {
             title: page.data.title,
@@ -22,24 +20,14 @@ class AboutPage extends React.Component {
         };
     }
 
-    static async getAboutPage(req) {
+    static async getPageData(req) {
         const data = await Prismic.getApi(apiEndpoint, req);
         return data.getSingle('about');
     }
 
-    renderMainColumn() {
-        const { title, description } = this.props;
-        return <PageContent title={title} description={description} />;
-    }
-
     render() {
-        const { title } = this.props;
-        return (
-            <Page
-                title={RichText.asText(title)}
-                mainColumn={this.renderMainColumn()}
-            />
-        );
+        const { title, description } = this.props;
+        return <PageBase title={title} description={description} />;
     }
 }
 

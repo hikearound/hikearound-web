@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
 import { apiEndpoint } from '../config/prismic';
-import Page from '../layouts/main';
-import PageContent from '../components/PageContent';
+import PageBase from '../components/PageBase';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
 };
 
-class PrivacyPage extends React.Component {
+class PrivacyPage extends React.PureComponent {
     static async getInitialProps(context) {
         const { req } = context;
-        const page = await this.getPrivacyPage(req);
+        const page = await this.getPageData(req);
 
         return {
             title: page.data.title,
@@ -22,24 +20,14 @@ class PrivacyPage extends React.Component {
         };
     }
 
-    static async getPrivacyPage(req) {
+    static async getPageData(req) {
         const data = await Prismic.getApi(apiEndpoint, req);
         return data.getSingle('privacy');
     }
 
-    renderMainColumn() {
-        const { title, description } = this.props;
-        return <PageContent title={title} description={description} />;
-    }
-
     render() {
-        const { title } = this.props;
-        return (
-            <Page
-                title={RichText.asText(title)}
-                mainColumn={this.renderMainColumn()}
-            />
-        );
+        const { title, description } = this.props;
+        return <PageBase title={title} description={description} />;
     }
 }
 
