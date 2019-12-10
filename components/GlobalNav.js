@@ -11,9 +11,9 @@ class GlobalNav extends React.PureComponent {
         return (
             <LinkContainer>
                 <Link href='/about'>
-                    <GlobalLink>About</GlobalLink>
+                    <GlobalLink href='/about'>About</GlobalLink>
                 </Link>
-                <GlobalLink href='#'>Get the App</GlobalLink>
+                <GlobalLink href='/'>Get the App</GlobalLink>
             </LinkContainer>
         );
     }
