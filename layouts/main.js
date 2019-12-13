@@ -49,6 +49,7 @@ class Page extends React.PureComponent {
 
     async componentDidMount() {
         const { title } = this.props;
+
         if (!title.includes('Hikearound')) {
             const pageTitle = `${title} | Hikearound`;
             await this.setState({
@@ -59,6 +60,7 @@ class Page extends React.PureComponent {
 
     renderRightColumn() {
         const { rightColumn } = this.props;
+
         return (
             <RightColumn>
                 <StickyContainer>

@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import firebase from '@firebase/app';
+import '@firebase/firestore';
+import '@firebase/storage';
 import { parseString } from 'xml2js';
 
 global.XMLHttpRequest = require('xhr2');

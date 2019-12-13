@@ -16,7 +16,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    shouldShowAd: false,
+    shouldShowAd: true,
 };
 
 class HikePage extends React.Component {
@@ -30,6 +30,7 @@ class HikePage extends React.Component {
 
     renderMainColumn() {
         const { hike, id } = this.props;
+
         return (
             <div>
                 <Header name={hike.name} city={hike.city} />
@@ -42,6 +43,7 @@ class HikePage extends React.Component {
 
     renderRightColumn() {
         const { hike, shouldShowAd } = this.props;
+
         return (
             <div>
                 <RecentHikes id={hike.id} />
