@@ -9,15 +9,20 @@ import spacing from '../constants/spacing';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
+    hideFooter: PropTypes.bool,
+};
+
+const defaultProps = {
+    hideFooter: false,
 };
 
 class PageContent extends React.PureComponent {
     render() {
-        const { title, description } = this.props;
+        const { title, description, hideFooter } = this.props;
 
         return (
             <RootView>
-                <Card>
+                <Card hideGutter={hideFooter}>
                     <PrimaryHeading>{RichText.asText(title)}</PrimaryHeading>
                     <RichText render={description} />
                 </Card>
@@ -27,6 +32,7 @@ class PageContent extends React.PureComponent {
 }
 
 PageContent.propTypes = propTypes;
+PageContent.defaultProps = defaultProps;
 
 export default PageContent;
 

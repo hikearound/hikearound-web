@@ -6,22 +6,37 @@ import { getPageData } from '../utils/page';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
+    contentOnly: PropTypes.string.isRequired,
 };
 
 class TermsPage extends React.Component {
     static async getInitialProps(context) {
-        const { req } = context;
+        const { req, query } = context;
         const page = await getPageData(req, 'terms');
 
         return {
             title: page.data.title,
             description: page.data.description,
+            contentOnly: query.contentOnly,
         };
     }
 
     render() {
-        const { title, description } = this.props;
-        return <PageBase title={title} description={description} />;
+        const { title, description, contentOnly } = this.props;
+
+        let hideGutterAndFooter = false;
+        if (contentOnly === 'true') {
+            hideGutterAndFooter = true;
+        }
+
+        return (
+            <PageBase
+                title={title}
+                description={description}
+                hideHeader={hideGutterAndFooter}
+                hideFooter={hideGutterAndFooter}
+            />
+        );
     }
 }
 

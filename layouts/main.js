@@ -19,6 +19,7 @@ const propTypes = {
     mainColumn: PropTypes.oneOfType(columnType).isRequired,
     rightColumn: PropTypes.oneOfType(columnType),
     hideHeader: PropTypes.bool,
+    hideFooter: PropTypes.bool,
     singleColumn: PropTypes.bool,
     title: PropTypes.string.isRequired,
 };
@@ -26,6 +27,7 @@ const propTypes = {
 const defaultProps = {
     rightColumn: [],
     hideHeader: false,
+    hideFooter: false,
     singleColumn: false,
 };
 
@@ -59,13 +61,13 @@ class Page extends React.PureComponent {
     }
 
     renderRightColumn() {
-        const { rightColumn } = this.props;
+        const { rightColumn, hideFooter } = this.props;
 
         return (
             <RightColumn>
                 <StickyContainer>
                     {rightColumn}
-                    <Footer />
+                    {!hideFooter && <Footer />}
                 </StickyContainer>
             </RightColumn>
         );
@@ -79,7 +81,7 @@ class Page extends React.PureComponent {
             <div>
                 <GlobalStyle />
                 <Header hideHeader={hideHeader} title={pageTitle} />
-                <ContentGrid>
+                <ContentGrid hideHeader={hideHeader}>
                     <MainColumn singleColumn={singleColumn}>
                         {mainColumn}
                     </MainColumn>
@@ -123,6 +125,7 @@ const ContentGrid = styled.div`
     @media ${device.tablet} {
         flex-direction: column;
         padding: ${grid.header} 0 0 0;
+        padding-top: ${(props) => (props.hideHeader ? 0 : grid.header)};
     }
 `;
 
