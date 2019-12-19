@@ -56,5 +56,5 @@ const CopyrightText = styled.a`
     display: block;
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};
-    margin-top: ${spacing.xs};
+    margin: ${spacing.xs} 0;
 `;
