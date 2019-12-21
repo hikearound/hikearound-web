@@ -44,20 +44,12 @@ class Page extends React.PureComponent {
             NProgress.done();
         });
 
-        this.state = {
-            pageTitle: title,
-        };
-    }
-
-    async componentDidMount() {
-        const { title } = this.props;
-
-        if (!title.includes('Hikearound')) {
-            const pageTitle = `${title} | Hikearound`;
-            await this.setState({
-                pageTitle,
-            });
+        let pageTitle = title;
+        if (!pageTitle.includes('Hikearound')) {
+            pageTitle = `${pageTitle} | Hikearound`;
         }
+
+        this.state = { pageTitle };
     }
 
     renderRightColumn() {
