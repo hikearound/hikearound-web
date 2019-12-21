@@ -1,5 +1,6 @@
 export const typeface = {
-    sansSerif: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    sansSerif:
+        '-apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif',
 };
 
 export const lineHeight = {

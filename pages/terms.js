@@ -24,19 +24,18 @@ class TermsPage extends React.Component {
     render() {
         const { title, description, contentOnly } = this.props;
 
-        let hideGutterAndFooter = false;
-        if (contentOnly === 'true') {
-            hideGutterAndFooter = true;
+        if (contentOnly) {
+            return (
+                <PageBase
+                    title={title}
+                    description={description}
+                    hideHeader
+                    hideFooter
+                />
+            );
         }
 
-        return (
-            <PageBase
-                title={title}
-                description={description}
-                hideHeader={hideGutterAndFooter}
-                hideFooter={hideGutterAndFooter}
-            />
-        );
+        return <PageBase title={title} description={description} />;
     }
 }
 
