@@ -21,6 +21,11 @@ class Header extends React.PureComponent {
                         content='width=device-width, initial-scale=1'
                     />
                     <meta charSet='utf-8' />
+                    <link
+                        rel='icon'
+                        href='/images/favicon.png'
+                        type='image/png'
+                    />
                 </Head>
                 {!hideHeader && <GlobalHeader />}
             </>
