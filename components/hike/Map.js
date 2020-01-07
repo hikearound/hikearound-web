@@ -2,8 +2,6 @@ import React from 'react';
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import polyline from 'google-polyline';
-import buildUrl from 'build-url';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
@@ -11,7 +9,6 @@ import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 
 const mapApiKey = 'AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
-const mapStaticApiKey = 'AIzaSyDzhRGewrBXqU6XPG5Bdl29JpPRPNtdilY';
 
 const propTypes = {
     mapOptions: PropTypes.object,
@@ -67,7 +64,6 @@ class HikeMap extends React.PureComponent {
 
         if (hikeData) {
             this.setHikeData(hikeData);
-            this.createPath();
             this.setMapCenter();
             this.parseCoordinates();
         }
@@ -102,35 +98,6 @@ class HikeMap extends React.PureComponent {
         }
 
         this.setState({ path });
-    }
-
-    createPath() {
-        const { hikeData, centerLat, centerLng } = this.state;
-        const coordinateCount = hikeData.gpx.rte[0].rtept.length;
-        const path = [];
-
-        for (let i = 0, len = coordinateCount; i < len; i += 1) {
-            const coordinate = hikeData.gpx.rte[0].rtept[i].$;
-            path.push([parseFloat(coordinate.lat), parseFloat(coordinate.lon)]);
-        }
-
-        const encodedPolyline = polyline.encode(path);
-        const mapPath = `color:0x935DFFFF|weight:4|enc:${encodedPolyline}`;
-
-        const mapUrl = buildUrl(
-            'https://maps.googleapis.com/maps/api/staticmap',
-            {
-                queryParams: {
-                    size: '400x400',
-                    maptype: 'terrain',
-                    center: `${centerLat},${centerLng}`,
-                    path: mapPath,
-                    key: mapStaticApiKey,
-                },
-            },
-        );
-
-        console.log(mapUrl);
     }
 
     renderEmptyState = () => {
