@@ -6,7 +6,11 @@ import { getPageData } from '../utils/page';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
-    contentOnly: PropTypes.string.isRequired,
+    contentOnly: PropTypes.string,
+};
+
+const defaultProps = {
+    contentOnly: false,
 };
 
 class PrivacyPage extends React.PureComponent {
@@ -40,5 +44,6 @@ class PrivacyPage extends React.PureComponent {
 }
 
 PrivacyPage.propTypes = propTypes;
+PrivacyPage.defaultProps = defaultProps;
 
 export default PrivacyPage;
