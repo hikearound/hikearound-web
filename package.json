@@ -21,6 +21,7 @@
     "@firebase/storage": "^0.3.23",
     "@react-google-maps/api": "^1.8.1",
     "@sentry/browser": "^5.11.0",
+    "@sentry/node": "^5.11.0",
     "@types/googlemaps": "^3.39.1",
     "@types/markerclustererplus": "^2.1.33",
     "@types/react": "^16.9.17",
