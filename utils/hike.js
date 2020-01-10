@@ -19,7 +19,7 @@ export async function getHikeData(id) {
 export async function getHikeXmlUrl(id) {
     const hikeXmlUrl = await firebase
         .storage()
-        .ref(`hikes/${id}/hike.gpx`)
+        .ref(`gpx/${id}.gpx`)
         .getDownloadURL();
 
     return hikeXmlUrl;
