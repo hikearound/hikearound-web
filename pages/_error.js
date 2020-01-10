@@ -2,7 +2,7 @@ import React from 'react';
 import Error from 'next/error';
 import * as Sentry from '@sentry/node';
 
-class MyError {
+class MyError extends Error {
     static async getInitialProps({ res, err, asPath }) {
         const errorInitialProps = await Error.getInitialProps({ res, err });
         errorInitialProps.hasGetInitialPropsRun = true;
