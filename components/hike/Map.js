@@ -45,7 +45,7 @@ class HikeMap extends React.PureComponent {
         await this.initializeMap();
     }
 
-    setMapCenter() {
+    setCenter() {
         const { centerLat, centerLng } = this.state;
         const center = {
             lat: centerLat,
@@ -56,18 +56,6 @@ class HikeMap extends React.PureComponent {
             this.setState({ center });
         }
     }
-
-    getHikeData = async () => {
-        const { id } = this.props;
-        const hikeXmlUrl = await getHikeXmlUrl(id);
-        const hikeData = await parseHikeXml(hikeXmlUrl);
-
-        if (hikeData) {
-            this.setHikeData(hikeData);
-            this.setMapCenter();
-            this.parseCoordinates();
-        }
-    };
 
     setHikeData(hikeData) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
@@ -81,10 +69,18 @@ class HikeMap extends React.PureComponent {
     }
 
     initializeMap = async () => {
-        this.getHikeData();
+        const { id } = this.props;
+        const hikeXmlUrl = await getHikeXmlUrl(id);
+        const hikeData = await parseHikeXml(hikeXmlUrl);
+
+        if (hikeData) {
+            this.setHikeData(hikeData);
+            this.setCenter();
+            this.plotCoordinates();
+        }
     };
 
-    parseCoordinates() {
+    plotCoordinates() {
         const { hikeData } = this.state;
         const coordinateCount = hikeData.gpx.rte[0].rtept.length;
         const path = [];
