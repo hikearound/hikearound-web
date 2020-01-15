@@ -45,27 +45,17 @@ class HikeMap extends React.PureComponent {
         await this.initializeMap();
     }
 
-    setCenter() {
-        const { centerLat, centerLng } = this.state;
-        const center = {
-            lat: centerLat,
-            lng: centerLng,
-        };
-
-        if (center) {
-            this.setState({ center });
-        }
-    }
-
     setHikeData(hikeData) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
-        this.setState({
+        const center = {
             centerLat: (parseFloat(maxlat) + parseFloat(minlat)) / 2,
             centerLng: (parseFloat(maxlon) + parseFloat(minlon)) / 2,
             hikeData,
-        });
+        };
+
+        this.setState({ center, hikeData });
     }
 
     initializeMap = async () => {
@@ -75,7 +65,6 @@ class HikeMap extends React.PureComponent {
 
         if (hikeData) {
             this.setHikeData(hikeData);
-            this.setCenter();
             this.plotCoordinates();
         }
     };
