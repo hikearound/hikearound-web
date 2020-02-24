@@ -50,8 +50,8 @@ class HikeMap extends React.PureComponent {
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
         const center = {
-            centerLat: (parseFloat(maxlat) + parseFloat(minlat)) / 2,
-            centerLng: (parseFloat(maxlon) + parseFloat(minlon)) / 2,
+            lat: (parseFloat(maxlat) + parseFloat(minlat)) / 2,
+            lng: (parseFloat(maxlon) + parseFloat(minlon)) / 2,
             hikeData,
         };
 
