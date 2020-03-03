@@ -3,7 +3,10 @@
     "apps": [],
     "details": [{
       "appID": "2DS67Q47ES.com.tryhikearound",
-      "paths": ["/hike/*", "/ls/click/*"]
+      "paths": [
+        "/hike/*",
+        "/uni/*"
+      ]
     }]
   }
 }
