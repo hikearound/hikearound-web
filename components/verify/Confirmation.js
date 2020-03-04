@@ -23,10 +23,11 @@ class Description extends React.Component {
             this.setState({
                 message: successMessage,
             });
+        } else {
+            this.setState({
+                message: failureMessage,
+            });
         }
-        this.setState({
-            message: failureMessage,
-        });
     }
 
     render() {
