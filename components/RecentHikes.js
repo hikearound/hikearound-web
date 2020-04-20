@@ -12,10 +12,12 @@ import colors from '../constants/colors';
 
 const propTypes = {
     hikeCount: PropTypes.number,
+    prefetch: PropTypes.bool,
 };
 
 const defaultProps = {
     hikeCount: 5,
+    prefetch: false,
 };
 
 class RecentHikes extends React.PureComponent {
@@ -36,11 +38,12 @@ class RecentHikes extends React.PureComponent {
     }
 
     renderRecentHikeLinks() {
+        const { prefetch } = this.props;
         const { recentHikes } = this.state;
 
         return recentHikes.map(({ name, id }, index) => (
             <HikeLinkParent key={index}>
-                <Link href={id}>
+                <Link href={id} prefetch={prefetch}>
                     <HikeLink href={id}>{name}</HikeLink>
                 </Link>
             </HikeLinkParent>

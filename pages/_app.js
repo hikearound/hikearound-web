@@ -4,6 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import * as Sentry from '@sentry/browser';
 import Fire from '../lib/db';
 
+import '../css/reset.css';
+import '../css/nprogress.css';
+
 const theme = {};
 
 Sentry.init({
