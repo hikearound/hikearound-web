@@ -8,13 +8,13 @@ import { borderRadius } from '../constants/dimensions';
 const THUMBNAIL_DIMENSION = '75px';
 
 const propTypes = {
-    image: PropTypes.object.isRequired,
+    image: PropTypes.string.isRequired,
 };
 
 class Thumbnail extends React.PureComponent {
     render() {
         const { image } = this.props;
-        return <ThumbnailImage src={image.src} />;
+        return <ThumbnailImage src={image} />;
     }
 }
 

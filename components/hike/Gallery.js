@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import FsLightbox from 'fslightbox-react';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImage } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
-import ImageModal from './ImageModal';
 
 const propTypes = {
     images: PropTypes.array,
@@ -22,7 +22,7 @@ class Gallery extends React.PureComponent {
 
         this.state = {
             imageArray: [],
-            modalIsOpen: false,
+            isVisible: false,
             currentImage: 0,
         };
     }
@@ -37,26 +37,17 @@ class Gallery extends React.PureComponent {
 
         for (let i = 0; i < images.length; i += 1) {
             const imageUrl = await getHikeImage(id, i);
-            imageArray.push({
-                src: imageUrl,
-                attribution: images[i],
-            });
+            imageArray.push(imageUrl);
         }
 
         this.setState({ imageArray });
     };
 
-    openModal = (index) => {
+    openLightbox = (index) => {
+        const { isVisible } = this.state;
         this.setState({
-            modalIsOpen: true,
             currentImage: index,
-        });
-    };
-
-    closeModal = () => {
-        this.setState({
-            modalIsOpen: false,
-            currentImage: 0,
+            isVisible: !isVisible,
         });
     };
 
@@ -69,7 +60,7 @@ class Gallery extends React.PureComponent {
                     {imageArray.map((image, index) => (
                         <ThumbnailButton
                             onClick={() => {
-                                this.openModal(index);
+                                this.openLightbox(index);
                             }}
                             key={index}
                             type='button'
@@ -86,25 +77,28 @@ class Gallery extends React.PureComponent {
         );
     }
 
-    renderModal() {
-        const { imageArray, modalIsOpen, currentImage } = this.state;
+    renderLightBox = () => {
+        const { isVisible, imageArray, currentImage } = this.state;
 
-        return (
-            <ImageModal
-                imageArray={imageArray}
-                modalIsOpen={modalIsOpen}
-                currentImage={currentImage}
-                closeModal={this.closeModal}
-            />
-        );
-    }
+        if (imageArray.length > 0) {
+            return (
+                <FsLightbox
+                    toggler={isVisible}
+                    sources={imageArray}
+                    slide={currentImage}
+                    type='image'
+                />
+            );
+        }
+        return null;
+    };
 
     render() {
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
                 {this.renderGallery()}
-                {this.renderModal()}
+                {this.renderLightBox()}
             </Card>
         );
     }
