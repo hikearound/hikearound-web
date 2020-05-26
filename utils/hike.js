@@ -43,7 +43,7 @@ export async function getRecentHikes(size) {
     const hikeRef = firebase
         .firestore()
         .collection('hikes')
-        .orderBy('timestamp', 'desc')
+        .orderBy('createdOn', 'desc')
         .limit(size);
 
     const querySnapshot = await hikeRef.get();
@@ -64,6 +64,16 @@ export async function getRecentHikes(size) {
     return recentHikes;
 }
 
+export async function getHikeImageGallery(id) {
+    const gallerySnapshot = await firebase
+        .firestore()
+        .collection('images')
+        .doc(id)
+        .get();
+
+    return gallerySnapshot.data();
+}
+
 export async function getHikeImage(id, index) {
     return firebase
         .storage()
@@ -71,10 +81,9 @@ export async function getHikeImage(id, index) {
         .getDownloadURL();
 }
 
-export default {
-    getHikeData,
-    getHikeXmlUrl,
-    parseHikeXml,
-    getRecentHikes,
-    getHikeImage,
-};
+export async function getHikeThumbnail(id, index) {
+    return firebase
+        .storage()
+        .ref(`hikes/${id}/images/thumbnails/${index}_200x200.jpg`)
+        .getDownloadURL();
+}

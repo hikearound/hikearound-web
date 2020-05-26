@@ -7,35 +7,36 @@ import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
 import Ad from '../../../components/page/Ad';
-import { getHikeData } from '../../../utils/hike';
+import { getHikeData, getHikeImageGallery } from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     shouldShowAd: PropTypes.bool,
+    images: PropTypes.object,
 };
 
 const defaultProps = {
     shouldShowAd: true,
+    images: {},
 };
 
 class HikePage extends React.Component {
     static async getInitialProps({ query }) {
         const hike = await getHikeData(query.id);
-        return {
-            hike,
-            id: query.id,
-        };
+        const images = await getHikeImageGallery(query.id);
+
+        return { hike, images, id: query.id };
     }
 
     renderMainColumn() {
-        const { hike, id } = this.props;
+        const { hike, id, images } = this.props;
 
         return (
             <div>
                 <Header name={hike.name} city={hike.city} />
                 <HikeMap id={id} />
-                <Gallery id={id} images={hike.images} />
+                <Gallery id={id} images={images} />
                 <Description description={hike.description} />
             </div>
         );

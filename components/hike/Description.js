@@ -11,8 +11,8 @@ const propTypes = {
 class Description extends React.PureComponent {
     renderDescription() {
         const { description } = this.props;
-        if (description && description.includes('\\n')) {
-            return nl2br(description.replace('\\n\\n', '\n\n'));
+        if (description) {
+            return nl2br(description);
         }
         return null;
     }

@@ -11,8 +11,3 @@ export async function getPageData(req, pageType) {
     const data = await Prismic.getApi(apiEndpoint, req);
     return data.getSingle(pageType);
 }
-
-export default {
-    getPageType,
-    getPageData,
-};

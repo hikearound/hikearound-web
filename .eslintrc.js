@@ -13,6 +13,7 @@ module.exports = {
     },
     'env': {
         'es6': true,
+        'browser': true,
     },
     'settings': {
         'import/resolver': {
@@ -80,5 +81,6 @@ module.exports = {
     }],
     'globals': {
         'fetch': false,
+        'google': true,
     },
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FsLightbox from 'fslightbox-react';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
-import { getHikeImage } from '../../utils/hike';
+import { getHikeImage, getHikeThumbnail } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 
 const propTypes = {
@@ -33,14 +33,19 @@ class Gallery extends React.PureComponent {
 
     buildHikeImageArray = async () => {
         const { id, images } = this.props;
+        const photoCount = Object.keys(images).length;
         const imageArray = [];
+        const thumbArray = [];
 
-        for (let i = 0; i < images.length; i += 1) {
+        for (let i = 0; i < photoCount; i += 1) {
+            const thumbnailUrl = await getHikeThumbnail(id, i);
             const imageUrl = await getHikeImage(id, i);
+
+            thumbArray.push(thumbnailUrl);
             imageArray.push(imageUrl);
         }
 
-        this.setState({ imageArray });
+        this.setState({ imageArray, thumbArray });
     };
 
     openLightbox = (index) => {
@@ -52,7 +57,7 @@ class Gallery extends React.PureComponent {
     };
 
     renderGallery() {
-        const { imageArray } = this.state;
+        const { imageArray, thumbArray } = this.state;
 
         return (
             <CardContent>
@@ -66,7 +71,7 @@ class Gallery extends React.PureComponent {
                             type='button'
                         >
                             <Thumbnail
-                                image={image}
+                                image={thumbArray[index]}
                                 imageIndex={index}
                                 key={index}
                             />
@@ -78,13 +83,14 @@ class Gallery extends React.PureComponent {
     }
 
     renderLightBox = () => {
-        const { isVisible, imageArray, currentImage } = this.state;
+        const { isVisible, imageArray, thumbArray, currentImage } = this.state;
 
         if (imageArray.length > 0) {
             return (
                 <FsLightbox
                     toggler={isVisible}
                     sources={imageArray}
+                    thumbs={thumbArray}
                     slide={currentImage}
                     type='image'
                 />

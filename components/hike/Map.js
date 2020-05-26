@@ -14,7 +14,6 @@ const propTypes = {
     mapOptions: PropTypes.object,
     pathOptions: PropTypes.object,
     id: PropTypes.string.isRequired,
-    zoom: PropTypes.number,
 };
 
 const defaultProps = {
@@ -25,11 +24,10 @@ const defaultProps = {
         mapTypeId: 'terrain',
     },
     pathOptions: {
-        strokeWeight: 4,
+        strokeWeight: 3,
         strokeOpacity: 0.9,
         strokeColor: colors.purple,
     },
-    zoom: 12,
 };
 
 class HikeMap extends React.PureComponent {
@@ -42,10 +40,10 @@ class HikeMap extends React.PureComponent {
     }
 
     async componentDidMount() {
-        await this.initializeMap();
+        // await this.initializeMap();
     }
 
-    setHikeData(hikeData) {
+    setHikeData(hikeData, map) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
@@ -55,27 +53,38 @@ class HikeMap extends React.PureComponent {
             hikeData,
         };
 
+        this.setBounds(hikeMetaData, map);
         this.setState({ center, hikeData });
     }
 
-    initializeMap = async () => {
+    setBounds = (hikeMetaData, map) => {
+        const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
+        const bounds = new window.google.maps.LatLngBounds();
+
+        bounds.extend(new google.maps.LatLng(maxlat, minlon));
+        bounds.extend(new google.maps.LatLng(minlat, maxlon));
+
+        map.fitBounds(bounds);
+    };
+
+    initializeMap = async (map) => {
         const { id } = this.props;
         const hikeXmlUrl = await getHikeXmlUrl(id);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
         if (hikeData) {
-            this.setHikeData(hikeData);
+            this.setHikeData(hikeData, map);
             this.plotCoordinates();
         }
     };
 
     plotCoordinates() {
         const { hikeData } = this.state;
-        const coordinateCount = hikeData.gpx.rte[0].rtept.length;
+        const coordinateCount = hikeData.gpx.trk[0].trkseg[0].trkpt.length;
         const path = [];
 
         for (let i = 0, len = coordinateCount; i < len; i += 1) {
-            const coordinate = hikeData.gpx.rte[0].rtept[i].$;
+            const coordinate = hikeData.gpx.trk[0].trkseg[0].trkpt[i].$;
             path.push({
                 lat: parseFloat(coordinate.lat),
                 lng: parseFloat(coordinate.lon),
@@ -91,7 +100,7 @@ class HikeMap extends React.PureComponent {
 
     render() {
         const { path, center } = this.state;
-        const { mapOptions, pathOptions, zoom } = this.props;
+        const { mapOptions, pathOptions } = this.props;
 
         return (
             <Card noPadding>
@@ -105,7 +114,9 @@ class HikeMap extends React.PureComponent {
                             mapContainerClassName='hikeMap'
                             options={mapOptions}
                             center={center}
-                            zoom={zoom}
+                            onLoad={async (map) => {
+                                await this.initializeMap(map);
+                            }}
                         >
                             <Polyline path={path} options={pathOptions} />
                         </GoogleMap>
