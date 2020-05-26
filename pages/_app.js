@@ -2,6 +2,7 @@ import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Sentry from '@sentry/browser';
+import { MapkitProvider } from 'react-mapkit';
 import Fire from '../lib/db';
 
 import '../css/reset.css';
@@ -23,7 +24,9 @@ class HikeAround extends App {
 
         return (
             <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
+                <MapkitProvider tokenOrCallback={process.env.mapkitToken}>
+                    <Component {...pageProps} />
+                </MapkitProvider>
             </ThemeProvider>
         );
     }

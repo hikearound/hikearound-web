@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Page from '../../../layouts/main';
 import Header from '../../../components/hike/Header';
 import Description from '../../../components/hike/Description';
+import Stats from '../../../components/hike/Stats';
 import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
@@ -36,8 +37,8 @@ class HikePage extends React.Component {
             <div>
                 <Header name={hike.name} city={hike.city} />
                 <HikeMap id={id} />
-                <Gallery id={id} images={images} />
                 <Description description={hike.description} />
+                <Gallery id={id} images={images} />
             </div>
         );
     }
@@ -47,6 +48,7 @@ class HikePage extends React.Component {
 
         return (
             <div>
+                <Stats hike={hike} />
                 <RecentHikes id={hike.id} />
                 {shouldShowAd && <Ad />}
             </div>

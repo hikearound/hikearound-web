@@ -1,5 +1,4 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card } from '../../styles/card';
@@ -7,29 +6,15 @@ import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
-
-const mapApiKey = 'AIzaSyDNvaSlj_yrjkhClop5dPBDPSNUjOUS_a8';
+import AppleMap from '../Map';
 
 const propTypes = {
-    mapOptions: PropTypes.object,
-    pathOptions: PropTypes.object,
     id: PropTypes.string.isRequired,
     latModifier: PropTypes.number,
 };
 
 const defaultProps = {
-    mapOptions: {
-        panControl: false,
-        mapTypeControl: false,
-        streetViewControl: false,
-        mapTypeId: 'roadmap',
-    },
-    pathOptions: {
-        strokeWeight: 3,
-        strokeOpacity: 0.9,
-        strokeColor: colors.purple,
-    },
-    latModifier: 0.021,
+    latModifier: 0.005,
 };
 
 class HikeMap extends React.PureComponent {
@@ -42,10 +27,10 @@ class HikeMap extends React.PureComponent {
     }
 
     async componentDidMount() {
-        // await this.initializeMap();
+        await this.initializeMap();
     }
 
-    setHikeData(hikeData, map) {
+    setHikeData(hikeData) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
@@ -55,28 +40,31 @@ class HikeMap extends React.PureComponent {
             hikeData,
         };
 
-        this.setBounds(hikeMetaData, map);
+        this.setRegion(hikeMetaData);
         this.setState({ center, hikeData });
     }
 
-    setBounds = (hikeMetaData, map) => {
+    setRegion(hikeMetaData) {
         const { latModifier } = this.props;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
-        const bounds = new window.google.maps.LatLngBounds();
 
-        bounds.extend(new google.maps.LatLng(maxlat - latModifier, minlon));
-        bounds.extend(new google.maps.LatLng(minlat, maxlon));
+        const region = {
+            latitude: parseFloat(maxlat),
+            longitude: parseFloat(minlat),
+            latitudeSpan: maxlat - minlat + latModifier,
+            longitudeSpan: maxlon - minlon,
+        };
 
-        map.fitBounds(bounds);
-    };
+        this.setState({ region });
+    }
 
-    initializeMap = async (map) => {
+    initializeMap = async () => {
         const { id } = this.props;
         const hikeXmlUrl = await getHikeXmlUrl(id);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
         if (hikeData) {
-            this.setHikeData(hikeData, map);
+            this.setHikeData(hikeData);
             this.plotCoordinates();
         }
     };
@@ -88,43 +76,21 @@ class HikeMap extends React.PureComponent {
 
         for (let i = 0, len = coordinateCount; i < len; i += 1) {
             const coordinate = hikeData.gpx.trk[0].trkseg[0].trkpt[i].$;
-            path.push({
-                lat: parseFloat(coordinate.lat),
-                lng: parseFloat(coordinate.lon),
-            });
+            path.push([parseFloat(coordinate.lat), parseFloat(coordinate.lon)]);
         }
 
         this.setState({ path });
     }
 
-    renderEmptyState = () => {
-        return <MapEmptyState />;
-    };
-
     render() {
-        const { path, center } = this.state;
-        const { mapOptions, pathOptions } = this.props;
+        const { path, center, region } = this.state;
 
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
-                <LoadScript
-                    googleMapsApiKey={mapApiKey}
-                    loadingElement={this.renderEmptyState()}
-                >
-                    <MapContainer>
-                        <GoogleMap
-                            mapContainerClassName='hikeMap'
-                            options={mapOptions}
-                            center={center}
-                            onLoad={async (map) => {
-                                await this.initializeMap(map);
-                            }}
-                        >
-                            <Polyline path={path} options={pathOptions} />
-                        </GoogleMap>
-                    </MapContainer>
-                </LoadScript>
+                <MapContainer>
+                    <AppleMap center={center} points={path} region={region} />
+                </MapContainer>
             </Card>
         );
     }
@@ -135,7 +101,7 @@ HikeMap.defaultProps = defaultProps;
 
 export default HikeMap;
 
-const mapStyle = `
+const MapContainer = styled.div`
     border-top: 1px solid ${colors.gray};
     height: 350px;
     width: 100%;
@@ -143,15 +109,5 @@ const mapStyle = `
     @media ${device.tablet} {
         border-top: 3px solid ${colors.grayLight};
         height: 250px;
-    }
-`;
-
-const MapEmptyState = styled.div`
-    ${mapStyle};
-`;
-
-const MapContainer = styled.div`
-    .hikeMap {
-        ${mapStyle};
     }
 `;

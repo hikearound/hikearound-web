@@ -34,6 +34,7 @@ class Gallery extends React.PureComponent {
     buildHikeImageArray = async () => {
         const { id, images } = this.props;
         const photoCount = Object.keys(images).length;
+
         const imageArray = [];
         const thumbArray = [];
 
@@ -51,7 +52,7 @@ class Gallery extends React.PureComponent {
     openLightbox = (index) => {
         const { isVisible } = this.state;
         this.setState({
-            currentImage: index,
+            currentImage: index + 1,
             isVisible: !isVisible,
         });
     };
@@ -101,7 +102,7 @@ class Gallery extends React.PureComponent {
 
     render() {
         return (
-            <Card noPadding>
+            <Card lastChild noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
                 {this.renderGallery()}
                 {this.renderLightBox()}
