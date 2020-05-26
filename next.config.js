@@ -7,4 +7,7 @@ module.exports = withSourceMaps({
         }
         return config;
     },
+    env: {
+        mapkitToken: process.env.mapkitToken,
+    },
 });

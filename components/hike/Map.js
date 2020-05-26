@@ -1,5 +1,4 @@
 import React from 'react';
-import { MapkitProvider, Map, useMap } from 'react-mapkit';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Card } from '../../styles/card';
@@ -7,9 +6,15 @@ import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
+import AppleMap from '../Map';
 
 const propTypes = {
     id: PropTypes.string.isRequired,
+    latModifier: PropTypes.number,
+};
+
+const defaultProps = {
+    latModifier: 0.01,
 };
 
 class HikeMap extends React.PureComponent {
@@ -35,16 +40,31 @@ class HikeMap extends React.PureComponent {
             hikeData,
         };
 
+        this.setRegion(hikeMetaData);
         this.setState({ center, hikeData });
     }
 
-    initializeMap = async (map) => {
+    setRegion(hikeMetaData) {
+        const { latModifier } = this.props;
+        const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
+
+        const region = {
+            latitude: parseFloat(maxlat),
+            longitude: parseFloat(minlat),
+            latitudeSpan: maxlat - minlat + latModifier,
+            longitudeSpan: maxlon - minlon,
+        };
+
+        this.setState({ region });
+    }
+
+    initializeMap = async () => {
         const { id } = this.props;
         const hikeXmlUrl = await getHikeXmlUrl(id);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
         if (hikeData) {
-            this.setHikeData(hikeData, map);
+            this.setHikeData(hikeData);
             this.plotCoordinates();
         }
     };
@@ -62,74 +82,26 @@ class HikeMap extends React.PureComponent {
         this.setState({ path });
     }
 
-    renderEmptyState = () => {
-        return <MapEmptyState />;
-    };
-
     render() {
-        const { path, center } = this.state;
+        const { path, center, region } = this.state;
 
         return (
             <Card noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
                 <MapContainer>
-                    <MapkitProvider tokenOrCallback='eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVEQUZEUDJLTTcifQ.eyJpc3MiOiIyRFM2N1E0N0VTIiwiaWF0IjoxNTkwNDc2NDMzLCJleHAiOjE2MTk5Mzg4MzN9.peQpLuOIExk-b0xAR5Jl8XfijdgwPtdOk5CSI17sSfQ83SUyi1RRNyhO2Xma9Fu_eC_PpVjkFQ2CACPQpF4EoQ'>
-                        <AppleMap center={center} points={path} />
-                    </MapkitProvider>
+                    <AppleMap center={center} points={path} region={region} />
                 </MapContainer>
             </Card>
         );
     }
 }
 
-const AppleMap = (props) => {
-    const { center, points } = props;
-    const { map, mapProps, setCenter, setRegion } = useMap();
-
-    setRegion({
-        latitude: 37.415,
-        longitude: -122.048333,
-        latitudeSpan: 0.05,
-        longitudeSpan: 0.11,
-    });
-
-    if (center) {
-        setCenter([center.lat, center.lng]);
-    }
-
-    if (map && points) {
-        const coords = points.map(function (point) {
-            return new mapkit.Coordinate(point[0], point[1]);
-        });
-
-        const style = new mapkit.Style({
-            strokeColor: 'black',
-            strokeOpacity: 1,
-            lineWidth: 2,
-            lineJoin: 'round',
-            lineDash: [],
-        });
-
-        const rectangle = new mapkit.PolylineOverlay(coords, { style });
-
-        if (map) {
-            map.addOverlay(rectangle);
-        }
-    }
-
-    return <Map {...mapProps} />;
-};
-
-AppleMap.propTypes = {
-    center: PropTypes.object.isRequired,
-    points: PropTypes.array.isRequired,
-};
-
 HikeMap.propTypes = propTypes;
+HikeMap.defaultProps = defaultProps;
 
 export default HikeMap;
 
-const mapStyle = `
+const MapContainer = styled.div`
     border-top: 1px solid ${colors.gray};
     height: 350px;
     width: 100%;
@@ -138,12 +110,4 @@ const mapStyle = `
         border-top: 3px solid ${colors.grayLight};
         height: 250px;
     }
-`;
-
-const MapEmptyState = styled.div`
-    ${mapStyle};
-`;
-
-const MapContainer = styled.div`
-    ${mapStyle};
 `;
