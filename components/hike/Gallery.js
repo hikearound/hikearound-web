@@ -102,7 +102,7 @@ class Gallery extends React.PureComponent {
 
     render() {
         return (
-            <Card noPadding>
+            <Card lastChild noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
                 {this.renderGallery()}
                 {this.renderLightBox()}
