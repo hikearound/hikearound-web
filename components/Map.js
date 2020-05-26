@@ -53,8 +53,8 @@ class AppleMap extends React.Component {
                 lineDash: [],
             });
 
-            const rectangle = new mapkit.PolylineOverlay(coords, { style });
-            map.addOverlay(rectangle);
+            const trail = new mapkit.PolylineOverlay(coords, { style });
+            map.addOverlay(trail);
         }
     };
 

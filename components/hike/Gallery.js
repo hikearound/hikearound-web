@@ -51,8 +51,9 @@ class Gallery extends React.PureComponent {
 
     openLightbox = (index) => {
         const { isVisible } = this.state;
+        console.log(isVisible);
         this.setState({
-            currentImage: index,
+            currentImage: index + 1,
             isVisible: !isVisible,
         });
     };

@@ -14,7 +14,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    latModifier: 0.01,
+    latModifier: 0.005,
 };
 
 class HikeMap extends React.PureComponent {
