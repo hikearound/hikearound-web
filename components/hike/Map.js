@@ -14,6 +14,7 @@ const propTypes = {
     mapOptions: PropTypes.object,
     pathOptions: PropTypes.object,
     id: PropTypes.string.isRequired,
+    latModifier: PropTypes.number,
 };
 
 const defaultProps = {
@@ -21,13 +22,14 @@ const defaultProps = {
         panControl: false,
         mapTypeControl: false,
         streetViewControl: false,
-        mapTypeId: 'terrain',
+        mapTypeId: 'roadmap',
     },
     pathOptions: {
         strokeWeight: 3,
         strokeOpacity: 0.9,
         strokeColor: colors.purple,
     },
+    latModifier: 0.021,
 };
 
 class HikeMap extends React.PureComponent {
@@ -58,10 +60,11 @@ class HikeMap extends React.PureComponent {
     }
 
     setBounds = (hikeMetaData, map) => {
+        const { latModifier } = this.props;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
         const bounds = new window.google.maps.LatLngBounds();
 
-        bounds.extend(new google.maps.LatLng(maxlat, minlon));
+        bounds.extend(new google.maps.LatLng(maxlat - latModifier, minlon));
         bounds.extend(new google.maps.LatLng(minlat, maxlon));
 
         map.fitBounds(bounds);

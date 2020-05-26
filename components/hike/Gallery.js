@@ -8,12 +8,12 @@ import { getHikeImage, getHikeThumbnail } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 
 const propTypes = {
-    images: PropTypes.array,
+    images: PropTypes.object,
     id: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
-    images: [],
+    images: {},
 };
 
 class Gallery extends React.PureComponent {
