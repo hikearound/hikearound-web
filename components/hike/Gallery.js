@@ -34,6 +34,7 @@ class Gallery extends React.PureComponent {
     buildHikeImageArray = async () => {
         const { id, images } = this.props;
         const photoCount = Object.keys(images).length;
+
         const imageArray = [];
         const thumbArray = [];
 

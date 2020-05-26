@@ -82,5 +82,6 @@ module.exports = {
     'globals': {
         'fetch': false,
         'google': true,
+        'mapkit': true,
     },
 };
