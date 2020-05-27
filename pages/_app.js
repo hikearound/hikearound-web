@@ -21,6 +21,8 @@ class HikeAround extends App {
 
     render() {
         const { Component, pageProps } = this.props;
+        console.log(process.env.mapkitToken)
+        console.log(process.env)
 
         return (
             <ThemeProvider theme={theme}>
