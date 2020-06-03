@@ -26,11 +26,17 @@ class Header extends React.PureComponent {
         return `${baseUrl}hike/${hike.id}`;
     };
 
+    truncateDescription = () => {
+        const { hike } = this.props;
+        return hike.description.replace(/(\n\n)/gm, ' ');
+    };
+
     renderOpenGraph = () => {
         const { creator, site, type, hike, title } = this.props;
 
         if (hike) {
             const url = this.generateUrl();
+            const description = this.truncateDescription();
 
             return (
                 <>
@@ -39,10 +45,7 @@ class Header extends React.PureComponent {
                     <meta name='twitter:creator' content={creator} />
                     <meta property='og:url' content={url} />
                     <meta property='og:title' content={title} />
-                    <meta
-                        property='og:description'
-                        content={hike.description}
-                    />
+                    <meta property='og:description' content={description} />
                     <meta property='og:image' content={hike.mapImage} />
                 </>
             );
