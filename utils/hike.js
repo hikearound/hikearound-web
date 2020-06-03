@@ -81,6 +81,13 @@ export async function getHikeImage(id, index) {
         .getDownloadURL();
 }
 
+export async function getMapImage(id) {
+    return firebase
+        .storage()
+        .ref(`images/maps/light/${id}.png`)
+        .getDownloadURL();
+}
+
 export async function getHikeThumbnail(id, index) {
     return firebase
         .storage()

@@ -8,7 +8,11 @@ import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
 import Ad from '../../../components/page/Ad';
-import { getHikeData, getHikeImageGallery } from '../../../utils/hike';
+import {
+    getHikeData,
+    getHikeImageGallery,
+    getMapImage,
+} from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
@@ -26,6 +30,10 @@ class HikePage extends React.Component {
     static async getInitialProps({ query }) {
         const hike = await getHikeData(query.id);
         const images = await getHikeImageGallery(query.id);
+        const mapImage = await getMapImage(query.id);
+
+        hike.mapImage = mapImage;
+        hike.id = query.id;
 
         return { hike, images, id: query.id };
     }
@@ -61,6 +69,7 @@ class HikePage extends React.Component {
         return (
             <Page
                 title={hike.name}
+                hike={hike}
                 mainColumn={this.renderMainColumn()}
                 rightColumn={this.renderRightColumn()}
             />

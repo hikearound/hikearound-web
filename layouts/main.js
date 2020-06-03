@@ -19,6 +19,7 @@ const propTypes = {
     hideFooter: PropTypes.bool,
     singleColumn: PropTypes.bool,
     title: PropTypes.string.isRequired,
+    hike: PropTypes.object,
 };
 
 const defaultProps = {
@@ -26,6 +27,7 @@ const defaultProps = {
     hideHeader: false,
     hideFooter: false,
     singleColumn: false,
+    hike: null,
 };
 
 class Page extends React.PureComponent {
@@ -63,13 +65,13 @@ class Page extends React.PureComponent {
     }
 
     render() {
-        const { mainColumn, hideHeader, singleColumn } = this.props;
+        const { mainColumn, hideHeader, singleColumn, hike } = this.props;
         const { pageTitle } = this.state;
 
         return (
             <div>
                 <GlobalStyle />
-                <Header hideHeader={hideHeader} title={pageTitle} />
+                <Header hideHeader={hideHeader} title={pageTitle} hike={hike} />
                 <ContentGrid hideHeader={hideHeader}>
                     <MainColumn singleColumn={singleColumn}>
                         {mainColumn}
