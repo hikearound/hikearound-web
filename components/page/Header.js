@@ -16,7 +16,7 @@ const propTypes = {
 const defaultProps = {
     creator: '@doog',
     site: '@tryhikearound',
-    type: 'summary',
+    type: 'summary_large_image',
     hike: null,
 };
 
@@ -27,7 +27,7 @@ class Header extends React.PureComponent {
     };
 
     renderOpenGraph = () => {
-        const { creator, site, type, hike } = this.props;
+        const { creator, site, type, hike, title } = this.props;
 
         if (hike) {
             const url = this.generateUrl();
@@ -38,7 +38,7 @@ class Header extends React.PureComponent {
                     <meta name='twitter:site' content={site} />
                     <meta name='twitter:creator' content={creator} />
                     <meta property='og:url' content={url} />
-                    <meta property='og:title' content={hike.name} />
+                    <meta property='og:title' content={title} />
                     <meta
                         property='og:description'
                         content={hike.description}
