@@ -12,6 +12,10 @@ export const ActionBarWrapper = styled(Card)`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
+    a {
+        text-decoration: none;
+    }
+
     .MuiButton-root {
         border-radius: 0;
         text-transform: none;
