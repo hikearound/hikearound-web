@@ -78,6 +78,7 @@ class ShareHike extends React.PureComponent {
                 onClick={this.handleClick}
                 startIcon={<ShareIcon />}
                 size='small'
+                className='firstChild'
             >
                 Share Hike
             </Button>

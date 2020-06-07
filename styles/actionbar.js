@@ -25,7 +25,7 @@ export const ActionBarWrapper = styled(Card)`
             font-size: 14px;
         }
 
-        &:first-of-type {
+        &.firstChild {
             border-bottom-left-radius: ${borderRadius.sm};
         }
     }
