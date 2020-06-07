@@ -38,6 +38,7 @@
     "react-mapkit": "^0.6.3",
     "react-nl2br": "^0.6.0",
     "react-show-more-text": "^1.4.2",
+    "react-toast-notifications": "^2.4.0",
     "read-more-react": "^1.0.10",
     "styled-components": "^5.1.1",
     "xhr2": "^0.2.0",

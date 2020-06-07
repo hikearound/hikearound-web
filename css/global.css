@@ -19,3 +19,7 @@
 #nprogress .spinner {
     display: none;
 }
+
+.react-toast-notifications__container {
+    overflow-y: hidden !important;
+}

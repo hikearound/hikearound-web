@@ -12,9 +12,11 @@ import colors from '../../constants/colors';
 import { fontSize } from '../../constants/type';
 import { borderRadius } from '../../constants/dimensions';
 import spacing from '../../constants/spacing';
+import { withToast } from '../../utils/toast';
 
 const propTypes = {
     classes: PropTypes.object.isRequired,
+    addToast: PropTypes.func.isRequired,
 };
 
 const styles = {
@@ -42,10 +44,19 @@ class ActionBar extends React.PureComponent {
     componentDidUpdate(prevProps, prevState) {
         const { selectedItem } = this.state;
 
-        if (prevState.selectedItem !== selectedItem) {
-            // console.log(selectedItem);
+        if (prevState.selectedItem !== selectedItem || selectedItem === 0) {
+            if (selectedItem === 0) {
+                this.copyLink();
+            }
         }
     }
+
+    copyLink = () => {
+        const { addToast } = this.props;
+
+        addToast('Link copied to clipboard', { appearance: 'success' });
+        this.setState({ selectedItem: null });
+    };
 
     handleClick = (event) => {
         this.setState({ anchorEl: event.currentTarget });
@@ -101,7 +112,7 @@ class ActionBar extends React.PureComponent {
 
 ActionBar.propTypes = propTypes;
 
-export default withStyles(styles)(ActionBar);
+export default withStyles(styles)(withToast(ActionBar));
 
 const ActionBarWrapper = styled(Card)`
     padding: 0;
@@ -116,7 +127,7 @@ const ActionBarWrapper = styled(Card)`
         color: ${colors.blackText};
 
         span {
-            font-size: ${fontSize.md};
+            font-size: 14px;
         }
 
         &:first-of-type {
@@ -125,7 +136,7 @@ const ActionBarWrapper = styled(Card)`
     }
 
     .MuiButton-text {
-        padding: 9.5px 18px;
+        padding: 10px 18px;
     }
 
     .MuiButton-startIcon {
