@@ -7,9 +7,9 @@ import { fontSize } from '../constants/type';
 import { borderRadius } from '../constants/dimensions';
 
 const propTypes = {
-    children: PropTypes.object.isRequired,
+    children: PropTypes.string.isRequired,
     transitionDuration: PropTypes.number.isRequired,
-    transitionState: PropTypes.object.isRequired,
+    transitionState: PropTypes.string.isRequired,
 };
 
 const animationStates = {

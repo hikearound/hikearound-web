@@ -50,7 +50,7 @@ class Description extends React.Component {
                 <DescriptionWrapper>
                     <ShowMoreText
                         lines={5}
-                        more='Continue reading'
+                        more='Continue Reading'
                         less=''
                         anchorClass=''
                         onClick={this.executeOnClick}
