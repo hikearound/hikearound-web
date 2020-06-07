@@ -22,7 +22,7 @@ const propTypes = {
     classes: PropTypes.object.isRequired,
     addToast: PropTypes.func.isRequired,
     router: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
+    hike: PropTypes.object.isRequired,
 };
 
 const styles = {
@@ -47,6 +47,7 @@ class ActionBar extends React.PureComponent {
         this.setState({ didLoad: true });
         this.getShareUrl();
         this.getShareText();
+        this.getMapUrl();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -61,12 +62,25 @@ class ActionBar extends React.PureComponent {
 
     getShareUrl = () => {
         const { router } = this.props;
+
         this.setState({ shareUrl: `${baseUrl}${router.asPath}` });
     };
 
     getShareText = () => {
-        const { name } = this.props;
-        this.setState({ shareText: `Check out ${name} on @tryhikearound.` });
+        const { hike } = this.props;
+
+        this.setState({
+            shareText: `Check out ${hike.name} on @tryhikearound`,
+        });
+    };
+
+    getMapUrl = () => {
+        const { hike } = this.props;
+        const { lat, lng } = hike.coordinates.starting;
+
+        this.setState({
+            mapUrl: `https://www.google.com/maps/dir/${lat},${lng}/@${lat},${lng},15z`,
+        });
     };
 
     copyLink = () => {
@@ -85,7 +99,7 @@ class ActionBar extends React.PureComponent {
     };
 
     render() {
-        const { anchorEl, didLoad, shareUrl, shareText } = this.state;
+        const { anchorEl, didLoad, shareUrl, shareText, mapUrl } = this.state;
         const { classes } = this.props;
 
         return (
@@ -116,6 +130,7 @@ class ActionBar extends React.PureComponent {
                             <TwitterShareButton
                                 url={shareUrl}
                                 title={shareText}
+                                windowHeight={300}
                             >
                                 <MenuItem
                                     onClick={this.handleClose}
@@ -125,9 +140,11 @@ class ActionBar extends React.PureComponent {
                                 </MenuItem>
                             </TwitterShareButton>
                         </Menu>
-                        <Button startIcon={<DirectionsIcon />} size='small'>
-                            Get Directions
-                        </Button>
+                        <a href={mapUrl} target='_blank' rel='noreferrer'>
+                            <Button startIcon={<DirectionsIcon />} size='small'>
+                                Get Directions
+                            </Button>
+                        </a>
                     </>
                 )}
             </ActionBarWrapper>

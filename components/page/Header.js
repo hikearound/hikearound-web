@@ -23,7 +23,7 @@ const defaultProps = {
 class Header extends React.PureComponent {
     generateUrl = () => {
         const { hike } = this.props;
-        return `${baseUrl}hike/${hike.id}`;
+        return `${baseUrl}/hike/${hike.id}`;
     };
 
     truncateDescription = () => {
