@@ -54,9 +54,11 @@ const ToastWrapper = styled.div`
     transform-origin: bottom;
     z-index: 2;
     transform: ${(props) => animationStates[props.transitionState]};
+    min-width: 250px;
 `;
 
 const Text = styled.div`
     font-size: ${fontSize.md};
     padding: 12px ${spacing.md};
+    margin: 0 auto;
 `;
