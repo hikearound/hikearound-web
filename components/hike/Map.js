@@ -86,12 +86,12 @@ class HikeMap extends React.PureComponent {
         const { path, center, region } = this.state;
 
         return (
-            <Card noPadding>
+            <MapCard noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
                 <MapContainer>
                     <AppleMap center={center} points={path} region={region} />
                 </MapContainer>
-            </Card>
+            </MapCard>
         );
     }
 }
@@ -100,6 +100,12 @@ HikeMap.propTypes = propTypes;
 HikeMap.defaultProps = defaultProps;
 
 export default HikeMap;
+
+export const MapCard = styled(Card)`
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+`;
 
 const MapContainer = styled.div`
     border-top: 1px solid ${colors.gray};

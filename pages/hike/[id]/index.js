@@ -7,6 +7,7 @@ import Stats from '../../../components/hike/Stats';
 import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
+import ActionBar from '../../../components/action_bar/Hike';
 import Ad from '../../../components/page/Ad';
 import {
     getHikeData,
@@ -45,6 +46,7 @@ class HikePage extends React.Component {
             <div>
                 <Header name={hike.name} city={hike.city} />
                 <HikeMap id={id} />
+                <ActionBar />
                 <Description description={hike.description} />
                 <Gallery id={id} images={images} />
             </div>
