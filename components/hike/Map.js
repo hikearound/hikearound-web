@@ -30,6 +30,14 @@ class HikeMap extends React.PureComponent {
         await this.initializeMap();
     }
 
+    async componentDidUpdate(prevProps) {
+        const { id } = this.props;
+
+        if (prevProps.id !== id) {
+            await this.initializeMap();
+        }
+    }
+
     setHikeData(hikeData) {
         const hikeMetaData = hikeData.gpx.metadata[0].bounds[0].$;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;

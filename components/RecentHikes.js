@@ -43,7 +43,7 @@ class RecentHikes extends React.PureComponent {
 
         return recentHikes.map(({ name, id }, index) => (
             <HikeLinkParent key={index}>
-                <Link href={id} prefetch={prefetch}>
+                <Link href='[id]' as={id} prefetch={prefetch}>
                     <HikeLink href={id}>{name}</HikeLink>
                 </Link>
             </HikeLinkParent>

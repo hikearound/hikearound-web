@@ -19,9 +19,21 @@ class Description extends React.Component {
     }
 
     componentDidMount() {
+        this.setDescription();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { description } = this.props;
+
+        if (prevProps.description !== description) {
+            this.setDescription();
+        }
+    }
+
+    setDescription = () => {
         const { description } = this.props;
         this.setState({ description });
-    }
+    };
 
     executeOnClick = () => {
         const { description } = this.props;

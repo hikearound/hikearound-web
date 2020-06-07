@@ -27,3 +27,23 @@
 .MuiList-root button {
     width: 100%;
 }
+
+.fslightbox-toolbar-button:nth-child(1) {
+    display: none;
+}
+
+.fslightbox-slide-number-container {
+    display: none !important;
+}
+
+.fslightbox-container {
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+.fslightbox-slide-btn {
+    display: none !important;
+}
+
+.fslightbox-toolbar {
+    background: none !important;
+}
