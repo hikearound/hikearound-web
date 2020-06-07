@@ -5,18 +5,12 @@ import colors from '../constants/colors';
 import spacing from '../constants/spacing';
 import { fontSize } from '../constants/type';
 import { borderRadius } from '../constants/dimensions';
+import { transforms } from '../constants/toast';
 
 const propTypes = {
     children: PropTypes.string.isRequired,
     transitionDuration: PropTypes.number.isRequired,
     transitionState: PropTypes.string.isRequired,
-};
-
-const animationStates = {
-    entering: 'translate3d(0, 120%, 0) scale(0.9)',
-    entered: 'translate3d(0, 0, 0) scale(1)',
-    exiting: 'translate3d(0, 120%, 0) scale(0.9)',
-    exited: 'translate3d(0, 120%, 0) scale(0.9)',
 };
 
 class Toast extends React.PureComponent {
@@ -53,7 +47,7 @@ const ToastWrapper = styled.div`
     transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
     transform-origin: bottom;
     z-index: 2;
-    transform: ${(props) => animationStates[props.transitionState]};
+    transform: ${(props) => transforms[props.transitionState]};
     min-width: 250px;
 `;
 
