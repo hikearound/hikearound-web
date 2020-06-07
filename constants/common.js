@@ -1,3 +1,2 @@
 export const baseUrl = 'https://www.tryhikearound.com';
-
-export default { baseUrl };
+export const googleMapUrl = 'https://www.google.com/maps/dir';

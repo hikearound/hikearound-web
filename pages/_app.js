@@ -1,25 +1,17 @@
 import App from 'next/app';
 import React from 'react';
-import * as Sentry from '@sentry/browser';
 import { MapkitProvider } from 'react-mapkit';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { ToastProvider } from 'react-toast-notifications';
 import Fire from '../lib/db';
-import { typeface } from '../constants/type';
 import Toast from '../components/Toast';
+import { getTheme, initializeSentry } from '../utils/app';
+import { settings } from '../constants/toast';
 
 import '../css/reset.css';
 import '../css/global.css';
 
-const theme = createMuiTheme({
-    typography: {
-        fontFamily: typeface.sansSerif,
-    },
-});
-
-Sentry.init({
-    dsn: 'https://f627f33f82bf4244a649b11eca44988d@sentry.io/1876851',
-});
+initializeSentry();
 
 class HikeAround extends App {
     async componentDidMount() {
@@ -28,12 +20,13 @@ class HikeAround extends App {
 
     render() {
         const { Component, pageProps } = this.props;
+        const theme = getTheme();
 
         return (
             <ToastProvider
                 autoDismiss
-                autoDismissTimeout={4000}
-                placement='bottom-center'
+                autoDismissTimeout={settings.autoDismissTimeout}
+                placement={settings.placement}
                 components={{ Toast }}
             >
                 <ThemeProvider theme={theme}>
