@@ -15,7 +15,7 @@ class Description extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = { description: null };
+        this.state = { description: null, expanded: false };
     }
 
     componentDidMount() {
@@ -32,31 +32,23 @@ class Description extends React.Component {
 
     setDescription = () => {
         const { description } = this.props;
-        this.setState({ description });
+        this.setState({ description, expanded: false });
     };
 
-    executeOnClick = () => {
+    updateDescription = () => {
         const { description } = this.props;
 
         if (description) {
             this.setState({
                 description: nl2br(description),
+                expanded: true,
             });
         }
     };
-
-    updateDescription() {
-        const { description } = this.props;
-
-        if (description) {
-            this.setState({
-                description: nl2br(description),
-            });
-        }
-    }
 
     renderDescription() {
-        const { description } = this.state;
+        const { description, expanded } = this.state;
+
         if (description) {
             return (
                 <DescriptionWrapper>
@@ -65,8 +57,8 @@ class Description extends React.Component {
                         more='Continue Reading'
                         less=''
                         anchorClass=''
-                        onClick={this.executeOnClick}
-                        expanded={false}
+                        onClick={this.updateDescription}
+                        expanded={expanded}
                     >
                         {description}
                     </ShowMoreText>
