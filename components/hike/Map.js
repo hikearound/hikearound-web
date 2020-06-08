@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import PulseLoader from 'react-spinners/PulseLoader';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
 import colors from '../../constants/colors';
@@ -23,6 +24,7 @@ class HikeMap extends React.PureComponent {
         this.state = {
             path: [],
             center: null,
+            shouldShowMap: false,
         };
     }
 
@@ -68,6 +70,9 @@ class HikeMap extends React.PureComponent {
 
     initializeMap = async () => {
         const { id } = this.props;
+
+        this.setState({ shouldShowMap: false });
+
         const hikeXmlUrl = await getHikeXmlUrl(id);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
@@ -87,17 +92,32 @@ class HikeMap extends React.PureComponent {
             path.push([parseFloat(coordinate.lat), parseFloat(coordinate.lon)]);
         }
 
-        this.setState({ path });
+        this.setState({ path, shouldShowMap: true });
     }
 
     render() {
-        const { path, center, region } = this.state;
+        const { path, center, region, shouldShowMap } = this.state;
 
         return (
             <MapCard noPadding>
                 <SecondaryHeading isCard>Trail Map</SecondaryHeading>
                 <MapContainer>
-                    <AppleMap center={center} points={path} region={region} />
+                    {shouldShowMap && (
+                        <AppleMap
+                            center={center}
+                            points={path}
+                            region={region}
+                        />
+                    )}
+                    {!shouldShowMap && (
+                        <MapLoading>
+                            <PulseLoader
+                                size={8}
+                                color={colors.grayDark}
+                                loading
+                            />
+                        </MapLoading>
+                    )}
                 </MapContainer>
             </MapCard>
         );
@@ -115,8 +135,17 @@ export const MapCard = styled(Card)`
     border-bottom-right-radius: 0;
 `;
 
+export const MapLoading = styled.div`
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+`;
+
 const MapContainer = styled.div`
     border-top: 1px solid ${colors.gray};
+    background-color: ${colors.grayLight};
     height: 350px;
     width: 100%;
 

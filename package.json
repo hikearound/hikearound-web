@@ -40,6 +40,7 @@
     "react-nl2br": "^0.6.0",
     "react-share": "^4.2.0",
     "react-show-more-text": "^1.4.2",
+    "react-spinners": "^0.8.3",
     "react-toast-notifications": "^2.4.0",
     "read-more-react": "^1.0.10",
     "styled-components": "^5.1.1",
