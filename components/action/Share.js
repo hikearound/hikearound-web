@@ -30,12 +30,16 @@ class ShareHike extends React.PureComponent {
     }
 
     componentDidMount() {
-        this.getShareUrl();
-        this.getShareText();
+        this.getShareData();
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { selectedItem } = this.state;
+        const { hike } = this.props;
+
+        if (prevProps.hike !== hike) {
+            this.getShareData();
+        }
 
         if (prevState.selectedItem !== selectedItem || selectedItem === 0) {
             if (selectedItem === 0) {
@@ -43,6 +47,11 @@ class ShareHike extends React.PureComponent {
             }
         }
     }
+
+    getShareData = () => {
+        this.getShareUrl();
+        this.getShareText();
+    };
 
     getShareUrl = () => {
         const { router } = this.props;

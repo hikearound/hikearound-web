@@ -22,6 +22,14 @@ class GetDirections extends React.PureComponent {
         this.getMapUrl();
     }
 
+    componentDidUpdate(prevProps) {
+        const { hike } = this.props;
+
+        if (prevProps.hike !== hike) {
+            this.getMapUrl();
+        }
+    }
+
     getMapUrl = () => {
         const { hike } = this.props;
         const { lat, lng } = hike.coordinates.starting;
