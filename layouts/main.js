@@ -33,7 +33,6 @@ const defaultProps = {
 class Page extends React.PureComponent {
     constructor(props) {
         super(props);
-        const { title } = this.props;
 
         Router.events.on('routeChangeStart', () => {
             NProgress.start();
@@ -43,13 +42,31 @@ class Page extends React.PureComponent {
             NProgress.done();
         });
 
+        const pageTitle = this.getAndSetPageTitle();
+
+        this.state = { pageTitle };
+    }
+
+    componentDidUpdate(prevProps) {
+        const { title } = this.props;
+
+        if (prevProps.title !== title) {
+            this.getAndSetPageTitle();
+        }
+    }
+
+    getAndSetPageTitle = () => {
+        const { title } = this.props;
         let pageTitle = title;
+
         if (!pageTitle.includes('Hikearound')) {
             pageTitle = `${pageTitle} | Hikearound`;
         }
 
-        this.state = { pageTitle };
-    }
+        this.setState({ pageTitle });
+
+        return pageTitle;
+    };
 
     renderRightColumn() {
         const { rightColumn, hideFooter } = this.props;
