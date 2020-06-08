@@ -42,7 +42,7 @@ class Page extends React.PureComponent {
             NProgress.done();
         });
 
-        const pageTitle = this.getAndSetPageTitle();
+        const pageTitle = this.getAndSetPageTitle('firstRun');
 
         this.state = { pageTitle };
     }
@@ -55,7 +55,7 @@ class Page extends React.PureComponent {
         }
     }
 
-    getAndSetPageTitle = () => {
+    getAndSetPageTitle = (type) => {
         const { title } = this.props;
         let pageTitle = title;
 
@@ -63,7 +63,9 @@ class Page extends React.PureComponent {
             pageTitle = `${pageTitle} | Hikearound`;
         }
 
-        this.setState({ pageTitle });
+        if (type !== 'firstRun') {
+            this.setState({ pageTitle });
+        }
 
         return pageTitle;
     };

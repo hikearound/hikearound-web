@@ -31,6 +31,15 @@ class Gallery extends React.PureComponent {
         this.buildHikeImageArray();
     }
 
+    componentDidUpdate(prevProps) {
+        const { images } = this.props;
+
+        if (prevProps.images !== images) {
+            this.clearImageArrays();
+            this.buildHikeImageArray();
+        }
+    }
+
     buildHikeImageArray = async () => {
         const { id, images } = this.props;
         const photoCount = Object.keys(images).length;
@@ -47,6 +56,10 @@ class Gallery extends React.PureComponent {
         }
 
         this.setState({ imageArray, thumbArray });
+    };
+
+    clearImageArrays = () => {
+        this.setState({ imageArray: [], thumbArray: [] });
     };
 
     openLightbox = (index) => {
