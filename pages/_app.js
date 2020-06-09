@@ -3,6 +3,7 @@ import React from 'react';
 import { MapkitProvider } from 'react-mapkit';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { ToastProvider } from 'react-toast-notifications';
+import SimpleReactLightbox from 'simple-react-lightbox';
 import Fire from '../lib/db';
 import Toast from '../components/Toast';
 import { getTheme, initializeSentry } from '../utils/app';
@@ -31,7 +32,9 @@ class HikeAround extends App {
             >
                 <ThemeProvider theme={theme}>
                     <MapkitProvider tokenOrCallback={process.env.mapkitToken}>
-                        <Component {...pageProps} />
+                        <SimpleReactLightbox>
+                            <Component {...pageProps} />
+                        </SimpleReactLightbox>
                     </MapkitProvider>
                 </ThemeProvider>
             </ToastProvider>

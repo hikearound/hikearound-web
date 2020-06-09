@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import FsLightbox from 'fslightbox-react';
+import { SRLWrapper } from 'simple-react-lightbox';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImage, getHikeThumbnail } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
+import { options } from '../../constants/lightbox';
 
 const propTypes = {
     images: PropTypes.object,
@@ -22,8 +23,6 @@ class Gallery extends React.PureComponent {
 
         this.state = {
             imageArray: [],
-            isVisible: false,
-            currentImage: 0,
         };
     }
 
@@ -62,63 +61,39 @@ class Gallery extends React.PureComponent {
         this.setState({ imageArray: [], thumbArray: [] });
     };
 
-    openLightbox = (index) => {
-        const { isVisible } = this.state;
-        this.setState({
-            currentImage: index + 1,
-            isVisible: !isVisible,
-        });
-    };
-
     renderGallery() {
+        const { images } = this.props;
         const { imageArray, thumbArray } = this.state;
 
         return (
             <CardContent>
                 <PhotoGallery>
-                    {imageArray.map((image, index) => (
-                        <ThumbnailButton
-                            onClick={() => {
-                                this.openLightbox(index);
-                            }}
-                            key={index}
-                            type='button'
-                        >
-                            <Thumbnail
-                                image={thumbArray[index]}
-                                imageIndex={index}
+                    <SRLWrapper options={options}>
+                        {imageArray.map((image, index) => (
+                            <ThumbnailButton
                                 key={index}
-                            />
-                        </ThumbnailButton>
-                    ))}
+                                href={imageArray[index]}
+                                data-attribute='SRL'
+                            >
+                                <Thumbnail
+                                    image={thumbArray[index]}
+                                    imageIndex={index}
+                                    key={index}
+                                    attribution={images[0].attribution.name}
+                                />
+                            </ThumbnailButton>
+                        ))}
+                    </SRLWrapper>
                 </PhotoGallery>
             </CardContent>
         );
     }
-
-    renderLightBox = () => {
-        const { isVisible, imageArray, thumbArray, currentImage } = this.state;
-
-        if (imageArray.length > 0) {
-            return (
-                <FsLightbox
-                    toggler={isVisible}
-                    sources={imageArray}
-                    thumbs={thumbArray}
-                    slide={currentImage}
-                    type='image'
-                />
-            );
-        }
-        return null;
-    };
 
     render() {
         return (
             <Card lastChild noPadding>
                 <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
                 {this.renderGallery()}
-                {this.renderLightBox()}
             </Card>
         );
     }
@@ -135,11 +110,12 @@ const PhotoGallery = styled.div`
     flex-wrap: wrap;
 `;
 
-const ThumbnailButton = styled.button`
+const ThumbnailButton = styled.a`
     background-color: initial;
     margin: 0;
     padding: 0;
     border: none;
+    display: inline-block;
 
     &:hover {
         cursor: pointer;

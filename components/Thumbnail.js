@@ -9,12 +9,19 @@ const THUMBNAIL_DIMENSION = '75px';
 
 const propTypes = {
     image: PropTypes.string.isRequired,
+    attribution: PropTypes.string.isRequired,
 };
 
 class Thumbnail extends React.PureComponent {
+    buildCaption = () => {
+        const { attribution } = this.props;
+        return `Photo by ${attribution}.`;
+    };
+
     render() {
         const { image } = this.props;
-        return <ThumbnailImage src={image} />;
+        const alt = this.buildCaption();
+        return <ThumbnailImage src={image} alt={alt} />;
     }
 }
 
@@ -30,4 +37,5 @@ const ThumbnailImage = styled.img`
     border-radius: ${borderRadius.sm};
     margin: 0 ${spacing.sm} 0 0;
     object-fit: cover;
+    color: white;
 `;
