@@ -3,6 +3,7 @@ export const options = {
         slideAnimationType: 'slide',
         lightboxTransitionSpeed: 0.4,
         hideControlsAfter: 5000,
+        disablePanzoom: true,
     },
     buttons: {
         showAutoplayButton: false,
