@@ -10,7 +10,7 @@ import { getTheme, initializeSentry } from '../utils/app';
 import { settings } from '../constants/toast';
 
 import '../css/reset.css';
-import '../css/global.css';
+import '../scss/components/_index.scss';
 
 initializeSentry();
 

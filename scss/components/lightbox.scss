@@ -1,0 +1,53 @@
+@import '../variables';
+
+#SRLLightbox {
+    z-index: 1;
+}
+
+button {
+    &.SRLNextButton, &.SRLPrevButton, &.SRLCloseButton {
+        background-color: $bg-color !important;
+        border-radius: $icon-size;
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+            background-color: $bg-color-hover !important
+        }
+
+        svg {
+            display: none !important;
+        }
+    }
+
+    &.SRLPrevButton {
+        background-image: url($icon-arrow-back);
+        background-repeat: no-repeat;
+        background-size: $space-small;
+        background-position: 14px $space-small;
+        left: $space-small;
+    }
+
+    &.SRLCloseButton {
+        background-image: url($icon-close);
+        background-repeat: no-repeat;
+        background-size: 14px;
+        background-position: 13px 12px;
+        right: $space-tiny;
+        top: $space-tiny;
+    }
+
+    &.SRLNextButton {
+        background-image: url($icon-arrow-forward);
+        background-repeat: no-repeat;
+        background-size: $space-small;
+        background-position: 16px $space-small;
+        right: $space-small;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-tablet) {
+    .SRLThumbnailsContainer {
+        display: none !important;
+    }
+}

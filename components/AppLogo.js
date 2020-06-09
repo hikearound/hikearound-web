@@ -8,7 +8,7 @@ class AppLogo extends React.PureComponent {
         return (
             <Link href='/'>
                 <LogoLink href='/'>
-                    <LogoImage src='/images/logo.svg' />
+                    <LogoImage src='/images/logo/logo.svg' />
                 </LogoLink>
             </Link>
         );

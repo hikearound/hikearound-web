@@ -69,7 +69,7 @@ class Header extends React.PureComponent {
                     {this.renderOpenGraph()}
                     <link
                         rel='icon'
-                        href='/images/favicon.png'
+                        href='/images/favicon/favicon.png'
                         type='image/png'
                     />
                 </Head>

@@ -9,6 +9,7 @@ export const options = {
         showAutoplayButton: false,
         showDownloadButton: false,
         showThumbnailsButton: false,
+        showFullscreenButton: false,
     },
     caption: {
         showCaption: false,
