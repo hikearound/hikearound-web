@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import colors from '../../constants/colors';
+import { colors } from '../../constants/colors';
 import { fontSize, lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 import { RightRailLink } from '../../styles/links';

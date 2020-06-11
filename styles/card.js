@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 import spacing from '../constants/spacing';
 import { borderRadius, grid } from '../constants/dimensions';
 import { lineHeight, fontSize } from '../constants/type';

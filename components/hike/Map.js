@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PulseLoader from 'react-spinners/PulseLoader';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
-import colors from '../../constants/colors';
+import { colors } from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 import AppleMap from '../Map';

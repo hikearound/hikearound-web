@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Page from '../layouts/main';
 import { offsets } from '../constants/dimensions';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 
 class HomePage extends React.PureComponent {
     constructor(props) {

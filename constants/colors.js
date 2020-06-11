@@ -1,4 +1,4 @@
-export default {
+export const colors = {
     blackText: '#333333',
     grayUltraLight: '#FAFAFA',
     grayLight: '#F0F0F0',
@@ -8,4 +8,8 @@ export default {
     white: '#FFFFFF',
     purple: '#935DFF',
     purpleDark: '#4F4D88',
+};
+
+export const transparentColors = {
+    grayLight: 'rgba(0, 0, 0, 0.15)',
 };

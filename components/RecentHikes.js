@@ -8,7 +8,7 @@ import { getRecentHikes } from '../utils/hike';
 import { RightRailLink } from '../styles/links';
 import spacing from '../constants/spacing';
 import { device } from '../constants/breakpoints';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 
 const propTypes = {
     hikeCount: PropTypes.number,

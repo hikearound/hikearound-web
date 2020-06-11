@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { typeface, fontSize } from '../constants/type';
 import { grid, offsets } from '../constants/dimensions';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 import { device } from '../constants/breakpoints';
 
 export const GlobalStyle = createGlobalStyle`

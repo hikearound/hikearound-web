@@ -11,6 +11,7 @@ const propTypes = {
     site: PropTypes.string,
     type: PropTypes.string,
     hike: PropTypes.object,
+    invertHeader: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -55,7 +56,7 @@ class Header extends React.PureComponent {
     };
 
     render() {
-        const { hideHeader, title } = this.props;
+        const { hideHeader, title, invertHeader } = this.props;
 
         return (
             <>
@@ -73,7 +74,7 @@ class Header extends React.PureComponent {
                         type='image/png'
                     />
                 </Head>
-                {!hideHeader && <GlobalHeader />}
+                {!hideHeader && <GlobalHeader invertHeader={invertHeader} />}
             </>
         );
     }

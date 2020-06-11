@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import spacing from '../constants/spacing';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 import { borderRadius } from '../constants/dimensions';
 
 const THUMBNAIL_DIMENSION = '75px';

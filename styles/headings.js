@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 import { fontSize, fontWeight } from '../constants/type';
 
 export const PrimaryHeading = styled.h1`

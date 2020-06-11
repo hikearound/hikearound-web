@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
-import colors from '../constants/colors';
+import { colors } from '../constants/colors';
 import { withMap } from '../utils/map';
 
 const propTypes = {
