@@ -35,7 +35,7 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "react-mapkit": "^0.6.4",
+    "react-mapkit": "^0.6.5",
     "react-nl2br": "^0.6.0",
     "react-share": "^4.2.0",
     "react-show-more-text": "^1.4.2",

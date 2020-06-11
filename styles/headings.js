@@ -20,5 +20,3 @@ export const SubHeading = styled.h3`
     font-weight: ${fontWeight.regular};
     color: ${colors.grayMedium};
 `;
-
-export default { PrimaryHeading, SecondaryHeading, SubHeading };

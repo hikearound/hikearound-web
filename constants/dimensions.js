@@ -10,4 +10,6 @@ export const grid = {
     gutter: '30px',
 };
 
-export default { borderRadius, grid };
+export const offsets = {
+    header: '80px',
+};

@@ -31,5 +31,3 @@ export const CardContent = styled.div`
         font-size: ${fontSize.sm};
     }
 `;
-
-export default { Card, CardContent };
