@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Page from '../layouts/main';
-import { offsets } from '../constants/dimensions';
 import { colors } from '../constants/colors';
+import { device } from '../constants/breakpoints';
+import { offsets } from '../constants/dimensions';
 
 class HomePage extends React.PureComponent {
     constructor(props) {
@@ -21,16 +22,20 @@ class HomePage extends React.PureComponent {
         return (
             <Section>
                 <SectionBlock>
-                    <ContentBlock>
-                        <ContentTitle>Only trails, never fails.</ContentTitle>
-                        <ContentDescription>
-                            Hikearound is the easiest way to find, save, and
-                            share great local hikes.
-                        </ContentDescription>
-                        <a href='/' target='_blank' rel='noreferrer'>
-                            <AppStoreBadge src='/images/external/app-store-badge.svg' />
-                        </a>
-                    </ContentBlock>
+                    <TextSection>
+                        <ContentBlock>
+                            <ContentTitle>
+                                Only trails, never fails.
+                            </ContentTitle>
+                            <ContentDescription>
+                                Hikearound is the easiest way to find, save, and
+                                share great local hikes.
+                            </ContentDescription>
+                            <a href='/' target='_blank' rel='noreferrer'>
+                                <AppStoreBadge src='/images/external/app-store-badge.svg' />
+                            </a>
+                        </ContentBlock>
+                    </TextSection>
                     <ContentImage>
                         <Phone src='/images/landing/01.png' />
                     </ContentImage>
@@ -65,26 +70,64 @@ const Section = styled.div`
         background-color: white;
         padding-top: ${offsets.header};
     }
+
+    @media ${device.phone} {
+        overflow: hidden;
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+    }
 `;
 
 const SectionBlock = styled.div`
     max-width: 970px;
     margin: 0 auto;
     display: flex;
+    padding: 0 20px;
+
+    @media ${device.phone} {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 0;
+    }
+`;
+
+const TextSection = styled.div`
+    padding: 0;
+    margin: auto 0;
+
+    @media ${device.phone} {
+        padding: 40px 70px 45px 70px;
+    }
 `;
 
 const ContentBlock = styled.div`
     text-align: left;
-    width: 40%;
     margin: auto 0;
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    @media ${device.phone} {
+        width: 100%;
+        margin: 0;
+    }
 `;
 
 const ContentTitle = styled.h2`
     display: block;
     width: 100%;
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 32px;
+    font-weight: bold;
     margin-top: -60px;
+    line-height: 1.2;
+
+    @media ${device.phone} {
+        margin-top: 0;
+    }
 `;
 
 const ContentDescription = styled.span`
@@ -100,6 +143,10 @@ const ContentImage = styled.div`
     display: flex;
     width: 60%;
     justify-content: end;
+
+    @media ${device.phone} {
+        width: 120%;
+    }
 `;
 
 const Phone = styled.img`
@@ -107,9 +154,13 @@ const Phone = styled.img`
     margin-right: -120px;
     position: relative;
     top: 10px;
+
+    @media ${device.phone} {
+        margin-right: 0;
+        left: 5px;
+    }
 `;
 
 const AppStoreBadge = styled.img`
-    margin-top: 15px;
     width: 125px;
 `;
