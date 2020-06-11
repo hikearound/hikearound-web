@@ -96,9 +96,12 @@ const SectionBlock = styled.div`
 const TextSection = styled.div`
     padding: 0;
     margin: auto 0;
+    position: relative;
+    top: -30px;
 
     @media ${device.phone} {
-        padding: 40px 70px 45px 70px;
+        padding: 40px 70px;
+        top: 0;
     }
 `;
 
@@ -122,12 +125,7 @@ const ContentTitle = styled.h2`
     width: 100%;
     font-size: 32px;
     font-weight: bold;
-    margin-top: -60px;
     line-height: 1.2;
-
-    @media ${device.phone} {
-        margin-top: 0;
-    }
 `;
 
 const ContentDescription = styled.span`
