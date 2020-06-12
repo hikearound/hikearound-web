@@ -10,6 +10,7 @@ import { getTheme, initializeSentry } from '../utils/app';
 import { settings } from '../constants/toast';
 
 import '../css/reset.css';
+import '@brainhubeu/react-carousel/lib/style.css';
 import '../scss/components/_index.scss';
 
 initializeSentry();

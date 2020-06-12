@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 import Page from '../layouts/main';
 import { colors } from '../constants/colors';
 import { device } from '../constants/breakpoints';
 import { offsets } from '../constants/dimensions';
+
+const Carousel = dynamic(() => import('@brainhubeu/react-carousel'), {
+    ssr: false,
+});
 
 class HomePage extends React.PureComponent {
     constructor(props) {
@@ -15,21 +20,27 @@ class HomePage extends React.PureComponent {
     }
 
     renderMainColumn = () => {
-        return <RootView>{this.renderIntro()}</RootView>;
+        return (
+            <RootView>
+                {this.renderIntro()}
+                {this.renderCarousel()}
+                {this.renderMapSection()}
+            </RootView>
+        );
     };
 
     renderIntro = () => {
         return (
             <Section>
                 <SectionBlock>
-                    <TextSection>
+                    <TextSection offsetTop>
                         <ContentBlock>
                             <ContentTitle>
                                 Only trails, never fails.
                             </ContentTitle>
                             <ContentDescription>
-                                Hikearound is the easiest way to find, save, and
-                                share great local hikes.
+                                Hikearound is the easiest way to discover, save,
+                                and share great local hikes.
                             </ContentDescription>
                             <a href='/' target='_blank' rel='noreferrer'>
                                 <AppStoreBadge src='/images/external/app-store-badge.svg' />
@@ -39,6 +50,42 @@ class HomePage extends React.PureComponent {
                     <ContentImage>
                         <Phone src='/images/landing/01.png' />
                     </ContentImage>
+                </SectionBlock>
+            </Section>
+        );
+    };
+
+    renderCarousel = () => {
+        return (
+            <Carousel arrows slidesPerPage={3} infinite centered>
+                <CarouselCard />
+                <CarouselCard />
+                <CarouselCard />
+                <CarouselCard />
+                <CarouselCard />
+                <CarouselCard />
+            </Carousel>
+        );
+    };
+
+    renderMapSection = () => {
+        return (
+            <Section>
+                <SectionBlock>
+                    <ContentImage justifyLeft>
+                        <StraightPhone src='/images/landing/02.png' />
+                    </ContentImage>
+                    <TextSection>
+                        <ContentBlock>
+                            <ContentTitle>
+                                Discover, save, and share.
+                            </ContentTitle>
+                            <ContentDescription>
+                                Explore a global map of hikes, find your
+                                favorites, and then save them to your profile.
+                            </ContentDescription>
+                        </ContentBlock>
+                    </TextSection>
                 </SectionBlock>
             </Section>
         );
@@ -63,21 +110,34 @@ export default HomePage;
 const RootView = styled.div`
     width: 100%;
     text-align: center;
+    overflow: hidden;
 `;
 
 const Section = styled.div`
+    background-color: white;
+
     &:first-of-type {
-        background-color: white;
         padding-top: ${offsets.header};
     }
 
-    @media ${device.phone} {
-        overflow: hidden;
+    :nth-child(2) {
+        background: #fafafa;
+    }
 
+    @media ${device.phone} {
         &:first-of-type {
             padding-top: 0;
         }
     }
+`;
+
+const CarouselCard = styled.div`
+    border: 1px solid ${colors.gray};
+    height: 250px;
+    width: 450px;
+    border-radius: 4px;
+    background-color: ${colors.grayDark};
+    margin: 30px 20px;
 `;
 
 const SectionBlock = styled.div`
@@ -97,7 +157,7 @@ const TextSection = styled.div`
     padding: 0;
     margin: auto 0;
     position: relative;
-    top: -30px;
+    top: ${(props) => (props.offsetTop ? '-30px' : 0)};
 
     @media ${device.phone} {
         padding: 40px 70px;
@@ -108,6 +168,7 @@ const TextSection = styled.div`
 const ContentBlock = styled.div`
     text-align: left;
     margin: auto 0;
+    width: 90%;
 
     a {
         display: inline-block;
@@ -139,11 +200,23 @@ const ContentDescription = styled.span`
 
 const ContentImage = styled.div`
     display: flex;
-    width: 60%;
-    justify-content: end;
+    width: ${(props) => (props.justifyLeft ? '50%' : '60%')};
+    justify-content: ${(props) => (props.justifyLeft ? 'left' : 'end')};
 
     @media ${device.phone} {
         width: 120%;
+    }
+`;
+
+const StraightPhone = styled.img`
+    max-width: 375px;
+    position: relative;
+    top: 30px;
+    margin-bottom: 20px;
+
+    @media ${device.phone} {
+        margin-right: 0;
+        left: 5px;
     }
 `;
 

@@ -1,0 +1,14 @@
+.BrainhubCarousel {
+    .BrainhubCarousel__arrows {
+        position: absolute;
+        z-index: 1;
+
+        &.BrainhubCarousel__arrowLeft {
+            left: 10px;
+        }
+
+        &.BrainhubCarousel__arrowRight {
+            right: 10px;
+        }
+    }
+}
