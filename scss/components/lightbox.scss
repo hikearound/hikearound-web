@@ -24,7 +24,7 @@ button {
         background-image: url($icon-arrow-back);
         background-repeat: no-repeat;
         background-size: $space-small;
-        background-position: 14px $space-small;
+        background-position: 13.5px 11px;
         left: $space-small;
     }
 
@@ -32,7 +32,7 @@ button {
         background-image: url($icon-close);
         background-repeat: no-repeat;
         background-size: 14px;
-        background-position: 13px 12px;
+        background-position: 13px;
         right: $space-tiny;
         top: $space-tiny;
     }
@@ -41,7 +41,7 @@ button {
         background-image: url($icon-arrow-forward);
         background-repeat: no-repeat;
         background-size: $space-small;
-        background-position: 16px $space-small;
+        background-position: 16.5px 11px;
         right: $space-small;
     }
 }

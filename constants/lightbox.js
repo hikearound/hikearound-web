@@ -1,7 +1,7 @@
 export const options = {
     settings: {
         slideAnimationType: 'slide',
-        lightboxTransitionSpeed: 0.4,
+        lightboxTransitionSpeed: 0.2,
         hideControlsAfter: 5000,
         disablePanzoom: true,
     },
