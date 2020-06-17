@@ -5,11 +5,14 @@ import spacing from '../constants/spacing';
 import { colors } from '../constants/colors';
 import { borderRadius } from '../constants/dimensions';
 
-const THUMBNAIL_DIMENSION = '75px';
-
 const propTypes = {
     image: PropTypes.string.isRequired,
     attribution: PropTypes.string.isRequired,
+    size: PropTypes.number,
+};
+
+const defaultProps = {
+    size: 75,
 };
 
 class Thumbnail extends React.PureComponent {
@@ -19,21 +22,22 @@ class Thumbnail extends React.PureComponent {
     };
 
     render() {
-        const { image } = this.props;
+        const { image, size } = this.props;
         const alt = this.buildCaption();
-        return <ThumbnailImage src={image} alt={alt} />;
+        return <ThumbnailImage src={image} alt={alt} size={size} />;
     }
 }
 
 Thumbnail.propTypes = propTypes;
+Thumbnail.defaultProps = defaultProps;
 
 export default Thumbnail;
 
 const ThumbnailImage = styled.img`
     display: flex;
     background-color: ${colors.lightGray};
-    width: ${THUMBNAIL_DIMENSION};
-    height: ${THUMBNAIL_DIMENSION};
+    width: ${(props) => props.size}px;
+    height: ${(props) => props.size}px;
     border-radius: ${borderRadius.sm};
     margin: 0 ${spacing.sm} 0 0;
     object-fit: cover;

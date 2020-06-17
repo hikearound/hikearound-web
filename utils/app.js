@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/node';
 import { typeface } from '../constants/type';
 
 export function getTheme() {
@@ -13,6 +13,7 @@ export function getTheme() {
 
 export function initializeSentry() {
     Sentry.init({
-        dsn: 'https://f627f33f82bf4244a649b11eca44988d@sentry.io/1876851',
+        enabled: process.env.NODE_ENV === 'production',
+        dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
     });
 }

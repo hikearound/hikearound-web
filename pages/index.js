@@ -32,7 +32,7 @@ class HomePage extends React.PureComponent {
     renderIntro = () => {
         return (
             <Section>
-                <SectionBlock>
+                <SectionBlock direction='column'>
                     <TextSection offsetTop>
                         <ContentBlock>
                             <ContentTitle>
@@ -57,21 +57,35 @@ class HomePage extends React.PureComponent {
 
     renderCarousel = () => {
         return (
-            <Carousel arrows slidesPerPage={3} infinite centered>
-                <CarouselCard />
-                <CarouselCard />
-                <CarouselCard />
-                <CarouselCard />
-                <CarouselCard />
-                <CarouselCard />
-            </Carousel>
+            <Section>
+                <Carousel
+                    arrows
+                    slidesPerPage={3}
+                    infinite
+                    centered
+                    itemWidth={450}
+                    breakpoints={{
+                        768: {
+                            slidesPerPage: 1,
+                            itemWidth: 350,
+                        },
+                    }}
+                >
+                    <CarouselCard />
+                    <CarouselCard />
+                    <CarouselCard />
+                    <CarouselCard />
+                    <CarouselCard />
+                    <CarouselCard />
+                </Carousel>
+            </Section>
         );
     };
 
     renderMapSection = () => {
         return (
             <Section>
-                <SectionBlock>
+                <SectionBlock direction='column-reverse'>
                     <ContentImage justifyLeft>
                         <StraightPhone src='/images/landing/02.png' />
                     </ContentImage>
@@ -137,7 +151,11 @@ const CarouselCard = styled.div`
     width: 450px;
     border-radius: 4px;
     background-color: ${colors.grayDark};
-    margin: 30px 20px;
+    margin: 80px 20px;
+
+    @media ${device.tablet} {
+        height: 200px;
+    }
 `;
 
 const SectionBlock = styled.div`
@@ -147,7 +165,7 @@ const SectionBlock = styled.div`
     padding: 0 20px;
 
     @media ${device.phone} {
-        flex-direction: column;
+        flex-direction: ${(props) => props.direction};
         max-width: 100%;
         padding: 0;
     }
@@ -160,7 +178,7 @@ const TextSection = styled.div`
     top: ${(props) => (props.offsetTop ? '-30px' : 0)};
 
     @media ${device.phone} {
-        padding: 40px 70px;
+        padding: 40px 50px;
         top: 0;
     }
 `;
@@ -215,8 +233,7 @@ const StraightPhone = styled.img`
     margin-bottom: 20px;
 
     @media ${device.phone} {
-        margin-right: 0;
-        left: 5px;
+        top: -30px;
     }
 `;
 
@@ -229,6 +246,7 @@ const Phone = styled.img`
     @media ${device.phone} {
         margin-right: 0;
         left: 5px;
+        top: 0;
     }
 `;
 

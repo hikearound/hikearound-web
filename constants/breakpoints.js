@@ -7,5 +7,3 @@ export const device = {
     phone: `(max-width: ${size.phone})`,
     tablet: `(max-width: ${size.tablet})`,
 };
-
-export default { size, device };

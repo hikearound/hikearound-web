@@ -13,6 +13,8 @@ import '../css/reset.css';
 import '@brainhubeu/react-carousel/lib/style.css';
 import '../scss/components/_index.scss';
 
+const { NEXT_PUBLIC_MAPKIT_TOKEN } = process.env;
+
 initializeSentry();
 
 class HikeAround extends App {
@@ -21,7 +23,7 @@ class HikeAround extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, err } = this.props;
         const theme = getTheme();
 
         return (
@@ -32,9 +34,9 @@ class HikeAround extends App {
                 components={{ Toast }}
             >
                 <ThemeProvider theme={theme}>
-                    <MapkitProvider tokenOrCallback={process.env.mapkitToken}>
+                    <MapkitProvider tokenOrCallback={NEXT_PUBLIC_MAPKIT_TOKEN}>
                         <SimpleReactLightbox>
-                            <Component {...pageProps} />
+                            <Component {...pageProps} err={err} />
                         </SimpleReactLightbox>
                     </MapkitProvider>
                 </ThemeProvider>
