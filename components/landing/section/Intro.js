@@ -5,6 +5,7 @@ import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
+import { componentSpacing } from '../../../constants/landing';
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
@@ -44,6 +45,7 @@ export const Phone = styled.img`
     margin-right: -120px;
     position: relative;
     top: ${spacing.md};
+    margin-bottom: ${componentSpacing.md};
 
     @media ${device.tablet} {
         margin-right: 0;
