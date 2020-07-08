@@ -49,12 +49,25 @@ class AppleMap extends React.Component {
                 strokeColor: colors.purple,
                 strokeOpacity: 1,
                 lineWidth: 2,
-                lineJoin: 'round',
                 lineDash: [],
             });
 
             const trail = new mapkit.PolylineOverlay(coords, { style });
             map.addOverlay(trail);
+        }
+    };
+
+    filterPoints = () => {
+        const { map } = this.props;
+
+        const { Hospital, Pharmacy } = mapkit.PointOfInterestCategory;
+        const filteredCategories = [Hospital, Pharmacy];
+
+        if (map) {
+            const filter = mapkit.PointOfInterestFilter.excluding(
+                filteredCategories,
+            );
+            map.pointOfInterestFilter = filter;
         }
     };
 
@@ -64,6 +77,7 @@ class AppleMap extends React.Component {
         this.setRegion(region);
         this.setCenter(center);
         this.plotPoints(points);
+        this.filterPoints();
 
         return <Map {...mapProps} />;
     }

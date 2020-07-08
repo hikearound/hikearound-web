@@ -1,18 +1,18 @@
 @import '../variables';
 
 #SRLLightbox {
-    z-index: 1;
+    z-index: 3;
 }
 
 button {
     &.SRLNextButton, &.SRLPrevButton, &.SRLCloseButton {
-        background-color: $bg-color !important;
+        background-color: $gray-dark !important;
         border-radius: $icon-size;
         opacity: 0.8;
 
         &:hover {
             opacity: 1;
-            background-color: $bg-color-hover !important
+            background-color: $gray-light !important
         }
 
         svg {

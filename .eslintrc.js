@@ -29,12 +29,6 @@ module.exports = {
         'prettier',
     ],
     'rules': {
-        'indent': [
-            'error', 4,
-            {
-                'SwitchCase': 1
-            },
-        ],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'import/no-extraneous-dependencies': 'off',
@@ -67,6 +61,7 @@ module.exports = {
                 'jsxBracketSameLine': false,
                 'tabWidth': 4,
                 'arrowParens': 'always',
+                'max-len': 120,
             }
         ],
     },

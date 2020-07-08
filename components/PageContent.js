@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { PrimaryHeading } from '../styles/headings';
 import { Card } from '../styles/card';
-import spacing from '../constants/spacing';
+import { spacing } from '../constants/spacing';
 
 const propTypes = {
     title: PropTypes.array.isRequired,

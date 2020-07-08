@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { colors } from '../constants/colors';
-import spacing from '../constants/spacing';
+import { spacing } from '../constants/spacing';
 import { fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
 

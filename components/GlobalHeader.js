@@ -52,7 +52,7 @@ GlobalHeader.propTypes = propTypes;
 export default GlobalHeader;
 
 const HeaderContainer = styled.div`
-    z-index: 1;
+    z-index: 2;
     height: ${grid.header};
     display: flex;
     flex-direction: column;

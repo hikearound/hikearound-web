@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
-import spacing from '../constants/spacing';
+import { spacing } from '../constants/spacing';
 import { borderRadius } from '../constants/dimensions';
 import { Card } from './card';
 import { fontSize } from '../constants/type';

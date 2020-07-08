@@ -1,6 +1,9 @@
 // Spacing
 $space-tiny: 5px;
 $space-small: 10px;
+$space-medium: 15px;
+$space-large: 20px;
+$space-xl: 25px;
 
 // Icon Dimensions
 $icon-size: 40px;
@@ -11,8 +14,17 @@ $icon-arrow-forward: '/images/lightbox/arrow-forward.svg';
 $icon-close: '/images/lightbox/close.svg';
 
 // Colors
-$bg-color: rgba(47, 47, 49, 0.8);
-$bg-color-hover: rgba(73, 73, 74, 0.8);
+$purple: #935DFF;
+$purple-dark: #8243FF;
+
+// Transparent Colors
+$gray-light: rgba(73, 73, 74, 0.8);
+$gray: rgba(0, 0, 0, 0.40);
+$gray-dark: rgba(47, 47, 49, 0.8);
 
 // Breakpoints
 $breakpoint-tablet: 768px;
+
+// Carousel
+$arrow-offset: 2.45px;
+$box-shadow: 0 2px 4px 0 $gray;

@@ -1,8 +1,26 @@
 .BrainhubCarousel {
-    margin-left: -350px;
+    margin-left: -290px;
 
-    @media only screen and (max-width: 768px) {
-        margin-left: -615px;
+    .BrainhubCarousel__arrows {
+        border-radius: $icon-size;
+        background-color: $purple;
+        box-shadow: $box-shadow;
+
+        &:hover {
+            background-color: $purple-dark;
+        }
+    }
+
+    .BrainhubCarousel__arrowRight {
+        span {
+            margin-left: -$arrow-offset !important;
+        }
+    }
+
+    .BrainhubCarousel__arrowLeft {
+        span {
+            margin-left: $arrow-offset !important;
+        }
     }
 
     .BrainhubCarousel__arrows {
@@ -10,11 +28,24 @@
         z-index: 1;
 
         &.BrainhubCarousel__arrowLeft {
-            left: 10px;
+            left: $space-medium;
+            margin-top: -$space-xl;
         }
 
         &.BrainhubCarousel__arrowRight {
-            right: 10px;
+            right: $space-medium;
+            margin-top: -$space-xl;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        margin-left: -555px;
+
+        .BrainhubCarousel__arrows {
+            &.BrainhubCarousel__arrowLeft,
+            &.BrainhubCarousel__arrowRight {
+                margin-top: 0;
+            }
         }
     }
 }

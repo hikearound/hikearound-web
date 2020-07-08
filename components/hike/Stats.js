@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { fontSize, lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
-import spacing from '../../constants/spacing';
+import { spacing } from '../../constants/spacing';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
 

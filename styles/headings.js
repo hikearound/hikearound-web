@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
 import { fontSize, fontWeight } from '../constants/type';
+import { spacing } from '../constants/spacing';
 
 export const PrimaryHeading = styled.h1`
     font-size: ${fontSize.xl};
@@ -12,7 +13,7 @@ export const SecondaryHeading = styled.h2`
     font-weight: ${fontWeight.medium};
     color: ${colors.grayDark};
     text-transform: uppercase;
-    padding: ${(props) => (props.isCard ? '16px' : '0')};
+    padding: ${(props) => (props.isCard ? spacing.md : 0)};
 `;
 
 export const SubHeading = styled.h3`

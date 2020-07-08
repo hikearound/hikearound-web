@@ -12,6 +12,7 @@ import {
     RightColumn,
     StickyContainer,
 } from '../styles/layout';
+import { Card } from '../styles/card';
 
 const columnType = [PropTypes.object, PropTypes.array];
 
@@ -77,6 +78,14 @@ class Page extends React.PureComponent {
         return pageTitle;
     };
 
+    renderFooter = () => {
+        return (
+            <Card hideGutter>
+                <Footer />
+            </Card>
+        );
+    };
+
     renderRightColumn() {
         const { rightColumn, hideFooter } = this.props;
 
@@ -84,7 +93,7 @@ class Page extends React.PureComponent {
             <RightColumn>
                 <StickyContainer>
                     {rightColumn}
-                    {!hideFooter && <Footer />}
+                    {!hideFooter && this.renderFooter()}
                 </StickyContainer>
             </RightColumn>
         );

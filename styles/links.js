@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
-import spacing from '../constants/spacing';
+import { spacing } from '../constants/spacing';
 import { fontSize, lineHeight } from '../constants/type';
 
 export const RightRailLink = styled.a`

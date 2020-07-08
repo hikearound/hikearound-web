@@ -6,7 +6,7 @@ import { Card } from '../styles/card';
 import { SecondaryHeading } from '../styles/headings';
 import { getRecentHikes } from '../utils/hike';
 import { RightRailLink } from '../styles/links';
-import spacing from '../constants/spacing';
+import { spacing } from '../constants/spacing';
 import { device } from '../constants/breakpoints';
 import { colors } from '../constants/colors';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import PulseLoader from 'react-spinners/PulseLoader';
+import Skeleton from 'react-loading-skeleton';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
@@ -85,6 +85,7 @@ class HikeMap extends React.PureComponent {
     plotCoordinates() {
         const { hikeData } = this.state;
         const coordinateCount = hikeData.gpx.trk[0].trkseg[0].trkpt.length;
+
         const path = [];
 
         for (let i = 0, len = coordinateCount; i < len; i += 1) {
@@ -111,11 +112,7 @@ class HikeMap extends React.PureComponent {
                     )}
                     {!shouldShowMap && (
                         <MapLoading>
-                            <PulseLoader
-                                size={8}
-                                color={colors.grayDark}
-                                loading
-                            />
+                            <Skeleton height={450} width={650} />
                         </MapLoading>
                     )}
                 </MapContainer>
@@ -141,6 +138,7 @@ export const MapLoading = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow: hidden;
 `;
 
 const MapContainer = styled.div`
