@@ -105,6 +105,8 @@ export const ContentImage = styled.div`
 `;
 
 export const PhoneBase = styled.img`
-    width: 100%;
-    height: 100%;
+    @media ${device.tablet} {
+        width: 100%;
+        height: 100%;
+    }
 `;
