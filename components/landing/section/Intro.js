@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
+import {
+    Section,
+    SectionBlock,
+    ContentImage,
+    PhoneBase,
+} from '../../../styles/landing';
 import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
@@ -40,7 +45,7 @@ class IntroSection extends React.PureComponent {
 
 export default IntroSection;
 
-export const Phone = styled.img`
+export const Phone = styled(PhoneBase)`
     max-width: 600px;
     margin-right: -120px;
     position: relative;

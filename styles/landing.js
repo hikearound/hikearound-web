@@ -104,35 +104,7 @@ export const ContentImage = styled.div`
     }
 `;
 
-export const StraightPhone = styled.img`
-    max-width: 375px;
-    position: relative;
-    top: ${componentSpacing.md};
-    margin-bottom: ${componentSpacing.sm};
-
-    @media ${device.tablet} {
-        top: -${spacing.lg};
-        margin: 0 auto -${componentSpacing.xl} auto;
-    }
-`;
-
-export const AnglePhone = styled.img`
-    max-width: 600px;
-    margin-right: -120px;
-    position: relative;
-    top: ${spacing.md};
-
-    @media ${device.tablet} {
-        margin-right: 0;
-        left: ${spacing.xs};
-        top: 0;
-    }
-`;
-
-export const FooterWrapper = styled.div`
-    padding: ${spacing.lg};
-
-    a {
-        font-size: ${fontSize.sm};
-    }
+export const PhoneBase = styled.img`
+    width: 100%;
+    height: 100%;
 `;

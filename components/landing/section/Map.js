@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
+import {
+    Section,
+    SectionBlock,
+    ContentImage,
+    PhoneBase,
+} from '../../../styles/landing';
 import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
@@ -33,7 +38,7 @@ class MapSection extends React.PureComponent {
 
 export default MapSection;
 
-export const Phone = styled.img`
+export const Phone = styled(PhoneBase)`
     max-width: 375px;
     position: relative;
     top: ${componentSpacing.md};
