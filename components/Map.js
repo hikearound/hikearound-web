@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
+import { isMobile } from 'react-device-detect';
 import { colors } from '../constants/colors';
 import { withMap } from '../utils/map';
 
@@ -21,6 +22,17 @@ const defaultProps = {
 };
 
 class AppleMap extends React.Component {
+    setOptions = () => {
+        const { map } = this.props;
+
+        if (map) {
+            if (isMobile) {
+                map.isScrollEnabled = false;
+            }
+            map.showsScale = mapkit.FeatureVisibility.Visible;
+        }
+    };
+
     setCenter = (center) => {
         const { setCenter } = this.props;
 
@@ -73,12 +85,13 @@ class AppleMap extends React.Component {
     render() {
         const { center, points, mapProps, region } = this.props;
 
+        this.setOptions();
         this.setRegion(region);
         this.setCenter(center);
         this.plotPoints(points);
         this.filterPoints();
 
-        return <Map {...mapProps} />;
+        return <Map {...mapProps} showsZoomControl={false} />;
     }
 }
 

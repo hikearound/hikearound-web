@@ -36,6 +36,7 @@ export const Section = styled.div`
 
 export const SectionBlock = styled.div`
     max-width: 970px;
+    min-height: 600px;
     margin: 0 auto;
     display: flex;
     padding: 0 ${componentSpacing.sm};
@@ -96,6 +97,7 @@ export const ContentDescription = styled.span`
 
 export const ContentImage = styled.div`
     display: flex;
+    align-items: flex-start;
     width: ${(props) => (props.justifyLeft ? '50%' : '60%')};
     justify-content: ${(props) => (props.justifyLeft ? 'left' : 'end')};
 
