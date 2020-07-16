@@ -30,6 +30,7 @@ export async function verifyToken(idToken) {
     const user = await admin.auth().verifyIdToken(idToken);
 
     if (user.uid) {
+        updateUserRecord(user.uid);
         return true;
     }
 
