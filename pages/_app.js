@@ -4,10 +4,10 @@ import { MapkitProvider } from 'react-mapkit';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { ToastProvider } from 'react-toast-notifications';
 import SimpleReactLightbox from 'simple-react-lightbox';
-import Fire from '../lib/db';
 import Toast from '../components/Toast';
 import { getTheme, initializeSentry } from '../utils/app';
 import { settings } from '../constants/toast';
+import { initFirebase } from '../utils/auth/init';
 
 import '../css/reset.css';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -16,12 +16,9 @@ import '../scss/components/_index.scss';
 const { NEXT_PUBLIC_MAPKIT_TOKEN } = process.env;
 
 initializeSentry();
+initFirebase();
 
 class HikeAround extends App {
-    async componentDidMount() {
-        await new Fire();
-    }
-
     render() {
         const { Component, pageProps, err } = this.props;
         const theme = getTheme();
