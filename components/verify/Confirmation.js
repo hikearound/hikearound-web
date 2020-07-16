@@ -1,41 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 
 const propTypes = {
-    isVerified: PropTypes.bool.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
-const failureMessage = "We're sorry, we were unable to verify your account.";
-const successMessage = 'Your account was successfully verified.';
+let errorMessage = "We're sorry, we were unable to verify your account.";
 
 class Description extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            message: '',
-        };
+        this.state = { message: null };
     }
 
-    componentDidMount() {
-        const { isVerified } = this.props;
-        if (isVerified) {
-            this.setState({
-                message: successMessage,
-            });
-        } else {
-            this.setState({
-                message: failureMessage,
-            });
+    componentDidUpdate(prevProps) {
+        const { data } = this.props;
+
+        if (prevProps.data !== data) {
+            this.getVerificationStatus();
         }
     }
 
+    getVerificationStatus = () => {
+        const { data } = this.props;
+
+        if (data.status === true) {
+            this.setState({
+                message: 'Your account was successfully verified.',
+            });
+        }
+
+        if (data.error) {
+            if (data.error.code === 'auth/id-token-expired') {
+                errorMessage =
+                    "We're sorry, we were unable to verify your account because the verification token expired.";
+            }
+            this.setState({ message: errorMessage });
+        }
+    };
+
     render() {
         const { message } = this.state;
-        return <Card>{message}</Card>;
+        return (
+            <Card>
+                <VerificationMessage>{message}</VerificationMessage>
+            </Card>
+        );
     }
 }
 
 Description.propTypes = propTypes;
 
 export default Description;
+
+const VerificationMessage = styled.div`
+    line-height: ${lineHeight.lh_13};
+`;

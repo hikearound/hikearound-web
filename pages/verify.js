@@ -17,12 +17,7 @@ const defaultProps = {
 class VerifyPage extends React.Component {
     renderMainColumn() {
         const { data } = this.props;
-
-        if (data.status) {
-            return <Confirmation isVerified={data.status} />;
-        }
-
-        return <Confirmation isVerified={false} />;
+        return <Confirmation data={data} />;
     }
 
     render() {
