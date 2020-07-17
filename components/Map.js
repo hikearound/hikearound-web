@@ -25,12 +25,10 @@ class AppleMap extends React.Component {
     setOptions = () => {
         const { map } = this.props;
 
-        if (map) {
-            if (isMobile) {
-                map.isScrollEnabled = false;
-            }
-            map.showsScale = mapkit.FeatureVisibility.Visible;
+        if (isMobile) {
+            map.isScrollEnabled = false;
         }
+        map.showsScale = mapkit.FeatureVisibility.Visible;
     };
 
     setCenter = (center) => {
@@ -52,7 +50,7 @@ class AppleMap extends React.Component {
     plotPoints = () => {
         const { points, map } = this.props;
 
-        if (points && map) {
+        if (points) {
             const coords = points.map(function (point) {
                 return new mapkit.Coordinate(point[0], point[1]);
             });
@@ -71,25 +69,26 @@ class AppleMap extends React.Component {
 
     filterPoints = () => {
         const { map } = this.props;
+        const { Hospital, Pharmacy } = mapkit.PointOfInterestCategory;
 
-        if (map) {
-            const { Hospital, Pharmacy } = mapkit.PointOfInterestCategory;
-            const filteredCategories = [Hospital, Pharmacy];
-            const filter = mapkit.PointOfInterestFilter.excluding(
-                filteredCategories,
-            );
-            map.pointOfInterestFilter = filter;
-        }
+        const filteredCategories = [Hospital, Pharmacy];
+        const filter = mapkit.PointOfInterestFilter.excluding(
+            filteredCategories,
+        );
+
+        map.pointOfInterestFilter = filter;
     };
 
     render() {
-        const { center, points, mapProps, region } = this.props;
+        const { center, points, map, mapProps, region } = this.props;
 
-        this.setOptions();
-        this.setRegion(region);
-        this.setCenter(center);
-        this.plotPoints(points);
-        this.filterPoints();
+        if (map) {
+            this.setOptions();
+            this.setRegion(region);
+            this.setCenter(center);
+            this.plotPoints(points);
+            this.filterPoints();
+        }
 
         return <Map {...mapProps} showsZoomControl={false} />;
     }

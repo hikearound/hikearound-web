@@ -11,11 +11,11 @@ import AppleMap from '../Map';
 
 const propTypes = {
     id: PropTypes.string.isRequired,
-    latModifier: PropTypes.number,
+    modifier: PropTypes.number,
 };
 
 const defaultProps = {
-    latModifier: 0.006,
+    modifier: 0.006,
 };
 
 class HikeMap extends React.PureComponent {
@@ -55,14 +55,14 @@ class HikeMap extends React.PureComponent {
     }
 
     setRegion(hikeMetaData) {
-        const { latModifier } = this.props;
+        const { modifier } = this.props;
         const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
 
         const region = {
             latitude: parseFloat(maxlat),
             longitude: parseFloat(minlat),
-            latitudeSpan: maxlat - minlat + latModifier,
-            longitudeSpan: maxlon - minlon,
+            latitudeSpan: maxlat - minlat + modifier,
+            longitudeSpan: maxlon - minlon + modifier,
         };
 
         this.setState({ region });

@@ -10,7 +10,7 @@ const propTypes = {
 
 let errorMessage = "We're sorry, we were unable to verify your account.";
 
-class Description extends React.Component {
+class Confirmation extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = { message: null };
@@ -52,9 +52,9 @@ class Description extends React.Component {
     }
 }
 
-Description.propTypes = propTypes;
+Confirmation.propTypes = propTypes;
 
-export default Description;
+export default Confirmation;
 
 const VerificationMessage = styled.div`
     line-height: ${lineHeight.lh_13};
