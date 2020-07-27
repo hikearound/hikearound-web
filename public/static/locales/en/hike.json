@@ -1,0 +1,21 @@
+{
+    "label": {
+        "distance": "Distance",
+        "elevation": "Elevation",
+        "route": "Route",
+        "difficulty": "Difficulty"
+    },
+    "measurement": {
+        "distance": "{{distance}} miles",
+        "elevation": "{{elevation}} feet"
+    },
+    "routeType": {
+        "loop": "Loop",
+        "out": "Out & Back"
+    },
+    "difficulty": {
+        "easy": "Easy",
+        "moderate": "Moderate",
+        "difficult": "Difficult"
+    }
+}

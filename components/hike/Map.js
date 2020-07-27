@@ -8,6 +8,7 @@ import { colors } from '../../constants/colors';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 import AppleMap from '../Map';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     id: PropTypes.string.isRequired,
@@ -97,11 +98,14 @@ class HikeMap extends React.PureComponent {
     }
 
     render() {
+        const { t } = this.props;
         const { path, center, region, shouldShowMap } = this.state;
 
         return (
             <MapCard noPadding>
-                <SecondaryHeading isCard>Trail Map</SecondaryHeading>
+                <SecondaryHeading isCard>
+                    {t('card.title.map')}
+                </SecondaryHeading>
                 <MapContainer>
                     {shouldShowMap && (
                         <AppleMap
@@ -124,7 +128,7 @@ class HikeMap extends React.PureComponent {
 HikeMap.propTypes = propTypes;
 HikeMap.defaultProps = defaultProps;
 
-export default HikeMap;
+export default withTranslation('common')(HikeMap);
 
 export const MapCard = styled(Card)`
     margin-bottom: 0;

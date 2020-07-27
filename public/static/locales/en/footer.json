@@ -1,0 +1,12 @@
+{
+    "link": {
+        "about": "About",
+        "contact": "Contact",
+        "privacy": "Privacy Policy",
+        "terms": "Terms",
+        "language": "Language"
+    },
+    "label": {
+        "copyright": "© Hikearound Inc. {{year}}"
+    }
+}

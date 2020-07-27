@@ -1,0 +1,14 @@
+{
+    "appName": "Hikearound",
+    "card": {
+        "title": {
+            "recent": "Recent Hikes",
+            "description": "Description",
+            "gallery": "Photo Gallery",
+            "stats": "Hike Stats",
+            "ad": "Advertisement",
+            "map": "Trail Map"
+        }
+    },
+    "slogan": "{{appName}} | Get out and hike something"
+}

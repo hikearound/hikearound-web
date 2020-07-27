@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import { withRouter } from 'next/router';
 import { googleMapUrl } from '../../constants/common';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
@@ -40,12 +41,13 @@ class GetDirections extends React.PureComponent {
     };
 
     render() {
+        const { t } = this.props;
         const { mapUrl } = this.state;
 
         return (
             <a href={mapUrl} target='_blank' rel='noreferrer'>
                 <Button startIcon={<DirectionsIcon />} size='small'>
-                    Get Directions
+                    {t('hike.directions.label')}
                 </Button>
             </a>
         );
@@ -54,4 +56,4 @@ class GetDirections extends React.PureComponent {
 
 GetDirections.propTypes = propTypes;
 
-export default withRouter(GetDirections);
+export default withRouter(withTranslation('action')(GetDirections));

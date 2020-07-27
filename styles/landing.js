@@ -36,7 +36,7 @@ export const Section = styled.div`
 
 export const SectionBlock = styled.div`
     max-width: 970px;
-    min-height: 600px;
+    min-height: 621px;
     margin: 0 auto;
     display: flex;
     padding: 0 ${componentSpacing.sm};

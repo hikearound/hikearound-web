@@ -1,0 +1,23 @@
+{
+    "hike": {
+        "continue": {
+            "label": "Continue Reading"
+        },
+        "share": {
+            "label": "Share Hike",
+            "type": {
+                "copy": {
+                    "label": "Copy Link",
+                    "success": "Link copied to clipboard."
+                },
+                "twitter": {
+                    "label": "Twitter"
+                }
+            },
+            "message": "Check out {{hikeName}} on @tryhikearound"
+        },
+        "directions": {
+            "label": "Get Directions"
+        }
+    }
+}

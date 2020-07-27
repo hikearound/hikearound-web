@@ -1,0 +1,20 @@
+{
+    "section": {
+        "carousel": {
+            "title": "El camino es de tu elección.",
+            "description": "No importa tu nivel de habilidad o experiencia, encontrarás caminatas que a ti y a tus amigos les encantarán."
+        },
+        "download": {
+            "title": "La aventura espera.",
+            "description": "Grandes caminatas esperan ser descubiertas. Descargue la aplicación hoy para comenzar."
+        },
+        "intro": {
+            "title": "Solo senderos, nunca falla.",
+            "description": "Hikearound es la forma más fácil de descubrir, guardar y compartir excelentes caminatas locales."
+        },
+        "map": {
+            "title": "Comience localmente, vaya global.",
+            "description": "Explore las caminatas cercanas o amplíe su búsqueda en todo el país para encontrar el camino perfecto."
+        }
+    }
+}

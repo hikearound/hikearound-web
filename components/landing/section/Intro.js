@@ -11,6 +11,7 @@ import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
+import { withTranslation } from '../../../utils/i18n';
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
@@ -26,12 +27,14 @@ class IntroSection extends React.PureComponent {
     };
 
     render() {
+        const { t } = this.props;
+
         return (
             <Section>
                 <SectionBlock direction='column'>
                     <TextSection
-                        title='Only trails, never fails.'
-                        description='Hikearound is the easiest way to discover, save, and share great local hikes.'
+                        title={t('section.intro.title')}
+                        description={t('section.intro.description')}
                         renderExtra={this.renderBadge()}
                         includeBlock
                         offsetTop
@@ -43,7 +46,7 @@ class IntroSection extends React.PureComponent {
     }
 }
 
-export default IntroSection;
+export default withTranslation('landing')(IntroSection);
 
 export const Phone = styled(PhoneBase)`
     max-width: 600px;

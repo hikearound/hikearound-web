@@ -12,6 +12,13 @@ const {
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withSourceMaps({
+    publicRuntimeConfig: {
+        localeSubpaths:
+            typeof process.env.LOCALE_SUBPATHS === 'string'
+                ? process.env.LOCALE_SUBPATHS
+                : 'none',
+    },
+
     webpack: (config, options) => {
         if (!options.isServer) {
             config.resolve.alias['@sentry/node'] = '@sentry/browser';

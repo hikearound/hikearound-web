@@ -1,0 +1,20 @@
+{
+    "section": {
+        "carousel": {
+            "title": "The path is yours to choose.",
+            "description": "No matter your skill level or experience, you'll find hikes that you and your friends will love."
+        },
+        "download": {
+            "title": "Adventure awaits.",
+            "description": "Great hikes are waiting to be discovered. Download the app today to get started."
+        },
+        "intro": {
+            "title": "Only trails, never fails.",
+            "description": "Hikearound is the easiest way to discover, save, and share great local hikes."
+        },
+        "map": {
+            "title": "Start local, go global.",
+            "description": "Browse nearby hikes or expand your search across the entire country to find the perfect trail."
+        }
+    }
+}

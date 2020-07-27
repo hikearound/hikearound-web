@@ -7,6 +7,7 @@ import { SecondaryHeading } from '../../styles/headings';
 import { spacing } from '../../constants/spacing';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hike: PropTypes.object,
@@ -18,34 +19,45 @@ const defaultProps = {
 
 class Stats extends React.PureComponent {
     renderHikeStats() {
-        const { hike } = this.props;
+        const { t, hike } = this.props;
+        const { route, elevation, distance, difficulty } = hike;
 
         return (
             <StatsContainer>
                 <Stat>
-                    <Label>Distance:</Label>
-                    <StatData>{hike.distance} miles</StatData>
+                    <Label>{t('label.distance')}:</Label>
+                    <StatData>
+                        {t('measurement.distance', { distance })}
+                    </StatData>
                 </Stat>
                 <Stat>
-                    <Label>Elevation:</Label>
-                    <StatData>{hike.elevation} feet</StatData>
+                    <Label>{t('label.elevation')}:</Label>
+                    <StatData>
+                        {t('measurement.elevation', { elevation })}
+                    </StatData>
                 </Stat>
                 <Stat>
-                    <Label>Route:</Label>
-                    <StatData>{hike.route}</StatData>
+                    <Label>{t('label.route')}:</Label>
+                    <StatData>{t(`routeType.${route.toLowerCase()}`)}</StatData>
                 </Stat>
                 <Stat>
-                    <Label>Difficulty:</Label>
-                    <StatData>{hike.difficulty}</StatData>
+                    <Label>{t('label.difficulty')}:</Label>
+                    <StatData>
+                        {t(`difficulty.${difficulty.toLowerCase()}`)}
+                    </StatData>
                 </Stat>
             </StatsContainer>
         );
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <Card noPadding>
-                <RecentHikesHeading>Hike Stats</RecentHikesHeading>
+                <RecentHikesHeading>
+                    {t('common:card.title.stats')}
+                </RecentHikesHeading>
                 {this.renderHikeStats()}
             </Card>
         );
@@ -55,7 +67,7 @@ class Stats extends React.PureComponent {
 Stats.propTypes = propTypes;
 Stats.defaultProps = defaultProps;
 
-export default Stats;
+export default withTranslation(['hike', 'common'])(Stats);
 
 const StatsContainer = styled.div`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};

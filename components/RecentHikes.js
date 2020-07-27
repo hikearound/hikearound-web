@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
 import { Card } from '../styles/card';
 import { SecondaryHeading } from '../styles/headings';
 import { getRecentHikes } from '../utils/hike';
+import { withTranslation, Link } from '../utils/i18n';
 import { RightRailLink } from '../styles/links';
 import { spacing } from '../constants/spacing';
 import { device } from '../constants/breakpoints';
@@ -51,9 +51,13 @@ class RecentHikes extends React.PureComponent {
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <Card noPadding>
-                <RecentHikesHeading>Recent Hikes</RecentHikesHeading>
+                <RecentHikesHeading>
+                    {t('card.title.recent')}
+                </RecentHikesHeading>
                 <HikeLinkContainer>
                     {this.renderRecentHikeLinks()}
                 </HikeLinkContainer>
@@ -65,7 +69,7 @@ class RecentHikes extends React.PureComponent {
 RecentHikes.propTypes = propTypes;
 RecentHikes.defaultProps = defaultProps;
 
-export default RecentHikes;
+export default withTranslation('common')(RecentHikes);
 
 const HikeLinkContainer = styled.div`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};

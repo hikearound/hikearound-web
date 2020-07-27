@@ -6,7 +6,7 @@ import { getPageData } from '../utils/page';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
-    contentOnly: PropTypes.string,
+    contentOnly: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -22,6 +22,7 @@ class PrivacyPage extends React.PureComponent {
             title: page.data.title,
             description: page.data.description,
             contentOnly: query.contentOnly,
+            namespacesRequired: ['common', 'header', 'footer'],
         };
     }
 

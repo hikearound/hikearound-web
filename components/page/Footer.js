@@ -1,29 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
+import { Link, withTranslation } from '../../utils/i18n';
 import { colors } from '../../constants/colors';
 import { fontSize, lineHeight } from '../../constants/type';
 import { RightRailLink } from '../../styles/links';
-
-const footerLinks = [
-    {
-        text: 'About',
-        link: '/about',
-    },
-    {
-        text: 'Contact',
-        link: '/contact',
-    },
-    {
-        text: 'Privacy Policy',
-        link: '/privacy',
-    },
-    {
-        text: 'Terms',
-        link: '/terms',
-    },
-];
+import LanguageSelect from '../i18n/Select';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,
@@ -35,24 +17,50 @@ const defaultProps = {
 
 class Footer extends React.PureComponent {
     renderCopyrightText = () => {
-        const { inlineCopyright } = this.props;
+        const { inlineCopyright, t } = this.props;
         const date = new Date();
 
         return (
             <CopyrightText inlineCopyright={inlineCopyright}>
-                © Hikearound Inc. {date.getFullYear()}
+                {t('label.copyright', { year: date.getFullYear() })}
             </CopyrightText>
         );
     };
 
+    renderLinks = () => {
+        const { t } = this.props;
+
+        return [
+            {
+                text: t('link.about'),
+                link: '/about',
+            },
+            {
+                text: t('link.contact'),
+                link: '/contact',
+            },
+            {
+                text: t('link.privacy'),
+                link: '/privacy',
+            },
+            {
+                text: t('link.terms'),
+                link: '/terms',
+            },
+        ];
+    };
+
     render() {
+        const links = this.renderLinks();
+
         return (
             <>
-                {footerLinks.map(({ text, link }, index) => (
+                {links.map(({ text, link }, index) => (
                     <Link href={link} key={index}>
                         <RightRailLink href={link}>{text}</RightRailLink>
                     </Link>
                 ))}
+                <LanguageSelect />
                 {this.renderCopyrightText()}
             </>
         );
@@ -62,7 +70,7 @@ class Footer extends React.PureComponent {
 Footer.propTypes = propTypes;
 Footer.defaultProps = defaultProps;
 
-export default Footer;
+export default withTranslation(['footer'])(Footer);
 
 const CopyrightText = styled.a`
     display: ${(props) => (props.inlineCopyright ? 'inline-block' : 'block')};

@@ -36,6 +36,7 @@ module.exports = {
         'react/forbid-prop-types': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/no-array-index-key': 'off',
+        'react/no-danger': 'off',
         'func-names': 'off',
         'react/static-property-placement': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
@@ -45,7 +46,7 @@ module.exports = {
         'react/prop-types': [
             'error', {
                 'ignore': [
-                    'navigation', 'focused',
+                    'navigation', 'focused', 't',
                 ],
             }
         ],

@@ -11,6 +11,7 @@ import ShareIcon from '../icons/Share';
 import { withToast } from '../../utils/toast';
 import { baseUrl } from '../../constants/common';
 import { menuStyle } from '../../styles/actionbar';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     classes: PropTypes.object.isRequired,
@@ -59,17 +60,20 @@ class ShareHike extends React.PureComponent {
     };
 
     getShareText = () => {
-        const { hike } = this.props;
+        const { t, hike } = this.props;
 
         this.setState({
-            shareText: `Check out ${hike.name} on @tryhikearound`,
+            shareText: t('action:hike.share.message', { hikeName: hike.name }),
         });
     };
 
     copyLink = () => {
-        const { addToast } = this.props;
+        const { addToast, t } = this.props;
 
-        addToast('Link copied to clipboard', { appearance: 'success' });
+        addToast(t('action:hike.share.type.copy.success'), {
+            appearance: 'success',
+        });
+
         this.setState({ selectedItem: null });
     };
 
@@ -82,6 +86,8 @@ class ShareHike extends React.PureComponent {
     };
 
     renderButton = () => {
+        const { t } = this.props;
+
         return (
             <Button
                 onClick={this.handleClick}
@@ -89,14 +95,14 @@ class ShareHike extends React.PureComponent {
                 size='small'
                 className='firstChild'
             >
-                Share Hike
+                {t('action:hike.share.label')}
             </Button>
         );
     };
 
     renderMenu = () => {
+        const { classes, t } = this.props;
         const { anchorEl, shareUrl, shareText } = this.state;
-        const { classes } = this.props;
 
         return (
             <Menu
@@ -110,19 +116,20 @@ class ShareHike extends React.PureComponent {
                         onClick={this.handleClose}
                         className={classes.item}
                     >
-                        Copy Link
+                        {t('action:hike.share.type.copy.label')}
                     </MenuItem>
                 </CopyToClipboard>
                 <TwitterShareButton
                     url={shareUrl}
                     title={shareText}
-                    windowHeight={300}
+                    windowHeight={425}
+                    related={['tryhikearound']}
                 >
                     <MenuItem
                         onClick={this.handleClose}
                         className={classes.item}
                     >
-                        Twitter
+                        {t('action:hike.share.type.twitter.label')}
                     </MenuItem>
                 </TwitterShareButton>
             </Menu>
@@ -141,4 +148,6 @@ class ShareHike extends React.PureComponent {
 
 ShareHike.propTypes = propTypes;
 
-export default withStyles(menuStyle)(withToast(withRouter(ShareHike)));
+export default withStyles(menuStyle)(
+    withToast(withRouter(withTranslation(['common', 'action'])(ShareHike))),
+);

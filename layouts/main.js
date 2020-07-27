@@ -81,7 +81,7 @@ class Page extends React.PureComponent {
     renderFooter = () => {
         return (
             <Card hideGutter>
-                <Footer />
+                <Footer inlineCopyright />
             </Card>
         );
     };

@@ -22,7 +22,8 @@ export default FooterSection;
 const FooterWrapper = styled.div`
     padding: ${spacing.lg};
 
-    a {
+    a,
+    select {
         font-size: ${fontSize.sm};
     }
 `;

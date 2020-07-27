@@ -1,0 +1,14 @@
+{
+    "appName": "Hikearound",
+    "card": {
+        "title": {
+            "recent": "Caminatas recientes",
+            "description": "Descripción",
+            "gallery": "Galería de fotos",
+            "stats": "Estadísticas de caminata",
+            "ad": "Anuncio",
+            "map": "Mapa de senderos"
+        }
+    },
+    "slogan": "{{appName}} | Sal y camina algo"
+}

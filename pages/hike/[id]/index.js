@@ -36,7 +36,18 @@ class HikePage extends React.Component {
         hike.mapImage = mapImage;
         hike.id = query.id;
 
-        return { hike, images, id: query.id };
+        return {
+            hike,
+            images,
+            id: query.id,
+            namespacesRequired: [
+                'common',
+                'action',
+                'hike',
+                'header',
+                'footer',
+            ],
+        };
     }
 
     renderMainColumn() {

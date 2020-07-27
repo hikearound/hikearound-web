@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
+import { Link, withTranslation } from '../utils/i18n';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { fontSize } from '../constants/type';
@@ -13,17 +13,17 @@ const propTypes = {
 
 class GlobalNav extends React.PureComponent {
     render() {
-        const { invertHeader } = this.props;
+        const { invertHeader, t } = this.props;
 
         return (
             <LinkContainer>
                 <Link href='/about'>
                     <GlobalLink href='/about' invertHeader={invertHeader}>
-                        About
+                        {t('common.about')}
                     </GlobalLink>
                 </Link>
                 <GlobalLink href='/' invertHeader={invertHeader}>
-                    Get the App
+                    {t('common.app')}
                 </GlobalLink>
             </LinkContainer>
         );
@@ -32,7 +32,7 @@ class GlobalNav extends React.PureComponent {
 
 GlobalNav.propTypes = propTypes;
 
-export default GlobalNav;
+export default withTranslation(['header'])(GlobalNav);
 
 const LinkContainer = styled.div`
     display: inline;

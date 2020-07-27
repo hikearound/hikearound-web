@@ -7,6 +7,7 @@ import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImage, getHikeThumbnail } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 import { options } from '../../constants/lightbox';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     images: PropTypes.object,
@@ -90,9 +91,13 @@ class Gallery extends React.PureComponent {
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <Card lastChild noPadding>
-                <SecondaryHeading isCard>Photo Gallery</SecondaryHeading>
+                <SecondaryHeading isCard>
+                    {t('card.title.gallery')}
+                </SecondaryHeading>
                 {this.renderGallery()}
             </Card>
         );
@@ -102,7 +107,7 @@ class Gallery extends React.PureComponent {
 Gallery.propTypes = propTypes;
 Gallery.defaultProps = defaultProps;
 
-export default Gallery;
+export default withTranslation('common')(Gallery);
 
 const PhotoGallery = styled.div`
     display: flex;

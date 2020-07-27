@@ -16,6 +16,7 @@ class ContactPage extends React.Component {
         return {
             title: page.data.title,
             description: page.data.description,
+            namespacesRequired: ['common', 'header', 'footer'],
         };
     }
 

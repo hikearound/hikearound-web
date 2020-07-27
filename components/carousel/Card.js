@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
+import { Link } from '../../utils/i18n';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
 
@@ -54,6 +54,10 @@ const CarouselCard = styled.a`
     @media ${device.tablet} {
         height: 200px;
         margin-bottom: 40px;
+
+        &:hover {
+            scale: none;
+        }
     }
 `;
 

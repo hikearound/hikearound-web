@@ -6,6 +6,7 @@ import ShowMoreText from 'react-show-more-text';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { colors } from '../../constants/colors';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     description: PropTypes.string.isRequired,
@@ -14,7 +15,6 @@ const propTypes = {
 class Description extends React.Component {
     constructor(props, context) {
         super(props, context);
-
         this.state = { description: null, expanded: false };
     }
 
@@ -47,6 +47,7 @@ class Description extends React.Component {
     };
 
     renderDescription() {
+        const { t } = this.props;
         const { description, expanded } = this.state;
 
         if (description) {
@@ -54,7 +55,7 @@ class Description extends React.Component {
                 <DescriptionWrapper>
                     <ShowMoreText
                         lines={5}
-                        more='Continue Reading'
+                        more={t('action:hike.continue.label')}
                         less=''
                         anchorClass=''
                         onClick={this.updateDescription}
@@ -69,9 +70,13 @@ class Description extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
+
         return (
             <Card noPadding>
-                <SecondaryHeading isCard>Description</SecondaryHeading>
+                <SecondaryHeading isCard>
+                    {t('card.title.description')}
+                </SecondaryHeading>
                 <CardContent>{this.renderDescription()}</CardContent>
             </Card>
         );
@@ -80,7 +85,7 @@ class Description extends React.Component {
 
 Description.propTypes = propTypes;
 
-export default Description;
+export default withTranslation(['common', 'action'])(Description);
 
 const DescriptionWrapper = styled.div`
     a {

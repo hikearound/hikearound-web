@@ -5,6 +5,7 @@ import { hikeData } from '../../../constants/data';
 import { carousel } from '../../../constants/carousel';
 import Card from '../../carousel/Card';
 import Carousel from '../../carousel/Carousel';
+import { withTranslation } from '../../../utils/i18n';
 
 class CarouselSection extends React.PureComponent {
     renderCarousel = () => {
@@ -36,12 +37,14 @@ class CarouselSection extends React.PureComponent {
     };
 
     render() {
+        const { t } = this.props;
+
         return (
             <Section marginTop offset='true'>
                 <TextSection
                     centered
-                    title='The path is yours to choose.'
-                    description="No matter your skill level or experience, you'll find hikes that you and your friends will love."
+                    title={t('section.carousel.title')}
+                    description={t('section.carousel.description')}
                 />
                 {this.renderCarousel()}
             </Section>
@@ -49,4 +52,4 @@ class CarouselSection extends React.PureComponent {
     }
 }
 
-export default CarouselSection;
+export default withTranslation('landing')(CarouselSection);

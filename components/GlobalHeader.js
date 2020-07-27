@@ -18,16 +18,22 @@ class GlobalHeader extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', () => {
-            let hasScrolled = true;
-
-            if (window.scrollY === 0) {
-                hasScrolled = false;
-            }
-
-            this.setState({ hasScrolled });
-        });
+        window.addEventListener('scroll', this.setScrollState);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.setScrollState);
+    }
+
+    setScrollState = () => {
+        let hasScrolled = true;
+
+        if (window.scrollY === 0) {
+            hasScrolled = false;
+        }
+
+        this.setState({ hasScrolled });
+    };
 
     render() {
         const { invertHeader } = this.props;

@@ -10,6 +10,7 @@ import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
+import { withTranslation } from '../../../utils/i18n';
 
 class MapSection extends React.PureComponent {
     renderPhone = () => {
@@ -21,13 +22,15 @@ class MapSection extends React.PureComponent {
     };
 
     render() {
+        const { t } = this.props;
+
         return (
             <Section>
                 <SectionBlock direction='column-reverse'>
                     {this.renderPhone()}
                     <TextSection
-                        title='Start local, go global.'
-                        description='Browse nearby hikes or expand your search across the entire country to find the perfect trail.'
+                        title={t('section.map.title')}
+                        description={t('section.map.description')}
                         includeBlock
                     />
                 </SectionBlock>
@@ -36,7 +39,7 @@ class MapSection extends React.PureComponent {
     }
 }
 
-export default MapSection;
+export default withTranslation('landing')(MapSection);
 
 export const Phone = styled(PhoneBase)`
     max-width: 375px;
