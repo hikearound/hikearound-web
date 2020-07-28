@@ -57,7 +57,9 @@ class LanguageSelect extends React.PureComponent {
 export default withTranslation(['footer'])(LanguageSelect);
 
 const Label = styled.label`
-    display: none;
+    visibility: hidden;
+    display: inline-block;
+    width: 0;
 `;
 
 const LanguagePicker = styled.select`

@@ -52,6 +52,7 @@ class Header extends React.PureComponent {
                 <meta name='twitter:card' content={type} />
                 <meta name='twitter:site' content={site} />
                 <meta name='twitter:creator' content={creator} />
+                <meta name='description' content={description} />
                 <meta property='og:url' content={url} />
                 <meta property='og:title' content={title} />
                 <meta property='og:description' content={description} />
