@@ -6,6 +6,7 @@ import { grid } from '../constants/dimensions';
 import AppLogo from './AppLogo';
 import GlobalNav from './GlobalNav';
 import { device } from '../constants/breakpoints';
+import { withTranslation } from '../utils/i18n';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,
@@ -18,7 +19,9 @@ class GlobalHeader extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.setScrollState);
+        window.addEventListener('scroll', this.setScrollState, {
+            passive: true,
+        });
     }
 
     componentWillUnmount() {
@@ -36,7 +39,7 @@ class GlobalHeader extends React.Component {
     };
 
     render() {
-        const { invertHeader } = this.props;
+        const { invertHeader, t } = this.props;
         const { hasScrolled } = this.state;
 
         return (
@@ -45,7 +48,12 @@ class GlobalHeader extends React.Component {
                 hasScrolled={hasScrolled}
             >
                 <HeaderInterior>
-                    <AppLogo invertHeader={invertHeader} />
+                    <AppLogo
+                        alt={t('common.logo', {
+                            appName: t('common:appName', { count: 0 }),
+                        })}
+                        invertHeader={invertHeader}
+                    />
                     <GlobalNav invertHeader={invertHeader} />
                 </HeaderInterior>
             </HeaderContainer>
@@ -55,7 +63,7 @@ class GlobalHeader extends React.Component {
 
 GlobalHeader.propTypes = propTypes;
 
-export default GlobalHeader;
+export default withTranslation(['header', 'common'])(GlobalHeader);
 
 const HeaderContainer = styled.div`
     z-index: 2;

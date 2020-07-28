@@ -16,9 +16,14 @@ const phoneImage = require('../../../public/images/landing/02.webp');
 
 class MapSection extends React.PureComponent {
     renderPhone = () => {
+        const { t } = this.props;
+
         return (
             <ContentImage justifyLeft>
-                <Phone src={phoneImage} />
+                <Phone
+                    src={phoneImage}
+                    alt={t('image.alt.phone', { appName: t('common:appName') })}
+                />
             </ContentImage>
         );
     };
@@ -41,7 +46,7 @@ class MapSection extends React.PureComponent {
     }
 }
 
-export default withTranslation('landing')(MapSection);
+export default withTranslation(['landing', 'common'])(MapSection);
 
 export const Phone = styled(PhoneBase)`
     max-width: 375px;

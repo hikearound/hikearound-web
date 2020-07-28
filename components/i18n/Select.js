@@ -34,24 +34,31 @@ class LanguageSelect extends React.PureComponent {
         const width = this.setWidth();
 
         return (
-            <LanguagePicker
-                name='language'
-                id='language'
-                onChange={this.handleChange}
-                value={value}
-                style={{ width }}
-            >
-                <option value={value} disabled hidden>
-                    {t('link.language')}
-                </option>
-                <option value='en'>English</option>
-                <option value='es'>Española</option>
-            </LanguagePicker>
+            <span>
+                <Label htmlFor='language'>{t('link.language')}</Label>
+                <LanguagePicker
+                    name='language'
+                    id='language'
+                    onChange={this.handleChange}
+                    value={value}
+                    style={{ width }}
+                >
+                    <option value={value} disabled hidden>
+                        {t('link.language')}
+                    </option>
+                    <option value='en'>English</option>
+                    <option value='es'>Española</option>
+                </LanguagePicker>
+            </span>
         );
     }
 }
 
 export default withTranslation(['footer'])(LanguageSelect);
+
+const Label = styled.label`
+    display: none;
+`;
 
 const LanguagePicker = styled.select`
     -webkit-appearance: none;

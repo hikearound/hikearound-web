@@ -23,7 +23,8 @@ const FooterWrapper = styled.div`
     padding: ${spacing.lg};
 
     a,
-    select {
+    select,
+    span {
         font-size: ${fontSize.sm};
     }
 `;

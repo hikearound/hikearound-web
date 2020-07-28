@@ -21,9 +21,14 @@ class IntroSection extends React.PureComponent {
     };
 
     renderPhone = () => {
+        const { t } = this.props;
+
         return (
             <ContentImage inflate>
-                <Phone src={phoneImage} />
+                <Phone
+                    src={phoneImage}
+                    alt={t('image.alt.phone', { appName: t('common:appName') })}
+                />
             </ContentImage>
         );
     };
@@ -48,7 +53,7 @@ class IntroSection extends React.PureComponent {
     }
 }
 
-export default withTranslation('landing')(IntroSection);
+export default withTranslation(['landing', 'common'])(IntroSection);
 
 export const Phone = styled(PhoneBase)`
     max-width: 600px;

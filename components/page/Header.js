@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
 import GlobalHeader from '../GlobalHeader';
-import { baseUrl } from '../../constants/common';
+import { baseUrl, ogImage } from '../../constants/common';
+import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hideHeader: PropTypes.bool.isRequired,
@@ -12,6 +14,7 @@ const propTypes = {
     type: PropTypes.string,
     hike: PropTypes.object,
     invertHeader: PropTypes.bool.isRequired,
+    router: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
@@ -23,36 +26,38 @@ const defaultProps = {
 
 class Header extends React.PureComponent {
     generateUrl = () => {
-        const { hike } = this.props;
-        return `${baseUrl}/hike/${hike.id}`;
+        const { router } = this.props;
+        return `${baseUrl}${router.asPath}`;
     };
 
-    truncateDescription = () => {
+    getHikeDescription = () => {
         const { hike } = this.props;
         return hike.description.replace(/(\n\n)/gm, ' ');
     };
 
     renderOpenGraph = () => {
-        const { creator, site, type, hike, title } = this.props;
+        const { creator, site, type, hike, title, t } = this.props;
+        const url = this.generateUrl();
+
+        let description = t('description');
+        let image = ogImage;
 
         if (hike) {
-            const url = this.generateUrl();
-            const description = this.truncateDescription();
-
-            return (
-                <>
-                    <meta name='twitter:card' content={type} />
-                    <meta name='twitter:site' content={site} />
-                    <meta name='twitter:creator' content={creator} />
-                    <meta property='og:url' content={url} />
-                    <meta property='og:title' content={title} />
-                    <meta property='og:description' content={description} />
-                    <meta property='og:image' content={hike.mapImage} />
-                </>
-            );
+            description = this.getHikeDescription();
+            image = hike.mapImage;
         }
 
-        return null;
+        return (
+            <>
+                <meta name='twitter:card' content={type} />
+                <meta name='twitter:site' content={site} />
+                <meta name='twitter:creator' content={creator} />
+                <meta property='og:url' content={url} />
+                <meta property='og:title' content={title} />
+                <meta property='og:description' content={description} />
+                <meta property='og:image' content={image} />
+            </>
+        );
     };
 
     render() {
@@ -83,4 +88,4 @@ class Header extends React.PureComponent {
 Header.propTypes = propTypes;
 Header.defaultProps = defaultProps;
 
-export default Header;
+export default withRouter(withTranslation('common')(Header));

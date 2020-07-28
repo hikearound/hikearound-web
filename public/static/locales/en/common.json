@@ -1,5 +1,6 @@
 {
     "appName": "Hikearound",
+    "appName_plural": "Hikearound's",
     "card": {
         "title": {
             "recent": "Recent Hikes",
@@ -10,5 +11,6 @@
             "map": "Trail Map"
         }
     },
-    "slogan": "{{appName}} | Get out and hike something"
+    "slogan": "{{appName}} | Get out and hike something",
+    "description": "Hikearound is the easiest way to discover, save, and share great local hikes. Great hikes are waiting to be discovered. Download the app today to get started."
 }

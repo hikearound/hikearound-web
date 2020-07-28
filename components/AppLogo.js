@@ -6,6 +6,7 @@ import { device } from '../constants/breakpoints';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,
+    alt: PropTypes.string.isRequired,
 };
 
 class AppLogo extends React.PureComponent {
@@ -23,11 +24,12 @@ class AppLogo extends React.PureComponent {
 
     render() {
         const { logo } = this.state;
+        const { alt } = this.props;
 
         return (
             <Link href='/'>
                 <LogoLink href='/'>
-                    <LogoImage src={logo} />
+                    <LogoImage src={logo} alt={alt} />
                 </LogoLink>
             </Link>
         );
@@ -49,6 +51,7 @@ const LogoImage = styled.img`
     width: 166px;
     position: relative;
     top: -1px;
+    color: transparent;
 
     &:hover {
         cursor: pointer;

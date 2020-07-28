@@ -16,5 +16,11 @@
             "title": "Start local, go global.",
             "description": "Browse nearby hikes or expand your search across the entire country to find the perfect trail."
         }
+    },
+    "image": {
+        "alt": {
+            "badge": "The Apple App Store badge",
+            "phone": "An image of the {{appName}} iOS app."
+        }
     }
 }

@@ -72,7 +72,7 @@ Footer.defaultProps = defaultProps;
 
 export default withTranslation(['footer'])(Footer);
 
-const CopyrightText = styled.a`
+const CopyrightText = styled.span`
     display: ${(props) => (props.inlineCopyright ? 'inline-block' : 'block')};
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};

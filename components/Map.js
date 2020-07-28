@@ -22,6 +22,18 @@ const defaultProps = {
 };
 
 class AppleMap extends React.Component {
+    componentDidUpdate() {
+        const { center, points, map, region } = this.props;
+
+        if (map) {
+            this.setOptions();
+            this.setRegion(region);
+            this.setCenter(center);
+            this.plotPoints(points);
+            this.filterPoints();
+        }
+    }
+
     setOptions = () => {
         const { map } = this.props;
 
@@ -81,16 +93,7 @@ class AppleMap extends React.Component {
     };
 
     render() {
-        const { center, points, map, mapProps, region } = this.props;
-
-        if (map) {
-            this.setOptions();
-            this.setRegion(region);
-            this.setCenter(center);
-            this.plotPoints(points);
-            this.filterPoints();
-        }
-
+        const { mapProps } = this.props;
         return <Map {...mapProps} showsZoomControl={false} />;
     }
 }
