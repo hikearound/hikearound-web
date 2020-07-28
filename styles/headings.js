@@ -16,7 +16,7 @@ export const SecondaryHeading = styled.h2`
     padding: ${(props) => (props.isCard ? spacing.md : 0)};
 `;
 
-export const SubHeading = styled.h3`
+export const SubHeading = styled.h2`
     font-size: ${fontSize.md};
     font-weight: ${fontWeight.regular};
     color: ${colors.grayMedium};
