@@ -71,7 +71,7 @@ const LanguagePicker = styled.select`
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};
     line-height: ${lineHeight.lh_13};
-    text-indent: -2px;
+    text-indent: -1px;
     margin-right: 4px;
 
     &:focus {

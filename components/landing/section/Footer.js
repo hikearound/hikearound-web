@@ -4,6 +4,7 @@ import { Section } from '../../../styles/landing';
 import { fontSize } from '../../../constants/landing';
 import { spacing } from '../../../constants/spacing';
 import Footer from '../../page/Footer';
+import { device } from '../../../constants/breakpoints';
 
 class FooterSection extends React.PureComponent {
     render() {
@@ -26,5 +27,9 @@ const FooterWrapper = styled.div`
     select,
     span {
         font-size: ${fontSize.sm};
+    }
+
+    @media ${device.tablet} {
+        line-height: 28px;
     }
 `;
