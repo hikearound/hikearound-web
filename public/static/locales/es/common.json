@@ -1,5 +1,6 @@
 {
     "appName": "Hikearound",
+    "appName_plural": "Hikearound",
     "card": {
         "title": {
             "recent": "Caminatas recientes",
@@ -10,5 +11,6 @@
             "map": "Mapa de senderos"
         }
     },
-    "slogan": "{{appName}} | Sal y camina algo"
+    "slogan": "{{appName}} | Sal y camina algo",
+    "description": "Hikearound es la forma más fácil de descubrir, guardar y compartir excelentes caminatas locales. Grandes caminatas esperan ser descubiertas. Descargue la aplicación hoy para comenzar."
 }

@@ -30,6 +30,6 @@ const FooterWrapper = styled.div`
     }
 
     @media ${device.tablet} {
-        line-height: 28px;
+        line-height: 24px;
     }
 `;

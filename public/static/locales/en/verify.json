@@ -1,7 +1,5 @@
 {
-    "title": {
-        "verify": "Verify Your Account"
-    }
+    "title": "Verify Your Account",
     "message": {
         "success": "Your account was successfully verified.",
         "error": {

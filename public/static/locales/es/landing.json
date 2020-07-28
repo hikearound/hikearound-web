@@ -16,5 +16,11 @@
             "title": "Comience localmente, vaya global.",
             "description": "Explore las caminatas cercanas o amplíe su búsqueda en todo el país para encontrar el camino perfecto."
         }
+    },
+    "image": {
+        "alt": {
+            "badge": "The Apple App Store badge",
+            "phone": "An image of the {{appName}} iOS app"
+        }
     }
 }
