@@ -1,9 +1,9 @@
 import App from 'next/app';
 import React from 'react';
-import { MapkitProvider } from 'react-mapkit';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { ToastProvider } from 'react-toast-notifications';
 import SimpleReactLightbox from 'simple-react-lightbox';
+import MapkitProvider from '../components/map/MapKitProvider';
 import { appWithTranslation } from '../utils/i18n';
 import Toast from '../components/Toast';
 import { getTheme, initSentry } from '../utils/app';

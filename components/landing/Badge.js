@@ -22,4 +22,5 @@ export const Link = styled.a`
 
 export const Badge = styled.img`
     width: 125px;
+    height: 42px;
 `;

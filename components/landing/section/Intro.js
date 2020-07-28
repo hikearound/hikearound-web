@@ -13,6 +13,8 @@ import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
 
+const phoneImage = require('../../../public/images/landing/01.webp');
+
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
         return <AppStoreBadge />;
@@ -21,7 +23,7 @@ class IntroSection extends React.PureComponent {
     renderPhone = () => {
         return (
             <ContentImage inflate>
-                <Phone src='/images/landing/01.png' />
+                <Phone src={phoneImage} />
             </ContentImage>
         );
     };
