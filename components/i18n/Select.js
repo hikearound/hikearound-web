@@ -34,14 +34,15 @@ class LanguageSelect extends React.PureComponent {
         const width = this.setWidth();
 
         return (
-            <span>
-                <Label htmlFor='language'>{t('link.language')}</Label>
+            <Form>
+                <Label id='languageLabel'>{t('link.language')}</Label>
                 <LanguagePicker
                     name='language'
                     id='language'
                     onChange={this.handleChange}
                     value={value}
                     style={{ width }}
+                    aria-labelledby='languageLabel'
                 >
                     <option value={value} disabled hidden>
                         {t('link.language')}
@@ -49,17 +50,19 @@ class LanguageSelect extends React.PureComponent {
                     <option value='en'>English</option>
                     <option value='es'>Española</option>
                 </LanguagePicker>
-            </span>
+            </Form>
         );
     }
 }
 
 export default withTranslation(['footer'])(LanguageSelect);
 
-const Label = styled.label`
-    visibility: hidden;
+const Form = styled.form`
     display: inline-block;
-    width: 0;
+`;
+
+const Label = styled.span`
+    display: none;
 `;
 
 const LanguagePicker = styled.select`
