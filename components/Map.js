@@ -28,6 +28,7 @@ class AppleMap extends React.Component {
         if (isMobile) {
             map.isScrollEnabled = false;
         }
+
         map.showsScale = mapkit.FeatureVisibility.Visible;
     };
 

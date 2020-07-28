@@ -73,6 +73,14 @@ class Header extends React.PureComponent {
                         href='/images/favicon/favicon.png'
                         type='image/png'
                     />
+                    <link
+                        rel='preconnect'
+                        href='https://www.google-analytics.com'
+                    />
+                    <link
+                        rel='preconnect'
+                        href='https://cdn.apple-mapkit.com'
+                    />
                 </Head>
                 {!hideHeader && <GlobalHeader invertHeader={invertHeader} />}
             </>
