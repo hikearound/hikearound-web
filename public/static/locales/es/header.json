@@ -1,6 +1,7 @@
 {
     "common": {
         "about": "Acerca",
-        "app": "Obtener la aplicación"
+        "app": "Obtener la aplicación",
+        "logo": "{{appName}} logo"
     }
 }
