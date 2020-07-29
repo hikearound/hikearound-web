@@ -24,10 +24,10 @@ export const Link = styled.a`
     display: inline-block;
     margin-top: ${componentSpacing.sm};
     width: 125px;
+    min-height: 42px;
 `;
 
 export const Badge = styled.img`
     width: 125px;
-    height: 42px;
     color: transparent;
 `;

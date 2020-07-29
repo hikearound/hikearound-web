@@ -64,6 +64,7 @@ export default withTranslation(['landing', 'common'])(IntroSection);
 
 export const Phone = styled(PhoneBase)`
     max-width: 600px;
+    max-height: 588px;
     margin-right: -120px;
     position: relative;
     top: ${spacing.md};
