@@ -103,6 +103,7 @@ export const ContentImage = styled.div`
 
     @media ${device.tablet} {
         width: ${(props) => (props.inflate ? '120%' : '100%')};
+        justify-content: center;
     }
 `;
 
