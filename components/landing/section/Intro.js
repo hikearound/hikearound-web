@@ -13,7 +13,7 @@ import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
 
-const phoneImage = require('../../../public/images/landing/01.webp');
+const phoneImage = require('../../../public/images/landing/01.png');
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {

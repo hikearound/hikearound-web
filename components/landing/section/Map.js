@@ -12,7 +12,7 @@ import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
 
-const phoneImage = require('../../../public/images/landing/02.webp');
+const phoneImage = require('../../../public/images/landing/02.png');
 
 class MapSection extends React.PureComponent {
     renderPhone = () => {
