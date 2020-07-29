@@ -13,7 +13,8 @@ import { spacing } from '../../../constants/spacing';
 import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
 
-const phoneImage = require('../../../public/images/landing/01.png');
+const phone = require('../../../public/images/landing/01.png');
+const phoneOptimized = require('../../../public/images/landing/01.png?webp');
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
@@ -25,10 +26,16 @@ class IntroSection extends React.PureComponent {
 
         return (
             <ContentImage inflate>
-                <Phone
-                    src={phoneImage}
-                    alt={t('image.alt.phone', { appName: t('common:appName') })}
-                />
+                <picture>
+                    <source srcSet={phoneOptimized} type='image/webp' />
+                    <source srcSet={phone} type='image/png' />
+                    <Phone
+                        src={phone}
+                        alt={t('image.alt.phone', {
+                            appName: t('common:appName'),
+                        })}
+                    />
+                </picture>
             </ContentImage>
         );
     };

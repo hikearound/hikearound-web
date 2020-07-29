@@ -29,6 +29,13 @@ module.exports = {
         'prettier',
     ],
     'rules': {
+        'import/no-unresolved': [
+            2, {
+                'ignore': [
+                    '\\.(png|jpg|svg)\\?(lqip)$'
+                ],
+            }
+        ],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'import/no-extraneous-dependencies': 'off',
