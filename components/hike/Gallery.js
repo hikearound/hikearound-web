@@ -67,7 +67,7 @@ class Gallery extends React.PureComponent {
         const { imageArray, thumbArray } = this.state;
 
         return (
-            <CardContent>
+            <CardContent includeMinHeight>
                 <PhotoGallery>
                     <SRLWrapper options={options}>
                         {imageArray.map((image, index) => (
@@ -113,6 +113,10 @@ const PhotoGallery = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    div {
+        display: flex;
+    }
 `;
 
 const ThumbnailButton = styled.a`
