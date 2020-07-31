@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withTranslation } from '../../utils/i18n';
 import { spacing } from '../../constants/spacing';
 import { fontSize } from '../../constants/type';
+import { device } from '../../constants/breakpoints';
 
 const propTypes = {
     i18n: PropTypes.object.isRequired,
@@ -88,5 +89,9 @@ const LanguagePicker = styled.select`
     &:hover {
         cursor: pointer;
         text-decoration: underline;
+    }
+
+    @media ${device.mobile} {
+        font-size: 16px;
     }
 `;
