@@ -24,9 +24,12 @@ const FooterWrapper = styled.div`
     padding: ${spacing.lg};
 
     a,
-    select,
     span {
         font-size: ${fontSize.sm};
+
+        span {
+            font-size: ${fontSize.sm};
+        }
     }
 
     @media ${device.tablet} {

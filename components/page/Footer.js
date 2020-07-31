@@ -54,7 +54,7 @@ class Footer extends React.PureComponent {
         const links = this.renderLinks();
 
         return (
-            <>
+            <FooterWrapper>
                 {links.map(({ text, link }, index) => (
                     <Link href={link} key={index}>
                         <RightRailLink href={link}>{text}</RightRailLink>
@@ -62,7 +62,7 @@ class Footer extends React.PureComponent {
                 ))}
                 <LanguageSelect />
                 {this.renderCopyrightText()}
-            </>
+            </FooterWrapper>
         );
     }
 }
@@ -74,7 +74,12 @@ export default withTranslation(['footer'])(Footer);
 
 const CopyrightText = styled.span`
     display: ${(props) => (props.inlineCopyright ? 'inline-block' : 'block')};
-    color: ${colors.grayDark};
-    font-size: ${fontSize.sm};
-    line-height: ${lineHeight.lh_13};
+`;
+
+const FooterWrapper = styled.span`
+    span {
+        color: ${colors.grayDark};
+        font-size: ${fontSize.sm};
+        line-height: ${lineHeight.lh_13};
+    }
 `;

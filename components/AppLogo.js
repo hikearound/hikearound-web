@@ -31,13 +31,8 @@ class AppLogo extends React.PureComponent {
 
         return (
             <Link href='/'>
-                <LogoLink href='/'>
-                    <LogoImage
-                        dangerouslySetInnerHTML={{
-                            __html: logo,
-                        }}
-                        alt={alt}
-                    />
+                <LogoLink href='/' aria-label={alt}>
+                    <LogoImage dangerouslySetInnerHTML={{ __html: logo }} />
                 </LogoLink>
             </Link>
         );
