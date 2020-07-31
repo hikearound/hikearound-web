@@ -56,7 +56,7 @@ const CarouselCard = styled.a`
         margin-bottom: 40px;
 
         &:hover {
-            scale: none;
+            transform: scale(1);
         }
     }
 `;

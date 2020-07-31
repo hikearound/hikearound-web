@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
 import { i18n, withTranslation } from '../../utils/i18n';
 import { colors } from '../../constants/colors';
 import { fontSize, lineHeight } from '../../constants/type';
@@ -17,19 +18,25 @@ class LanguageSelect extends React.PureComponent {
 
     handleChange = (event) => {
         i18n.changeLanguage(event.target.value);
-        this.setState({ value: 'default' });
+        this.setState({ value: event.target.value });
     };
 
     setWidth = () => {
+        const { i18n } = this.props;
         let width = 'initial';
+
         if (i18n.language === 'es') {
             width = 48;
+            if (isMobile) {
+                width = 54;
+            }
         }
+
         return width;
     };
 
     render() {
-        const { t } = this.props;
+        const { t, i18n } = this.props;
         const { value } = this.state;
         const width = this.setWidth();
 
@@ -71,7 +78,7 @@ const LanguagePicker = styled.select`
     color: ${colors.grayDark};
     font-size: ${fontSize.sm};
     line-height: ${lineHeight.lh_13};
-    text-indent: -1px;
+    text-indent: 0;
     margin-right: 4px;
 
     &:focus {

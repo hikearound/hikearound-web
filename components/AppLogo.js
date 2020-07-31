@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { Link } from '../utils/i18n';
 import { device } from '../constants/breakpoints';
 
+const white = require('../public/images/logo/logo.svg?include');
+const purple = require('../public/images/logo/logo-purple.svg?include');
+
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,
     alt: PropTypes.string.isRequired,
@@ -14,9 +17,9 @@ class AppLogo extends React.PureComponent {
         super(props, context);
         const { invertHeader } = this.props;
 
-        let logo = '/images/logo/logo.svg';
+        let logo = white;
         if (invertHeader) {
-            logo = '/images/logo/logo-purple.svg';
+            logo = purple;
         }
 
         this.state = { logo };
@@ -29,7 +32,12 @@ class AppLogo extends React.PureComponent {
         return (
             <Link href='/'>
                 <LogoLink href='/'>
-                    <LogoImage src={logo} alt={alt} />
+                    <LogoImage
+                        dangerouslySetInnerHTML={{
+                            __html: logo,
+                        }}
+                        alt={alt}
+                    />
                 </LogoLink>
             </Link>
         );
@@ -46,7 +54,7 @@ const LogoLink = styled.a`
     }
 `;
 
-const LogoImage = styled.img`
+const LogoImage = styled.div`
     height: 20px;
     width: 166px;
     position: relative;
@@ -55,5 +63,9 @@ const LogoImage = styled.img`
 
     &:hover {
         cursor: pointer;
+    }
+
+    &:active {
+        opacity: 0.9;
     }
 `;
