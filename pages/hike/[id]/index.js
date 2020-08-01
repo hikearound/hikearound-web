@@ -64,16 +64,21 @@ class HikePage extends React.Component {
         );
     }
 
-    renderRightColumn() {
+    renderStickyRightColumn() {
         const { hike, shouldShowAd } = this.props;
 
         return (
             <div>
-                <Stats hike={hike} />
                 <RecentHikes id={hike.id} />
                 {shouldShowAd && <Ad />}
             </div>
         );
+    }
+
+    renderRightColumn() {
+        const { hike } = this.props;
+
+        return <Stats hike={hike} />;
     }
 
     render() {
@@ -84,6 +89,7 @@ class HikePage extends React.Component {
                 title={hike.name}
                 hike={hike}
                 mainColumn={this.renderMainColumn()}
+                rightColumnSticky={this.renderStickyRightColumn()}
                 rightColumn={this.renderRightColumn()}
             />
         );

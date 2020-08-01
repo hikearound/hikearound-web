@@ -79,7 +79,7 @@ const LanguagePicker = styled.select`
     opacity: 0;
     position: absolute;
     top: 0;
-    width: 100;
+    width: 100%;
     font-size: ${fontSize.sm};
 
     &:focus {
@@ -91,7 +91,7 @@ const LanguagePicker = styled.select`
         text-decoration: underline;
     }
 
-    @media ${device.mobile} {
+    @media ${device.tablet} {
         font-size: 16px;
     }
 `;

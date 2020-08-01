@@ -19,6 +19,7 @@ const columnType = [PropTypes.object, PropTypes.array];
 const propTypes = {
     mainColumn: PropTypes.oneOfType(columnType).isRequired,
     rightColumn: PropTypes.oneOfType(columnType),
+    rightColumnSticky: PropTypes.oneOfType(columnType),
     hideHeader: PropTypes.bool,
     hideFooter: PropTypes.bool,
     singleColumn: PropTypes.bool,
@@ -30,6 +31,7 @@ const propTypes = {
 
 const defaultProps = {
     rightColumn: [],
+    rightColumnSticky: [],
     hideHeader: false,
     hideFooter: false,
     singleColumn: false,
@@ -87,12 +89,13 @@ class Page extends React.PureComponent {
     };
 
     renderRightColumn() {
-        const { rightColumn, hideFooter } = this.props;
+        const { rightColumnSticky, rightColumn, hideFooter } = this.props;
 
         return (
             <RightColumn>
+                {rightColumn}
                 <StickyContainer>
-                    {rightColumn}
+                    {rightColumnSticky}
                     {!hideFooter && this.renderFooter()}
                 </StickyContainer>
             </RightColumn>

@@ -53,6 +53,10 @@ class MyDocument extends Document {
                         src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
                     />
                     <script
+                        async
+                        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+                    />
+                    <script
                         dangerouslySetInnerHTML={{
                             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js',new Date());gtag('config','${NEXT_PUBLIC_GA_TRACKING_ID}',{page_path:window.location.pathname,});`,
                         }}
