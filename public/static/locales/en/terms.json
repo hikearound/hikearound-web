@@ -1,0 +1,18 @@
+{
+    "section": {
+        "access": "Access to the Services",
+        "use": "Use of the Services",
+        "security": "Account & Account Security",
+        "restricted": "Things You Cannot Do",
+        "indemnity": "Indemnity",
+        "disclaimers": "Disclaimers",
+        "liability": "Limitation of Liability",
+        "governing": "Governing Law and Venue",
+        "changes": "Changes to these Terms",
+        "termination": "Termination",
+        "misc": "Miscellaneous"
+    },
+    "card": {
+        "title": "Sections"
+    }
+}

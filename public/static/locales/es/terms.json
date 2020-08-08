@@ -1,0 +1,18 @@
+{
+    "section": {
+        "access": "Acceso a los servicios",
+        "use": "Uso de los servicios",
+        "security": "Cuenta y seguridad de la cuenta",
+        "restricted": "Cosas que no puedes hacer",
+        "indemnity": "Indemnidad",
+        "disclaimers": "Renuncias",
+        "liability": "Limitación de responsabilidad",
+        "governing": "Ley aplicable y jurisdicción",
+        "changes": "Cambios a estos Términos",
+        "termination": "Terminación",
+        "misc": "Diverso"
+    },
+    "card": {
+        "title": "Secciones"
+    }
+}

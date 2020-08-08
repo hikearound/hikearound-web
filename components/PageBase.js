@@ -4,16 +4,20 @@ import { RichText } from 'prismic-reactjs';
 import Page from '../layouts/main';
 import PageContent from './PageContent';
 
+const columnType = [PropTypes.object, PropTypes.array];
+
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
     hideHeader: PropTypes.bool,
     hideFooter: PropTypes.bool,
+    rightColumnSticky: PropTypes.oneOfType(columnType),
 };
 
 const defaultProps = {
     hideHeader: false,
     hideFooter: false,
+    rightColumnSticky: [],
 };
 
 class PageBase extends React.PureComponent {
@@ -30,7 +34,7 @@ class PageBase extends React.PureComponent {
     }
 
     render() {
-        const { title, hideHeader, hideFooter } = this.props;
+        const { title, hideHeader, hideFooter, rightColumnSticky } = this.props;
 
         return (
             <Page
@@ -38,6 +42,7 @@ class PageBase extends React.PureComponent {
                 mainColumn={this.renderMainColumn()}
                 hideHeader={hideHeader}
                 hideFooter={hideFooter}
+                rightColumnSticky={rightColumnSticky}
             />
         );
     }
