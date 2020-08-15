@@ -1,32 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Link } from '../../utils/i18n';
-import { device } from '../../constants/breakpoints';
-import { colors } from '../../constants/colors';
+import { Link, withTranslation } from '../../utils/i18n';
+import LocationPill from './pill/Location';
+import DifficultyPill from './pill/Difficulty';
+import {
+    PillSection,
+    Gradient,
+    InfoSection,
+    Name,
+    Distance,
+    Elevation,
+    CarouselCard,
+    CardBackground,
+} from '../../styles/carousel';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    map: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    distance: PropTypes.number.isRequired,
+    elevation: PropTypes.number.isRequired,
+    difficulty: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
 };
 
 class Card extends React.PureComponent {
+    renderGradient = () => {
+        return <Gradient />;
+    };
+
+    renderPills = () => {
+        const { city, difficulty } = this.props;
+
+        return (
+            <PillSection>
+                <LocationPill label={city} />
+                <DifficultyPill label={difficulty} />
+            </PillSection>
+        );
+    };
+
+    renderInfo = () => {
+        const { name, distance, elevation, t } = this.props;
+
+        return (
+            <InfoSection>
+                <Name>{name}</Name>
+                <Distance>{t('measurement.distance', { distance })}</Distance>
+                <Elevation>
+                    {t('measurement.elevation', { elevation })}
+                </Elevation>
+            </InfoSection>
+        );
+    };
+
     render() {
-        const { name, city, map, id } = this.props;
+        const { image, id } = this.props;
 
         return (
             <Link href='/hike/[id]' as={`/hike/${id}`}>
                 <CarouselCard href={`/hike/${id}`}>
-                    <Map map={map}>
-                        <MapGradient>
-                            <InfoSection>
-                                <HikeName>{name}</HikeName>
-                                <City>{city}</City>
-                            </InfoSection>
-                        </MapGradient>
-                    </Map>
+                    <CardBackground image={image}>
+                        {this.renderGradient()}
+                        {this.renderPills()}
+                        {this.renderInfo()}
+                    </CardBackground>
                 </CarouselCard>
             </Link>
         );
@@ -35,77 +73,4 @@ class Card extends React.PureComponent {
 
 Card.propTypes = propTypes;
 
-export default Card;
-
-const CarouselCard = styled.a`
-    border: 1px solid ${colors.gray};
-    height: 225px;
-    width: 100%;
-    border-radius: 4px;
-    background-color: ${colors.gray};
-    margin: 40px 10px 80px 10px;
-    transition: transform 0.2s;
-
-    &:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-
-    @media ${device.tablet} {
-        height: 200px;
-        margin-bottom: 40px;
-
-        &:hover {
-            transform: scale(1);
-        }
-    }
-`;
-
-const Map = styled.div`
-    background-image: ${(props) => `url(${props.map})`};
-    background-size: cover;
-    height: 100%;
-    position: relative;
-    border-radius: 4px;
-    background-position: center;
-`;
-
-const InfoSection = styled.div`
-    text-align: left;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    font-weight: 450;
-`;
-
-const MapGradient = styled.div`
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 180px;
-    background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0) 40%,
-        rgba(0, 0, 0, 0.95) 98%
-    );
-    border-radius: 4px;
-`;
-
-const HikeName = styled.div`
-    display: inline-block;
-    font-size: 15px;
-    margin-right: 5px;
-    color: ${colors.white};
-
-    &:after {
-        content: '\\b7';
-        margin-left: 5px;
-    }
-`;
-
-const City = styled.div`
-    display: inline-block;
-    font-size: 15px;
-    color: ${colors.white};
-`;
+export default withTranslation(['hike', 'common'])(Card);

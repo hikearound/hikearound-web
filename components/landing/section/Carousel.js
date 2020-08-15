@@ -23,15 +23,31 @@ class CarouselSection extends React.PureComponent {
                     },
                 }}
             >
-                {hikeData.map(({ name, city, map, id }, index) => (
-                    <Card
-                        name={name}
-                        city={city}
-                        map={map}
-                        id={id}
-                        key={index}
-                    />
-                ))}
+                {hikeData.map(
+                    (
+                        {
+                            name,
+                            city,
+                            image,
+                            distance,
+                            elevation,
+                            difficulty,
+                            id,
+                        },
+                        index,
+                    ) => (
+                        <Card
+                            name={name}
+                            city={city}
+                            image={image}
+                            distance={distance}
+                            elevation={elevation}
+                            difficulty={difficulty}
+                            id={id}
+                            key={index}
+                        />
+                    ),
+                )}
             </Carousel>
         );
     };
