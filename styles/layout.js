@@ -57,6 +57,7 @@ export const StickyContainer = styled.div`
 
 export const RightColumn = styled.div`
     width: ${grid.rightCol};
+    min-width: ${grid.rightCol};
     display: inline-block;
     margin-left: ${grid.gutter};
 

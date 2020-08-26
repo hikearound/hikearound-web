@@ -11,7 +11,6 @@ import {
     Distance,
     Elevation,
     CarouselCard,
-    CardBackground,
 } from '../../styles/carousel';
 
 const propTypes = {
@@ -59,12 +58,10 @@ class Card extends React.PureComponent {
 
         return (
             <Link href='/hike/[id]' as={`/hike/${id}`}>
-                <CarouselCard href={`/hike/${id}`}>
-                    <CardBackground image={image}>
-                        {this.renderGradient()}
-                        {this.renderPills()}
-                        {this.renderInfo()}
-                    </CardBackground>
+                <CarouselCard href={`/hike/${id}`} image={image}>
+                    {this.renderGradient()}
+                    {this.renderPills()}
+                    {this.renderInfo()}
                 </CarouselCard>
             </Link>
         );
@@ -73,4 +70,4 @@ class Card extends React.PureComponent {
 
 Card.propTypes = propTypes;
 
-export default withTranslation(['hike', 'common'])(Card);
+export default withTranslation(['hike'])(Card);

@@ -1,0 +1,9 @@
+{
+    "title": "Darse de baja",
+    "message": {
+        "success": "Se anuló correctamente su suscripción a los correos electrónicos de {{emailType}}. Siempre puede volver a suscribirse desde su página de configuración.",
+        "error": {
+            "generic": "Lo sentimos, no pudimos cancelar su suscripción a los correos electrónicos de {{emailType}}. Inténtalo de nuevo."
+        }
+    }
+}

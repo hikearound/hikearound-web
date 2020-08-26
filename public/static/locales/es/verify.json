@@ -3,8 +3,7 @@
     "message": {
         "success": "Su cuenta fue verificada con éxito.",
         "error": {
-            "generic": "Lo sentimos, no pudimos verificar tu cuenta."
-            "token": "Lo sentimos, no pudimos verificar su cuenta porque el token de verificación expiró."
+            "generic": "Lo sentimos, no pudimos verificar tu cuenta.",
         }
     }
 }

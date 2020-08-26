@@ -11,7 +11,13 @@ import { withTranslation } from '../utils/i18n';
 class HomePage extends React.Component {
     static getInitialProps() {
         return {
-            namespacesRequired: ['common', 'landing', 'header', 'footer'],
+            namespacesRequired: [
+                'common',
+                'hike',
+                'landing',
+                'header',
+                'footer',
+            ],
         };
     }
 

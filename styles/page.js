@@ -17,6 +17,10 @@ export const RootView = styled.div`
 
     p {
         margin-bottom: ${spacing.md};
+
+        &:last-of-type {
+            margin: 0;
+        }
     }
 
     strong {

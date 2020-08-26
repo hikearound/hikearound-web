@@ -4,7 +4,6 @@
         "success": "Your account was successfully verified.",
         "error": {
             "generic": "We're sorry, we were unable to verify your account."
-            "token": "We're sorry, we were unable to verify your account because the verification token expired."
         }
     }
 }

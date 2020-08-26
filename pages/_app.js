@@ -9,7 +9,7 @@ import Toast from '../components/Toast';
 import { getTheme, initSentry } from '../utils/app';
 import { initAnalytics } from '../utils/analytics';
 import { settings } from '../constants/toast';
-import { initFirebase } from '../utils/auth/init';
+import { initFirebase } from '../utils/firebase/app';
 
 import '../css/reset.css';
 import '@brainhubeu/react-carousel/lib/style.css';

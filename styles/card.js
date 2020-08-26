@@ -11,6 +11,7 @@ export const Card = styled.div`
     border-radius: ${borderRadius.sm};
     padding: ${(props) => (props.noPadding ? 0 : spacing.md)};
     margin-bottom: ${(props) => (props.lastChild ? grid.gutter : spacing.md)};
+    min-height: 20px;
 
     @media ${device.tablet} {
         border-radius: 0;
@@ -18,6 +19,7 @@ export const Card = styled.div`
         border-bottom: solid ${colors.grayLight};
         border-width: ${(props) => (props.hideGutter ? 0 : '3px')};
         margin-bottom: 0;
+        display: ${(props) => (props.hideMobile ? 'none' : 'block')};
     }
 `;
 

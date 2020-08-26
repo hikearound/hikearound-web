@@ -25,16 +25,17 @@ class Confirmation extends React.Component {
 
     getVerificationStatus = () => {
         const { data, t } = this.props;
+        const emailType = t(`notifications:type.${data.type}`).toLowerCase();
 
         if (data.status === true) {
             this.setState({
-                message: t('message.success'),
+                message: t('message.success', { emailType }),
             });
         }
 
         if (data.status === false) {
             this.setState({
-                message: t('message.error.generic'),
+                message: t('message.error.generic', { emailType }),
             });
         }
     };
@@ -53,7 +54,7 @@ class Confirmation extends React.Component {
 
 Confirmation.propTypes = propTypes;
 
-export default withTranslation('verify')(Confirmation);
+export default withTranslation(['unsubscribe', 'notifications'])(Confirmation);
 
 const ConfirmationMessage = styled.div`
     line-height: ${lineHeight.lh_13};

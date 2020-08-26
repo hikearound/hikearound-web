@@ -84,7 +84,7 @@ const Stat = styled.div`
     line-height: ${lineHeight.lh_13};
     margin-right: ${spacing.sm};
     font-size: ${fontSize.sm};
-    margin-top: 4px;
+    margin-top: ${spacing.xs};
 
     &:first-child {
         margin-top: 0;

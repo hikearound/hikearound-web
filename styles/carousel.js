@@ -11,10 +11,15 @@ export const CarouselCard = styled.a`
     border: 1px solid ${colors.gray};
     height: 225px;
     width: 100%;
+    margin: 40px ${cardMargin} 80px ${cardMargin};
+    transition: transform 0.2s;
     border-radius: ${borderRadius.sm};
     background-color: ${colors.gray};
-    margin: 40px 10px 80px 10px;
-    transition: transform 0.2s;
+    background-image: ${(props) => `url(${props.image})`};
+    background-size: cover;
+    position: relative;
+    border-radius: ${borderRadius.sm};
+    background-position: center;
 
     &:hover {
         transform: scale(1.05);

@@ -21,7 +21,7 @@ class TermsNavigation extends React.PureComponent {
         const { t } = this.props;
 
         return (
-            <Card noPadding>
+            <Card noPadding hideMobile>
                 <ListHeading>{t('card.title')}</ListHeading>
                 <OrderedList>{this.renderRecentHikeLinks()}</OrderedList>
             </Card>

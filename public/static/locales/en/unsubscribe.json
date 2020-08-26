@@ -1,0 +1,9 @@
+{
+    "title": "Unsubscribe",
+    "message": {
+        "success": "You've been successfully unsubscribed from {{emailType}} emails. You can always resubscribe from your settings page.",
+        "error": {
+            "generic": "We're sorry, we were unable to unsubscribe you from {{emailType}} emails. Please try again."
+        }
+    }
+}
