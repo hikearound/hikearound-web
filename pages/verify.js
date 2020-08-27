@@ -14,12 +14,6 @@ const defaultProps = {
 };
 
 class VerifyPage extends React.Component {
-    static getInitialProps() {
-        return {
-            namespacesRequired: ['verify', 'header', 'footer'],
-        };
-    }
-
     renderMainColumn() {
         const { data } = this.props;
         return <Confirmation data={data} />;

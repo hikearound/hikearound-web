@@ -14,12 +14,6 @@ const defaultProps = {
 };
 
 class UnsubscribePage extends React.Component {
-    static getInitialProps() {
-        return {
-            namespacesRequired: ['unsubscribe', 'header', 'footer'],
-        };
-    }
-
     renderMainColumn() {
         const { data } = this.props;
         return <Confirmation data={data} />;
