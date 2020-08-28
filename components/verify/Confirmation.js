@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 import { lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
@@ -41,11 +42,12 @@ class Confirmation extends React.Component {
 
     render() {
         const { message } = this.state;
+
         return (
             <Card>
-                {message && (
-                    <ConfirmationMessage>{message}</ConfirmationMessage>
-                )}
+                <ConfirmationMessage>
+                    {message || <Skeleton width={300} />}
+                </ConfirmationMessage>
             </Card>
         );
     }
