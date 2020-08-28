@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Skeleton from 'react-loading-skeleton';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
@@ -41,13 +41,22 @@ class Confirmation extends React.Component {
         }
     };
 
+    renderLoadingState = () => {
+        return (
+            <>
+                <Skeleton variant='text' />
+                <Skeleton variant='text' width={200} />
+            </>
+        );
+    };
+
     render() {
         const { message } = this.state;
 
         return (
             <Card>
                 <ConfirmationMessage>
-                    {message || <Skeleton count={2} />}
+                    {message || this.renderLoadingState()}
                 </ConfirmationMessage>
             </Card>
         );
