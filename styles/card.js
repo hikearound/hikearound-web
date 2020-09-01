@@ -34,3 +34,7 @@ export const CardContent = styled.div`
         font-size: ${fontSize.sm};
     }
 `;
+
+export const GenericCardContent = styled.div`
+    line-height: ${lineHeight.lh_13};
+`;

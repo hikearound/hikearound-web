@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { lineHeight } from '../../constants/type';
-import { Card } from '../../styles/card';
+import { Card, GenericCardContent } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
@@ -49,9 +47,9 @@ class Confirmation extends React.Component {
 
         return (
             <Card>
-                <ConfirmationMessage>
+                <GenericCardContent>
                     {message || this.renderLoadingState()}
-                </ConfirmationMessage>
+                </GenericCardContent>
             </Card>
         );
     }
@@ -60,7 +58,3 @@ class Confirmation extends React.Component {
 Confirmation.propTypes = propTypes;
 
 export default withTranslation('verify')(Confirmation);
-
-const ConfirmationMessage = styled.div`
-    line-height: ${lineHeight.lh_13};
-`;

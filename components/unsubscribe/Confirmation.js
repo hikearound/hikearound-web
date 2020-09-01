@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { lineHeight } from '../../constants/type';
-import { Card } from '../../styles/card';
+import { Card, GenericCardContent } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
@@ -20,11 +18,11 @@ class Confirmation extends React.Component {
         const { data } = this.props;
 
         if (prevProps.data !== data) {
-            this.getVerificationStatus();
+            this.getSubscriptionStatus();
         }
     }
 
-    getVerificationStatus = () => {
+    getSubscriptionStatus = () => {
         const { data, t } = this.props;
         const emailType = t(`notifications:type.${data.type}`).toLowerCase();
 
@@ -45,7 +43,7 @@ class Confirmation extends React.Component {
         return (
             <>
                 <Skeleton variant='text' />
-                <Skeleton variant='text' width={200} />
+                <Skeleton variant='text' width={300} />
             </>
         );
     };
@@ -55,9 +53,9 @@ class Confirmation extends React.Component {
 
         return (
             <Card>
-                <ConfirmationMessage>
+                <GenericCardContent>
                     {message || this.renderLoadingState()}
-                </ConfirmationMessage>
+                </GenericCardContent>
             </Card>
         );
     }
@@ -66,7 +64,3 @@ class Confirmation extends React.Component {
 Confirmation.propTypes = propTypes;
 
 export default withTranslation(['unsubscribe', 'notifications'])(Confirmation);
-
-const ConfirmationMessage = styled.div`
-    line-height: ${lineHeight.lh_13};
-`;
