@@ -30,26 +30,29 @@ class PasswordForm extends React.Component {
     }
 
     handleChange = (field, event) => {
-        if (field === 'password') {
+        this.resetHelpText(field);
+        this.setState({ [field]: event.target.value });
+    };
+
+    resetHelpText = (resetType) => {
+        if (resetType === 'global') {
+            this.setState({
+                passwordHelpText: null,
+                retypedPasswordHelpText: null,
+            });
+        }
+
+        if (resetType === 'password') {
             this.setState({
                 passwordHelpText: null,
             });
         }
 
-        if (field === 'retypedPassword') {
+        if (resetType === 'retypedPassword') {
             this.setState({
                 retypedPasswordHelpText: null,
             });
         }
-
-        this.setState({ [field]: event.target.value });
-    };
-
-    resetHelpText = () => {
-        this.setState({
-            passwordHelpText: null,
-            retypedPasswordHelpText: null,
-        });
     };
 
     validatePasswords = () => {
@@ -60,7 +63,6 @@ class PasswordForm extends React.Component {
             this.setState({
                 passwordHelpText: t('message.error.emptyPassword'),
             });
-            return false;
         }
 
         if (!retypedPassword) {
@@ -69,13 +71,15 @@ class PasswordForm extends React.Component {
                     'message.error.emptyRetypedPassword',
                 ),
             });
-            return false;
         }
 
         if (password && retypedPassword && password !== retypedPassword) {
             this.setState({
                 retypedPasswordHelpText: t('message.error.mismatchedPassword'),
             });
+        }
+
+        if (!password || !retypedPassword || password !== retypedPassword) {
             return false;
         }
 
@@ -93,7 +97,7 @@ class PasswordForm extends React.Component {
         const { data, addToast, t } = this.props;
         const { password } = this.state;
 
-        this.resetHelpText();
+        this.resetHelpText('global');
         event.preventDefault();
 
         const shouldSubmit = this.validatePasswords();
@@ -113,8 +117,44 @@ class PasswordForm extends React.Component {
         }
     };
 
-    renderPasswordGroup = () => {
+    renderInput = (input, value, helperText) => {
         const { t, classes } = this.props;
+
+        return (
+            <TextField
+                id={input}
+                label={t(`label.${input}`)}
+                type='password'
+                autoComplete='new-password'
+                variant='outlined'
+                className={classes.textField}
+                size='small'
+                onChange={(e) => this.handleChange(input, e)}
+                helperText={helperText}
+                value={value}
+            />
+        );
+    };
+
+    renderButton = () => {
+        const { t, classes } = this.props;
+
+        return (
+            <Button
+                variant='contained'
+                color='primary'
+                size='small'
+                disableElevation
+                className={classes.button}
+                type='submit'
+            >
+                {t('common:submit')}
+            </Button>
+        );
+    };
+
+    renderPasswordGroup = () => {
+        const { classes } = this.props;
         const {
             password,
             retypedPassword,
@@ -124,54 +164,35 @@ class PasswordForm extends React.Component {
 
         return (
             <form className={classes.root} onSubmit={this.handleSubmit}>
-                <TextField
-                    id='password'
-                    label={t('label.password')}
-                    type='password'
-                    autoComplete='new-password'
-                    variant='outlined'
-                    className={classes.textField}
-                    size='small'
-                    onChange={(e) => this.handleChange('password', e)}
-                    helperText={passwordHelpText}
-                    value={password}
-                />
-                <TextField
-                    id='retypedPassword'
-                    label={t('label.retypePassword')}
-                    type='password'
-                    autoComplete='new-password'
-                    variant='outlined'
-                    className={classes.textField}
-                    size='small'
-                    onChange={(e) => this.handleChange('retypedPassword', e)}
-                    helperText={retypedPasswordHelpText}
-                    value={retypedPassword}
-                />
-                <Button
-                    variant='contained'
-                    color='primary'
-                    size='small'
-                    disableElevation
-                    className={classes.button}
-                    type='submit'
-                >
-                    {t('common:submit')}
-                </Button>
+                {this.renderInput('password', password, passwordHelpText)}
+                {this.renderInput(
+                    'retypedPassword',
+                    retypedPassword,
+                    retypedPasswordHelpText,
+                )}
+                {this.renderButton()}
             </form>
         );
     };
 
-    render() {
+    renderHeading = () => {
         const { t, data } = this.props;
 
         return (
+            <>
+                <PrimaryHeading>{t('title')}</PrimaryHeading>
+                <SubHeading>
+                    {t('subheading', { email: data.email })}
+                </SubHeading>
+            </>
+        );
+    };
+
+    render() {
+        return (
             <Card>
                 <GenericCardContent>
-                    <PrimaryHeading>{t('title')}</PrimaryHeading>
-                    <SubHeading>
-                        {t('subheading', { email: data.email })}
-                    </SubHeading>
+                    {this.renderHeading()}
                     {this.renderPasswordGroup()}
                 </GenericCardContent>
             </Card>

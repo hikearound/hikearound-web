@@ -3,7 +3,7 @@
     "subheading": "Enter a new password for your {{email}} account.",
     "label": {
         "password": "Password",
-        "retypePassword": "Retype Password"
+        "retypedPassword": "Retype Password"
     },
     "message": {
         "success": "Your password was successfully updated.",
