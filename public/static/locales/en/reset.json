@@ -1,0 +1,16 @@
+{
+    "title": "Forgot Your Password?",
+    "subheading": "Enter a new password for your {{email}} account.",
+    "label": {
+        "password": "Password",
+        "retypePassword": "Retype Password"
+    },
+    "message": {
+        "success": "Your password was successfully updated.",
+        "error": {
+            "emptyPassword": "Please enter your new password.",
+            "emptyRetypedPassword": "Please enter your new password again.",
+            "mismatchedPassword": "The passwords you entered do not match."
+        }
+    }
+}

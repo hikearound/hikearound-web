@@ -24,6 +24,7 @@ export const colors = {
     blue: '#00AAFF',
 
     // Reds
+    redLight: '#F44336',
     red: '#CE1212',
 };
 

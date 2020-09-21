@@ -16,14 +16,14 @@ export function withSWR(Component) {
     const WrappedComponent = function (props) {
         const router = useRouter();
 
-        const { data } = useSWR(['/api/verify', router.query.token], fetcher);
+        const { data } = useSWR(['/api/reset', router.query.token], fetcher);
 
         return <Component {...props} data={data} />;
     };
 
     WrappedComponent.getInitialProps = () => {
         return {
-            namespacesRequired: ['verify', 'header', 'footer'],
+            namespacesRequired: ['reset', 'header', 'footer', 'common'],
         };
     };
 

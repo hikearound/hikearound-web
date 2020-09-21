@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheets } from '@material-ui/core/styles';
 import { i18n } from '../utils/i18n';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
@@ -16,30 +16,26 @@ const defaultProps = {
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
-        const sheet = new ServerStyleSheet();
+        const sheets = new ServerStyleSheets();
         const originalRenderPage = ctx.renderPage;
         const lang = i18n.language;
 
-        try {
-            ctx.renderPage = () =>
-                originalRenderPage({
-                    enhanceApp: (App) => (props) =>
-                        sheet.collectStyles(<App {...props} />),
-                });
-            const initialProps = await Document.getInitialProps(ctx);
-            return {
-                ...initialProps,
-                styles: (
-                    <>
-                        {initialProps.styles}
-                        {sheet.getStyleElement()}
-                    </>
-                ),
-                lang,
-            };
-        } finally {
-            sheet.seal();
-        }
+        ctx.renderPage = () =>
+            originalRenderPage({
+                enhanceApp: (App) => (props) =>
+                    sheets.collect(<App {...props} />),
+            });
+
+        const initialProps = await Document.getInitialProps(ctx);
+
+        return {
+            ...initialProps,
+            styles: [
+                ...React.Children.toArray(initialProps.styles),
+                sheets.getStyleElement(),
+            ],
+            lang,
+        };
     }
 
     render() {
