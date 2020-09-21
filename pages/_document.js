@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheet as StyledComponentSheets } from 'styled-components';
+import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles';
 import { i18n } from '../utils/i18n';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
@@ -16,26 +17,36 @@ const defaultProps = {
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
-        const sheets = new ServerStyleSheets();
+        const styledComponentSheet = new StyledComponentSheets();
+        const materialUiSheets = new MaterialUiServerStyleSheets();
         const originalRenderPage = ctx.renderPage;
         const lang = i18n.language;
 
-        ctx.renderPage = () =>
-            originalRenderPage({
-                enhanceApp: (App) => (props) =>
-                    sheets.collect(<App {...props} />),
-            });
+        try {
+            ctx.renderPage = () =>
+                originalRenderPage({
+                    enhanceApp: (App) => (props) =>
+                        styledComponentSheet.collectStyles(
+                            materialUiSheets.collect(<App {...props} />),
+                        ),
+                });
 
-        const initialProps = await Document.getInitialProps(ctx);
+            const initialProps = await Document.getInitialProps(ctx);
 
-        return {
-            ...initialProps,
-            styles: [
-                ...React.Children.toArray(initialProps.styles),
-                sheets.getStyleElement(),
-            ],
-            lang,
-        };
+            return {
+                ...initialProps,
+                styles: [
+                    <React.Fragment key='styles'>
+                        {initialProps.styles}
+                        {materialUiSheets.getStyleElement()}
+                        {styledComponentSheet.getStyleElement()}
+                    </React.Fragment>,
+                ],
+                lang,
+            };
+        } finally {
+            styledComponentSheet.seal();
+        }
     }
 
     render() {
