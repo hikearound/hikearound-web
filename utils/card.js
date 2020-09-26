@@ -4,7 +4,7 @@ export function getDifficultyColor(label) {
     const pillColors = {
         easy: colors.green,
         moderate: colors.blue,
-        difficult: colors.red,
+        difficult: colors.blueDark,
     };
 
     return pillColors[label.toLowerCase()];

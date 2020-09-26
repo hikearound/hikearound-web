@@ -18,10 +18,11 @@ export const colors = {
     purpleDark: '#4F4D88',
 
     // Greens
-    green: '#30C731',
+    green: '#16A085',
 
     // Blues
-    blue: '#00AAFF',
+    blue: '#2980B9',
+    blueDark: '#34495E',
 
     // Reds
     redLight: '#F44336',
