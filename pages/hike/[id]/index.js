@@ -56,7 +56,7 @@ class HikePage extends React.Component {
         return (
             <div>
                 <Header name={hike.name} city={hike.city} />
-                <HikeMap id={id} />
+                <HikeMap id={id} hike={hike} />
                 <ActionBar hike={hike} />
                 <Description description={hike.description} key={id} />
                 <Gallery id={id} images={images} />

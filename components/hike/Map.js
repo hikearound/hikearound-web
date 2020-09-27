@@ -13,6 +13,7 @@ import { withTranslation } from '../../utils/i18n';
 const propTypes = {
     id: PropTypes.string.isRequired,
     modifier: PropTypes.number,
+    hike: PropTypes.object.isRequired,
 };
 
 const defaultProps = {
@@ -84,6 +85,7 @@ class HikeMap extends React.PureComponent {
     };
 
     plotCoordinates() {
+        const { hike } = this.props;
         const { hikeData } = this.state;
         const data = hikeData.gpx.trk[0].trkseg[0].trkpt;
         const coordinateCount = data.length;
@@ -95,12 +97,17 @@ class HikeMap extends React.PureComponent {
             const coordinate = data[i].$;
             const exists = existingCoords.includes(coordinate.lat);
 
-            if (!exists) {
-                path.push([
-                    parseFloat(coordinate.lat),
-                    parseFloat(coordinate.lon),
-                ]);
+            const currentCoordinate = [
+                parseFloat(coordinate.lat),
+                parseFloat(coordinate.lon),
+            ];
 
+            if (hike.route === 'Loop') {
+                path.push(currentCoordinate);
+            }
+
+            if (!exists && hike.route === 'Out') {
+                path.push(currentCoordinate);
                 existingCoords.push(coordinate.lat);
             }
         }
