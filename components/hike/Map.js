@@ -85,13 +85,24 @@ class HikeMap extends React.PureComponent {
 
     plotCoordinates() {
         const { hikeData } = this.state;
-        const coordinateCount = hikeData.gpx.trk[0].trkseg[0].trkpt.length;
+        const data = hikeData.gpx.trk[0].trkseg[0].trkpt;
+        const coordinateCount = data.length;
 
         const path = [];
+        const existingCoords = [];
 
         for (let i = 0, len = coordinateCount; i < len; i += 1) {
-            const coordinate = hikeData.gpx.trk[0].trkseg[0].trkpt[i].$;
-            path.push([parseFloat(coordinate.lat), parseFloat(coordinate.lon)]);
+            const coordinate = data[i].$;
+            const exists = existingCoords.includes(coordinate.lat);
+
+            if (!exists) {
+                path.push([
+                    parseFloat(coordinate.lat),
+                    parseFloat(coordinate.lon),
+                ]);
+
+                existingCoords.push(coordinate.lat);
+            }
         }
 
         this.setState({ path, shouldShowMap: true });
