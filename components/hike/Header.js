@@ -8,16 +8,19 @@ import { PrimaryHeading, SubHeading } from '../../styles/headings';
 const propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
 };
 
 class Header extends React.PureComponent {
     render() {
-        const { name, city } = this.props;
+        const { name, city, state } = this.props;
 
         return (
             <Card>
                 <PrimaryHeading>{name}</PrimaryHeading>
-                <HikeCity>{city}</HikeCity>
+                <HikeCity>
+                    {city}, {state}
+                </HikeCity>
             </Card>
         );
     }
