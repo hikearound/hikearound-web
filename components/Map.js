@@ -31,6 +31,7 @@ class AppleMap extends React.Component {
             this.setCenter(center);
             this.plotPoints(points);
             this.filterPoints();
+            this.addAnnotation(points);
         }
     }
 
@@ -90,6 +91,27 @@ class AppleMap extends React.Component {
         );
 
         map.pointOfInterestFilter = filter;
+    };
+
+    addAnnotation = (points) => {
+        const { map } = this.props;
+        const coordinates = points[0];
+        const { MarkerAnnotation } = mapkit;
+
+        const startingPoint = new mapkit.Coordinate(
+            coordinates[0],
+            coordinates[1],
+        );
+
+        const startingAnnotation = new MarkerAnnotation(startingPoint, {
+            color: colors.purple,
+            title: '',
+            glyphImage: {
+                1: '../images/annotation/glyph.png',
+            },
+        });
+
+        map.addAnnotations([startingAnnotation]);
     };
 
     render() {
