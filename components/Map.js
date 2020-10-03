@@ -71,8 +71,8 @@ class AppleMap extends React.Component {
 
             const style = new mapkit.Style({
                 strokeColor: colors.purple,
-                strokeOpacity: 1,
                 lineWidth: 2,
+                lineJoin: 'round',
                 lineDash: [],
             });
 
