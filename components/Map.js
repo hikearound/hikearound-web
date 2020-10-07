@@ -63,20 +63,21 @@ class AppleMap extends React.Component {
 
     plotPoints = () => {
         const { points, map } = this.props;
+        const { Coordinate, Style, PolylineOverlay } = mapkit;
 
         if (points) {
             const coords = points.map(function (point) {
-                return new mapkit.Coordinate(point[0], point[1]);
+                return new Coordinate(point[0], point[1]);
             });
 
-            const style = new mapkit.Style({
+            const style = new Style({
                 strokeColor: colors.purple,
                 lineWidth: 2,
                 lineJoin: 'round',
                 lineDash: [],
             });
 
-            const trail = new mapkit.PolylineOverlay(coords, { style });
+            const trail = new PolylineOverlay(coords, { style });
             map.addOverlay(trail);
         }
     };
@@ -96,19 +97,12 @@ class AppleMap extends React.Component {
     addAnnotation = (points) => {
         const { map } = this.props;
         const coordinates = points[0];
-        const { MarkerAnnotation } = mapkit;
+        const { MarkerAnnotation, Coordinate } = mapkit;
 
-        const startingPoint = new mapkit.Coordinate(
-            coordinates[0],
-            coordinates[1],
-        );
-
+        const startingPoint = new Coordinate(coordinates[0], coordinates[1]);
         const startingAnnotation = new MarkerAnnotation(startingPoint, {
             color: colors.purple,
-            title: '',
-            glyphImage: {
-                1: '../images/annotation/glyph.png',
-            },
+            glyphImage: { 1: '../images/annotation/glyph.png' },
         });
 
         map.addAnnotations([startingAnnotation]);
