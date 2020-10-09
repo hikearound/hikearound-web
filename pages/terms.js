@@ -8,10 +8,12 @@ const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
     contentOnly: PropTypes.bool,
+    pageType: PropTypes.string,
 };
 
 const defaultProps = {
     contentOnly: false,
+    pageType: 'terms',
 };
 
 class TermsPage extends React.Component {
@@ -32,7 +34,7 @@ class TermsPage extends React.Component {
     };
 
     render() {
-        const { title, description, contentOnly } = this.props;
+        const { title, description, pageType, contentOnly } = this.props;
 
         if (contentOnly) {
             return (
@@ -50,6 +52,7 @@ class TermsPage extends React.Component {
                 title={title}
                 description={description}
                 rightColumnSticky={this.renderStickyRightColumn()}
+                pageType={pageType}
             />
         );
     }

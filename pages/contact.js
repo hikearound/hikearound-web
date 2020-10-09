@@ -6,6 +6,11 @@ import { getPageData } from '../utils/page';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
+    pageType: PropTypes.string,
+};
+
+const defaultProps = {
+    pageType: 'contact',
 };
 
 class ContactPage extends React.Component {
@@ -21,11 +26,18 @@ class ContactPage extends React.Component {
     }
 
     render() {
-        const { title, description } = this.props;
-        return <PageBase title={title} description={description} />;
+        const { title, description, pageType } = this.props;
+        return (
+            <PageBase
+                title={title}
+                description={description}
+                pageType={pageType}
+            />
+        );
     }
 }
 
 ContactPage.propTypes = propTypes;
+ContactPage.defaultProps = defaultProps;
 
 export default ContactPage;

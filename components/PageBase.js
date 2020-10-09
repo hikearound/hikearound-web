@@ -12,6 +12,7 @@ const propTypes = {
     hideHeader: PropTypes.bool,
     hideFooter: PropTypes.bool,
     rightColumnSticky: PropTypes.oneOfType(columnType),
+    pageType: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -22,13 +23,14 @@ const defaultProps = {
 
 class PageBase extends React.PureComponent {
     renderMainColumn() {
-        const { title, description, hideFooter } = this.props;
+        const { title, description, pageType, hideFooter } = this.props;
 
         return (
             <PageContent
                 title={title}
                 description={description}
                 hideFooter={hideFooter}
+                pageType={pageType}
             />
         );
     }

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
-import { fontWeight, lineHeight } from '../constants/type';
+import { fontWeight, fontSize, lineHeight } from '../constants/type';
 
 export const RootView = styled.div`
     line-height: ${lineHeight.lh_13};
@@ -12,7 +12,16 @@ export const RootView = styled.div`
     }
 
     h5 {
-        font-size: ${spacing.md};
+        font-size: ${fontSize.lg};
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+
+    h5,
+    h6 {
+        margin-bottom: ${spacing.sm};
     }
 
     p {
@@ -24,7 +33,7 @@ export const RootView = styled.div`
     }
 
     strong {
-        font-weight: ${fontWeight.bold};
+        font-weight: ${fontWeight.medium};
     }
 
     ul {

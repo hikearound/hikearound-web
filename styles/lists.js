@@ -9,7 +9,7 @@ export const OrderedList = styled.ol`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
     font-size: ${fontSize.sm};
     color: ${colors.grayDark};
-    list-style-type: decimal;
+    list-style-type: ${(props) => (props.showDecimals ? 'decimals' : 'none')};
     list-style-position: inside;
 
     @media ${device.tablet} {
