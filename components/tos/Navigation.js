@@ -23,7 +23,7 @@ class TermsNavigation extends React.PureComponent {
         return (
             <Card noPadding hideMobile>
                 <ListHeading>{t('card.title')}</ListHeading>
-                <OrderedList showDecimals>{this.renderNavLinks()}</OrderedList>
+                <OrderedList>{this.renderNavLinks()}</OrderedList>
             </Card>
         );
     }
