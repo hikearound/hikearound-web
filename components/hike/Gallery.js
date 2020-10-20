@@ -117,7 +117,9 @@ const PhotoGallery = styled.div`
     white-space: nowrap;
     scrollbar-width: none;
 
-    ::-webkit-scrollbar {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
         width: 0;
         background: transparent;
     }
