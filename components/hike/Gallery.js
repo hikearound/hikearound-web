@@ -124,6 +124,13 @@ const PhotoGallery = styled.div`
         background: transparent;
     }
 
+    ::-webkit-scrollbar,
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-thumb {
+        width: 0;
+        background: transparent;
+    }
+
     div {
         display: flex;
     }
