@@ -6,7 +6,7 @@ import { getPageData } from '../utils/page';
 import IntroSection from '../components/about/section/Intro';
 import MapSection from '../components/about/section/Map';
 import FooterSection from '../components/landing/section/Footer';
-import { RootView } from '../styles/about';
+import { RootView } from '../styles/page';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -21,7 +21,7 @@ class AboutPage extends React.Component {
         return {
             title: page.data.title,
             description: page.data.description,
-            namespacesRequired: ['common', 'header', 'footer'],
+            namespacesRequired: ['about', 'common', 'header', 'footer'],
         };
     }
 

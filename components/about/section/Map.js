@@ -6,6 +6,7 @@ import { Section } from '../../../styles/landing';
 import { withTranslation } from '../../../utils/i18n';
 import { colors, transparentColors } from '../../../constants/colors';
 import { device } from '../../../constants/breakpoints';
+import { coverageAreas } from '../../../constants/data';
 import {
     ContentSection,
     ContentTitle,
@@ -13,24 +14,6 @@ import {
 } from '../../../styles/static';
 import { withMap } from '../../../utils/map';
 import { spacing } from '../../../constants/spacing';
-
-const stats = [
-    {
-        name: 'San Francisco',
-        coordinate: [37.783333, -122.416667],
-        radius: 150000,
-    },
-    {
-        name: 'Seattle',
-        coordinate: [47.6133555, -122.4118676],
-        radius: 120000,
-    },
-    {
-        name: 'Aurora',
-        coordinate: [42.7515366, -76.7171491],
-        radius: 100000,
-    },
-];
 
 const propTypes = {
     mapProps: PropTypes.object.isRequired,
@@ -79,20 +62,19 @@ class MapSection extends React.PureComponent {
             fillColor: colors.purple,
         });
 
-        const circles = stats.map(function (stat) {
+        const regionOverlays = coverageAreas.map(function (stat) {
             const coordinate = new mapkit.Coordinate(
                 stat.coordinate[0],
                 stat.coordinate[1],
             );
             const { radius } = stat;
-            const circle = new mapkit.CircleOverlay(coordinate, radius);
+            const overlay = new mapkit.CircleOverlay(coordinate, radius);
 
-            circle.data = { population: stat.population };
-            circle.style = style;
+            overlay.data = { population: stat.population };
+            overlay.style = style;
+            coordinates.push(overlay);
 
-            coordinates.push(circle);
-
-            return circle;
+            return overlay;
         });
 
         if (coordinates.len <= 3) {
@@ -100,19 +82,18 @@ class MapSection extends React.PureComponent {
         }
 
         map.mapType = mapkit.Map.MapTypes.MutedStandard;
-        map.addOverlays(circles);
+        map.addOverlays(regionOverlays);
     };
 
     render() {
-        const { mapProps } = this.props;
+        const { mapProps, t } = this.props;
 
         return (
             <Section marginTop marginBottom offset='true'>
                 <ContentSection>
-                    <ContentTitle>Coverage</ContentTitle>
+                    <ContentTitle>{t('section.map.title')}</ContentTitle>
                     <ContentDescription>
-                        We currently cover hikes in portions of California,
-                        Washington, and New York.
+                        {t('section.map.description')}
                     </ContentDescription>
                 </ContentSection>
                 <MapContainer>
@@ -126,7 +107,7 @@ class MapSection extends React.PureComponent {
 MapSection.propTypes = propTypes;
 MapSection.defaultProps = defaultProps;
 
-export default withTranslation('landing')(withMap(MapSection));
+export default withTranslation('about')(withMap(MapSection));
 
 const MapContainer = styled.div`
     background-color: ${colors.grayLight};
