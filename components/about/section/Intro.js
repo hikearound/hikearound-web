@@ -34,7 +34,7 @@ IntroSection.propTypes = propTypes;
 export const StyledContentSection = styled(ContentSection)`
     max-width: 600px;
     text-align: left;
-    margin: 120px auto 80px auto;
+    margin: 125px auto 90px auto;
 
     @media ${device.tablet} {
         margin-top: 50px;
