@@ -122,13 +122,7 @@ const PhotoGallery = styled.div`
     &::-webkit-scrollbar-thumb {
         width: 0;
         background: transparent;
-    }
-
-    ::-webkit-scrollbar,
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-thumb {
-        width: 0;
-        background: transparent;
+        display: none;
     }
 
     div {
