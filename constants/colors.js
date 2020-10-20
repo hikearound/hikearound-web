@@ -31,4 +31,5 @@ export const colors = {
 
 export const transparentColors = {
     grayLight: 'rgba(0, 0, 0, 0.15)',
+    gray: 'rgba(186, 186, 186, 0.5)',
 };

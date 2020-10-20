@@ -1,0 +1,16 @@
+{
+    "title": "¿Olvidaste tu contraseña?",
+    "subheading": "Ingrese una nueva contraseña para su cuenta de {{email}}.",
+    "label": {
+        "password": "Contraseña",
+        "retypedPassword": "Vuelva a escribir la contraseña"
+    },
+    "message": {
+        "success": "Su contraseña se actualizó correctamente.",
+        "error": {
+            "emptyPassword": "Ingrese su nueva contraseña.",
+            "emptyRetypedPassword": "Vuelva a introducir su nueva contraseña.",
+            "mismatchedPassword": "Las contraseñas no coinciden."
+        }
+    }
+}

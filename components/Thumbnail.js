@@ -8,11 +8,13 @@ import { borderRadius } from '../constants/dimensions';
 const propTypes = {
     image: PropTypes.string.isRequired,
     attribution: PropTypes.string.isRequired,
-    size: PropTypes.number,
+    height: PropTypes.number,
+    width: PropTypes.number,
 };
 
 const defaultProps = {
-    size: 75,
+    height: 90,
+    width: 120,
 };
 
 class Thumbnail extends React.PureComponent {
@@ -22,9 +24,16 @@ class Thumbnail extends React.PureComponent {
     };
 
     render() {
-        const { image, size } = this.props;
+        const { image, height, width } = this.props;
         const alt = this.buildCaption();
-        return <ThumbnailImage src={image} alt={alt} size={size} />;
+        return (
+            <ThumbnailImage
+                src={image}
+                alt={alt}
+                height={height}
+                width={width}
+            />
+        );
     }
 }
 
@@ -36,8 +45,9 @@ export default Thumbnail;
 const ThumbnailImage = styled.img`
     display: flex;
     background-color: ${colors.lightGray};
-    width: ${(props) => props.size}px;
-    height: ${(props) => props.size}px;
+    width: 120px;
+    height: ${(props) => props.height}px;
+    width: ${(props) => props.width}px;
     border-radius: ${borderRadius.sm};
     margin: 0 ${spacing.sm} 0 0;
     object-fit: cover;

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageBase from '../components/PageBase';
+import { RichText } from 'prismic-reactjs';
+import Page from '../layouts/main';
 import { getPageData } from '../utils/page';
+import IntroSection from '../components/about/section/Intro';
+import MapSection from '../components/about/section/Map';
+import FooterSection from '../components/landing/section/Footer';
+import { RootView } from '../styles/page';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
-    pageType: PropTypes.string,
-};
-
-const defaultProps = {
-    pageType: 'about',
 };
 
 class AboutPage extends React.Component {
@@ -21,23 +21,36 @@ class AboutPage extends React.Component {
         return {
             title: page.data.title,
             description: page.data.description,
-            namespacesRequired: ['common', 'header', 'footer'],
+            namespacesRequired: ['about', 'common', 'header', 'footer'],
         };
     }
 
-    render() {
-        const { title, description, pageType } = this.props;
+    renderMainColumn = () => {
+        const { title, description } = this.props;
+
         return (
-            <PageBase
-                title={title}
-                description={description}
-                pageType={pageType}
+            <RootView>
+                <IntroSection title={title} description={description} />
+                <MapSection />
+                <FooterSection />
+            </RootView>
+        );
+    };
+
+    render() {
+        const { title } = this.props;
+
+        return (
+            <Page
+                singleColumn
+                fullWidth
+                title={RichText.asText(title)}
+                mainColumn={this.renderMainColumn()}
             />
         );
     }
 }
 
 AboutPage.propTypes = propTypes;
-AboutPage.defaultProps = defaultProps;
 
 export default AboutPage;

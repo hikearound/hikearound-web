@@ -34,18 +34,22 @@ class Footer extends React.PureComponent {
             {
                 text: t('link.about'),
                 link: '/about',
+                type: 'router',
             },
             {
                 text: t('link.contact'),
-                link: '/contact',
+                link: 'mailto:pat@tryhikearound.com',
+                type: 'href',
             },
             {
                 text: t('link.privacy'),
                 link: '/privacy',
+                type: 'router',
             },
             {
                 text: t('link.terms'),
                 link: '/terms',
+                type: 'router',
             },
         ];
     };
@@ -55,11 +59,20 @@ class Footer extends React.PureComponent {
 
         return (
             <FooterWrapper>
-                {links.map(({ text, link }, index) => (
-                    <Link href={link} key={index}>
-                        <RightRailLink href={link}>{text}</RightRailLink>
-                    </Link>
-                ))}
+                {links.map(({ text, link, type }, index) => {
+                    if (type === 'href') {
+                        return (
+                            <RightRailLink href={link} key={index}>
+                                {text}
+                            </RightRailLink>
+                        );
+                    }
+                    return (
+                        <Link href={link} key={index}>
+                            <RightRailLink href={link}>{text}</RightRailLink>
+                        </Link>
+                    );
+                })}
                 <LanguageSelect />
                 {this.renderCopyrightText()}
             </FooterWrapper>

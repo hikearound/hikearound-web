@@ -2,9 +2,24 @@ import styled from 'styled-components';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { fontWeight, fontSize, lineHeight } from '../constants/type';
+import { device } from '../constants/breakpoints';
 
 export const RootView = styled.div`
+    width: 100%;
+    text-align: center;
     line-height: ${lineHeight.lh_13};
+
+    h1 {
+        display: block;
+        width: 100%;
+        font-size: ${fontSize.xxl};
+        font-weight: bold;
+        line-height: ${lineHeight.lh_12};
+
+        @media ${device.tablet} {
+            font-size: 26px;
+        }
+    }
 
     h4 {
         margin-bottom: ${spacing.md};
@@ -12,11 +27,13 @@ export const RootView = styled.div`
     }
 
     h5 {
-        font-size: ${fontSize.lg};
+        margin-top: 32px;
+        font-size: ${fontSize.xl};
     }
 
     h6 {
-        font-size: 16px;
+        margin-top: 24px;
+        font-size: ${fontSize.lg};
     }
 
     h5,
@@ -48,18 +65,12 @@ export const RootView = styled.div`
         }
     }
 
-    a {
-        color: ${colors.purple};
-        text-decoration: none;
+    p {
+        color: ${colors.blackText};
+        margin-bottom: ${spacing.md};
 
-        &:hover {
-            text-decoration: underline;
-        }
-
-        &.anchor {
-            position: relative;
-            visibility: hidden;
-            top: -50px;
+        &:last-of-type {
+            margin: 0;
         }
     }
 `;
