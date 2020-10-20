@@ -26,6 +26,7 @@ export const Card = styled.div`
 export const CardContent = styled.div`
     border-top: 1px solid ${colors.gray};
     padding: ${spacing.md};
+    padding-right: ${(props) => (props.fullWidth ? '0' : spacing.md)};
     line-height: ${lineHeight.lh_13};
     min-height: ${(props) => (props.includeMinHeight ? '90px' : 'initial')};
 
