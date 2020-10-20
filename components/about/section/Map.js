@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
+import { isMobile } from 'react-device-detect';
 import { Section } from '../../../styles/landing';
 import { withTranslation } from '../../../utils/i18n';
 import { colors, transparentColors } from '../../../constants/colors';
@@ -38,9 +39,20 @@ class MapSection extends React.PureComponent {
 
         if (map) {
             await this.plotOverlays();
+            this.setOptions();
             this.showOverlays();
         }
     }
+
+    setOptions = () => {
+        const { map } = this.props;
+
+        map.mapType = mapkit.Map.MapTypes.MutedStandard;
+
+        if (isMobile) {
+            map.isScrollEnabled = false;
+        }
+    };
 
     showOverlays = () => {
         const { map } = this.props;
@@ -81,7 +93,6 @@ class MapSection extends React.PureComponent {
             this.setState(coordinates);
         }
 
-        map.mapType = mapkit.Map.MapTypes.MutedStandard;
         map.addOverlays(regionOverlays);
     };
 

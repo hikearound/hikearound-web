@@ -6,6 +6,7 @@ import { Section } from '../../../styles/landing';
 import { withTranslation } from '../../../utils/i18n';
 import { spacing } from '../../../constants/spacing';
 import { ContentSection } from '../../../styles/static';
+import { device } from '../../../constants/breakpoints';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -36,4 +37,9 @@ export const StyledContentSection = styled(ContentSection)`
     text-align: left;
     margin: ${spacing.xl} auto 0 auto;
     padding-bottom: ${spacing.xl};
+
+    @media ${device.tablet} {
+        margin-top: ${spacing.lg};
+        padding-bottom: ${spacing.md};
+    }
 `;

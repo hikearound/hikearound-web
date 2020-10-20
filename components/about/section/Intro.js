@@ -5,6 +5,7 @@ import { RichText } from 'prismic-reactjs';
 import { Section } from '../../../styles/landing';
 import { withTranslation } from '../../../utils/i18n';
 import { ContentSection } from '../../../styles/static';
+import { device } from '../../../constants/breakpoints';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -34,4 +35,9 @@ export const StyledContentSection = styled(ContentSection)`
     max-width: 600px;
     text-align: left;
     margin: 120px auto 80px auto;
+
+    @media ${device.tablet} {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
 `;
