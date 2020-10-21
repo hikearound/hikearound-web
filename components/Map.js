@@ -3,7 +3,7 @@ import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 import { colors } from '../constants/colors';
-import { withMap } from '../utils/map';
+import { withMap, getMapPadding } from '../utils/map';
 
 const propTypes = {
     center: PropTypes.object,
@@ -11,14 +11,12 @@ const propTypes = {
     map: PropTypes.object,
     mapProps: PropTypes.object.isRequired,
     setCenter: PropTypes.func.isRequired,
-    padding: PropTypes.number,
     showFilteredPointsOfInterest: PropTypes.bool,
 };
 
 const defaultProps = {
     map: null,
     center: {},
-    padding: 80,
     showFilteredPointsOfInterest: false,
 };
 
@@ -55,7 +53,7 @@ class AppleMap extends React.Component {
     };
 
     plotPoints = () => {
-        const { points, map, padding } = this.props;
+        const { points, map } = this.props;
         const { Coordinate, Style, PolylineOverlay, Padding } = mapkit;
 
         if (points) {
@@ -71,9 +69,10 @@ class AppleMap extends React.Component {
             });
 
             const trail = new PolylineOverlay(coords, { style });
+            const padding = getMapPadding();
 
             map.showItems(trail, {
-                animate: true,
+                animate: false,
                 padding: new Padding(padding, padding, padding, padding),
             });
         }
