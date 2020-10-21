@@ -11,23 +11,21 @@ const propTypes = {
     map: PropTypes.object,
     mapProps: PropTypes.object.isRequired,
     setCenter: PropTypes.func.isRequired,
-    setRegion: PropTypes.func.isRequired,
-    region: PropTypes.object,
+    padding: PropTypes.number,
 };
 
 const defaultProps = {
     map: null,
-    region: {},
     center: {},
+    padding: 40,
 };
 
 class AppleMap extends React.Component {
     componentDidUpdate() {
-        const { center, points, map, region } = this.props;
+        const { center, points, map } = this.props;
 
         if (map) {
             this.setOptions();
-            this.setRegion(region);
             this.setCenter(center);
             this.plotPoints(points);
             this.filterPoints();
@@ -53,17 +51,9 @@ class AppleMap extends React.Component {
         }
     };
 
-    setRegion = (region) => {
-        const { setRegion } = this.props;
-
-        if (region) {
-            setRegion(region);
-        }
-    };
-
     plotPoints = () => {
-        const { points, map } = this.props;
-        const { Coordinate, Style, PolylineOverlay } = mapkit;
+        const { points, map, padding } = this.props;
+        const { Coordinate, Style, PolylineOverlay, Padding } = mapkit;
 
         if (points) {
             const coords = points.map(function (point) {
@@ -78,7 +68,11 @@ class AppleMap extends React.Component {
             });
 
             const trail = new PolylineOverlay(coords, { style });
-            map.addOverlay(trail);
+
+            map.showItems(trail, {
+                animate: true,
+                padding: new Padding(padding, padding, padding, padding),
+            });
         }
     };
 

@@ -12,12 +12,7 @@ import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     id: PropTypes.string.isRequired,
-    modifier: PropTypes.number,
     hike: PropTypes.object.isRequired,
-};
-
-const defaultProps = {
-    modifier: 0.006,
 };
 
 class HikeMap extends React.PureComponent {
@@ -52,22 +47,7 @@ class HikeMap extends React.PureComponent {
             hikeData,
         };
 
-        this.setRegion(hikeMetaData);
         this.setState({ center, hikeData });
-    }
-
-    setRegion(hikeMetaData) {
-        const { modifier } = this.props;
-        const { maxlat, minlat, minlon, maxlon } = hikeMetaData;
-
-        const region = {
-            latitude: parseFloat(maxlat),
-            longitude: parseFloat(minlat),
-            latitudeSpan: maxlat - minlat + modifier,
-            longitudeSpan: maxlon - minlon + modifier,
-        };
-
-        this.setState({ region });
     }
 
     initializeMap = async () => {
@@ -117,7 +97,7 @@ class HikeMap extends React.PureComponent {
 
     render() {
         const { t } = this.props;
-        const { path, center, region, shouldShowMap } = this.state;
+        const { path, center, shouldShowMap } = this.state;
 
         return (
             <MapCard noPadding>
@@ -126,11 +106,7 @@ class HikeMap extends React.PureComponent {
                 </SecondaryHeading>
                 <MapContainer>
                     {shouldShowMap && (
-                        <AppleMap
-                            center={center}
-                            points={path}
-                            region={region}
-                        />
+                        <AppleMap center={center} points={path} />
                     )}
                     {!shouldShowMap && (
                         <MapLoading>
@@ -144,7 +120,6 @@ class HikeMap extends React.PureComponent {
 }
 
 HikeMap.propTypes = propTypes;
-HikeMap.defaultProps = defaultProps;
 
 export default withTranslation('common')(HikeMap);
 

@@ -37,7 +37,7 @@ export const StyledContentSection = styled(ContentSection)`
     margin: 125px auto 90px auto;
 
     @media ${device.tablet} {
-        margin-top: 50px;
-        margin-bottom: 20px;
+        margin-top: 60px;
+        margin-bottom: 30px;
     }
 `;

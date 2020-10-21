@@ -6,18 +6,18 @@ export const hikeData = [
         difficulty: 'Moderate',
         elevation: 423,
         image:
-            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2FMRHv2dPElugz31v9NKov%2Fimages%2Fcovers%2F0_750x750.jpg?alt=media&token=43bf7a2c-13f7-48c5-a06b-4a9db3c73220',
+            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2FMRHv2dPElugz31v9NKov%2Fimages%2Fcovers%2F1_750x750.jpg?alt=media&token=b327168d-87ff-449f-96cc-fdb7b653c0ae',
         id: 'MRHv2dPElugz31v9NKov',
     },
     {
-        name: 'Punch Bowl Lake Loop',
-        city: 'Watkins Glen, NY',
-        distance: 4.48,
+        name: 'Green Lake Loop',
+        city: 'Seattle, WA',
+        distance: 2.75,
         difficulty: 'Easy',
-        elevation: 405,
+        elevation: 39,
         image:
-            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2F97PXRmn0OrwGC31UcQcI%2Fimages%2Fcovers%2F1_750x750.jpg?alt=media&token=545d2143-805e-4659-ab74-a97a10a05d8c',
-        id: '97PXRmn0OrwGC31UcQcI',
+            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2Fkh1Joa3G6Fcj1veq9YDm%2Fimages%2Fcovers%2F0_750x750.jpg?alt=media&token=1d64f644-7f13-4b46-bb38-e0c20c1418dc',
+        id: 'kh1Joa3G6Fcj1veq9YDm',
     },
     {
         name: 'Lands End Trail',
@@ -30,14 +30,34 @@ export const hikeData = [
         id: '3pg1qXxCnXaMZ7Tr8Xzm',
     },
     {
-        name: 'Summit Loop',
-        city: 'San Bruno, CA',
-        distance: 1.83,
+        name: 'Golden Gardens Circuit',
+        city: 'Seattle, WA',
+        distance: 1.8,
         difficulty: 'Easy',
-        elevation: 420,
+        elevation: 147,
         image:
-            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2FyG2py9ev5WjVcuKANqW4%2Fimages%2Fcovers%2F2_750x750.jpg?alt=media&token=5ed6e0a6-a0d8-4ab9-bdef-9c545bfd4efb',
-        id: 'yG2py9ev5WjVcuKANqW4',
+            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2Fxn9c36q0ptDvn8DXh8x2%2Fimages%2Fcovers%2F2_750x750.jpg?alt=media&token=3a566ce6-6b80-46de-8221-2ba50c94b549',
+        id: 'xn9c36q0ptDvn8DXh8x2',
+    },
+    {
+        name: 'Joaquin Miller Park Loop',
+        city: 'Oakland, CA',
+        distance: 3.3,
+        difficulty: 'Moderate',
+        elevation: 514,
+        image:
+            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2FLJBu2eBXzs6xKJ0oaMOw%2Fimages%2Fcovers%2F2_750x750.jpg?alt=media&token=d894bdd0-5f54-44d1-a33d-ec3b367bc496',
+        id: 'LJBu2eBXzs6xKJ0oaMOw',
+    },
+    {
+        name: 'Punch Bowl Lake Loop',
+        city: 'Watkins Glen, NY',
+        distance: 4.48,
+        difficulty: 'Easy',
+        elevation: 405,
+        image:
+            'https://firebasestorage.googleapis.com/v0/b/hikearound-14dad.appspot.com/o/hikes%2F97PXRmn0OrwGC31UcQcI%2Fimages%2Fcovers%2F1_750x750.jpg?alt=media&token=545d2143-805e-4659-ab74-a97a10a05d8c',
+        id: '97PXRmn0OrwGC31UcQcI',
     },
 ];
 

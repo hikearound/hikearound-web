@@ -57,30 +57,32 @@ class MapSection extends React.PureComponent {
     showOverlays = () => {
         const { map } = this.props;
         const { coordinates } = this.state;
+        const { Padding } = mapkit;
 
         map.showItems(coordinates, {
             animate: true,
-            padding: new mapkit.Padding(120, 25, 120, 25),
+            padding: new Padding(120, 25, 120, 25),
         });
     };
 
     plotOverlays = () => {
         const { map } = this.props;
         const { coordinates } = this.state;
+        const { Style, Coordinate, CircleOverlay } = mapkit;
 
-        const style = new mapkit.Style({
+        const style = new Style({
             lineWidth: 2,
             strokeColor: colors.purple,
             fillColor: colors.purple,
         });
 
         const regionOverlays = coverageAreas.map(function (stat) {
-            const coordinate = new mapkit.Coordinate(
+            const coordinate = new Coordinate(
                 stat.coordinate[0],
                 stat.coordinate[1],
             );
             const { radius } = stat;
-            const overlay = new mapkit.CircleOverlay(coordinate, radius);
+            const overlay = new CircleOverlay(coordinate, radius);
 
             overlay.data = { population: stat.population };
             overlay.style = style;
