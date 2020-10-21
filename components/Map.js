@@ -101,6 +101,7 @@ class AppleMap extends React.Component {
 
         const startingPoint = new Coordinate(coordinates[0], coordinates[1]);
         const startingAnnotation = new MarkerAnnotation(startingPoint, {
+            appearanceAnimation: 'none',
             color: colors.purple,
             glyphImage: { 1: '../images/annotation/glyph.png' },
         });
