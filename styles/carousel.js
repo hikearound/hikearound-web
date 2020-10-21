@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
+import { colors, transparentColors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { borderRadius } from '../constants/dimensions';
 import { fontSize, fontWeight } from '../constants/type';
@@ -8,22 +8,21 @@ import { device } from '../constants/breakpoints';
 const cardMargin = '10px';
 
 export const CarouselCard = styled.a`
-    border: 1px solid ${colors.gray};
+    box-shadow: 0 2px ${spacing.xs} 0 ${transparentColors.gray};
     height: 225px;
     width: 100%;
     margin: 40px ${cardMargin} 80px ${cardMargin};
-    transition: transform 0.2s;
     border-radius: ${borderRadius.sm};
     background-color: ${colors.gray};
-    background-image: ${(props) => `url(${props.image})`};
-    background-size: cover;
     position: relative;
-    border-radius: ${borderRadius.sm};
-    background-position: center;
+    overflow: hidden;
 
     &:hover {
-        transform: scale(1.05);
         cursor: pointer;
+
+        .cardBackground {
+            transform: scale(1.2);
+        }
     }
 
     @media ${device.tablet} {
@@ -31,18 +30,21 @@ export const CarouselCard = styled.a`
         margin-bottom: 40px;
 
         &:hover {
-            transform: scale(1);
+            .cardBackground {
+                transform: scale(1);
+            }
         }
     }
 `;
 
-export const CardBackground = styled.div`
+export const CardInterior = styled.div`
+    height: 100%;
+    width: 100%;
+    border-radius: ${borderRadius.sm};
     background-image: ${(props) => `url(${props.image})`};
     background-size: cover;
-    height: 100%;
-    position: relative;
-    border-radius: ${borderRadius.sm};
     background-position: center;
+    transition: transform 0.5s;
 `;
 
 export const InfoSection = styled.div`
