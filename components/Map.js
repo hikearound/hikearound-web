@@ -12,12 +12,14 @@ const propTypes = {
     mapProps: PropTypes.object.isRequired,
     setCenter: PropTypes.func.isRequired,
     padding: PropTypes.number,
+    showFilteredPointsOfInterest: PropTypes.bool,
 };
 
 const defaultProps = {
     map: null,
     center: {},
-    padding: 40,
+    padding: 80,
+    showFilteredPointsOfInterest: false,
 };
 
 class AppleMap extends React.Component {
@@ -28,19 +30,20 @@ class AppleMap extends React.Component {
             this.setOptions();
             this.setCenter(center);
             this.plotPoints(points);
-            this.filterPoints();
+            this.maybeFilterPoints();
             this.addAnnotation(points);
         }
     }
 
     setOptions = () => {
-        const { map } = this.props;
+        const { map, showFilteredPointsOfInterest } = this.props;
 
         if (isMobile) {
             map.isScrollEnabled = false;
         }
 
         map.showsScale = mapkit.FeatureVisibility.Visible;
+        map.showsPointsOfInterest = showFilteredPointsOfInterest;
     };
 
     setCenter = (center) => {
@@ -76,16 +79,32 @@ class AppleMap extends React.Component {
         }
     };
 
-    filterPoints = () => {
-        const { map } = this.props;
-        const { Hospital, Pharmacy } = mapkit.PointOfInterestCategory;
+    maybeFilterPoints = () => {
+        const { map, showFilteredPointsOfInterest } = this.props;
 
-        const filteredCategories = [Hospital, Pharmacy];
+        const {
+            Hospital,
+            Pharmacy,
+            FoodMarket,
+            Park,
+            Museum,
+        } = mapkit.PointOfInterestCategory;
+
+        const filteredCategories = [
+            Hospital,
+            Pharmacy,
+            FoodMarket,
+            Park,
+            Museum,
+        ];
+
         const filter = mapkit.PointOfInterestFilter.excluding(
             filteredCategories,
         );
 
-        map.pointOfInterestFilter = filter;
+        if (showFilteredPointsOfInterest) {
+            map.pointOfInterestFilter = filter;
+        }
     };
 
     addAnnotation = (points) => {
