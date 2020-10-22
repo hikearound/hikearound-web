@@ -60,7 +60,7 @@ class MapSection extends React.PureComponent {
         const { Padding } = mapkit;
 
         map.showItems(coordinates, {
-            animate: true,
+            animate: false,
             padding: new Padding(120, 25, 120, 25),
         });
     };

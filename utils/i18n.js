@@ -15,5 +15,5 @@ const localeSubpathVariations = {
 module.exports = new NextI18Next({
     otherLanguages: ['es'],
     localeSubpaths: localeSubpathVariations[localeSubpaths],
-    shallowRender: true,
+    shallowRender: false,
 });

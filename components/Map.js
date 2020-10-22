@@ -123,7 +123,7 @@ class AppleMap extends React.Component {
 
     render() {
         const { mapProps } = this.props;
-        return <Map {...mapProps} showsZoomControl={false} />;
+        return <Map {...mapProps} />;
     }
 }
 
