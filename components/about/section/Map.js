@@ -66,7 +66,6 @@ class MapSection extends React.PureComponent {
     };
 
     plotOverlays = () => {
-        const { map } = this.props;
         const { coordinates } = this.state;
         const { Style, Coordinate, CircleOverlay } = mapkit;
 
@@ -76,26 +75,26 @@ class MapSection extends React.PureComponent {
             fillColor: colors.purple,
         });
 
-        const regionOverlays = coverageAreas.map(function (stat) {
-            const coordinate = new Coordinate(
-                stat.coordinate[0],
-                stat.coordinate[1],
-            );
-            const { radius } = stat;
-            const overlay = new CircleOverlay(coordinate, radius);
+        const circleCoordinates = [];
 
-            overlay.data = { population: stat.population };
-            overlay.style = style;
-            coordinates.push(overlay);
+        if (coordinates.length === 0) {
+            coverageAreas.map((stat) => {
+                const coordinate = new Coordinate(
+                    stat.coordinate[0],
+                    stat.coordinate[1],
+                );
+                const { radius } = stat;
+                const overlay = new CircleOverlay(coordinate, radius);
 
-            return overlay;
-        });
+                overlay.data = { population: stat.population };
+                overlay.style = style;
 
-        if (coordinates.len <= 3) {
-            this.setState(coordinates);
+                circleCoordinates.push(overlay);
+                return circleCoordinates;
+            });
+
+            this.setState({ coordinates: circleCoordinates });
         }
-
-        map.addOverlays(regionOverlays);
     };
 
     render() {
