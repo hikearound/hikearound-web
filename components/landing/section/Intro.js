@@ -25,7 +25,7 @@ class IntroSection extends React.PureComponent {
                             appName: t('common:appName'),
                         })}
                         width={600}
-                        height={588}
+                        height={591}
                         priority
                         quality={100}
                     />
