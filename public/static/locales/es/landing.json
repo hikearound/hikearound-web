@@ -19,8 +19,8 @@
     },
     "image": {
         "alt": {
-            "badge": "The Apple App Store badge",
-            "phone": "An image of the {{appName}} iOS app"
+            "badge": "La insignia de la tienda de aplicaciones de Apple",
+            "phone": "Una imagen de la aplicación para iOS {{appName}}"
         }
     }
 }

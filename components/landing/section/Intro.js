@@ -1,20 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-    Section,
-    SectionBlock,
-    ContentImage,
-    PhoneBase,
-} from '../../../styles/landing';
+import Image from 'next/image';
+import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
-import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
-
-const phone = require('../../../public/images/landing/01.png');
-const phoneOptimized = require('../../../public/images/landing/01.png?webp');
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
@@ -26,16 +18,18 @@ class IntroSection extends React.PureComponent {
 
         return (
             <ContentImage inflate>
-                <picture>
-                    <source srcSet={phoneOptimized} type='image/webp' />
-                    <source srcSet={phone} type='image/png' />
-                    <Phone
-                        src={phone}
+                <ImageWrapper>
+                    <Image
+                        src='/images/landing/01.png'
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
+                        width={600}
+                        height={588}
+                        priority
+                        quality={100}
                     />
-                </picture>
+                </ImageWrapper>
             </ContentImage>
         );
     };
@@ -62,16 +56,17 @@ class IntroSection extends React.PureComponent {
 
 export default withTranslation(['landing', 'common'])(IntroSection);
 
-export const Phone = styled(PhoneBase)`
-    max-width: 600px;
-    max-height: 588px;
-    margin-right: -120px;
+export const ImageWrapper = styled.div`
+    color: transparent;
     position: relative;
     top: ${spacing.md};
-    margin-bottom: ${componentSpacing.md};
+    margin-right: -120px;
 
     @media ${device.tablet} {
+        width: 100%;
+        height: 100%;
         margin-right: 0;
+        margin-bottom: 30px;
         left: ${spacing.xs};
         top: 0;
     }

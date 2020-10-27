@@ -106,10 +106,3 @@ export const ContentImage = styled.div`
         justify-content: center;
     }
 `;
-
-export const PhoneBase = styled.img`
-    @media ${device.tablet} {
-        width: 100%;
-        height: 100%;
-    }
-`;

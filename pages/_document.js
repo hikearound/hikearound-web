@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiSheets } from '@material-ui/core/styles';
 import { i18n } from '../utils/i18n';
@@ -53,7 +53,7 @@ class MyDocument extends Document {
         const { lang } = this.props;
 
         return (
-            <html lang={lang}>
+            <Html lang={lang}>
                 <Head>
                     <script
                         async
@@ -74,7 +74,7 @@ class MyDocument extends Document {
                     <NextScript />
                     <script> </script>
                 </body>
-            </html>
+            </Html>
         );
     }
 }
