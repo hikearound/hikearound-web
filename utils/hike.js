@@ -39,6 +39,30 @@ export async function parseHikeXml(hikeXmlUrl) {
     return hikeData;
 }
 
+export async function reduceHikes(querySnapshot) {
+    const hikes = [];
+
+    querySnapshot.forEach((hike) => {
+        if (hike.exists) {
+            const hikeData = hike.data() || {};
+            hikeData.id = hike.id;
+
+            if (!hikeData.review) {
+                hikeData.review = { average: 0, count: 0 };
+            }
+
+            const reduced = {
+                key: hike.id,
+                ...hikeData,
+            };
+
+            hikes.push(reduced);
+        }
+    });
+
+    return hikes;
+}
+
 export async function getRecentHikes(size) {
     const hikeRef = firebase
         .firestore()
@@ -47,21 +71,21 @@ export async function getRecentHikes(size) {
         .limit(size);
 
     const querySnapshot = await hikeRef.get();
-    const recentHikes = [];
+    const hikes = await reduceHikes(querySnapshot);
 
-    querySnapshot.forEach((hike) => {
-        if (hike.exists) {
-            const hikeData = hike.data() || {};
-            hikeData.id = hike.id;
-            const reduced = {
-                key: hike.id,
-                ...hikeData,
-            };
-            recentHikes.push(reduced);
-        }
-    });
+    return hikes;
+}
 
-    return recentHikes;
+export async function getFeaturedHikes() {
+    const hikeRef = firebase
+        .firestore()
+        .collection('hikes')
+        .where('featured', '==', true);
+
+    const querySnapshot = await hikeRef.get();
+    const hikes = await reduceHikes(querySnapshot);
+
+    return hikes;
 }
 
 export async function getHikeImageGallery(id) {

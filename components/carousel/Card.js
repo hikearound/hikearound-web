@@ -17,7 +17,8 @@ import {
 const propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    coverPhoto: PropTypes.string.isRequired,
     distance: PropTypes.number.isRequired,
     elevation: PropTypes.number.isRequired,
     difficulty: PropTypes.string.isRequired,
@@ -30,11 +31,11 @@ class Card extends React.PureComponent {
     };
 
     renderPills = () => {
-        const { city, difficulty } = this.props;
+        const { city, state, difficulty } = this.props;
 
         return (
             <PillSection>
-                <LocationPill label={city} />
+                <LocationPill label={`${city}, ${state}`} />
                 <DifficultyPill label={difficulty} />
             </PillSection>
         );
@@ -55,12 +56,15 @@ class Card extends React.PureComponent {
     };
 
     render() {
-        const { image, id } = this.props;
+        const { coverPhoto, id } = this.props;
 
         return (
             <Link href='/hike/[id]' as={`/hike/${id}`}>
                 <CarouselCard href={`/hike/${id}`}>
-                    <CardInterior image={image} className='cardBackground' />
+                    <CardInterior
+                        image={coverPhoto}
+                        className='cardBackground'
+                    />
                     {this.renderGradient()}
                     {this.renderPills()}
                     {this.renderInfo()}
