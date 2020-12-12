@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Rating from '@material-ui/lab/Rating';
+import { withStyles } from '@material-ui/core/styles';
 import { colors, transparentColors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { borderRadius } from '../constants/dimensions';
@@ -6,6 +8,18 @@ import { fontSize, fontWeight } from '../constants/type';
 import { device } from '../constants/breakpoints';
 
 const cardMargin = '10px';
+
+export const StyledRating = withStyles({
+    iconFilled: {
+        color: colors.white,
+    },
+    iconEmpty: {
+        color: colors.white,
+    },
+    root: {
+        opacity: '1 !important',
+    },
+})(Rating);
 
 export const CarouselCard = styled.a`
     box-shadow: 0 2px ${spacing.xs} 0 ${transparentColors.gray};
@@ -87,7 +101,7 @@ export const Name = styled.div`
     font-size: ${fontSize.lg};
     color: ${colors.white};
     font-weight: ${fontWeight.medium};
-    margin-bottom: ${spacing.xs};
+    margin-bottom: 3px;
 `;
 
 export const Label = styled.div`
@@ -106,4 +120,17 @@ export const Distance = styled(Label)`
 
 export const Elevation = styled(Label)`
     margin-left: ${spacing.xs};
+`;
+
+export const RatingWrapper = styled.div`
+    display: block;
+`;
+
+export const RatingText = styled.div`
+    display: inline-block;
+    color: ${colors.white};
+    font-size: ${fontSize.sm};
+    position: relative;
+    top: -3px;
+    margin-left: 3px;
 `;

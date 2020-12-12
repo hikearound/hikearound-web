@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Link, withTranslation } from '../../utils/i18n';
 import LocationPill from './pill/Location';
 import DifficultyPill from './pill/Difficulty';
@@ -12,18 +13,24 @@ import {
     Elevation,
     CarouselCard,
     CardInterior,
+    RatingWrapper,
+    RatingText,
+    StyledRating,
 } from '../../styles/carousel';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
+    review: PropTypes.object.isRequired,
     coverPhoto: PropTypes.string.isRequired,
     distance: PropTypes.number.isRequired,
     elevation: PropTypes.number.isRequired,
     difficulty: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
 };
+
+
 
 class Card extends React.PureComponent {
     renderGradient = () => {
@@ -41,12 +48,34 @@ class Card extends React.PureComponent {
         );
     };
 
+    renderReview = () => {
+        const { review, t } = this.props;
+
+        return (
+            <RatingWrapper>
+                <StyledRating
+                    name='customized-empty'
+                    value={review.average}
+                    max={5}
+                    precision={0.5}
+                    size='small'
+                    emptyIcon={<StarBorderIcon fontSize='inherit' />}
+                    disabled
+                />
+                <RatingText>
+                    {t('common:review', { count: review.count })}
+                </RatingText>
+            </RatingWrapper>
+        );
+    };
+
     renderInfo = () => {
         const { name, distance, elevation, t } = this.props;
 
         return (
             <InfoSection>
                 <Name>{name}</Name>
+                {this.renderReview()}
                 <Distance>{t('measurement.distance', { distance })}</Distance>
                 <Elevation>
                     {t('measurement.elevation', { elevation })}
@@ -62,8 +91,8 @@ class Card extends React.PureComponent {
             <Link href='/hike/[id]' as={`/hike/${id}`}>
                 <CarouselCard href={`/hike/${id}`}>
                     <CardInterior
-                        image={coverPhoto}
                         className='cardBackground'
+                        image={coverPhoto}
                     />
                     {this.renderGradient()}
                     {this.renderPills()}
@@ -76,4 +105,4 @@ class Card extends React.PureComponent {
 
 Card.propTypes = propTypes;
 
-export default withTranslation(['hike'])(Card);
+export default withTranslation(['hike', 'common'])(Card);
