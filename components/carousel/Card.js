@@ -30,8 +30,6 @@ const propTypes = {
     id: PropTypes.string.isRequired,
 };
 
-
-
 class Card extends React.PureComponent {
     renderGradient = () => {
         return <Gradient />;
