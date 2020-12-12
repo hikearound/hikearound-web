@@ -3,6 +3,7 @@ import { Section } from '../../../styles/landing';
 import TextSection from '../Text';
 import { carousel } from '../../../constants/carousel';
 import Card from '../../carousel/Card';
+import LoadingCard from '../../carousel/LoadingCard';
 import Carousel from '../../carousel/Carousel';
 import { withTranslation } from '../../../utils/i18n';
 import { getFeaturedHikes } from '../../../utils/hike';
@@ -42,42 +43,64 @@ class CarouselSection extends React.PureComponent {
                     },
                 }}
             >
-                {hikes &&
-                    hikes.map(
-                        (
-                            {
-                                name,
-                                city,
-                                state,
-                                coverPhoto,
-                                review,
-                                distance,
-                                elevation,
-                                difficulty,
-                                id,
-                            },
-                            index,
-                        ) => (
-                            <Card
-                                name={name}
-                                city={city}
-                                state={state}
-                                coverPhoto={coverPhoto}
-                                review={review}
-                                distance={distance}
-                                elevation={elevation}
-                                difficulty={difficulty}
-                                id={id}
-                                key={index}
-                            />
-                        ),
-                    )}
+                {hikes.map(
+                    (
+                        {
+                            name,
+                            city,
+                            state,
+                            coverPhoto,
+                            review,
+                            distance,
+                            elevation,
+                            difficulty,
+                            id,
+                        },
+                        index,
+                    ) => (
+                        <Card
+                            name={name}
+                            city={city}
+                            state={state}
+                            coverPhoto={coverPhoto}
+                            review={review}
+                            distance={distance}
+                            elevation={elevation}
+                            difficulty={difficulty}
+                            id={id}
+                            key={index}
+                        />
+                    ),
+                )}
+            </Carousel>
+        );
+    };
+
+    renderLoadingState = () => {
+        return (
+            <Carousel
+                arrows
+                slidesPerPage={carousel.desktop.slidesPerPage}
+                infinite
+                centered
+                itemWidth={carousel.desktop.itemWidth}
+                breakpoints={{
+                    768: {
+                        slidesPerPage: carousel.mobile.slidesPerPage,
+                        itemWidth: carousel.mobile.itemWidth,
+                    },
+                }}
+            >
+                {[0].map((index) => (
+                    <LoadingCard key={index} />
+                ))}
             </Carousel>
         );
     };
 
     render() {
         const { t } = this.props;
+        const { hikes } = this.state;
 
         return (
             <Section marginTop offset='true'>
@@ -86,7 +109,8 @@ class CarouselSection extends React.PureComponent {
                     title={t('section.carousel.title')}
                     description={t('section.carousel.description')}
                 />
-                {this.renderCarousel()}
+                {!hikes && this.renderLoadingState()}
+                {hikes && this.renderCarousel()}
             </Section>
         );
     }
