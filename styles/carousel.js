@@ -27,7 +27,7 @@ export const CarouselCard = styled.a`
     width: 100%;
     margin: 40px ${cardMargin} 80px ${cardMargin};
     border-radius: ${borderRadius.sm};
-    background-color: ${colors.gray};
+    background-color: ${colors.grayMediumLight};
     position: relative;
     overflow: hidden;
 
