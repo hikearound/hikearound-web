@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section } from '../../../styles/landing';
+import { StyledSection } from '../../../styles/landing';
 import TextSection from '../Text';
 import { carousel } from '../../../constants/carousel';
 import Card from '../../carousel/Card';
@@ -103,7 +103,7 @@ class CarouselSection extends React.PureComponent {
         const { hikes } = this.state;
 
         return (
-            <Section marginTop offset='true'>
+            <StyledSection marginTop offset='true'>
                 <TextSection
                     centered
                     title={t('section.carousel.title')}
@@ -111,7 +111,7 @@ class CarouselSection extends React.PureComponent {
                 />
                 {!hikes && this.renderLoadingState()}
                 {hikes && this.renderCarousel()}
-            </Section>
+            </StyledSection>
         );
     }
 }

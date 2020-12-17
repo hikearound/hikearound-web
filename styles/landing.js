@@ -34,6 +34,18 @@ export const Section = styled.div`
     }
 `;
 
+export const StyledSection = styled(Section)`
+    min-height: 408px;
+
+    @media ${device.tablet} {
+        min-height: 337px;
+    }
+
+    @media ${device.phone} {
+        min-height: 404px;
+    }
+`;
+
 export const SectionBlock = styled.div`
     max-width: 970px;
     min-height: 621px;
