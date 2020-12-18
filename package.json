@@ -51,7 +51,7 @@
     "react-toast-notifications": "^2.4.0",
     "read-more-react": "^1.0.10",
     "sass": "^1.30.0",
-    "simple-react-lightbox": "^3.5.0",
+    "simple-react-lightbox": "3.3.0",
     "styled-components": "^5.2.1",
     "swr": "^0.2.3",
     "xhr2": "^0.2.0",
