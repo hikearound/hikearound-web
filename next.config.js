@@ -1,5 +1,6 @@
 const withSourceMaps = require('@zeit/next-source-maps')();
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const { nextI18NextRewrites } = require('next-i18next/rewrites');
 
 const {
     NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
@@ -9,14 +10,14 @@ const {
     NODE_ENV,
 } = process.env;
 
+const localeSubpaths = {};
+
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withSourceMaps({
+    rewrites: async () => nextI18NextRewrites(localeSubpaths),
     publicRuntimeConfig: {
-        localeSubpaths:
-            typeof process.env.LOCALE_SUBPATHS === 'string'
-                ? process.env.LOCALE_SUBPATHS
-                : 'none',
+        localeSubpaths,
     },
 
     webpack: (config, options) => {
