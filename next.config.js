@@ -16,8 +16,24 @@ process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withSourceMaps({
     rewrites: async () => nextI18NextRewrites(localeSubpaths),
+
     publicRuntimeConfig: {
         localeSubpaths,
+    },
+
+    async headers() {
+        return [
+            {
+                source: '/images/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value:
+                            'public, max-age=31536000, stale-while-revalidate',
+                    },
+                ],
+            },
+        ];
     },
 
     webpack: (config, options) => {
