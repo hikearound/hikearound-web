@@ -4,18 +4,13 @@ import styled from 'styled-components';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
-import { getHikeImage, getHikeThumbnail } from '../../utils/hike';
+import { getHikeImageGallery } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 import { options } from '../../constants/lightbox';
 import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
-    images: PropTypes.object,
     id: PropTypes.string.isRequired,
-};
-
-const defaultProps = {
-    images: {},
 };
 
 class Gallery extends React.PureComponent {
@@ -27,44 +22,49 @@ class Gallery extends React.PureComponent {
         };
     }
 
-    componentDidMount() {
-        this.buildHikeImageArray();
+    async componentDidMount() {
+        await this.setImages();
+        await this.buildImageArray();
     }
 
-    componentDidUpdate(prevProps) {
-        const { images } = this.props;
+    async componentDidUpdate(prevProps) {
+        const { id } = this.props;
 
-        if (prevProps.images !== images) {
+        if (prevProps.id !== id) {
             this.clearImageArrays();
-            this.buildHikeImageArray();
+
+            await this.setImages();
+            await this.buildImageArray();
         }
     }
-
-    buildHikeImageArray = async () => {
-        const { id, images } = this.props;
-        const photoCount = Object.keys(images).length;
-
-        const imageArray = [];
-        const thumbArray = [];
-
-        for (let i = 0; i < photoCount; i += 1) {
-            const thumbnailUrl = await getHikeThumbnail(id, i);
-            const imageUrl = await getHikeImage(id, i);
-
-            thumbArray.push(thumbnailUrl);
-            imageArray.push(imageUrl);
-        }
-
-        this.setState({ imageArray, thumbArray });
-    };
 
     clearImageArrays = () => {
         this.setState({ imageArray: [], thumbArray: [] });
     };
 
+    setImages = async () => {
+        const { id } = this.props;
+        const { images, count } = await getHikeImageGallery(id);
+
+        this.setState({ images, count });
+    };
+
+    buildImageArray = () => {
+        const { images, count } = this.state;
+
+        const imageArray = [];
+        const thumbArray = [];
+
+        for (let i = 0; i < count; i += 1) {
+            imageArray.push(images[i].uri.cover);
+            thumbArray.push(images[i].uri.thumbnail);
+        }
+
+        this.setState({ imageArray, thumbArray });
+    };
+
     renderGallery() {
-        const { images } = this.props;
-        const { imageArray, thumbArray } = this.state;
+        const { imageArray, thumbArray, images } = this.state;
 
         return (
             <CardContent includeMinHeight fullWidth>
@@ -105,7 +105,6 @@ class Gallery extends React.PureComponent {
 }
 
 Gallery.propTypes = propTypes;
-Gallery.defaultProps = defaultProps;
 
 export default withTranslation('common')(Gallery);
 

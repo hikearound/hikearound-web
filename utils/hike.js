@@ -95,26 +95,15 @@ export async function getHikeImageGallery(id) {
         .doc(id)
         .get();
 
-    return gallerySnapshot.data();
-}
+    const images = gallerySnapshot.data();
+    const count = Object.keys(images).length;
 
-export async function getHikeImage(id, index) {
-    return firebase
-        .storage()
-        .ref(`hikes/${id}/images/${index}.jpg`)
-        .getDownloadURL();
+    return { images, count };
 }
 
 export async function getMapImage(id) {
     return firebase
         .storage()
         .ref(`images/maps/light/${id}.png`)
-        .getDownloadURL();
-}
-
-export async function getHikeThumbnail(id, index) {
-    return firebase
-        .storage()
-        .ref(`hikes/${id}/images/thumbnails/${index}_200x200.jpg`)
         .getDownloadURL();
 }

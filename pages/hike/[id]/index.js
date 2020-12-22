@@ -9,28 +9,21 @@ import HikeMap from '../../../components/hike/Map';
 import RecentHikes from '../../../components/RecentHikes';
 import ActionBar from '../../../components/action_bar/Hike';
 import Ad from '../../../components/page/Ad';
-import {
-    getHikeData,
-    getHikeImageGallery,
-    getMapImage,
-} from '../../../utils/hike';
+import { getHikeData, getMapImage } from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     shouldShowAd: PropTypes.bool,
-    images: PropTypes.object,
 };
 
 const defaultProps = {
     shouldShowAd: true,
-    images: {},
 };
 
 class HikePage extends React.Component {
     static async getInitialProps({ query }) {
         const hike = await getHikeData(query.id);
-        const images = await getHikeImageGallery(query.id);
         const mapImage = await getMapImage(query.id);
 
         hike.mapImage = mapImage;
@@ -38,7 +31,6 @@ class HikePage extends React.Component {
 
         return {
             hike,
-            images,
             id: query.id,
             namespacesRequired: [
                 'common',
@@ -51,7 +43,7 @@ class HikePage extends React.Component {
     }
 
     renderMainColumn() {
-        const { hike, id, images } = this.props;
+        const { hike, id } = this.props;
 
         return (
             <div>
@@ -59,7 +51,7 @@ class HikePage extends React.Component {
                 <HikeMap id={id} hike={hike} />
                 <ActionBar hike={hike} />
                 <Description description={hike.description} key={id} />
-                <Gallery id={id} images={images} />
+                <Gallery id={id} />
             </div>
         );
     }
