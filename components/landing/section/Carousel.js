@@ -54,7 +54,7 @@ class CarouselSection extends React.PureComponent {
                             distance,
                             elevation,
                             difficulty,
-                            id,
+                            hid,
                         },
                         index,
                     ) => (
@@ -67,7 +67,7 @@ class CarouselSection extends React.PureComponent {
                             distance={distance}
                             elevation={elevation}
                             difficulty={difficulty}
-                            id={id}
+                            hid={hid}
                             key={index}
                         />
                     ),

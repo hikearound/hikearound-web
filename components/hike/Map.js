@@ -11,7 +11,7 @@ import AppleMap from '../Map';
 import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
-    id: PropTypes.string.isRequired,
+    hid: PropTypes.string.isRequired,
     hike: PropTypes.object.isRequired,
 };
 
@@ -30,9 +30,9 @@ class HikeMap extends React.PureComponent {
     }
 
     async componentDidUpdate(prevProps) {
-        const { id } = this.props;
+        const { hid } = this.props;
 
-        if (prevProps.id !== id) {
+        if (prevProps.hid !== hid) {
             await this.initializeMap();
         }
     }
@@ -51,11 +51,11 @@ class HikeMap extends React.PureComponent {
     }
 
     initializeMap = async () => {
-        const { id } = this.props;
+        const { hid } = this.props;
 
         this.setState({ shouldShowMap: false });
 
-        const hikeXmlUrl = await getHikeXmlUrl(id);
+        const hikeXmlUrl = await getHikeXmlUrl(hid);
         const hikeData = await parseHikeXml(hikeXmlUrl);
 
         if (hikeData) {

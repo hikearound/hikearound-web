@@ -13,7 +13,7 @@ import { getHikeData, getMapImage } from '../../../utils/hike';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    hid: PropTypes.string.isRequired,
     shouldShowAd: PropTypes.bool,
 };
 
@@ -23,15 +23,16 @@ const defaultProps = {
 
 class HikePage extends React.Component {
     static async getInitialProps({ query }) {
-        const hike = await getHikeData(query.id);
-        const mapImage = await getMapImage(query.id);
+        const { hid } = query;
+        const hike = await getHikeData(hid);
+        const mapImage = await getMapImage(hid);
 
         hike.mapImage = mapImage;
-        hike.id = query.id;
+        hike.hid = hid;
 
         return {
             hike,
-            id: query.id,
+            hid,
             namespacesRequired: [
                 'common',
                 'action',
@@ -43,25 +44,25 @@ class HikePage extends React.Component {
     }
 
     renderMainColumn() {
-        const { hike, id } = this.props;
+        const { hike, hid } = this.props;
 
         return (
             <div>
                 <Header name={hike.name} city={hike.city} state={hike.state} />
-                <HikeMap id={id} hike={hike} />
+                <HikeMap hid={hid} hike={hike} />
                 <ActionBar hike={hike} />
-                <Description description={hike.description} key={id} />
-                <Gallery id={id} />
+                <Description description={hike.description} key={hid} />
+                <Gallery hid={hid} />
             </div>
         );
     }
 
     renderStickyRightColumn() {
-        const { hike, shouldShowAd } = this.props;
+        const { hid, shouldShowAd } = this.props;
 
         return (
             <div>
-                <RecentHikes id={hike.id} />
+                <RecentHikes hid={hid} />
                 {shouldShowAd && <Ad />}
             </div>
         );

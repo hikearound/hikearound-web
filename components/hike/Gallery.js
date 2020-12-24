@@ -10,7 +10,7 @@ import { options } from '../../constants/lightbox';
 import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
-    id: PropTypes.string.isRequired,
+    hid: PropTypes.string.isRequired,
 };
 
 class Gallery extends React.PureComponent {
@@ -28,9 +28,9 @@ class Gallery extends React.PureComponent {
     }
 
     async componentDidUpdate(prevProps) {
-        const { id } = this.props;
+        const { hid } = this.props;
 
-        if (prevProps.id !== id) {
+        if (prevProps.hid !== hid) {
             this.clearImageArrays();
 
             await this.setImages();
@@ -43,8 +43,8 @@ class Gallery extends React.PureComponent {
     };
 
     setImages = async () => {
-        const { id } = this.props;
-        const { images, count } = await getHikeImageGallery(id);
+        const { hid } = this.props;
+        const { images, count } = await getHikeImageGallery(hid);
 
         this.setState({ images, count });
     };

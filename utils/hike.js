@@ -5,21 +5,21 @@ import { parseString } from 'xml2js';
 
 global.XMLHttpRequest = require('xhr2');
 
-export async function getHikeData(id) {
+export async function getHikeData(hid) {
     const hikeSnapshot = await firebase
         .firestore()
         .collection('hikes')
-        .doc(id)
+        .doc(hid)
         .get();
 
     const hikeData = hikeSnapshot.data() || {};
     return hikeData;
 }
 
-export async function getHikeXmlUrl(id) {
+export async function getHikeXmlUrl(hid) {
     const hikeXmlUrl = await firebase
         .storage()
-        .ref(`gpx/${id}.gpx`)
+        .ref(`gpx/${hid}.gpx`)
         .getDownloadURL();
 
     return hikeXmlUrl;
@@ -45,7 +45,7 @@ export async function reduceHikes(querySnapshot) {
     querySnapshot.forEach((hike) => {
         if (hike.exists) {
             const hikeData = hike.data() || {};
-            hikeData.id = hike.id;
+            hikeData.hid = hike.id;
 
             if (!hikeData.review) {
                 hikeData.review = { average: 0, count: 0 };
@@ -88,11 +88,11 @@ export async function getFeaturedHikes() {
     return hikes;
 }
 
-export async function getHikeImageGallery(id) {
+export async function getHikeImageGallery(hid) {
     const gallerySnapshot = await firebase
         .firestore()
         .collection('images')
-        .doc(id)
+        .doc(hid)
         .get();
 
     const images = gallerySnapshot.data();
@@ -101,9 +101,9 @@ export async function getHikeImageGallery(id) {
     return { images, count };
 }
 
-export async function getMapImage(id) {
+export async function getMapImage(hid) {
     return firebase
         .storage()
-        .ref(`images/maps/light/${id}.png`)
+        .ref(`images/maps/light/${hid}.png`)
         .getDownloadURL();
 }

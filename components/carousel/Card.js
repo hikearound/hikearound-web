@@ -27,7 +27,7 @@ const propTypes = {
     distance: PropTypes.number.isRequired,
     elevation: PropTypes.number.isRequired,
     difficulty: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    hid: PropTypes.string.isRequired,
 };
 
 class Card extends React.PureComponent {
@@ -83,11 +83,11 @@ class Card extends React.PureComponent {
     };
 
     render() {
-        const { coverPhoto, id } = this.props;
+        const { coverPhoto, hid } = this.props;
 
         return (
-            <Link href='/hike/[id]' as={`/hike/${id}`}>
-                <CarouselCard href={`/hike/${id}`}>
+            <Link href='/hike/[hid]' as={`/hike/${hid}`}>
+                <CarouselCard href={`/hike/${hid}`}>
                     <CardInterior
                         className='cardBackground'
                         image={coverPhoto}
