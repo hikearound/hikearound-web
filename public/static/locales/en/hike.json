@@ -17,5 +17,8 @@
         "easy": "Easy",
         "moderate": "Moderate",
         "difficult": "Difficult"
+    },
+    "review": {
+        "empty": "This hike has not yet been reviewed."
     }
 }

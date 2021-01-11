@@ -94,7 +94,7 @@ class Gallery extends React.PureComponent {
         const { t } = this.props;
 
         return (
-            <Card lastChild noPadding>
+            <Card noPadding>
                 <SecondaryHeading isCard>
                     {t('card.title.gallery')}
                 </SecondaryHeading>

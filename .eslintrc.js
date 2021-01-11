@@ -45,6 +45,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'react/no-danger': 'off',
         'func-names': 'off',
+        'no-restricted-syntax': 'off',
         'react/static-property-placement': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
         'comma-dangle': ['error', 'always-multiline'],

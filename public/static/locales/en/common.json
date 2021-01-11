@@ -8,7 +8,8 @@
             "gallery": "Photo Gallery",
             "stats": "Hike Stats",
             "ad": "Advertisement",
-            "map": "Trail Map"
+            "map": "Trail Map",
+            "reviews": "Reviews"
         }
     },
     "review": "· {{count}} review",

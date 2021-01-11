@@ -17,5 +17,8 @@
         "easy": "Fácil",
         "moderate": "Moderado",
         "difficult": "Difícil"
+    },
+    "review": {
+        "empty": "Esta caminata aún no ha sido revisada."
     }
 }

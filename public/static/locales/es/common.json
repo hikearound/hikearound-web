@@ -8,7 +8,8 @@
             "gallery": "Galería de fotos",
             "stats": "Estadísticas de caminata",
             "ad": "Anuncio",
-            "map": "Mapa de senderos"
+            "map": "Mapa de senderos",
+            "reviews": "Críticas"
         }
     },
     "review": "· {{count}} revisión",
