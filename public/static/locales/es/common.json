@@ -9,7 +9,8 @@
             "stats": "Estadísticas de caminata",
             "ad": "Anuncio",
             "map": "Mapa de senderos",
-            "reviews": "Críticas"
+            "reviews": "Críticas",
+            "nearby": "Caminatas cerca de {{cityName}}"
         }
     },
     "review": "· {{count}} revisión",

@@ -6,6 +6,7 @@ import { colors } from '../../constants/colors';
 import { fontSize, lineHeight } from '../../constants/type';
 import { RightRailLink } from '../../styles/links';
 import LanguageSelect from '../i18n/Select';
+import { device } from '../../constants/breakpoints';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,
@@ -94,5 +95,11 @@ const FooterWrapper = styled.span`
         color: ${colors.grayDark};
         font-size: ${fontSize.sm};
         line-height: ${lineHeight.lh_13};
+    }
+
+    @media ${device.tablet} {
+        span {
+            font-size: ${fontSize.md};
+        }
     }
 `;

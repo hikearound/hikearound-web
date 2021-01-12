@@ -9,7 +9,8 @@
             "stats": "Hike Stats",
             "ad": "Advertisement",
             "map": "Trail Map",
-            "reviews": "Reviews"
+            "reviews": "Reviews",
+            "nearby": "Hikes Near {{cityName}}"
         }
     },
     "review": "· {{count}} review",

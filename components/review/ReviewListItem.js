@@ -13,6 +13,8 @@ import timestamps from '../../constants/timestamps';
 import { withTranslation, i18n } from '../../utils/i18n';
 import { parseText } from '../../utils/text';
 import { device } from '../../constants/breakpoints';
+import { spacing } from '../../constants/spacing';
+import { fontWeight } from '../../constants/type';
 
 const propTypes = {
     rating: PropTypes.number.isRequired,
@@ -160,7 +162,7 @@ export default withTranslation(['common', 'action'])(ReviewListItem);
 const ReviewItemWrapper = styled.div`
     display: block;
     border-top: 1px solid ${colors.gray};
-    padding: 16px;
+    padding: ${spacing.md};
     margin-top: -1px;
 
     a {
@@ -192,7 +194,7 @@ const Body = styled.div`
 const InfoBlock = styled.div`
     display: inline-block;
     vertical-align: top;
-    margin-left: 8px;
+    margin-left: ${spacing.sm};
     position: relative;
     top: 2px;
 `;
@@ -206,7 +208,7 @@ const Avatar = styled.img`
 
 const Name = styled.div`
     display: block;
-    font-weight: 500;
+    font-weight: ${fontWeight.medium};
     padding-bottom: 2px;
 `;
 

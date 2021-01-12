@@ -7,7 +7,7 @@ import Stats from '../../../components/hike/Stats';
 import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import Reviews from '../../../components/hike/Reviews';
-import RecentHikes from '../../../components/RecentHikes';
+import NearbyHikes from '../../../components/NearbyHikes';
 import ActionBar from '../../../components/action_bar/Hike';
 import Ad from '../../../components/page/Ad';
 import { getHikeData, getMapImage } from '../../../utils/hike';
@@ -61,11 +61,14 @@ class HikePage extends React.Component {
     }
 
     renderStickyRightColumn() {
-        const { hid, shouldShowAd } = this.props;
+        const { hike, shouldShowAd } = this.props;
 
         return (
             <div>
-                <RecentHikes hid={hid} />
+                <NearbyHikes
+                    location={hike.coordinates.center}
+                    city={hike.city}
+                />
                 {shouldShowAd && <Ad />}
             </div>
         );

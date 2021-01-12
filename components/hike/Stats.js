@@ -100,12 +100,20 @@ const Label = styled.div`
     display: inline-block;
     font-size: ${fontSize.sm};
     margin-right: ${spacing.xs};
+
+    @media ${device.tablet} {
+        font-size: ${fontSize.md};
+    }
 `;
 
 const StatData = styled.div`
     display: inline-block;
     font-size: ${fontSize.sm};
     color: ${colors.blackText};
+
+    @media ${device.tablet} {
+        font-size: ${fontSize.md};
+    }
 `;
 
 const RecentHikesHeading = styled(SecondaryHeading)`

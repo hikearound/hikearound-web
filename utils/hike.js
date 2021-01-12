@@ -76,6 +76,21 @@ export async function getRecentHikes(size) {
     return hikes;
 }
 
+export async function getNearbyHikes(size, range) {
+    const hikeRef = firebase
+        .firestore()
+        .collection('hikes')
+        .where('geohash', '>=', range.lower)
+        .where('geohash', '<=', range.upper)
+        .orderBy('geohash')
+        .limit(size);
+
+    const querySnapshot = await hikeRef.get();
+    const hikes = await reduceHikes(querySnapshot);
+
+    return hikes;
+}
+
 export async function getFeaturedHikes() {
     const hikeRef = firebase
         .firestore()
