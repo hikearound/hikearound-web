@@ -161,6 +161,7 @@ const ReviewItemWrapper = styled.div`
     display: block;
     border-top: 1px solid ${colors.gray};
     padding: 16px;
+    margin-top: -1px;
 
     a {
         color: ${colors.purple};
