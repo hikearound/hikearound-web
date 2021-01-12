@@ -127,8 +127,4 @@ const LoadingWrapper = styled.div`
 const CardContent = styled.div`
     display: block;
     padding: 16px;
-
-    @media ${device.tablet} {
-        font-size: 13px;
-    }
 `;
