@@ -171,7 +171,7 @@ const ReviewItemWrapper = styled.div`
         }
     }
 
-    &:first-child {
+    &:first-of-type {
         border-top-width: 0;
     }
 

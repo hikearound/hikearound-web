@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
 import { Card } from '../../styles/card';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
@@ -9,6 +8,7 @@ import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 import AppleMap from '../Map';
 import { withTranslation } from '../../utils/i18n';
+import MapLoadingState from '../loading/Map';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,
@@ -96,7 +96,7 @@ class HikeMap extends React.PureComponent {
     }
 
     render() {
-        const { t } = this.props;
+        const { hid, t } = this.props;
         const { path, center, shouldShowMap } = this.state;
 
         return (
@@ -108,11 +108,7 @@ class HikeMap extends React.PureComponent {
                     {shouldShowMap && (
                         <AppleMap center={center} points={path} />
                     )}
-                    {!shouldShowMap && (
-                        <MapLoading>
-                            <Skeleton height={450} width={650} />
-                        </MapLoading>
-                    )}
+                    {!shouldShowMap && <MapLoadingState hid={hid} />}
                 </MapContainer>
             </MapCard>
         );

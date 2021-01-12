@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SRLWrapper } from 'simple-react-lightbox';
+import { isMobile } from 'react-device-detect';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImageGallery } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 import { options } from '../../constants/lightbox';
 import { withTranslation } from '../../utils/i18n';
+import GalleryLoadingState from '../loading/Gallery';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,
@@ -19,6 +21,7 @@ class Gallery extends React.PureComponent {
 
         this.state = {
             imageArray: [],
+            loading: true,
         };
     }
 
@@ -31,15 +34,14 @@ class Gallery extends React.PureComponent {
         const { hid } = this.props;
 
         if (prevProps.hid !== hid) {
-            this.clearImageArrays();
-
+            await this.setDefaultStates();
             await this.setImages();
             await this.buildImageArray();
         }
     }
 
-    clearImageArrays = () => {
-        this.setState({ imageArray: [], thumbArray: [] });
+    setDefaultStates = async () => {
+        this.setState({ imageArray: [], thumbArray: [], loading: true });
     };
 
     setImages = async () => {
@@ -60,33 +62,37 @@ class Gallery extends React.PureComponent {
             thumbArray.push(images[i].uri.thumbnail);
         }
 
-        this.setState({ imageArray, thumbArray });
+        this.setState({ imageArray, thumbArray, loading: true });
     };
 
     renderGallery() {
-        const { imageArray, thumbArray, images } = this.state;
+        const { hid } = this.props;
+        const { imageArray, thumbArray, images, loading } = this.state;
 
         return (
-            <CardContent includeMinHeight fullWidth>
-                <PhotoGallery>
-                    <SRLWrapper options={options}>
-                        {imageArray.map((image, index) => (
-                            <ThumbnailButton
-                                key={index}
-                                href={imageArray[index]}
-                                data-attribute='SRL'
-                            >
-                                <Thumbnail
-                                    image={thumbArray[index]}
-                                    imageIndex={index}
+            <GalleryCardContent fullWidth>
+                {loading && <GalleryLoadingState hid={hid} />}
+                {!loading && (
+                    <PhotoGallery>
+                        <SRLWrapper options={options}>
+                            {imageArray.map((image, index) => (
+                                <ThumbnailButton
                                     key={index}
-                                    attribution={images[0].attribution.name}
-                                />
-                            </ThumbnailButton>
-                        ))}
-                    </SRLWrapper>
-                </PhotoGallery>
-            </CardContent>
+                                    href={imageArray[index]}
+                                    data-attribute='SRL'
+                                >
+                                    <Thumbnail
+                                        image={thumbArray[index]}
+                                        imageIndex={index}
+                                        key={index}
+                                        attribution={images[0].attribution.name}
+                                    />
+                                </ThumbnailButton>
+                            ))}
+                        </SRLWrapper>
+                    </PhotoGallery>
+                )}
+            </GalleryCardContent>
         );
     }
 
@@ -139,4 +145,8 @@ const ThumbnailButton = styled.a`
     &:hover {
         cursor: pointer;
     }
+`;
+
+const GalleryCardContent = styled(CardContent)`
+    max-height: 90px;
 `;
