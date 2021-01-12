@@ -19,7 +19,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    shouldShowAd: true,
+    shouldShowAd: false,
 };
 
 class HikePage extends React.Component {

@@ -53,6 +53,11 @@ export const FullWidthMainColumn = styled(MainColumn)`
 export const StickyContainer = styled.div`
     position: sticky;
     top: ${offsets.header};
+    margin-bottom: 34px;
+
+    @media ${device.tablet} {
+        margin-bottom: 0;
+    }
 `;
 
 export const RightColumn = styled.div`

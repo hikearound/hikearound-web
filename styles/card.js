@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
-import { borderRadius, grid } from '../constants/dimensions';
+import { borderRadius } from '../constants/dimensions';
 import { lineHeight, fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
 
@@ -10,7 +10,7 @@ export const Card = styled.div`
     border: 1px solid ${colors.gray};
     border-radius: ${borderRadius.sm};
     padding: ${(props) => (props.noPadding ? 0 : spacing.md)};
-    margin-bottom: ${(props) => (props.lastChild ? grid.gutter : spacing.md)};
+    margin-bottom: ${(props) => (props.lastChild ? '34px' : spacing.md)};
     min-height: 20px;
 
     @media ${device.tablet} {
