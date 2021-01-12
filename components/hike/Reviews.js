@@ -9,6 +9,7 @@ import { getRecentReviews } from '../../utils/review';
 import ReviewList from '../review/ReviewList';
 import { colors } from '../../constants/colors';
 import { device } from '../../constants/breakpoints';
+import ReviewLoadingState from '../loading/Review';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,
@@ -98,8 +99,8 @@ class Reviews extends React.Component {
                     {t('card.title.reviews')}
                 </SecondaryHeading>
                 <CardContentBorder />
-                <div>{loading && this.renderLoadingState()}</div>
-                <div>{!loading && this.renderReviewList()}</div>
+                {loading && <ReviewLoadingState />}
+                {!loading && this.renderReviewList()}
             </Card>
         );
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SRLWrapper } from 'simple-react-lightbox';
-import { isMobile } from 'react-device-detect';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImageGallery } from '../../utils/hike';
@@ -62,7 +61,7 @@ class Gallery extends React.PureComponent {
             thumbArray.push(images[i].uri.thumbnail);
         }
 
-        this.setState({ imageArray, thumbArray, loading: true });
+        this.setState({ imageArray, thumbArray, loading: false });
     };
 
     renderGallery() {
