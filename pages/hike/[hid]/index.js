@@ -61,11 +61,12 @@ class HikePage extends React.Component {
     }
 
     renderStickyRightColumn() {
-        const { hike, shouldShowAd } = this.props;
+        const { hid, hike, shouldShowAd } = this.props;
 
         return (
             <div>
                 <NearbyHikes
+                    hid={hid}
                     location={hike.coordinates.center}
                     city={hike.city}
                 />

@@ -29,3 +29,21 @@ export function getRange(latitude, longitude, distance) {
         upper: geohash.encode(upperLat, upperLon),
     };
 }
+
+export function getDistanceToHike(currentHikeCoords, hikeCoords) {
+    const p = Math.PI / 180;
+    const c = Math.cos;
+
+    const a =
+        0.5 -
+        c((currentHikeCoords.lat - hikeCoords.lat) * p) / 2 +
+        (c(hikeCoords.lat * p) *
+            c(currentHikeCoords.lat * p) *
+            (1 - c((currentHikeCoords.lng - hikeCoords.lng) * p))) /
+            2;
+
+    const distanceInKm = 12742 * Math.asin(Math.sqrt(a));
+    const distanceInMi = distanceInKm * 0.6214;
+
+    return distanceInMi;
+}

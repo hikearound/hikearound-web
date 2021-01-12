@@ -9,6 +9,7 @@ import { ListHeading, UnorderedList, ListItem } from '../styles/lists';
 import ListLoadingState from './loading/List';
 
 const propTypes = {
+    hid: PropTypes.string.isRequired,
     hikeCount: PropTypes.number,
     distance: PropTypes.number,
     prefetch: PropTypes.bool,
@@ -33,16 +34,36 @@ class NearbyHikes extends React.PureComponent {
     }
 
     async componentDidMount() {
+        await this.getAndSetNearbyHikes();
+    }
+
+    async componentDidUpdate(prevProps) {
+        const { hid } = this.props;
+
+        if (prevProps.hid !== hid) {
+            await this.setDefaultValues();
+            await this.getAndSetNearbyHikes();
+        }
+    }
+
+    setDefaultValues = async () => {
+        this.setState({
+            nearbyHikes: [],
+            loading: true,
+        });
+    };
+
+    getAndSetNearbyHikes = async () => {
         const { hikeCount, location, distance } = this.props;
         const { lat, lng } = location;
 
         const range = getRange(lat, lng, distance);
-        const nearbyHikes = await getNearbyHikes(hikeCount, range);
+        const nearbyHikes = await getNearbyHikes(hikeCount, range, location);
 
         if (nearbyHikes) {
             this.setState({ nearbyHikes, loading: false });
         }
-    }
+    };
 
     renderNearbyHikeLinks() {
         const { prefetch } = this.props;

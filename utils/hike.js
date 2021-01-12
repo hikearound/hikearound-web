@@ -2,6 +2,7 @@ import firebase from '@firebase/app';
 import '@firebase/firestore';
 import '@firebase/storage';
 import { parseString } from 'xml2js';
+import { getDistanceToHike } from './location';
 
 global.XMLHttpRequest = require('xhr2');
 
@@ -76,19 +77,43 @@ export async function getRecentHikes(size) {
     return hikes;
 }
 
-export async function getNearbyHikes(size, range) {
+export async function getNearbyHikes(size, range, currentCords) {
     const hikeRef = firebase
         .firestore()
         .collection('hikes')
         .where('geohash', '>=', range.lower)
         .where('geohash', '<=', range.upper)
         .orderBy('geohash')
-        .limit(size);
+        .limit(20);
 
     const querySnapshot = await hikeRef.get();
     const hikes = await reduceHikes(querySnapshot);
 
-    return hikes;
+    let reducedHikes = [];
+
+    hikes.forEach((hike) => {
+        if (hike) {
+            const hikeCoords = hike.coordinates.center;
+            const distanceToHike = getDistanceToHike(currentCords, hikeCoords);
+
+            const reduced = {
+                distanceToHike,
+                ...hike,
+            };
+
+            if (distanceToHike !== 0) {
+                reducedHikes.push(reduced);
+            }
+        }
+    });
+
+    reducedHikes = reducedHikes.sort((a, b) => {
+        return a.distanceToHike - b.distanceToHike;
+    });
+
+    reducedHikes = reducedHikes.slice(0, size);
+
+    return reducedHikes;
 }
 
 export async function getFeaturedHikes() {
