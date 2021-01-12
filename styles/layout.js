@@ -46,7 +46,8 @@ export const MainColumn = styled.div`
     }
 `;
 
-export const FullWidthMainColumn = styled(MainColumn)`
+export const FullWidthMainColumn = styled.div`
+    display: inline-block;
     width: 100%;
 `;
 

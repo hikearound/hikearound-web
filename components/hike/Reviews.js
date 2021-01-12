@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Skeleton from '@material-ui/lab/Skeleton';
 import { Card } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { withTranslation } from '../../utils/i18n';
@@ -65,14 +64,6 @@ class Reviews extends React.Component {
         }
     };
 
-    renderLoadingState = () => {
-        return (
-            <LoadingWrapper>
-                <Skeleton variant='text' width={300} />
-            </LoadingWrapper>
-        );
-    };
-
     renderReviewList = () => {
         const { reviews, maybeShowEmptyState } = this.state;
 
@@ -118,10 +109,6 @@ const CardContentBorder = styled.div`
         border-color: ${colors.grayLight};
         border-top-width: 3px;
     }
-`;
-
-const LoadingWrapper = styled.div`
-    padding: 16px;
 `;
 
 const CardContent = styled.div`
