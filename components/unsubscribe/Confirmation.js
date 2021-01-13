@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from '@material-ui/lab/Skeleton';
 import { Card, GenericCardContent } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
+import UnsubscribeLoadingState from '../loading/Unsubscribe';
 
 const propTypes = {
     data: PropTypes.object.isRequired,
@@ -40,12 +40,7 @@ class Confirmation extends React.Component {
     };
 
     renderLoadingState = () => {
-        return (
-            <>
-                <Skeleton variant='text' />
-                <Skeleton variant='text' width={300} />
-            </>
-        );
+        return <UnsubscribeLoadingState />;
     };
 
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from '@material-ui/lab/Skeleton';
+import VerifyLoadingState from '../loading/Verify';
 import { Card, GenericCardContent } from '../../styles/card';
 import { withTranslation } from '../../utils/i18n';
 
@@ -39,7 +39,7 @@ class Confirmation extends React.Component {
     };
 
     renderLoadingState = () => {
-        return <Skeleton variant='text' width={300} />;
+        return <VerifyLoadingState />;
     };
 
     render() {
