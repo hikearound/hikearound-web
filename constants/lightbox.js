@@ -1,8 +1,9 @@
 export const options = {
     settings: {
-        slideAnimationType: 'slide',
-        lightboxTransitionSpeed: 0.2,
-        lightboxTransitionTimingFunction: 'linear',
+        slideAnimationType: 'fade',
+        lightboxTransitionSpeed: 0.4,
+        slideSpringValues: [300, 50],
+        lightboxTransitionTimingFunction: 'easeInOut',
         hideControlsAfter: 5000,
         disablePanzoom: true,
     },
@@ -18,6 +19,7 @@ export const options = {
     },
     thumbnails: {
         showThumbnails: true,
+        thumbnailsContainerBackgroundColor: 'none',
     },
 };
 

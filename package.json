@@ -52,7 +52,7 @@
     "react-show-more-text": "^1.4.6",
     "react-toast-notifications": "^2.4.0",
     "sass": "^1.32.4",
-    "simple-react-lightbox": "3.3.0",
+    "simple-react-lightbox": "3.5.4",
     "styled-components": "^5.2.1",
     "swr": "^0.3.11",
     "xhr2": "^0.2.0",
