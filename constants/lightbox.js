@@ -4,6 +4,7 @@ export const options = {
         lightboxTransitionSpeed: 0.4,
         slideSpringValues: [300, 50],
         lightboxTransitionTimingFunction: 'easeInOut',
+        overlayColor: 'rgba(0,0,0,0.9)',
         hideControlsAfter: 5000,
         disablePanzoom: true,
     },
