@@ -44,6 +44,13 @@ button {
         background-position: 16.5px 11px;
         right: $space-small;
     }
+
+    @media only screen and (max-width: 768px) {
+        &.SRLCloseButton {
+            background-size: 13px;
+            background-position: 10px;
+        }
+    }
 }
 
 @media only screen and (max-width: $breakpoint-tablet) {

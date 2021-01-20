@@ -57,7 +57,7 @@ class Gallery extends React.PureComponent {
         const thumbArray = [];
 
         for (let i = 0; i < count; i += 1) {
-            imageArray.push(images[i].uri.cover);
+            imageArray.push(images[i].uri.original);
             thumbArray.push(images[i].uri.thumbnail);
         }
 
