@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
-import { spacing } from '../../../constants/spacing';
-import { componentSpacing } from '../../../constants/landing';
 import { withTranslation } from '../../../utils/i18n';
 
 class MapSection extends React.PureComponent {
@@ -16,12 +14,12 @@ class MapSection extends React.PureComponent {
             <ContentImage justifyLeft>
                 <ImageWrapper>
                     <Image
-                        src='/images/landing/02.png'
+                        src='/images/landing/02b.png'
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={375}
-                        height={671}
+                        width={358}
+                        height={620}
                         loading='eager'
                         quality={100}
                     />
@@ -53,11 +51,11 @@ export default withTranslation(['landing', 'common'])(MapSection);
 export const ImageWrapper = styled.div`
     color: transparent;
     position: relative;
-    top: ${componentSpacing.md};
-    margin-bottom: ${componentSpacing.sm};
+    top: 80px;
+    margin-bottom: 120px;
 
     @media ${device.tablet} {
-        top: -${spacing.lg};
-        margin: 0 auto -${componentSpacing.xl} auto;
+        top: 0;
+        margin: 0 auto 10px auto;
     }
 `;

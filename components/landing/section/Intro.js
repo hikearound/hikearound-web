@@ -20,12 +20,12 @@ class IntroSection extends React.PureComponent {
             <ContentImage inflate>
                 <ImageWrapper>
                     <Image
-                        src='/images/landing/01.png'
+                        src='/images/landing/01b.png'
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={600}
-                        height={591}
+                        width={634}
+                        height={620}
                         priority
                         quality={100}
                     />
@@ -60,14 +60,14 @@ export const ImageWrapper = styled.div`
     color: transparent;
     position: relative;
     top: ${spacing.md};
-    margin-right: -120px;
+    margin-right: -160px;
 
     @media ${device.tablet} {
-        width: 100%;
+        width: 105%;
         height: 100%;
         margin-right: 0;
-        margin-bottom: 30px;
-        left: ${spacing.xs};
+        margin-bottom: 0;
+        left: 20px;
         top: 0;
     }
 `;
