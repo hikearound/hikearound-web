@@ -7,6 +7,7 @@ import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
 import { withTranslation } from '../../../utils/i18n';
+import { landing } from '../../../constants/images';
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => {
@@ -20,12 +21,12 @@ class IntroSection extends React.PureComponent {
             <ContentImage inflate>
                 <ImageWrapper>
                     <Image
-                        src='/images/landing/01b.png'
+                        src={landing.phone.hike}
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={634}
-                        height={620}
+                        width={600}
+                        height={591}
                         priority
                         quality={100}
                     />
@@ -60,14 +61,14 @@ export const ImageWrapper = styled.div`
     color: transparent;
     position: relative;
     top: ${spacing.md};
-    margin-right: -160px;
+    margin-right: -140px;
 
     @media ${device.tablet} {
-        width: 105%;
+        width: 100%;
         height: 100%;
         margin-right: 0;
-        margin-bottom: 0;
-        left: 20px;
+        margin-bottom: 25px;
+        left: 15px;
         top: 0;
     }
 `;

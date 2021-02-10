@@ -5,6 +5,7 @@ import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
 import { withTranslation } from '../../../utils/i18n';
+import { landing } from '../../../constants/images';
 
 class MapSection extends React.PureComponent {
     renderPhone = () => {
@@ -14,12 +15,12 @@ class MapSection extends React.PureComponent {
             <ContentImage justifyLeft>
                 <ImageWrapper>
                     <Image
-                        src='/images/landing/02b.png'
+                        src={landing.phone.map}
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={358}
-                        height={620}
+                        width={350}
+                        height={605}
                         loading='eager'
                         quality={100}
                     />
@@ -56,6 +57,6 @@ export const ImageWrapper = styled.div`
 
     @media ${device.tablet} {
         top: 0;
-        margin: 0 auto 10px auto;
+        margin: 0 auto 20px auto;
     }
 `;
