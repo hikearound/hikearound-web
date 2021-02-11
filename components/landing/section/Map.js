@@ -19,7 +19,7 @@ class MapSection extends React.PureComponent {
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={358}
+                        width={351}
                         height={620}
                         loading='eager'
                         quality={100}
@@ -53,7 +53,7 @@ export const ImageWrapper = styled.div`
     color: transparent;
     position: relative;
     top: 80px;
-    margin-bottom: 135px;
+    margin-bottom: 130px;
 
     @media ${device.tablet} {
         top: 0;
