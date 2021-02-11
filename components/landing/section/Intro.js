@@ -25,8 +25,8 @@ class IntroSection extends React.PureComponent {
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
-                        width={600}
-                        height={591}
+                        width={604}
+                        height={590}
                         priority
                         quality={100}
                     />
@@ -61,7 +61,7 @@ export const ImageWrapper = styled.div`
     color: transparent;
     position: relative;
     top: ${spacing.md};
-    margin-right: -140px;
+    margin-right: -150px;
 
     @media ${device.tablet} {
         width: 100%;
