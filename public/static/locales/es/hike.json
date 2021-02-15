@@ -19,6 +19,13 @@
         "difficult": "Difícil"
     },
     "review": {
-        "empty": "Esta caminata aún no ha sido revisada."
+        "empty": "Esta caminata aún no ha sido revisada.",
+        "prompt": {
+            "title": "¿Probaste esta caminata? ¡Dejar un comentario!"
+        },
+        "dialog": {
+            "title": "Obtener la aplicación",
+            "content": "Actualmente, solo los usuarios registrados pueden dejar reseñas desde nuestra aplicación móvil. ¡Descarga la aplicación hoy para comenzar!"
+        }
     }
 }

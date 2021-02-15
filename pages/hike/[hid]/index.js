@@ -7,6 +7,7 @@ import Stats from '../../../components/hike/Stats';
 import Gallery from '../../../components/hike/Gallery';
 import HikeMap from '../../../components/hike/Map';
 import Reviews from '../../../components/hike/Reviews';
+import ReviewPrompt from '../../../components/hike/ReviewPrompt';
 import NearbyHikes from '../../../components/NearbyHikes';
 import ActionBar from '../../../components/action_bar/Hike';
 import Ad from '../../../components/page/Ad';
@@ -55,6 +56,7 @@ class HikePage extends React.Component {
                 <ActionBar hike={hike} />
                 <Description description={hike.description} key={hid} />
                 <Gallery hid={hid} />
+                <ReviewPrompt />
                 <Reviews hid={hid} />
             </div>
         );

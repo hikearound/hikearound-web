@@ -19,6 +19,13 @@
         "difficult": "Difficult"
     },
     "review": {
-        "empty": "This hike has not yet been reviewed."
+        "empty": "This hike has not yet been reviewed.",
+        "prompt": {
+            "title": "Tried this hike? Leave a review!"
+        },
+        "dialog": {
+            "title": "Get the App",
+            "content": "Presently, only registered users can leave reviews from our mobile app. Download the app today to get started!"
+        }
     }
 }
