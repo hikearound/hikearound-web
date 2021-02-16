@@ -21,15 +21,25 @@ const defaultProps = {
 };
 
 class AppleMap extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            didLoad: false,
+        };
+    }
+
     componentDidUpdate() {
         const { center, points, map } = this.props;
+        const { didLoad } = this.state;
 
-        if (map) {
+        if (map && !didLoad) {
             this.setOptions();
             this.setCenter(center);
             this.plotPoints(points);
             this.maybeFilterPoints();
             this.addAnnotation(points);
+            this.setLoadState();
         }
     }
 
@@ -70,6 +80,8 @@ class AppleMap extends React.Component {
 
             const trail = new PolylineOverlay(coords, { style });
             const padding = getMapPadding();
+
+            map.removeItems([trail]);
 
             map.showItems(trail, {
                 animate: false,
@@ -118,7 +130,18 @@ class AppleMap extends React.Component {
             glyphImage: { 1: '../images/annotation/glyph.png' },
         });
 
+        map.removeItems([startingAnnotation]);
         map.addAnnotations([startingAnnotation]);
+    };
+
+    setLoadState = () => {
+        const { didLoad } = this.state;
+
+        if (!didLoad) {
+            this.setState({
+                didLoad: true,
+            });
+        }
     };
 
     render() {
