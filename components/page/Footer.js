@@ -39,7 +39,7 @@ class Footer extends React.PureComponent {
             },
             {
                 text: t('link.contact'),
-                link: 'mailto:pat@tryhikearound.com',
+                link: 'mailto:support@tryhikearound.com',
                 type: 'href',
             },
             {
