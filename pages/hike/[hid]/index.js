@@ -15,7 +15,7 @@ import Ad from '../../../components/page/Ad';
 import { getHikeData, getMapImage } from '../../../utils/hike';
 
 const propTypes = {
-    hike: PropTypes.object.isRequired,
+    hike: PropTypes.string.isRequired,
     hid: PropTypes.string.isRequired,
     shouldShowAd: PropTypes.bool,
 };

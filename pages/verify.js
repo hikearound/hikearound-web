@@ -9,7 +9,7 @@ import { fetcher } from '../utils/pages/verify';
 
 const VerifyPage = () => {
     const router = useRouter();
-    const { t } = useTranslation('unsubscribe');
+    const { t } = useTranslation('verify');
     const { data } = useSWR(['/api/verify', router.query.token], fetcher);
 
     const renderMainColumn = () => {

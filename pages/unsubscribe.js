@@ -28,6 +28,7 @@ export async function getServerSideProps({ locale }) {
         props: {
             ...(await serverSideTranslations(locale, [
                 'unsubscribe',
+                'notifications',
                 'header',
                 'footer',
             ])),

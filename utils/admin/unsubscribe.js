@@ -18,11 +18,7 @@ export async function getUserSubscriptions(uid) {
 }
 
 export async function updateUserSubscriptions(uid, type, subscriptions) {
-    if (type === 'global') {
-        subscriptions.email.enabled = false;
-    } else {
-        subscriptions.email[type].enabled = false;
-    }
+    subscriptions.email[type].enabled = false;
 
     admin
         .firestore()

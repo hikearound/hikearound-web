@@ -12,8 +12,12 @@ import { withToast } from '../../utils/toast';
 
 const propTypes = {
     addToast: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object,
     classes: PropTypes.object.isRequired,
+};
+
+const defaultProps = {
+    data: { email: null },
 };
 
 class PasswordForm extends React.Component {
@@ -201,6 +205,7 @@ class PasswordForm extends React.Component {
 }
 
 PasswordForm.propTypes = propTypes;
+PasswordForm.defaultProps = defaultProps;
 
 export default withStyles(formStyle)(
     withToast(withTranslation(['reset', 'common'])(PasswordForm)),

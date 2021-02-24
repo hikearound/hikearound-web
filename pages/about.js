@@ -15,9 +15,6 @@ const propTypes = {
 };
 
 const AboutPage = ({ title, description }) => {
-    title = JSON.parse(title);
-    description = JSON.parse(description);
-
     const renderMainColumn = () => {
         return (
             <RootView>
@@ -43,8 +40,8 @@ export async function getServerSideProps({ req, locale }) {
 
     return {
         props: {
-            title: JSON.stringify(page.data.title),
-            description: JSON.stringify(page.data.description),
+            title: page.data.title,
+            description: page.data.description,
             ...(await serverSideTranslations(locale, [
                 'about',
                 'common',

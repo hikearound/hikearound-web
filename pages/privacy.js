@@ -15,10 +15,6 @@ const propTypes = {
 };
 
 const PrivacyPage = ({ title, description, contentOnly }) => {
-    title = JSON.parse(title);
-    description = JSON.parse(description);
-    contentOnly = JSON.parse(contentOnly);
-
     const renderMainColumn = () => {
         return (
             <RootView>
@@ -40,18 +36,18 @@ const PrivacyPage = ({ title, description, contentOnly }) => {
     );
 };
 
-export async function getStaticProps({ req, query, locale }) {
+export async function getServerSideProps({ req, query, locale }) {
     const page = await getPageData(req, locale, 'privacy');
 
-    if (!query) {
-        query = { contentOnly: false };
+    if (!query.contentOnly) {
+        query.contentOnly = false;
     }
 
     return {
         props: {
-            title: JSON.stringify(page.data.title),
-            description: JSON.stringify(page.data.description),
-            contentOnly: JSON.stringify(query.contentOnly),
+            title: page.data.title,
+            description: page.data.description,
+            contentOnly: query.contentOnly,
             ...(await serverSideTranslations(locale, [
                 'privacy',
                 'common',
