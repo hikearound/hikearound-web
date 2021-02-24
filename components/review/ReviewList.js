@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../utils/i18n';
+import { withTranslation } from 'next-i18next';
 import ReviewListItem from './ReviewListItem';
 
 const propTypes = {

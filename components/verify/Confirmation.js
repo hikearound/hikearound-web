@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'next-i18next';
 import VerifyLoadingState from '../loading/Verify';
 import { Card, GenericCardContent } from '../../styles/card';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     data: PropTypes.object.isRequired,

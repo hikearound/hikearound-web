@@ -1,27 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../layouts/main';
 import IntroSection from '../components/landing/section/Intro';
 import CarouselSection from '../components/landing/section/Carousel';
 import MapSection from '../components/landing/section/Map';
 import DownloadSection from '../components/landing/section/Download';
 import FooterSection from '../components/landing/section/Footer';
-import { withTranslation } from '../utils/i18n';
 
-class HomePage extends React.Component {
-    static getInitialProps() {
-        return {
-            namespacesRequired: [
-                'common',
-                'hike',
-                'landing',
-                'header',
-                'footer',
-            ],
-        };
-    }
+const Homepage = () => {
+    const { t } = useTranslation('common');
 
-    renderMainColumn = () => {
+    const renderMainColumn = () => {
         return (
             <RootView>
                 <IntroSection />
@@ -33,21 +24,29 @@ class HomePage extends React.Component {
         );
     };
 
-    render() {
-        const { t } = this.props;
+    return (
+        <Page
+            singleColumn
+            fullWidth
+            title={t('slogan', { appName: t('appName') })}
+            mainColumn={renderMainColumn()}
+        />
+    );
+};
 
-        return (
-            <Page
-                singleColumn
-                fullWidth
-                title={t('slogan', { appName: t('appName') })}
-                mainColumn={this.renderMainColumn()}
-            />
-        );
-    }
-}
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, [
+            'common',
+            'hike',
+            'landing',
+            'header',
+            'footer',
+        ])),
+    },
+});
 
-export default withTranslation('common')(HomePage);
+export default Homepage;
 
 const RootView = styled.div`
     width: 100%;

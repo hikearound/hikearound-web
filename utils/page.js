@@ -1,5 +1,5 @@
 import Prismic from 'prismic-javascript';
-import { i18n } from './i18n';
+// import { i18n } from './i18n';
 import { apiEndpoint } from '../config/prismic';
 import { languages } from '../constants/i18n';
 
@@ -9,9 +9,9 @@ export async function getPageType(req) {
     return pageType;
 }
 
-export async function getPageData(req, docType) {
+export async function getPageData(req, locale, docType) {
     const api = await Prismic.getApi(apiEndpoint, req);
-    const options = { lang: languages[i18n.language] };
+    const options = { lang: languages[locale] };
 
     const data = await api.query(
         Prismic.Predicates.at('document.type', docType),

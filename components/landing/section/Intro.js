@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { withTranslation } from 'next-i18next';
 import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
 import { device } from '../../../constants/breakpoints';
 import { spacing } from '../../../constants/spacing';
-import { withTranslation } from '../../../utils/i18n';
 import { landing } from '../../../constants/images';
 
 class IntroSection extends React.PureComponent {

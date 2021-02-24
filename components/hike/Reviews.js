@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { withTranslation } from 'next-i18next';
 import { Card } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
-import { withTranslation } from '../../utils/i18n';
 import { getRecentReviews } from '../../utils/review';
 import ReviewList from '../review/ReviewList';
 import { colors } from '../../constants/colors';

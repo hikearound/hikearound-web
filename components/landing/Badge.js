@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'next-i18next';
 import { componentSpacing } from '../../constants/landing';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     includeTopMargin: PropTypes.bool,

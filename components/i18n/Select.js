@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { withTranslation } from '../../utils/i18n';
+import { withTranslation } from 'next-i18next';
+import { withRouter } from 'next/router';
 import { spacing } from '../../constants/spacing';
 import { fontSize } from '../../constants/type';
 import { device } from '../../constants/breakpoints';
@@ -24,9 +25,12 @@ class LanguageSelect extends React.PureComponent {
     }
 
     handleChange = (event) => {
-        const { i18n } = this.props;
+        const { router } = this.props;
 
-        i18n.changeLanguage(event.target.value);
+        router.push(router.asPath, undefined, {
+            locale: event.target.value,
+        });
+
         this.setState({ value: event.target.value });
     };
 
@@ -55,7 +59,7 @@ class LanguageSelect extends React.PureComponent {
 
 LanguageSelect.propTypes = propTypes;
 
-export default withTranslation(['footer'])(LanguageSelect);
+export default withRouter(withTranslation(['footer'])(LanguageSelect));
 
 const SelectLabel = styled.span`
     position: relative;

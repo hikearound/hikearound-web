@@ -8,9 +8,9 @@ import nl2br from 'react-nl2br';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
+import { withTranslation } from 'next-i18next';
 import { colors } from '../../constants/colors';
 import timestamps from '../../constants/timestamps';
-import { withTranslation, i18n } from '../../utils/i18n';
 import { parseText } from '../../utils/text';
 import { device } from '../../constants/breakpoints';
 import { spacing } from '../../constants/spacing';
@@ -55,11 +55,12 @@ class ReviewListItem extends React.Component {
     };
 
     setLanguage = () => {
+        const { i18n } = this.props;
         moment.locale(i18n.language);
     };
 
     setTimestamp = () => {
-        const { savedOn } = this.props;
+        const { savedOn, i18n } = this.props;
         const { lang } = this.state;
 
         if (lang !== i18n.language) {

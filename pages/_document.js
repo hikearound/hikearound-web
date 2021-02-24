@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiSheets } from '@material-ui/core/styles';
-import { i18n } from '../utils/i18n';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
 
@@ -20,7 +19,6 @@ class MyDocument extends Document {
         const styledComponentsSheet = new StyledComponentsSheet();
         const materialUiSheets = new MaterialUiSheets();
         const originalRenderPage = ctx.renderPage;
-        const lang = i18n.language;
 
         try {
             ctx.renderPage = () =>
@@ -42,7 +40,6 @@ class MyDocument extends Document {
                         {styledComponentsSheet.getStyleElement()}
                     </React.Fragment>,
                 ],
-                lang,
             };
         } finally {
             styledComponentsSheet.seal();

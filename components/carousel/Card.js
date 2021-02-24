@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import { Link, withTranslation } from '../../utils/i18n';
+import { withTranslation } from 'next-i18next';
+import Link from 'next/link';
 import LocationPill from './pill/Location';
 import DifficultyPill from './pill/Difficulty';
 import {

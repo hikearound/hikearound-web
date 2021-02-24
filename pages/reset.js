@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'next-i18next';
 import Page from '../layouts/main';
 import PasswordForm from '../components/reset/PasswordForm';
 import { withSWR } from '../utils/pages/reset';
-import { withTranslation } from '../utils/i18n';
 
 const propTypes = {
     data: PropTypes.object,

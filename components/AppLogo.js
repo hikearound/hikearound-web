@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { Link } from '../utils/i18n';
+import Link from 'next/link';
 import { device } from '../constants/breakpoints';
 
 const propTypes = {

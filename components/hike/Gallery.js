@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SRLWrapper } from 'simple-react-lightbox';
+import { withTranslation } from 'next-i18next';
 import { Card, CardContent } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { getHikeImageGallery } from '../../utils/hike';
 import Thumbnail from '../Thumbnail';
 import { options } from '../../constants/lightbox';
-import { withTranslation } from '../../utils/i18n';
 import GalleryLoadingState from '../loading/Gallery';
 
 const propTypes = {

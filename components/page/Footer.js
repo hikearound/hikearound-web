@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link, withTranslation } from '../../utils/i18n';
+import { withTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { colors } from '../../constants/colors';
 import { fontSize, lineHeight } from '../../constants/type';
 import { RightRailLink } from '../../styles/links';

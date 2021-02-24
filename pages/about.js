@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { RichText } from 'prismic-reactjs';
 import Page from '../layouts/main';
 import { getPageData } from '../utils/page';
@@ -13,21 +14,11 @@ const propTypes = {
     description: PropTypes.array.isRequired,
 };
 
-class AboutPage extends React.Component {
-    static async getInitialProps(context) {
-        const { req } = context;
-        const page = await getPageData(req, 'about');
+const AboutPage = ({ title, description }) => {
+    title = JSON.parse(title);
+    description = JSON.parse(description);
 
-        return {
-            title: page.data.title,
-            description: page.data.description,
-            namespacesRequired: ['about', 'common', 'header', 'footer'],
-        };
-    }
-
-    renderMainColumn = () => {
-        const { title, description } = this.props;
-
+    const renderMainColumn = () => {
         return (
             <RootView>
                 <IntroSection title={title} description={description} />
@@ -37,18 +28,31 @@ class AboutPage extends React.Component {
         );
     };
 
-    render() {
-        const { title } = this.props;
+    return (
+        <Page
+            singleColumn
+            fullWidth
+            title={RichText.asText(title)}
+            mainColumn={renderMainColumn()}
+        />
+    );
+};
 
-        return (
-            <Page
-                singleColumn
-                fullWidth
-                title={RichText.asText(title)}
-                mainColumn={this.renderMainColumn()}
-            />
-        );
-    }
+export async function getServerSideProps({ req, locale }) {
+    const page = await getPageData(req, locale, 'about');
+
+    return {
+        props: {
+            title: JSON.stringify(page.data.title),
+            description: JSON.stringify(page.data.description),
+            ...(await serverSideTranslations(locale, [
+                'about',
+                'common',
+                'header',
+                'footer',
+            ])),
+        },
+    };
 }
 
 AboutPage.propTypes = propTypes;

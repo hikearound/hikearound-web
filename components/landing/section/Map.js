@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { withTranslation } from 'next-i18next';
 import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
-import { withTranslation } from '../../../utils/i18n';
 import { landing } from '../../../constants/images';
 
 class MapSection extends React.PureComponent {
