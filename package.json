@@ -31,8 +31,6 @@
     "express": "^4.17.1",
     "firebase": "^8.2.9",
     "firebase-admin": "^9.5.0",
-    "i18next-browser-languagedetector": "^6.0.1",
-    "i18next-http-backend": "^1.1.1",
     "js-base64": "^3.6.0",
     "moment": "^2.29.1",
     "next": "^10.0.7",
