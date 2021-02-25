@@ -90,7 +90,7 @@ export const Gradient = styled.div`
     height: 180px;
     background-image: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0) 40%,
+        rgba(0, 0, 0, 0) 40%,
         rgba(0, 0, 0, 0.95) 98%
     );
     border-radius: ${borderRadius.sm};
