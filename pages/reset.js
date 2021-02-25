@@ -6,8 +6,7 @@ import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import PasswordForm from '../components/reset/PasswordForm';
 import { fetcher } from '../utils/pages/reset';
-import FooterSection from '../components/landing/section/Footer';
-import { GenericRootView, WhiteBackground } from '../styles/page';
+import ExternalPage from '../components/ExternalPage';
 
 const ResetPasswordPage = () => {
     const router = useRouter();
@@ -15,13 +14,7 @@ const ResetPasswordPage = () => {
     const { data } = useSWR(['/api/reset', router.query.token], fetcher);
 
     const renderMainColumn = () => {
-        return (
-            <GenericRootView>
-                <WhiteBackground />
-                <PasswordForm data={data} />
-                <FooterSection centered topBorder />
-            </GenericRootView>
-        );
+        return <ExternalPage component={<PasswordForm data={data} />} />;
     };
 
     return (

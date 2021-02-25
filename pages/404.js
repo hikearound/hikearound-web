@@ -3,20 +3,17 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../layouts/main';
 import { BlankCard } from '../styles/card';
-import FooterSection from '../components/landing/section/Footer';
-import { GenericRootView, WhiteBackground } from '../styles/page';
+import ExternalPage from '../components/ExternalPage';
 
 const ErrorPage = () => {
     const { t } = useTranslation('error');
 
+    const errorMessage = () => {
+        return <BlankCard>{t('message.error.generic')}</BlankCard>;
+    };
+
     const renderMainColumn = () => {
-        return (
-            <GenericRootView>
-                <WhiteBackground />
-                <BlankCard>{t('message.error.generic')}</BlankCard>
-                <FooterSection centered topBorder />
-            </GenericRootView>
-        );
+        return <ExternalPage component={errorMessage()} />;
     };
 
     return (

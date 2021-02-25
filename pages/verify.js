@@ -6,8 +6,7 @@ import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import Confirmation from '../components/verify/Confirmation';
 import { fetcher } from '../utils/pages/verify';
-import FooterSection from '../components/landing/section/Footer';
-import { GenericRootView, WhiteBackground } from '../styles/page';
+import ExternalPage from '../components/ExternalPage';
 
 const VerifyPage = () => {
     const router = useRouter();
@@ -15,13 +14,7 @@ const VerifyPage = () => {
     const { data } = useSWR(['/api/verify', router.query.token], fetcher);
 
     const renderMainColumn = () => {
-        return (
-            <GenericRootView>
-                <WhiteBackground />
-                <Confirmation data={data} />
-                <FooterSection centered topBorder />
-            </GenericRootView>
-        );
+        return <ExternalPage component={<Confirmation data={data} />} />;
     };
 
     return (
