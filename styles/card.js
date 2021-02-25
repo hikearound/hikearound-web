@@ -39,3 +39,10 @@ export const CardContent = styled.div`
 export const GenericCardContent = styled.div`
     line-height: ${lineHeight.lh_13};
 `;
+
+export const BlankCard = styled(GenericCardContent)`
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 ${spacing.md};
+`;

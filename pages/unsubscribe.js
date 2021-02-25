@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import Confirmation from '../components/unsubscribe/Confirmation';
 import { fetcher } from '../utils/pages/unsubscribe';
+import FooterSection from '../components/landing/section/Footer';
+import { GenericRootView, WhiteBackground } from '../styles/page';
 
 const UnsubscribePage = () => {
     const router = useRouter();
@@ -17,10 +19,23 @@ const UnsubscribePage = () => {
     );
 
     const renderMainColumn = () => {
-        return <Confirmation data={data} />;
+        return (
+            <GenericRootView>
+                <WhiteBackground />
+                <Confirmation data={data} />
+                <FooterSection centered topBorder />
+            </GenericRootView>
+        );
     };
 
-    return <Page title={t('title')} mainColumn={renderMainColumn()} />;
+    return (
+        <Page
+            singleColumn
+            fullWidth
+            title={t('title')}
+            mainColumn={renderMainColumn()}
+        />
+    );
 };
 
 export async function getServerSideProps({ locale }) {

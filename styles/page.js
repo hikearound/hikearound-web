@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { fontWeight, fontSize, lineHeight } from '../constants/type';
@@ -75,4 +75,23 @@ export const RootView = styled.div`
     }
 `;
 
-export default RootView;
+export const GenericRootView = styled(RootView)`
+    background-color: white;
+    text-align: left;
+    margin-top: 100px;
+
+    h1 {
+        font-size: ${fontSize.xl};
+        font-weight: ${fontWeight.medium};
+    }
+
+    @media ${device.tablet} {
+        margin-top: ${spacing.lg};
+    }
+`;
+
+export const WhiteBackground = createGlobalStyle`
+    body {
+        background-color: ${colors.white};
+    }
+`;

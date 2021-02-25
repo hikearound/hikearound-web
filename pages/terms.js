@@ -19,7 +19,7 @@ const TermsPage = ({ title, description, contentOnly }) => {
         return (
             <RootView>
                 <DescriptionSection title={title} description={description} />
-                {!contentOnly && <FooterSection />}
+                {!contentOnly && <FooterSection centered />}
             </RootView>
         );
     };

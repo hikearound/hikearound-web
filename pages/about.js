@@ -20,7 +20,7 @@ const AboutPage = ({ title, description }) => {
             <RootView>
                 <IntroSection title={title} description={description} />
                 <MapSection />
-                <FooterSection />
+                <FooterSection centered />
             </RootView>
         );
     };

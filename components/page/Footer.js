@@ -11,10 +11,12 @@ import { device } from '../../constants/breakpoints';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,
+    centered: PropTypes.bool,
 };
 
 const defaultProps = {
     inlineCopyright: false,
+    centered: false,
 };
 
 class Footer extends React.PureComponent {
@@ -57,10 +59,11 @@ class Footer extends React.PureComponent {
     };
 
     render() {
+        const { centered } = this.props;
         const links = this.renderLinks();
 
         return (
-            <FooterWrapper>
+            <FooterWrapper centered={centered}>
                 {links.map(({ text, link, type }, index) => {
                     if (type === 'href') {
                         return (
@@ -92,6 +95,8 @@ const CopyrightText = styled.span`
 `;
 
 const FooterWrapper = styled.span`
+    text-align: ${(props) => (props.centered ? 'center' : 'left')};
+
     span {
         color: ${colors.grayDark};
         font-size: ${fontSize.sm};

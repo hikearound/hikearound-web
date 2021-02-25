@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import { Card, GenericCardContent } from '../../styles/card';
+import { BlankCard } from '../../styles/card';
 import UnsubscribeLoadingState from '../loading/Unsubscribe';
 
 const propTypes = {
@@ -49,14 +49,7 @@ class Confirmation extends React.Component {
 
     render() {
         const { message } = this.state;
-
-        return (
-            <Card>
-                <GenericCardContent>
-                    {message || this.renderLoadingState()}
-                </GenericCardContent>
-            </Card>
-        );
+        return <BlankCard>{message || this.renderLoadingState()}</BlankCard>;
     }
 }
 

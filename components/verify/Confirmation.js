@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import VerifyLoadingState from '../loading/Verify';
-import { Card, GenericCardContent } from '../../styles/card';
+import UnsubscribeLoadingState from '../loading/Unsubscribe';
+import { BlankCard } from '../../styles/card';
 
 const propTypes = {
     data: PropTypes.object,
@@ -43,19 +43,12 @@ class Confirmation extends React.Component {
     };
 
     renderLoadingState = () => {
-        return <VerifyLoadingState />;
+        return <UnsubscribeLoadingState />;
     };
 
     render() {
         const { message } = this.state;
-
-        return (
-            <Card>
-                <GenericCardContent>
-                    {message || this.renderLoadingState()}
-                </GenericCardContent>
-            </Card>
-        );
+        return <BlankCard>{message || this.renderLoadingState()}</BlankCard>;
     }
 }
 

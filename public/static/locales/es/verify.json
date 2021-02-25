@@ -1,9 +1,9 @@
 {
     "title":  "Verifica tu cuenta",
     "message": {
-        "success": "Su cuenta fue verificada con éxito.",
+        "success": "¡Su cuenta fue verificada con éxito! Ahora está registrado para recibir actualizaciones por correo electrónico cuando haya nuevas caminatas cerca de usted.",
         "error": {
-            "generic": "Lo sentimos, no pudimos verificar tu cuenta.",
+            "generic": "Lo sentimos, no pudimos verificar su cuenta. Inténtalo de nuevo.",
         }
     }
 }

@@ -1,5 +1,4 @@
 import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
 
 export const formStyle = () => ({
     root: {
@@ -18,12 +17,12 @@ export const formStyle = () => ({
     },
     textField: {
         display: 'flex',
-        maxWidth: '250px',
-        marginTop: spacing.sm,
+        maxWidth: '500px',
+        marginTop: '12px',
     },
     button: {
         textTransform: 'none',
-        marginTop: spacing.sm,
+        marginTop: '12px',
     },
 });
 

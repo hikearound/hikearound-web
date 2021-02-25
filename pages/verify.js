@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import Confirmation from '../components/verify/Confirmation';
 import { fetcher } from '../utils/pages/verify';
+import FooterSection from '../components/landing/section/Footer';
+import { GenericRootView, WhiteBackground } from '../styles/page';
 
 const VerifyPage = () => {
     const router = useRouter();
@@ -13,10 +15,23 @@ const VerifyPage = () => {
     const { data } = useSWR(['/api/verify', router.query.token], fetcher);
 
     const renderMainColumn = () => {
-        return <Confirmation data={data} />;
+        return (
+            <GenericRootView>
+                <WhiteBackground />
+                <Confirmation data={data} />
+                <FooterSection centered topBorder />
+            </GenericRootView>
+        );
     };
 
-    return <Page title={t('title')} mainColumn={renderMainColumn()} />;
+    return (
+        <Page
+            singleColumn
+            fullWidth
+            title={t('title')}
+            mainColumn={renderMainColumn()}
+        />
+    );
 };
 
 export async function getServerSideProps({ locale }) {

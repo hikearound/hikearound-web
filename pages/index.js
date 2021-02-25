@@ -19,7 +19,7 @@ const Homepage = () => {
                 <CarouselSection />
                 <MapSection />
                 <DownloadSection />
-                <FooterSection />
+                <FooterSection centered />
             </RootView>
         );
     };

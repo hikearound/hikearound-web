@@ -2,7 +2,7 @@
     "title": "404",
     "message": {
         "error": {
-            "generic": "We encountered an error. Sorry about that."
+            "generic": "We encountered an error. Sorry about that! We've made a note and if there's something to fix, we're on it."
         }
     }
 }

@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { withTranslation } from 'next-i18next';
-import { Card, GenericCardContent } from '../../styles/card';
+import { BlankCard } from '../../styles/card';
 import { maybeUpdatePassword } from '../../utils/password';
 import { PrimaryHeading, SubHeading } from '../../styles/headings';
 import { formStyle } from '../../styles/reset';
@@ -194,12 +194,12 @@ class PasswordForm extends React.Component {
 
     render() {
         return (
-            <Card>
-                <GenericCardContent>
+            <>
+                <BlankCard>
                     {this.renderHeading()}
                     {this.renderPasswordGroup()}
-                </GenericCardContent>
-            </Card>
+                </BlankCard>
+            </>
         );
     }
 }
