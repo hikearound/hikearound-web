@@ -11,12 +11,10 @@ import { device } from '../../constants/breakpoints';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,
-    centered: PropTypes.bool,
 };
 
 const defaultProps = {
     inlineCopyright: false,
-    centered: false,
 };
 
 class Footer extends React.PureComponent {
@@ -41,8 +39,15 @@ class Footer extends React.PureComponent {
                 type: 'router',
             },
             {
+                text: t('link.blog'),
+                link: 'https://medium.com/hikearound',
+                target: '_blank',
+                type: 'href',
+            },
+            {
                 text: t('link.contact'),
                 link: 'mailto:support@tryhikearound.com',
+                target: null,
                 type: 'href',
             },
             {
@@ -59,15 +64,18 @@ class Footer extends React.PureComponent {
     };
 
     render() {
-        const { centered } = this.props;
         const links = this.renderLinks();
 
         return (
-            <FooterWrapper centered={centered}>
-                {links.map(({ text, link, type }, index) => {
+            <FooterWrapper>
+                {links.map(({ text, link, target, type }, index) => {
                     if (type === 'href') {
                         return (
-                            <RightRailLink href={link} key={index}>
+                            <RightRailLink
+                                href={link}
+                                target={target}
+                                key={index}
+                            >
                                 {text}
                             </RightRailLink>
                         );
@@ -95,8 +103,6 @@ const CopyrightText = styled.span`
 `;
 
 const FooterWrapper = styled.span`
-    text-align: ${(props) => (props.centered ? 'center' : 'left')};
-
     span {
         color: ${colors.grayDark};
         font-size: ${fontSize.sm};

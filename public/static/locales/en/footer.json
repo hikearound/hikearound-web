@@ -4,7 +4,8 @@
         "contact": "Contact",
         "privacy": "Privacy Policy",
         "terms": "Terms",
-        "language": "Language"
+        "language": "Language",
+        "blog": "Blog"
     },
     "label": {
         "copyright": "© Hikearound Inc. {{year}}"
