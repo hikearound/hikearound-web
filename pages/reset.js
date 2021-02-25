@@ -1,31 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import PasswordForm from '../components/reset/PasswordForm';
-import { withSWR } from '../utils/pages/reset';
-import { withTranslation } from '../utils/i18n';
+import { fetcher } from '../utils/pages/reset';
 
-const propTypes = {
-    data: PropTypes.object,
-};
+const ResetPasswordPage = () => {
+    const router = useRouter();
+    const { t } = useTranslation('reset');
+    const { data } = useSWR(['/api/reset', router.query.token], fetcher);
 
-const defaultProps = {
-    data: {},
-};
-
-class ResetPasswordPage extends React.Component {
-    renderMainColumn() {
-        const { data } = this.props;
+    const renderMainColumn = () => {
         return <PasswordForm data={data} />;
-    }
+    };
 
-    render() {
-        const { t } = this.props;
-        return <Page title={t('title')} mainColumn={this.renderMainColumn()} />;
-    }
+    return <Page title={t('title')} mainColumn={renderMainColumn()} />;
+};
+
+export async function getServerSideProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'reset',
+                'header',
+                'footer',
+                'common',
+            ])),
+        },
+    };
 }
 
-ResetPasswordPage.propTypes = propTypes;
-ResetPasswordPage.defaultProps = defaultProps;
-
-export default withTranslation('reset')(withSWR(ResetPasswordPage));
+export default ResetPasswordPage;

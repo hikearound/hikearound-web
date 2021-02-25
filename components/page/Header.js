@@ -2,9 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { withTranslation } from 'next-i18next';
 import GlobalHeader from '../GlobalHeader';
 import { baseUrl, ogImage } from '../../constants/common';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hideHeader: PropTypes.bool.isRequired,

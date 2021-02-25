@@ -1,6 +1,7 @@
 import React from 'react';
 import { RichText } from 'prismic-reactjs';
 import PropTypes from 'prop-types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../layouts/main';
 import { getPageData } from '../utils/page';
 import { RootView } from '../styles/page';
@@ -10,29 +11,11 @@ import DescriptionSection from '../components/terms/section/Description';
 const propTypes = {
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
-    contentOnly: PropTypes.bool,
+    contentOnly: PropTypes.bool.isRequired,
 };
 
-const defaultProps = {
-    contentOnly: false,
-};
-
-class PrivacyPage extends React.PureComponent {
-    static async getInitialProps(context) {
-        const { req, query } = context;
-        const page = await getPageData(req, 'privacy');
-
-        return {
-            title: page.data.title,
-            description: page.data.description,
-            contentOnly: query.contentOnly,
-            namespacesRequired: ['privacy', 'common', 'header', 'footer'],
-        };
-    }
-
-    renderMainColumn = () => {
-        const { title, description, contentOnly } = this.props;
-
+const PrivacyPage = ({ title, description, contentOnly }) => {
+    const renderMainColumn = () => {
         return (
             <RootView>
                 <DescriptionSection title={title} description={description} />
@@ -41,23 +24,40 @@ class PrivacyPage extends React.PureComponent {
         );
     };
 
-    render() {
-        const { title, contentOnly } = this.props;
+    return (
+        <Page
+            singleColumn
+            fullWidth
+            title={RichText.asText(title)}
+            mainColumn={renderMainColumn()}
+            hideHeader={contentOnly}
+            hideFooter={contentOnly}
+        />
+    );
+};
 
-        return (
-            <Page
-                singleColumn
-                fullWidth
-                title={RichText.asText(title)}
-                mainColumn={this.renderMainColumn()}
-                hideHeader={contentOnly}
-                hideFooter={contentOnly}
-            />
-        );
+export async function getServerSideProps({ req, query, locale }) {
+    const page = await getPageData(req, locale, 'privacy');
+
+    if (!query.contentOnly) {
+        query.contentOnly = false;
     }
+
+    return {
+        props: {
+            title: page.data.title,
+            description: page.data.description,
+            contentOnly: query.contentOnly,
+            ...(await serverSideTranslations(locale, [
+                'privacy',
+                'common',
+                'header',
+                'footer',
+            ])),
+        },
+    };
 }
 
 PrivacyPage.propTypes = propTypes;
-PrivacyPage.defaultProps = defaultProps;
 
 export default PrivacyPage;

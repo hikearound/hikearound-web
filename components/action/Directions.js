@@ -3,8 +3,8 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import { withRouter } from 'next/router';
+import { withTranslation } from 'next-i18next';
 import { googleMapUrl } from '../../constants/common';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hike: PropTypes.object.isRequired,

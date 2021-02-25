@@ -1,11 +1,11 @@
 import React from 'react';
+import { withTranslation } from 'next-i18next';
 import { StyledSection } from '../../../styles/landing';
 import TextSection from '../Text';
 import { carousel } from '../../../constants/carousel';
 import Card from '../../carousel/Card';
 import LoadingCard from '../../carousel/LoadingCard';
 import Carousel from '../../carousel/Carousel';
-import { withTranslation } from '../../../utils/i18n';
 import { getFeaturedHikes } from '../../../utils/hike';
 
 class CarouselSection extends React.PureComponent {

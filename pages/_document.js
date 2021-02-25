@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiSheets } from '@material-ui/core/styles';
-import { i18n } from '../utils/i18n';
+import { gtagConfig } from '../constants/analytics';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
 
@@ -20,7 +20,6 @@ class MyDocument extends Document {
         const styledComponentsSheet = new StyledComponentsSheet();
         const materialUiSheets = new MaterialUiSheets();
         const originalRenderPage = ctx.renderPage;
-        const lang = i18n.language;
 
         try {
             ctx.renderPage = () =>
@@ -42,7 +41,6 @@ class MyDocument extends Document {
                         {styledComponentsSheet.getStyleElement()}
                     </React.Fragment>,
                 ],
-                lang,
             };
         } finally {
             styledComponentsSheet.seal();
@@ -60,13 +58,21 @@ class MyDocument extends Document {
                         src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
                     />
                     <script
-                        async
-                        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', '${NEXT_PUBLIC_GA_TRACKING_ID}', {
+                                page_path: window.location.pathname,
+                                cookie_flags: '${gtagConfig}',
+                            });
+                            `,
+                        }}
                     />
                     <script
-                        dangerouslySetInnerHTML={{
-                            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js',new Date());gtag('config','${NEXT_PUBLIC_GA_TRACKING_ID}',{page_path:window.location.pathname,});`,
-                        }}
+                        async
+                        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
                     />
                 </Head>
                 <body>

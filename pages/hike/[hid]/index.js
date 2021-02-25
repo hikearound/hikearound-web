@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../../../layouts/main';
 import Header from '../../../components/hike/Header';
 import Description from '../../../components/hike/Description';
@@ -14,7 +15,7 @@ import Ad from '../../../components/page/Ad';
 import { getHikeData, getMapImage } from '../../../utils/hike';
 
 const propTypes = {
-    hike: PropTypes.object.isRequired,
+    hike: PropTypes.string.isRequired,
     hid: PropTypes.string.isRequired,
     shouldShowAd: PropTypes.bool,
 };
@@ -23,32 +24,10 @@ const defaultProps = {
     shouldShowAd: false,
 };
 
-class HikePage extends React.Component {
-    static async getInitialProps({ query }) {
-        const { hid } = query;
-        const hike = await getHikeData(hid);
-        const mapImage = await getMapImage(hid);
+const HikePage = ({ hike, hid, shouldShowAd }) => {
+    hike = JSON.parse(hike);
 
-        hike.mapImage = mapImage;
-        hike.hid = hid;
-
-        return {
-            hike,
-            hid,
-            namespacesRequired: [
-                'common',
-                'action',
-                'hike',
-                'user',
-                'header',
-                'footer',
-            ],
-        };
-    }
-
-    renderMainColumn() {
-        const { hike, hid } = this.props;
-
+    const renderMainColumn = () => {
         return (
             <div>
                 <Header name={hike.name} city={hike.city} state={hike.state} />
@@ -60,11 +39,9 @@ class HikePage extends React.Component {
                 <Reviews hid={hid} />
             </div>
         );
-    }
+    };
 
-    renderStickyRightColumn() {
-        const { hid, hike, shouldShowAd } = this.props;
-
+    const renderStickyRightColumn = () => {
         return (
             <div>
                 <NearbyHikes
@@ -75,27 +52,45 @@ class HikePage extends React.Component {
                 {shouldShowAd && <Ad />}
             </div>
         );
-    }
+    };
 
-    renderRightColumn() {
-        const { hike } = this.props;
-
+    const renderRightColumn = () => {
         return <Stats hike={hike} />;
-    }
+    };
 
-    render() {
-        const { hike } = this.props;
+    return (
+        <Page
+            title={hike.name}
+            hike={hike}
+            mainColumn={renderMainColumn()}
+            rightColumnSticky={renderStickyRightColumn()}
+            rightColumn={renderRightColumn()}
+        />
+    );
+};
 
-        return (
-            <Page
-                title={hike.name}
-                hike={hike}
-                mainColumn={this.renderMainColumn()}
-                rightColumnSticky={this.renderStickyRightColumn()}
-                rightColumn={this.renderRightColumn()}
-            />
-        );
-    }
+export async function getServerSideProps({ query, locale }) {
+    const { hid } = query;
+    const hike = await getHikeData(hid);
+    const mapImage = await getMapImage(hid);
+
+    hike.mapImage = mapImage;
+    hike.hid = hid;
+
+    return {
+        props: {
+            hid,
+            hike: JSON.stringify(hike),
+            ...(await serverSideTranslations(locale, [
+                'common',
+                'action',
+                'hike',
+                'user',
+                'header',
+                'footer',
+            ])),
+        },
+    };
 }
 
 HikePage.propTypes = propTypes;

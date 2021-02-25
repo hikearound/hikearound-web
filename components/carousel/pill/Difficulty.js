@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'next-i18next';
 import { getDifficultyColor } from '../../../utils/card';
 import { ColorPill } from '../../../styles/pill';
-import { withTranslation } from '../../../utils/i18n';
 
 const propTypes = {
     label: PropTypes.string.isRequired,

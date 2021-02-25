@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { withTranslation } from 'next-i18next';
 import { colors, transparentColors } from '../constants/colors';
 import { grid } from '../constants/dimensions';
 import AppLogo from './AppLogo';
 import GlobalNav from './GlobalNav';
 import { device } from '../constants/breakpoints';
-import { withTranslation } from '../utils/i18n';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,

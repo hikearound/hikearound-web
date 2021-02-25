@@ -3,8 +3,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import { withTranslation } from 'next-i18next';
 import AppStoreBadge from '../landing/Badge';
-import { withTranslation } from '../../utils/i18n';
 import {
     PromptWrapper,
     PromptTitle,

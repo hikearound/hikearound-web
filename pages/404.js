@@ -1,28 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../layouts/main';
 import { Card } from '../styles/card';
 
-const propTypes = {
-    title: PropTypes.string,
-};
+const ErrorPage = () => {
+    const { t } = useTranslation('error');
 
-const defaultProps = {
-    title: '404',
-};
-
-class ErrorPage extends React.Component {
-    renderMainColumn = () => {
-        return <Card>We encountered an error. Sorry about that.</Card>;
+    const renderMainColumn = () => {
+        return <Card>{t('message.error.generic')}</Card>;
     };
 
-    render() {
-        const { title } = this.props;
-        return <Page title={title} mainColumn={this.renderMainColumn()} />;
-    }
-}
+    return <Page title={t('title')} mainColumn={renderMainColumn()} />;
+};
 
-ErrorPage.propTypes = propTypes;
-ErrorPage.defaultProps = defaultProps;
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'error',
+                'header',
+                'footer',
+            ])),
+        },
+    };
+}
 
 export default ErrorPage;

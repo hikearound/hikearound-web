@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'next-i18next';
 import VerifyLoadingState from '../loading/Verify';
 import { Card, GenericCardContent } from '../../styles/card';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object,
+};
+
+const defaultProps = {
+    data: null,
 };
 
 class Confirmation extends React.Component {
@@ -56,5 +60,6 @@ class Confirmation extends React.Component {
 }
 
 Confirmation.propTypes = propTypes;
+Confirmation.defaultProps = defaultProps;
 
 export default withTranslation('verify')(Confirmation);

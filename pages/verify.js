@@ -1,31 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
 import Page from '../layouts/main';
 import Confirmation from '../components/verify/Confirmation';
-import { withSWR } from '../utils/pages/verify';
-import { withTranslation } from '../utils/i18n';
+import { fetcher } from '../utils/pages/verify';
 
-const propTypes = {
-    data: PropTypes.object,
-};
+const VerifyPage = () => {
+    const router = useRouter();
+    const { t } = useTranslation('verify');
+    const { data } = useSWR(['/api/verify', router.query.token], fetcher);
 
-const defaultProps = {
-    data: {},
-};
-
-class VerifyPage extends React.Component {
-    renderMainColumn() {
-        const { data } = this.props;
+    const renderMainColumn = () => {
         return <Confirmation data={data} />;
-    }
+    };
 
-    render() {
-        const { t } = this.props;
-        return <Page title={t('title')} mainColumn={this.renderMainColumn()} />;
-    }
+    return <Page title={t('title')} mainColumn={renderMainColumn()} />;
+};
+
+export async function getServerSideProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'verify',
+                'header',
+                'footer',
+            ])),
+        },
+    };
 }
 
-VerifyPage.propTypes = propTypes;
-VerifyPage.defaultProps = defaultProps;
-
-export default withTranslation('verify')(withSWR(VerifyPage));
+export default VerifyPage;

@@ -1,6 +1,6 @@
 import React from 'react';
+import { withTranslation } from 'next-i18next';
 import { Card } from '../../styles/card';
-import { withTranslation } from '../../utils/i18n';
 import { RightRailLink } from '../../styles/links';
 import { renderLinks } from '../../utils/terms';
 import { ListHeading, OrderedList, ListItem } from '../../styles/lists';

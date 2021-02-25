@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { withTranslation } from 'next-i18next';
 import { fontSize, lineHeight } from '../../constants/type';
 import { Card } from '../../styles/card';
 import { SecondaryHeading } from '../../styles/headings';
 import { spacing } from '../../constants/spacing';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
-import { withTranslation } from '../../utils/i18n';
 
 const propTypes = {
     hike: PropTypes.object,

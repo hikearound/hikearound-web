@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { withTranslation } from 'next-i18next';
 import { Card, GenericCardContent } from '../../styles/card';
-import { withTranslation } from '../../utils/i18n';
 import { maybeUpdatePassword } from '../../utils/password';
 import { PrimaryHeading, SubHeading } from '../../styles/headings';
 import { formStyle } from '../../styles/reset';
@@ -12,8 +12,12 @@ import { withToast } from '../../utils/toast';
 
 const propTypes = {
     addToast: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
+    data: PropTypes.object,
     classes: PropTypes.object.isRequired,
+};
+
+const defaultProps = {
+    data: { email: null },
 };
 
 class PasswordForm extends React.Component {
@@ -201,6 +205,7 @@ class PasswordForm extends React.Component {
 }
 
 PasswordForm.propTypes = propTypes;
+PasswordForm.defaultProps = defaultProps;
 
 export default withStyles(formStyle)(
     withToast(withTranslation(['reset', 'common'])(PasswordForm)),
