@@ -63,6 +63,7 @@
     "acorn": "^8.0.5",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.12.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
