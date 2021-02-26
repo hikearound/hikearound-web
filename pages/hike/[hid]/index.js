@@ -27,36 +27,30 @@ const defaultProps = {
 const HikePage = ({ hike, hid, shouldShowAd }) => {
     hike = JSON.parse(hike);
 
-    const renderMainColumn = () => {
-        return (
-            <div>
-                <Header name={hike.name} city={hike.city} state={hike.state} />
-                <HikeMap hid={hid} hike={hike} />
-                <ActionBar hike={hike} />
-                <Description description={hike.description} key={hid} />
-                <Gallery hid={hid} />
-                <ReviewPrompt />
-                <Reviews hid={hid} />
-            </div>
-        );
-    };
+    const renderMainColumn = () => (
+        <div>
+            <Header name={hike.name} city={hike.city} state={hike.state} />
+            <HikeMap hid={hid} hike={hike} />
+            <ActionBar hike={hike} />
+            <Description description={hike.description} key={hid} />
+            <Gallery hid={hid} />
+            <ReviewPrompt />
+            <Reviews hid={hid} />
+        </div>
+    );
 
-    const renderStickyRightColumn = () => {
-        return (
-            <div>
-                <NearbyHikes
-                    hid={hid}
-                    location={hike.coordinates.center}
-                    city={hike.city}
-                />
-                {shouldShowAd && <Ad />}
-            </div>
-        );
-    };
+    const renderStickyRightColumn = () => (
+        <div>
+            <NearbyHikes
+                hid={hid}
+                location={hike.coordinates.center}
+                city={hike.city}
+            />
+            {shouldShowAd && <Ad />}
+        </div>
+    );
 
-    const renderRightColumn = () => {
-        return <Stats hike={hike} />;
-    };
+    const renderRightColumn = () => <Stats hike={hike} />;
 
     return (
         <Page

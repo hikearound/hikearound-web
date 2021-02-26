@@ -13,9 +13,9 @@ const VerifyPage = () => {
     const { t } = useTranslation('verify');
     const { data } = useSWR(['/api/verify', router.query.token], fetcher);
 
-    const renderMainColumn = () => {
-        return <ExternalPage component={<Confirmation data={data} />} />;
-    };
+    const renderMainColumn = () => (
+        <ExternalPage component={<Confirmation data={data} />} />
+    );
 
     return (
         <Page

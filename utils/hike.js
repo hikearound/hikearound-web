@@ -107,9 +107,9 @@ export async function getNearbyHikes(size, range, currentCords) {
         }
     });
 
-    reducedHikes = reducedHikes.sort((a, b) => {
-        return a.distanceToHike - b.distanceToHike;
-    });
+    reducedHikes = reducedHikes.sort(
+        (a, b) => a.distanceToHike - b.distanceToHike,
+    );
 
     reducedHikes = reducedHikes.slice(0, size);
 

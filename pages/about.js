@@ -15,15 +15,13 @@ const propTypes = {
 };
 
 const AboutPage = ({ title, description }) => {
-    const renderMainColumn = () => {
-        return (
-            <RootView>
-                <IntroSection title={title} description={description} />
-                <MapSection />
-                <FooterSection centered />
-            </RootView>
-        );
-    };
+    const renderMainColumn = () => (
+        <RootView>
+            <IntroSection title={title} description={description} />
+            <MapSection />
+            <FooterSection centered />
+        </RootView>
+    );
 
     return (
         <Page

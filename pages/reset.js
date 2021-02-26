@@ -13,9 +13,9 @@ const ResetPasswordPage = () => {
     const { t } = useTranslation('reset');
     const { data } = useSWR(['/api/reset', router.query.token], fetcher);
 
-    const renderMainColumn = () => {
-        return <ExternalPage component={<PasswordForm data={data} />} />;
-    };
+    const renderMainColumn = () => (
+        <ExternalPage component={<PasswordForm data={data} />} />
+    );
 
     return (
         <Page

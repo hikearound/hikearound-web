@@ -43,9 +43,7 @@ class Confirmation extends React.Component {
         }
     };
 
-    renderLoadingState = () => {
-        return <UnsubscribeLoadingState />;
-    };
+    renderLoadingState = () => <UnsubscribeLoadingState />;
 
     render() {
         const { message } = this.state;

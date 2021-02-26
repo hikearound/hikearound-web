@@ -32,9 +32,7 @@ const propTypes = {
 };
 
 class Card extends React.PureComponent {
-    renderGradient = () => {
-        return <Gradient />;
-    };
+    renderGradient = () => <Gradient />;
 
     renderPills = () => {
         const { city, state, difficulty } = this.props;

@@ -67,9 +67,9 @@ class AppleMap extends React.Component {
         const { Coordinate, Style, PolylineOverlay, Padding } = mapkit;
 
         if (points) {
-            const coords = points.map(function (point) {
-                return new Coordinate(point[0], point[1]);
-            });
+            const coords = points.map(
+                (point) => new Coordinate(point[0], point[1]),
+            );
 
             const style = new Style({
                 strokeColor: colors.purple,

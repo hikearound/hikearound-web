@@ -80,13 +80,11 @@ class Page extends React.PureComponent {
         return pageTitle;
     };
 
-    renderFooter = () => {
-        return (
-            <Card hideGutter>
-                <Footer inlineCopyright />
-            </Card>
-        );
-    };
+    renderFooter = () => (
+        <Card hideGutter>
+            <Footer inlineCopyright />
+        </Card>
+    );
 
     renderRightColumn() {
         const { rightColumnSticky, rightColumn, hideFooter } = this.props;

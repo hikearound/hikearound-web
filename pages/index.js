@@ -12,17 +12,15 @@ import FooterSection from '../components/landing/section/Footer';
 const Homepage = () => {
     const { t } = useTranslation('common');
 
-    const renderMainColumn = () => {
-        return (
-            <RootView>
-                <IntroSection />
-                <CarouselSection />
-                <MapSection />
-                <DownloadSection />
-                <FooterSection centered />
-            </RootView>
-        );
-    };
+    const renderMainColumn = () => (
+        <RootView>
+            <IntroSection />
+            <CarouselSection />
+            <MapSection />
+            <DownloadSection />
+            <FooterSection centered />
+        </RootView>
+    );
 
     return (
         <Page

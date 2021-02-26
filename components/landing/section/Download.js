@@ -5,9 +5,7 @@ import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
 
 class DownloadSection extends React.PureComponent {
-    renderBadge = () => {
-        return <AppStoreBadge />;
-    };
+    renderBadge = () => <AppStoreBadge />;
 
     render() {
         const { t } = this.props;

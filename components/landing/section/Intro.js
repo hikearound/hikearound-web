@@ -10,9 +10,7 @@ import { spacing } from '../../../constants/spacing';
 import { landing } from '../../../constants/images';
 
 class IntroSection extends React.PureComponent {
-    renderBadge = () => {
-        return <AppStoreBadge />;
-    };
+    renderBadge = () => <AppStoreBadge />;
 
     renderPhone = () => {
         const { t } = this.props;

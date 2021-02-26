@@ -76,27 +76,25 @@ class CarouselSection extends React.PureComponent {
         );
     };
 
-    renderLoadingState = () => {
-        return (
-            <Carousel
-                arrows
-                slidesPerPage={carousel.desktop.slidesPerPage}
-                infinite
-                centered
-                itemWidth={carousel.desktop.itemWidth}
-                breakpoints={{
-                    768: {
-                        slidesPerPage: carousel.mobile.slidesPerPage,
-                        itemWidth: carousel.mobile.itemWidth,
-                    },
-                }}
-            >
-                {[0].map((index) => (
-                    <LoadingCard key={index} />
-                ))}
-            </Carousel>
-        );
-    };
+    renderLoadingState = () => (
+        <Carousel
+            arrows
+            slidesPerPage={carousel.desktop.slidesPerPage}
+            infinite
+            centered
+            itemWidth={carousel.desktop.itemWidth}
+            breakpoints={{
+                768: {
+                    slidesPerPage: carousel.mobile.slidesPerPage,
+                    itemWidth: carousel.mobile.itemWidth,
+                },
+            }}
+        >
+            {[0].map((index) => (
+                <LoadingCard key={index} />
+            ))}
+        </Carousel>
+    );
 
     render() {
         const { t } = this.props;

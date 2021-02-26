@@ -7,7 +7,7 @@ export async function signInWithCustomToken(token) {
     await firebase
         .auth()
         .signInWithCustomToken(token)
-        .catch(function (error) {
+        .catch((error) => {
             result = error.toJSON();
         })
         .then((response) => {

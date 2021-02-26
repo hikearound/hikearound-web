@@ -8,13 +8,11 @@ import ExternalPage from '../components/ExternalPage';
 const ErrorPage = () => {
     const { t } = useTranslation('error');
 
-    const errorMessage = () => {
-        return <BlankCard>{t('message.error.generic')}</BlankCard>;
-    };
+    const errorMessage = () => (
+        <BlankCard>{t('message.error.generic')}</BlankCard>
+    );
 
-    const renderMainColumn = () => {
-        return <ExternalPage component={errorMessage()} />;
-    };
+    const renderMainColumn = () => <ExternalPage component={errorMessage()} />;
 
     return (
         <Page

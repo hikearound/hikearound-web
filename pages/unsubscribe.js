@@ -17,9 +17,9 @@ const UnsubscribePage = () => {
         fetcher,
     );
 
-    const renderMainColumn = () => {
-        return <ExternalPage component={<Confirmation data={data} />} />;
-    };
+    const renderMainColumn = () => (
+        <ExternalPage component={<Confirmation data={data} />} />
+    );
 
     return (
         <Page

@@ -7,10 +7,10 @@ export async function maybeUpdatePassword(uid, password) {
     let status;
 
     await updatePassword({ uid, password })
-        .then(function (result) {
+        .then((result) => {
             status = result;
         })
-        .catch(function (error) {
+        .catch((error) => {
             status = error;
         });
 

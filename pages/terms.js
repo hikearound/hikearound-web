@@ -15,14 +15,12 @@ const propTypes = {
 };
 
 const TermsPage = ({ title, description, contentOnly }) => {
-    const renderMainColumn = () => {
-        return (
-            <RootView>
-                <DescriptionSection title={title} description={description} />
-                {!contentOnly && <FooterSection centered />}
-            </RootView>
-        );
-    };
+    const renderMainColumn = () => (
+        <RootView>
+            <DescriptionSection title={title} description={description} />
+            {!contentOnly && <FooterSection centered />}
+        </RootView>
+    );
 
     return (
         <Page
