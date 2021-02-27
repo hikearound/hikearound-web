@@ -24,6 +24,7 @@
     "@sentry/webpack-plugin": "^1.14.1",
     "@types/react": "^17.0.2",
     "@zeit/next-source-maps": "0.0.4-canary.1",
+    "algoliasearch": "^4.8.5",
     "express": "^4.17.1",
     "firebase": "^8.2.9",
     "firebase-admin": "^9.5.0",
@@ -40,6 +41,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-device-detect": "^1.15.0",
     "react-dom": "^17.0.1",
+    "react-instantsearch-dom": "^6.10.0",
     "react-is": "^17.0.1",
     "react-loading-skeleton": "^2.2.0",
     "react-mapkit": "^0.6.5",
@@ -55,8 +57,8 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.1",
-    "@babel/eslint-parser": "^7.13.4",
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
     "@types/brainhubeu__react-carousel": "^2.0.2",
     "acorn": "^8.0.5",
     "babel-plugin-styled-components": "^1.12.0",
