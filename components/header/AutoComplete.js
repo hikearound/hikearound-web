@@ -13,6 +13,8 @@ const propTypes = {
     currentRefinement: PropTypes.string.isRequired,
     refine: PropTypes.func.isRequired,
     onSuggestionCleared: PropTypes.func.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    shouldShowMobileInput: PropTypes.bool.isRequired,
 };
 
 class AutoComplete extends Component {
@@ -20,11 +22,17 @@ class AutoComplete extends Component {
         super(props, context);
         const { currentRefinement } = this.props;
 
-        this.searchInputRef = React.createRef();
-
         this.state = {
             value: currentRefinement,
         };
+    }
+
+    componentDidUpdate() {
+        const { shouldShowMobileInput } = this.props;
+
+        if (shouldShowMobileInput) {
+            this.input.focus();
+        }
     }
 
     onChange = (_, { newValue }) => {
@@ -40,9 +48,12 @@ class AutoComplete extends Component {
     };
 
     onSuggestionSelected = (_, { suggestion }) => {
-        const { router } = this.props;
+        const { router, handleClose } = this.props;
 
-        this.clearnAndBlurSearchInput();
+        this.clearSearchInput();
+        this.blurSearchInput();
+
+        handleClose();
 
         router.push({
             pathname: '/hike/[hid]',
@@ -50,12 +61,15 @@ class AutoComplete extends Component {
         });
     };
 
-    clearnAndBlurSearchInput = () => {
+    clearSearchInput = () => {
         this.setState({ value: '' });
+    };
 
-        this.searchInputRef.current.disabled = true;
+    blurSearchInput = () => {
+        this.input.disabled = true;
+
         setTimeout(() => {
-            this.searchInputRef.current.disabled = false;
+            this.input.disabled = false;
         }, 10);
     };
 
@@ -106,12 +120,17 @@ class AutoComplete extends Component {
         );
     };
 
+    storeInputReference = (autosuggest) => {
+        if (autosuggest !== null) {
+            this.input = autosuggest.input;
+        }
+    };
+
     render() {
         const { hits, t } = this.props;
         const { value } = this.state;
 
         const inputProps = {
-            ref: this.searchInputRef,
             placeholder: t('search.label'),
             onChange: this.onChange,
             value,
@@ -127,6 +146,7 @@ class AutoComplete extends Component {
                 renderSuggestion={this.renderSuggestion}
                 renderInputComponent={this.renderInputComponent}
                 inputProps={inputProps}
+                ref={this.storeInputReference}
             />
         );
     }
