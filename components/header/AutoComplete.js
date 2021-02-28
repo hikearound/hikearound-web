@@ -27,13 +27,15 @@ class AutoComplete extends Component {
         };
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         const { shouldShowMobileInput } = this.props;
 
-        if (shouldShowMobileInput) {
-            this.input.focus();
-        } else {
-            this.blurSearchInput();
+        if (prevProps.shouldShowMobileInput !== shouldShowMobileInput) {
+            if (shouldShowMobileInput) {
+                this.focusSearchInput();
+            } else {
+                this.clearAndBlurSearchInput();
+            }
         }
     }
 
@@ -52,10 +54,8 @@ class AutoComplete extends Component {
     onSuggestionSelected = (_, { suggestion }) => {
         const { router, handleClose } = this.props;
 
-        this.clearSearchInput();
-        this.blurSearchInput();
-
         handleClose();
+        this.clearAndBlurSearchInput();
 
         router.push({
             pathname: '/hike/[hid]',
@@ -63,11 +63,21 @@ class AutoComplete extends Component {
         });
     };
 
+    clearAndBlurSearchInput = () => {
+        this.clearSearchInput();
+        this.blurSearchInput();
+    };
+
     clearSearchInput = () => {
         this.setState({ value: '' });
     };
 
+    focusSearchInput = () => {
+        this.input.focus();
+    };
+
     blurSearchInput = () => {
+        this.input.blur();
         this.input.disabled = true;
 
         setTimeout(() => {
