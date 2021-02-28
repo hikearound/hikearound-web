@@ -1,19 +1,34 @@
 import React from 'react';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import PropTypes from 'prop-types';
 
-class ShareIcon extends React.PureComponent {
-    render() {
-        return (
-            <SvgIcon>
-                <svg>
-                    <path
-                        d='M14.6663227,19.6091169 L23.8962925,11.7964833 C24.0345692,11.6927758 24.0345692,11.4853608 23.8962925,11.3816532 L14.6663227,4.0529881 C14.4934768,3.9147114 13.9749392,4.0529881 13.9749392,4.39867986 L13.9749392,7.85559737 C13.9749392,7.99387407 13.7675242,8.16671994 13.6292475,8.20128912 C2.77452648,10.2408705 0.527530092,16.8435829 0.00899246531,19.436271 C-0.0601458849,19.7128244 0.285545866,19.8856703 0.492960917,19.6782553 C4.36470853,15.1496933 12.1082038,15.3571084 13.6292475,15.4608159 C13.7675242,15.4608159 13.9749392,15.6682309 13.9749392,15.8065076 L13.9749392,19.2634252 C13.9749392,19.5054094 14.320631,19.9548087 14.6663227,19.6091169 Z'
-                        fillRule='nonzero'
-                    />
-                </svg>
-            </SvgIcon>
-        );
-    }
+const propTypes = {
+    size: PropTypes.number,
+    color: PropTypes.string,
+};
+
+const defaultProps = {
+    size: 74,
+    color: '#FFFFFF',
+};
+
+function SearchIcon({ size, color }) {
+    return (
+        <svg
+            width={size}
+            height={size}
+            viewBox={`0 0 ${size} ${size}`}
+            xmlns='http://www.w3.org/2000/svg'
+        >
+            <path
+                d='M72 66.3L54.1 48.4c9-11.7 8.1-28.6-2.7-39.3C45.5 3.2 37.9.3 30.2.3 22.5.3 14.9 3.2 9 9.1-2.7 20.8-2.7 39.8 9 51.5c5.9 5.9 13.5 8.8 21.2 8.8 6.4 0 12.8-2 18.1-6.1l18 17.8c.8.8 1.8 1.2 2.9 1.2 1 0 2.1-.4 2.9-1.2 1.5-1.5 1.5-4.1-.1-5.7zM30.3 52.2c-5.9 0-11.3-2.3-15.5-6.4-8.5-8.5-8.5-22.4 0-31 4.1-4.1 9.6-6.4 15.5-6.4s11.3 2.3 15.5 6.4c4.2 4.1 6.4 9.6 6.4 15.5s-2.3 11.3-6.4 15.5c-4.1 4.2-9.7 6.4-15.5 6.4z'
+                fill={color}
+                fillRule='nonzero'
+            />
+        </svg>
+    );
 }
 
-export default ShareIcon;
+SearchIcon.propTypes = propTypes;
+SearchIcon.defaultProps = defaultProps;
+
+export default SearchIcon;

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Highlight, connectAutoComplete } from 'react-instantsearch-dom';
 import AutoSuggest from 'react-autosuggest';
-import styled from 'styled-components';
 import { withRouter } from 'next/router';
 import { withTranslation } from 'next-i18next';
-import { colors } from '../../constants/colors';
-import { fontSize } from '../../constants/type';
+import {
+    NameWrapper,
+    LocationWrapper,
+    SuggestionWrapper,
+} from '../../styles/search';
 
 const propTypes = {
     hits: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -169,23 +171,3 @@ AutoComplete.propTypes = propTypes;
 export default withTranslation(['common'])(
     withRouter(connectAutoComplete(AutoComplete)),
 );
-
-const SuggestionWrapper = styled.div`
-    display: block;
-    margin: 0;
-`;
-
-const NameWrapper = styled.div`
-    display: block;
-    font-size: ${fontSize.md};
-`;
-
-const LocationWrapper = styled.div`
-    display: block;
-    margin-top: 2px;
-    color: ${colors.grayMedium};
-
-    span {
-        font-size: ${fontSize.sm};
-    }
-`;

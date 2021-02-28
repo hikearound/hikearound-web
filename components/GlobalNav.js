@@ -7,7 +7,7 @@ import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
 import { fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
-import HeaderSearchBox from './header/Search';
+import InstantSearch from './search/InstantSearch';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,
@@ -19,7 +19,7 @@ class GlobalNav extends React.PureComponent {
 
         return (
             <LinkContainer>
-                <HeaderSearchBox />
+                <InstantSearch />
                 <Link href='/about'>
                     <GlobalLink href='/about' invertHeader={invertHeader}>
                         {t('common.about')}
