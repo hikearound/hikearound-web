@@ -13,6 +13,10 @@
             "nearby": "Caminatas cerca de {{cityName}}"
         }
     },
+    "search": {
+        "label": "Buscar",
+        "icon": "Icono de búsqueda"
+    },
     "review": "· {{count}} revisión",
     "review_plural": "· {{count}} críticas",
     "slogan": "{{appName}} | Sal y camina algo",

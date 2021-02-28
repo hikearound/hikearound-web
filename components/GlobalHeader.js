@@ -6,7 +6,6 @@ import { colors, transparentColors } from '../constants/colors';
 import { grid } from '../constants/dimensions';
 import AppLogo from './AppLogo';
 import GlobalNav from './GlobalNav';
-import HeaderSearchBox from './header/Search';
 import { device } from '../constants/breakpoints';
 
 const propTypes = {
@@ -55,7 +54,6 @@ class GlobalHeader extends React.Component {
                         })}
                         invertHeader={invertHeader}
                     />
-                    <HeaderSearchBox />
                     <GlobalNav invertHeader={invertHeader} />
                 </HeaderInterior>
             </HeaderContainer>

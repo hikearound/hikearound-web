@@ -13,6 +13,10 @@
             "nearby": "Hikes Near {{cityName}}"
         }
     },
+    "search": {
+        "label": "Search",
+        "icon": "Search icon"
+    },
     "review": "· {{count}} review",
     "review_plural": "· {{count}} reviews",
     "submit": "Submit",

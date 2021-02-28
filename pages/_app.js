@@ -12,7 +12,6 @@ import { settings } from '../constants/toast';
 import { initFirebase } from '../utils/firebase/app';
 
 import '../css/reset.css';
-import '../css/instantsearch.css';
 import '../scss/components/_index.scss';
 import '@brainhubeu/react-carousel/lib/style.css';
 
