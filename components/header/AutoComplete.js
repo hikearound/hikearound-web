@@ -32,6 +32,8 @@ class AutoComplete extends Component {
 
         if (shouldShowMobileInput) {
             this.input.focus();
+        } else {
+            this.blurSearchInput();
         }
     }
 
