@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { colors } from '../../constants/colors';
 
 const propTypes = {
     size: PropTypes.number,
@@ -8,7 +9,7 @@ const propTypes = {
 
 const defaultProps = {
     size: 16,
-    color: '#FFFFFF',
+    color: colors.white,
 };
 
 function DismissIcon({ size, color }) {

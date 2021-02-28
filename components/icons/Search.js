@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { colors } from '../../constants/colors';
 
 const propTypes = {
     size: PropTypes.number,
@@ -8,7 +9,7 @@ const propTypes = {
 
 const defaultProps = {
     size: 16,
-    color: '#FFFFFF',
+    color: colors.white,
 };
 
 function SearchIcon({ size, color }) {
@@ -16,7 +17,7 @@ function SearchIcon({ size, color }) {
         <svg
             width={size}
             height={size}
-            viewBox={`0 0 74 74`}
+            viewBox='0 0 74 74'
             xmlns='http://www.w3.org/2000/svg'
         >
             <path
