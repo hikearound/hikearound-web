@@ -36,14 +36,15 @@ AppLogo.propTypes = propTypes;
 export default AppLogo;
 
 const LogoLink = styled.a`
+    display: flex;
+    align-items: center;
+
     @media ${device.tablet} {
         margin: 0 auto;
     }
 `;
 
 const ImageWrapper = styled.div`
-    position: relative;
-    top: -1px;
     color: transparent;
 
     &:hover {

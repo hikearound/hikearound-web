@@ -6,13 +6,13 @@
 
 button {
     &.SRLNextButton, &.SRLPrevButton, &.SRLCloseButton {
-        background-color: $gray-dark !important;
+        background-color: $transparent-gray-dark !important;
         border-radius: $icon-size;
         opacity: 0.8;
 
         &:hover {
             opacity: 1;
-            background-color: $gray-light !important
+            background-color: $transparent-gray-light !important
         }
 
         svg {
