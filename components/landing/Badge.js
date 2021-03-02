@@ -14,6 +14,11 @@ const defaultProps = {
 };
 
 class AppStoreBadge extends React.PureComponent {
+    getSrc = () => {
+        const { i18n } = this.props;
+        return `/images/external/${i18n.language}/app-store-badge.svg`;
+    };
+
     render() {
         const { t, includeTopMargin } = this.props;
 
@@ -26,7 +31,7 @@ class AppStoreBadge extends React.PureComponent {
             >
                 <ImageWrapper>
                     <Image
-                        src='/images/external/app-store-badge.svg'
+                        src={this.getSrc()}
                         priority
                         alt={t('image.alt.badge')}
                         width={125}
