@@ -12,6 +12,11 @@ import { landing } from '../../../constants/images';
 class IntroSection extends React.PureComponent {
     renderBadge = () => <AppStoreBadge />;
 
+    getSrc = () => {
+        const { i18n } = this.props;
+        return landing.phone[i18n.language].hike;
+    };
+
     renderPhone = () => {
         const { t } = this.props;
 
@@ -19,7 +24,7 @@ class IntroSection extends React.PureComponent {
             <ContentImage inflate>
                 <ImageWrapper>
                     <Image
-                        src={landing.phone.hike}
+                        src={this.getSrc()}
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}

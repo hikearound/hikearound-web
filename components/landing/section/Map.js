@@ -8,6 +8,11 @@ import { device } from '../../../constants/breakpoints';
 import { landing } from '../../../constants/images';
 
 class MapSection extends React.PureComponent {
+    getSrc = () => {
+        const { i18n } = this.props;
+        return landing.phone[i18n.language].map;
+    };
+
     renderPhone = () => {
         const { t } = this.props;
 
@@ -15,7 +20,7 @@ class MapSection extends React.PureComponent {
             <ContentImage justifyLeft>
                 <ImageWrapper>
                     <Image
-                        src={landing.phone.map}
+                        src={this.getSrc()}
                         alt={t('image.alt.phone', {
                             appName: t('common:appName'),
                         })}
