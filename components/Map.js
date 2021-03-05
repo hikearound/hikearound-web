@@ -50,6 +50,7 @@ class AppleMap extends React.Component {
             map.isScrollEnabled = false;
         }
 
+        map.showsUserLocationControl = true;
         map.showsScale = mapkit.FeatureVisibility.Visible;
         map.showsPointsOfInterest = showFilteredPointsOfInterest;
     };
