@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { ToastProvider } from 'react-toast-notifications';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { appWithTranslation } from 'next-i18next';
+import { withRouter } from 'next/router';
 import MapkitProvider from '../components/map/MapKitProvider';
 import Toast from '../components/Toast';
 import { getTheme, initSentry } from '../utils/app';
@@ -23,7 +24,7 @@ initAnalytics();
 
 class HikeAround extends App {
     render() {
-        const { Component, pageProps, err } = this.props;
+        const { Component, pageProps, router, err } = this.props;
         const theme = getTheme();
 
         return (
@@ -34,7 +35,10 @@ class HikeAround extends App {
                 components={{ Toast }}
             >
                 <ThemeProvider theme={theme}>
-                    <MapkitProvider tokenOrCallback={NEXT_PUBLIC_MAPKIT_TOKEN}>
+                    <MapkitProvider
+                        tokenOrCallback={NEXT_PUBLIC_MAPKIT_TOKEN}
+                        language={router.locale}
+                    >
                         <SimpleReactLightbox>
                             <Component {...pageProps} err={err} />
                         </SimpleReactLightbox>
@@ -45,4 +49,4 @@ class HikeAround extends App {
     }
 }
 
-export default appWithTranslation(HikeAround);
+export default withRouter(appWithTranslation(HikeAround));

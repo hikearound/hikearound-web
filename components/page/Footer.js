@@ -51,6 +51,11 @@ class Footer extends React.PureComponent {
                 type: 'href',
             },
             {
+                text: t('link.help'),
+                link: '/help',
+                type: 'router',
+            },
+            {
                 text: t('link.privacy'),
                 link: '/privacy',
                 type: 'router',
