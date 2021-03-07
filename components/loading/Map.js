@@ -21,4 +21,15 @@ export const LoadingWrapper = styled.div`
     align-items: center;
     height: 100%;
     overflow: hidden;
+    position: relative;
+
+    span {
+        overflow: hidden;
+    }
+
+    .react-loading-skeleton {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 `;

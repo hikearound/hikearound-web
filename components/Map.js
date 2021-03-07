@@ -82,8 +82,6 @@ class AppleMap extends React.Component {
             const trail = new PolylineOverlay(coords, { style });
             const padding = getMapPadding();
 
-            map.removeItems([trail]);
-
             map.showItems(trail, {
                 animate: false,
                 padding: new Padding(padding, padding, padding, padding),
