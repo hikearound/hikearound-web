@@ -2,57 +2,99 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import { withRouter } from 'next/router';
 import { spacing } from '../../constants/spacing';
-import { fontSize } from '../../constants/type';
-import { device } from '../../constants/breakpoints';
 
 const propTypes = {
     i18n: PropTypes.object.isRequired,
 };
 
-class LanguageSelect extends React.PureComponent {
+class LanguageSelect extends React.Component {
     constructor(props) {
         super(props);
 
-        const { i18n } = this.props;
-
         this.state = {
-            value: i18n.language,
+            anchorEl: null,
         };
 
         this.handleChange = this.handleChange.bind(this);
     }
 
+    handleClick = (event) => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
     handleChange = (event) => {
         const { router } = this.props;
+        const { locale } = event.currentTarget.dataset;
+
+        this.handleClose();
 
         router.push(router.asPath, undefined, {
-            locale: event.target.value,
+            locale,
         });
+    };
 
-        this.setState({ value: event.target.value });
+    setSelectedLanguage = (id) => {
+        const { i18n } = this.props;
+
+        if (i18n.language === id) {
+            return true;
+        }
+
+        return false;
+    };
+
+    renderMenu = () => {
+        const { anchorEl } = this.state;
+
+        return (
+            <Menu
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+            >
+                <MenuItem
+                    data-locale='en'
+                    selected={this.setSelectedLanguage('en')}
+                    onClick={this.handleChange}
+                >
+                    English
+                </MenuItem>
+                <MenuItem
+                    data-locale='es'
+                    selected={this.setSelectedLanguage('es')}
+                    onClick={this.handleChange}
+                >
+                    Española
+                </MenuItem>
+            </Menu>
+        );
+    };
+
+    renderLabel = () => {
+        const { t } = this.props;
+
+        return (
+            <SelectLabel onClick={this.handleClick}>
+                {t('link.language')}
+            </SelectLabel>
+        );
     };
 
     render() {
-        const { t } = this.props;
-        const { value } = this.state;
-
         return (
-            <SelectLabel>
-                {t('link.language')}
-                <Label id='languageLabel'>{t('link.language')}</Label>
-                <LanguagePicker
-                    name='language'
-                    id='language'
-                    onChange={this.handleChange}
-                    value={value}
-                    aria-labelledby='languageLabel'
-                >
-                    <option value='en'>English</option>
-                    <option value='es'>Española</option>
-                </LanguagePicker>
-            </SelectLabel>
+            <>
+                {this.renderLabel()}
+                {this.renderMenu()}
+            </>
         );
     }
 }
@@ -67,35 +109,6 @@ const SelectLabel = styled.span`
 
     &:hover {
         text-decoration: underline;
-    }
-`;
-
-const Label = styled.span`
-    display: none;
-`;
-
-const LanguagePicker = styled.select`
-    -webkit-appearance: none;
-    border: none;
-    cursor: pointer;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    font-size: ${fontSize.sm};
-
-    &:focus {
-        outline: 0;
-    }
-
-    &:hover {
         cursor: pointer;
-        text-decoration: underline;
-    }
-
-    @media ${device.tablet} {
-        font-size: 16px;
     }
 `;
