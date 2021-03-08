@@ -48,6 +48,10 @@ class Page extends React.PureComponent {
             NProgress.start();
         });
 
+        Router.events.on('routeChangeComplete', () => {
+            this.scrollToTop();
+        });
+
         Router.events.on('routeChangeComplete' || 'routeChangeError', () => {
             NProgress.done();
         });
@@ -64,6 +68,14 @@ class Page extends React.PureComponent {
             this.getAndSetPageTitle();
         }
     }
+
+    scrollToTop = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'auto',
+        });
+    };
 
     getAndSetPageTitle = (type) => {
         const { title } = this.props;
