@@ -31,7 +31,8 @@ class IntroSection extends React.PureComponent {
                         width={584}
                         height={588}
                         priority
-                        quality={100}
+                        quality={75}
+                        unoptimized
                     />
                 </ImageWrapper>
             </ContentImage>

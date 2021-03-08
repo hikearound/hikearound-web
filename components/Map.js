@@ -129,7 +129,6 @@ class AppleMap extends React.Component {
             glyphImage: { 1: '../images/annotation/glyph.png' },
         });
 
-        map.removeItems([startingAnnotation]);
         map.addAnnotations([startingAnnotation]);
     };
 

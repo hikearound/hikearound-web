@@ -27,7 +27,7 @@ class MapSection extends React.PureComponent {
                         width={351}
                         height={620}
                         loading='eager'
-                        quality={100}
+                        quality={75}
                     />
                 </ImageWrapper>
             </ContentImage>
