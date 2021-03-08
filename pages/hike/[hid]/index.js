@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../../../layouts/main';
@@ -26,6 +26,18 @@ const defaultProps = {
 
 const HikePage = ({ hike, hid, shouldShowAd }) => {
     hike = JSON.parse(hike);
+
+    const scrollToTop = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'auto',
+        });
+    };
+
+    useEffect(() => {
+        scrollToTop();
+    });
 
     const renderMainColumn = () => (
         <div>
