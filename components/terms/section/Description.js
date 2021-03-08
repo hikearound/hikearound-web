@@ -5,9 +5,9 @@ import { RichText } from 'prismic-reactjs';
 import { withTranslation } from 'next-i18next';
 import { Section } from '../../../styles/landing';
 import { spacing } from '../../../constants/spacing';
-import { ContentSection } from '../../../styles/static';
 import { device } from '../../../constants/breakpoints';
 import { fontSize } from '../../../constants/landing';
+import { colors } from '../../../constants/colors';
 
 const propTypes = {
     title: PropTypes.array.isRequired,
@@ -31,11 +31,11 @@ class DescriptionSection extends React.PureComponent {
 
         return (
             <Section marginTop>
-                <StyledContentSection>
+                <ContentSection>
                     <RichText render={title} />
                     {introduction && this.renderIntroduction(introduction)}
                     <RichText render={description} />
-                </StyledContentSection>
+                </ContentSection>
             </Section>
         );
     }
@@ -46,15 +46,20 @@ export default withTranslation('landing')(DescriptionSection);
 DescriptionSection.propTypes = propTypes;
 DescriptionSection.defaultProps = defaultProps;
 
-export const StyledContentSection = styled(ContentSection)`
+export const ContentSection = styled.div`
     max-width: 700px;
     text-align: left;
     margin: ${spacing.xl} auto 0 auto;
     padding-bottom: ${spacing.xl};
+    font-size: ${spacing.md};
+
+    a {
+        color: ${colors.purple};
+    }
 
     @media ${device.tablet} {
         margin-top: ${spacing.lg};
-        padding-bottom: ${spacing.md};
+        padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
     }
 `;
 

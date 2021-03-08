@@ -28,7 +28,7 @@ const HikePage = ({ hike, hid, shouldShowAd }) => {
     hike = JSON.parse(hike);
 
     const scrollToTop = () => {
-        window.scroll({
+        window.top.scroll({
             top: 0,
             left: 0,
             behavior: 'auto',
@@ -36,7 +36,9 @@ const HikePage = ({ hike, hid, shouldShowAd }) => {
     };
 
     useEffect(() => {
-        scrollToTop();
+        setTimeout(() => {
+            scrollToTop();
+        }, 10);
     });
 
     const renderMainColumn = () => (
