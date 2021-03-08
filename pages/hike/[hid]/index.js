@@ -38,7 +38,7 @@ const HikePage = ({ hike, hid, shouldShowAd }) => {
     useEffect(() => {
         setTimeout(() => {
             scrollToTop();
-        }, 10);
+        }, 5);
     });
 
     const renderMainColumn = () => (
