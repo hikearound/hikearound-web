@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 import { colors } from '../constants/colors';
 import { withMap, getMapPadding } from '../utils/map';
+import { device } from '../constants/breakpoints';
 
 const propTypes = {
     center: PropTypes.object,
@@ -184,6 +185,12 @@ export const MapWrapper = styled.div`
 
     .fadeIn {
         opacity: 1;
+    }
+
+    @media ${device.tablet} {
+        .mk-map-view {
+            height: 250px;
+        }
     }
 `;
 
