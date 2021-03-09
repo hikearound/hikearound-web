@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
@@ -12,12 +13,14 @@ const propTypes = {
     mapProps: PropTypes.object.isRequired,
     setCenter: PropTypes.func.isRequired,
     showFilteredPointsOfInterest: PropTypes.bool,
+    mapDidLoad: PropTypes.func,
 };
 
 const defaultProps = {
     map: null,
     center: {},
     showFilteredPointsOfInterest: false,
+    mapDidLoad: () => {},
 };
 
 class AppleMap extends React.Component {
@@ -26,6 +29,7 @@ class AppleMap extends React.Component {
 
         this.state = {
             didLoad: false,
+            className: 'innerWrapper',
         };
     }
 
@@ -133,18 +137,31 @@ class AppleMap extends React.Component {
     };
 
     setLoadState = () => {
+        const { mapDidLoad } = this.props;
         const { didLoad } = this.state;
 
         if (!didLoad) {
-            this.setState({
-                didLoad: true,
-            });
+            setTimeout(async () => {
+                await this.setState({
+                    didLoad: true,
+                    className: 'innerWrapper fadeIn',
+                });
+                mapDidLoad();
+            }, 2000);
         }
     };
 
     render() {
         const { mapProps } = this.props;
-        return <Map {...mapProps} />;
+        const { didLoad, className } = this.state;
+
+        return (
+            <MapWrapper didLoad={didLoad}>
+                <FadeWrapper className={className}>
+                    <Map {...mapProps} />
+                </FadeWrapper>
+            </MapWrapper>
+        );
     }
 }
 
@@ -152,3 +169,24 @@ AppleMap.propTypes = propTypes;
 AppleMap.defaultProps = defaultProps;
 
 export default withMap(AppleMap);
+
+export const MapWrapper = styled.div`
+    visibility: ${(props) => (props.didLoad ? 'visible' : 'hidden')};
+
+    .mk-map-view {
+        height: 350px;
+    }
+
+    .innerWrapper {
+        transition: opacity 0.5s ease-in;
+        opacity: 0;
+    }
+
+    .fadeIn {
+        opacity: 1;
+    }
+`;
+
+export const FadeWrapper = styled.div`
+    display: block;
+`;

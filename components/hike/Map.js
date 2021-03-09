@@ -18,11 +18,15 @@ const propTypes = {
 class HikeMap extends React.PureComponent {
     constructor(props, context) {
         super(props, context);
+
         this.state = {
             path: [],
             center: null,
-            shouldShowMap: false,
+            loading: true,
+            coordinatesReady: false,
         };
+
+        this.mapDidLoad = this.mapDidLoad.bind(this);
     }
 
     async componentDidMount() {
@@ -53,7 +57,10 @@ class HikeMap extends React.PureComponent {
     initializeMap = async () => {
         const { hid } = this.props;
 
-        this.setState({ shouldShowMap: false });
+        this.setState({
+            coordinatesReady: false,
+            loading: true,
+        });
 
         const hikeXmlUrl = await getHikeXmlUrl(hid);
         const hikeData = await parseHikeXml(hikeXmlUrl);
@@ -62,6 +69,10 @@ class HikeMap extends React.PureComponent {
             this.setHikeData(hikeData);
             this.plotCoordinates();
         }
+    };
+
+    mapDidLoad = () => {
+        this.setState({ loading: false });
     };
 
     plotCoordinates() {
@@ -92,12 +103,12 @@ class HikeMap extends React.PureComponent {
             }
         }
 
-        this.setState({ path, shouldShowMap: true });
+        this.setState({ path, coordinatesReady: true });
     }
 
     render() {
         const { hid, t } = this.props;
-        const { path, center, shouldShowMap } = this.state;
+        const { path, center, coordinatesReady, loading } = this.state;
 
         return (
             <MapCard noPadding>
@@ -105,10 +116,14 @@ class HikeMap extends React.PureComponent {
                     {t('card.title.map')}
                 </SecondaryHeading>
                 <MapContainer>
-                    {shouldShowMap && (
-                        <AppleMap center={center} points={path} />
+                    {loading && <MapLoadingState hid={hid} />}
+                    {coordinatesReady && (
+                        <AppleMap
+                            center={center}
+                            points={path}
+                            mapDidLoad={this.mapDidLoad}
+                        />
                     )}
-                    {!shouldShowMap && <MapLoadingState hid={hid} />}
                 </MapContainer>
             </MapCard>
         );
