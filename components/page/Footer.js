@@ -58,8 +58,13 @@ class Footer extends React.Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
             >
-                {moreLinks.map(({ text, link, target }, index) => (
-                    <RightRailLink href={link} target={target} key={index}>
+                {moreLinks.map(({ text, link, target, rel }, index) => (
+                    <RightRailLink
+                        href={link}
+                        target={target}
+                        rel={rel}
+                        key={index}
+                    >
                         <MenuItem onClick={this.handleClose}>{text}</MenuItem>
                     </RightRailLink>
                 ))}
@@ -109,6 +114,7 @@ class Footer extends React.Component {
                 link: 'https://medium.com/hikearound',
                 target: '_blank',
                 type: 'href',
+                rel: 'noreferrer',
             },
             {
                 text: t('link.help'),
