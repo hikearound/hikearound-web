@@ -46,6 +46,12 @@ module.exports = {
                 ignore: ['navigation', 'focused', 't', 'i18n', 'router'],
             },
         ],
+        'react/no-unknown-property': [
+            'error',
+            {
+                ignore: ['hreflang'],
+            },
+        ],
         semi: ['error', 'always'],
         'prettier/prettier': [
             'error',

@@ -1,19 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiSheets } from '@material-ui/core/styles';
 import { gtagConfig } from '../constants/analytics';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
-
-const propTypes = {
-    lang: PropTypes.string,
-};
-
-const defaultProps = {
-    lang: 'en',
-};
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -48,10 +39,11 @@ class MyDocument extends Document {
     }
 
     render() {
-        const { lang } = this.props;
+        const { __NEXT_DATA__ } = this.props;
+        const { locale } = __NEXT_DATA__;
 
         return (
-            <Html lang={lang}>
+            <Html lang={locale}>
                 <Head>
                     <script
                         async
@@ -84,8 +76,5 @@ class MyDocument extends Document {
         );
     }
 }
-
-MyDocument.propTypes = propTypes;
-MyDocument.defaultProps = defaultProps;
 
 export default MyDocument;

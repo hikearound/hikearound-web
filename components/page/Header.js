@@ -30,6 +30,11 @@ class Header extends React.PureComponent {
         return `${baseUrl}${router.asPath}`;
     };
 
+    generateLocaleUrl = (locale) => {
+        const { router } = this.props;
+        return `${baseUrl}/${locale}${router.asPath}`;
+    };
+
     getHikeDescription = () => {
         const { hike } = this.props;
         return hike.description.replace(/(\n\n)/gm, ' ');
@@ -61,6 +66,17 @@ class Header extends React.PureComponent {
         );
     };
 
+    renderLocaleLinks = () => (
+        <>
+            <link rel='alternate' hreflang='en' href={this.generateUrl()} />
+            <link
+                rel='alternate'
+                hreflang='es'
+                href={this.generateLocaleUrl('es')}
+            />
+        </>
+    );
+
     render() {
         const { hideHeader, title, invertHeader } = this.props;
 
@@ -74,6 +90,7 @@ class Header extends React.PureComponent {
                     />
                     <meta charSet='utf-8' />
                     {this.renderOpenGraph()}
+                    {this.renderLocaleLinks()}
                     <link
                         rel='icon'
                         href='/images/favicon/favicon.png'
