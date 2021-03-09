@@ -68,10 +68,10 @@ class Header extends React.PureComponent {
 
     renderLocaleLinks = () => (
         <>
-            <link rel='alternate' hreflang='en' href={this.generateUrl()} />
+            <link rel='alternate' hrefLang='en' href={this.generateUrl()} />
             <link
                 rel='alternate'
-                hreflang='es'
+                hrefLang='es'
                 href={this.generateLocaleUrl('es')}
             />
         </>
