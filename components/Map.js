@@ -180,7 +180,7 @@ export const MapWrapper = styled.div`
     }
 
     .innerWrapper {
-        transition: opacity 0.5s ease-in;
+        transition: opacity 0.25s ease-in;
         opacity: 0;
     }
 
