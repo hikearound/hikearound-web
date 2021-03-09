@@ -7,6 +7,7 @@ import { withTranslation } from 'next-i18next';
 import { Section } from '../../../styles/landing';
 import { colors, transparentColors } from '../../../constants/colors';
 import { device } from '../../../constants/breakpoints';
+import { mapHeight } from '../../../constants/dimensions';
 import { coverageAreas } from '../../../constants/data';
 import {
     ContentSection,
@@ -134,6 +135,6 @@ const MapContainer = styled.div`
     }
 
     @media ${device.tablet} {
-        height: 350px;
+        height: ${mapHeight.desktop};
     }
 `;

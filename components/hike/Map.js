@@ -9,6 +9,7 @@ import { SecondaryHeading } from '../../styles/headings';
 import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
 import AppleMap from '../Map';
 import MapLoadingState from '../loading/Map';
+import { mapHeight, gutterWidth } from '../../constants/dimensions';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,
@@ -152,11 +153,11 @@ export const MapLoading = styled.div`
 const MapContainer = styled.div`
     border-top: 1px solid ${colors.gray};
     background-color: ${colors.grayLight};
-    height: 350px;
+    height: ${mapHeight.desktop};
     width: 100%;
 
     @media ${device.tablet} {
-        border-top: 3px solid ${colors.grayLight};
-        height: 250px;
+        border-top: ${gutterWidth.mobile} solid ${colors.grayLight};
+        height: ${mapHeight.mobile};
     }
 `;

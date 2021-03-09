@@ -4,6 +4,7 @@ import { spacing } from '../constants/spacing';
 import { fontSize } from '../constants/type';
 import { SecondaryHeading } from './headings';
 import { device } from '../constants/breakpoints';
+import { gutterWidth } from '../constants/dimensions';
 
 export const OrderedList = styled.ol`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
@@ -13,7 +14,7 @@ export const OrderedList = styled.ol`
     list-style-position: inside;
 
     @media ${device.tablet} {
-        border-top: 3px solid ${colors.grayLight};
+        border-top: ${gutterWidth.mobile} solid ${colors.grayLight};
         padding-top: ${spacing.md};
     }
 `;
@@ -24,7 +25,7 @@ export const UnorderedList = styled.ul`
     color: ${colors.grayDark};
 
     @media ${device.tablet} {
-        border-top: 3px solid ${colors.grayLight};
+        border-top: ${gutterWidth.mobile} solid ${colors.grayLight};
         padding-top: ${spacing.md};
     }
 `;

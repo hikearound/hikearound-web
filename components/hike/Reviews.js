@@ -9,6 +9,7 @@ import ReviewList from '../review/ReviewList';
 import { colors } from '../../constants/colors';
 import { device } from '../../constants/breakpoints';
 import ReviewLoadingState from '../loading/Review';
+import { gutterWidth } from '../../constants/dimensions';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,
@@ -107,7 +108,7 @@ const CardContentBorder = styled.div`
 
     @media ${device.tablet} {
         border-color: ${colors.grayLight};
-        border-top-width: 3px;
+        border-top-width: ${gutterWidth.mobile};
     }
 `;
 

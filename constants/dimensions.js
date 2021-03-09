@@ -13,3 +13,12 @@ export const grid = {
 export const offsets = {
     header: '80px',
 };
+
+export const mapHeight = {
+    desktop: '350px',
+    mobile: '250px',
+};
+
+export const gutterWidth = {
+    mobile: '3px',
+};

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../constants/colors';
 import { spacing } from '../constants/spacing';
-import { borderRadius } from '../constants/dimensions';
+import { borderRadius, gutterWidth } from '../constants/dimensions';
 import { lineHeight, fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
 
@@ -17,7 +17,7 @@ export const Card = styled.div`
         border-radius: 0;
         border: none;
         border-bottom: solid ${colors.grayLight};
-        border-width: ${(props) => (props.hideGutter ? 0 : '3px')};
+        border-width: ${(props) => (props.hideGutter ? 0 : gutterWidth.mobile)};
         margin-bottom: 0;
         display: ${(props) => (props.hideMobile ? 'none' : 'block')};
     }
@@ -31,7 +31,7 @@ export const CardContent = styled.div`
     min-height: ${(props) => (props.includeMinHeight ? '90px' : 'initial')};
 
     @media ${device.tablet} {
-        border-top: 3px solid ${colors.grayLight};
+        border-top: ${gutterWidth.mobile} solid ${colors.grayLight};
         font-size: ${fontSize.sm};
     }
 `;

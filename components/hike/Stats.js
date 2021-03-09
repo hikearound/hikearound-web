@@ -8,6 +8,7 @@ import { SecondaryHeading } from '../../styles/headings';
 import { spacing } from '../../constants/spacing';
 import { device } from '../../constants/breakpoints';
 import { colors } from '../../constants/colors';
+import { gutterWidth } from '../../constants/dimensions';
 
 const propTypes = {
     hike: PropTypes.object,
@@ -73,7 +74,7 @@ const StatsContainer = styled.div`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
 
     @media ${device.tablet} {
-        border-top: 3px solid ${colors.grayLight};
+        border-top: ${gutterWidth.mobile} solid ${colors.grayLight};
         padding-top: ${spacing.md};
     }
 `;

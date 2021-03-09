@@ -6,6 +6,7 @@ import { isMobile } from 'react-device-detect';
 import { colors } from '../constants/colors';
 import { withMap, getMapPadding } from '../utils/map';
 import { device } from '../constants/breakpoints';
+import { mapHeight } from '../constants/dimensions';
 
 const propTypes = {
     center: PropTypes.object,
@@ -175,7 +176,7 @@ export const MapWrapper = styled.div`
     visibility: ${(props) => (props.didLoad ? 'visible' : 'hidden')};
 
     .mk-map-view {
-        height: 350px;
+        height: ${mapHeight.desktop};
     }
 
     .innerWrapper {
@@ -189,7 +190,7 @@ export const MapWrapper = styled.div`
 
     @media ${device.tablet} {
         .mk-map-view {
-            height: 250px;
+            height: ${mapHeight.mobile};
         }
     }
 `;
