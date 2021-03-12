@@ -49,7 +49,10 @@ class Header extends React.PureComponent {
 
         if (hike) {
             description = this.getHikeDescription();
-            image = hike.mapImage;
+
+            if (hike.mapImage) {
+                image = hike.mapImage;
+            }
         }
 
         return (

@@ -145,5 +145,6 @@ export async function getMapImage(hid) {
     return firebase
         .storage()
         .ref(`images/maps/light/${hid}.png`)
-        .getDownloadURL();
+        .getDownloadURL()
+        .catch(() => null);
 }
