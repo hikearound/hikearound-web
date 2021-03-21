@@ -47,7 +47,6 @@ export async function getServerSideProps({ req, query, locale }) {
             description: page.data.description,
             contentOnly: query.contentOnly,
             ...(await serverSideTranslations(locale, [
-                'privacy',
                 'common',
                 'header',
                 'footer',

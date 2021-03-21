@@ -34,7 +34,9 @@ class Stats extends React.PureComponent {
                 <Stat>
                     <Label>{t('label.elevation')}:</Label>
                     <StatData>
-                        {t('measurement.elevation', { elevation })}
+                        {t('measurement.elevation', {
+                            elevation: elevation.toLocaleString(),
+                        })}
                     </StatData>
                 </Stat>
                 <Stat>

@@ -75,7 +75,9 @@ class Card extends React.PureComponent {
                 {this.renderReview()}
                 <Distance>{t('measurement.distance', { distance })}</Distance>
                 <Elevation>
-                    {t('measurement.elevation', { elevation })}
+                    {t('measurement.elevation', {
+                        elevation: elevation.toLocaleString(),
+                    })}
                 </Elevation>
             </InfoSection>
         );

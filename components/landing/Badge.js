@@ -4,6 +4,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
 import { componentSpacing } from '../../constants/landing';
+import { appStoreUrl } from '../../constants/common';
 
 const propTypes = {
     includeTopMargin: PropTypes.bool,
@@ -24,7 +25,7 @@ class AppStoreBadge extends React.PureComponent {
 
         return (
             <Link
-                href='/'
+                href={appStoreUrl}
                 target='_blank'
                 rel='noreferrer'
                 includeTopMargin={includeTopMargin}

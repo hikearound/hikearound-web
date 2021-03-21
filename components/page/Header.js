@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import { withTranslation } from 'next-i18next';
 import GlobalHeader from '../GlobalHeader';
-import { baseUrl, ogImage } from '../../constants/common';
+import { baseUrl } from '../../constants/common';
+import { openGraph } from '../../constants/images';
 
 const propTypes = {
     hideHeader: PropTypes.bool.isRequired,
@@ -45,7 +46,7 @@ class Header extends React.PureComponent {
         const url = this.generateUrl();
 
         let description = t('description');
-        let image = ogImage;
+        let image = openGraph;
 
         if (hike) {
             description = this.getHikeDescription();

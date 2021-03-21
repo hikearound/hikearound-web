@@ -8,6 +8,7 @@ import { spacing } from '../constants/spacing';
 import { fontSize } from '../constants/type';
 import { device } from '../constants/breakpoints';
 import InstantSearch from './search/InstantSearch';
+import { appStoreUrl } from '../constants/common';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,
@@ -25,7 +26,12 @@ class GlobalNav extends React.PureComponent {
                         {t('common.about')}
                     </GlobalLink>
                 </Link>
-                <GlobalLink href='/' invertHeader={invertHeader}>
+                <GlobalLink
+                    href={appStoreUrl}
+                    invertHeader={invertHeader}
+                    target='_blank'
+                    rel='noreferrer'
+                >
                     {t('common.app')}
                 </GlobalLink>
             </LinkContainer>

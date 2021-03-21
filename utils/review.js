@@ -2,7 +2,7 @@ import firebase from '@firebase/app';
 import '@firebase/firestore';
 import '@firebase/storage';
 import { getUserProfileData } from './user';
-import { avatarDefault } from '../constants/images';
+import { avatar } from '../constants/images';
 
 export async function buildReviewArray(t, data) {
     const reviews = [];
@@ -11,7 +11,7 @@ export async function buildReviewArray(t, data) {
         const userData = await getUserProfileData(t, review.uid);
 
         if (!userData.photoURL) {
-            userData.photoURL = avatarDefault;
+            userData.photoURL = avatar;
         }
 
         review.user = {
