@@ -10,6 +10,7 @@ import { fontSize, lineHeight } from '../../constants/type';
 import { RightRailLink } from '../../styles/links';
 import LanguageSelect from '../i18n/Select';
 import { device } from '../../constants/breakpoints';
+import { spacing } from '../../constants/spacing';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,
@@ -189,6 +190,7 @@ const FooterWrapper = styled.span`
     @media ${device.tablet} {
         span {
             font-size: ${fontSize.md};
+            margin-bottom: ${spacing.xs};
         }
     }
 `;
