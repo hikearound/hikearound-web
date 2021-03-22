@@ -21,7 +21,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    shouldShowAd: false,
+    shouldShowAd: true,
 };
 
 const HikePage = ({ hike, hid, shouldShowAd }) => {
