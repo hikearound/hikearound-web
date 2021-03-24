@@ -189,6 +189,7 @@ const FooterWrapper = styled.span`
 
     @media ${device.tablet} {
         margin-bottom: ${spacing.xs};
+        display: block;
 
         span {
             font-size: ${fontSize.md};
