@@ -188,9 +188,10 @@ const FooterWrapper = styled.span`
     }
 
     @media ${device.tablet} {
+        margin-bottom: ${spacing.xs};
+
         span {
             font-size: ${fontSize.md};
-            margin-bottom: ${spacing.xs};
         }
     }
 `;
