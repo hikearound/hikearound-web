@@ -13,7 +13,7 @@ const propTypes = {
 
 const defaultProps = {
     client: 'ca-pub-0600907327424384',
-    slot: '9374444460',
+    slot: '4711333603',
     format: 'rectangle',
     responsive: true,
 };
@@ -22,6 +22,13 @@ class Ad extends React.PureComponent {
     componentDidMount() {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
+
+    maybeEnableTestAd = () => {
+        if (process.env.NODE_ENV === 'development') {
+            return 'on';
+        }
+        return 'off';
+    };
 
     renderAd = () => {
         const { client, slot, format, responsive } = this.props;
@@ -32,6 +39,7 @@ class Ad extends React.PureComponent {
                 style={{ display: 'block' }}
                 data-ad-client={client}
                 data-ad-slot={slot}
+                data-ad-test={this.maybeEnableTestAd()}
                 data-ad-format={format}
                 data-full-width-responsive={responsive}
             />
