@@ -13,8 +13,6 @@ const {
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withSourceMaps({
-    i18n,
-
     async headers() {
         return [
             {
@@ -29,11 +27,12 @@ module.exports = withSourceMaps({
             },
         ];
     },
-
     images: {
         domains: ['firebasestorage.googleapis.com', 'googleapis.com'],
     },
-
+    future: {
+        webpack5: true,
+    },
     webpack: (config, options) => {
         if (!options.isServer) {
             config.resolve.alias['@sentry/node'] = '@sentry/browser';
@@ -55,7 +54,7 @@ module.exports = withSourceMaps({
                 }),
             );
         }
-
         return config;
     },
+    i18n,
 });
