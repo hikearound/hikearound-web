@@ -17,7 +17,13 @@
             "message": "Echa un vistazo a {{hikeName}} en @tryhikearound"
         },
         "directions": {
-            "label": "Obtener las direcciones"
+            "label": "Obtener las direcciones",
+            "map": {
+                "type": {
+                    "google": "Mapas de Google",
+                    "apple": "Mapas de Apple"
+                }
+            }
         }
     }
 }
