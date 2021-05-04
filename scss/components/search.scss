@@ -54,6 +54,10 @@ $box-shadow: 0 2px 6px 0 rgba(130, 130, 130, 0.5);
     }
 }
 
+.react-autosuggest__suggestion--highlighted {
+    background-color: $gray-ultra-light;
+}
+
 .react-autosuggest__suggestion--first {
     padding-top: $space-small;
     border-top-left-radius: $border-radius-regular;
