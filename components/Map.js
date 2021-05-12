@@ -98,13 +98,8 @@ class AppleMap extends React.Component {
     maybeFilterPoints = () => {
         const { map, showFilteredPointsOfInterest } = this.props;
 
-        const {
-            Hospital,
-            Pharmacy,
-            FoodMarket,
-            Park,
-            Museum,
-        } = mapkit.PointOfInterestCategory;
+        const { Hospital, Pharmacy, FoodMarket, Park, Museum } =
+            mapkit.PointOfInterestCategory;
 
         const filteredCategories = [
             Hospital,
@@ -114,9 +109,8 @@ class AppleMap extends React.Component {
             Museum,
         ];
 
-        const filter = mapkit.PointOfInterestFilter.excluding(
-            filteredCategories,
-        );
+        const filter =
+            mapkit.PointOfInterestFilter.excluding(filteredCategories);
 
         if (showFilteredPointsOfInterest) {
             map.pointOfInterestFilter = filter;
