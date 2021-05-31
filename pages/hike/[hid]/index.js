@@ -53,16 +53,21 @@ const HikePage = ({ hike, hid, shouldShowAd }) => {
         </div>
     );
 
-    const renderStickyRightColumn = () => (
-        <div>
-            <NearbyHikes
-                hid={hid}
-                location={hike.coordinates.center}
-                city={hike.city}
-            />
-            {shouldShowAd && <Ad />}
-        </div>
-    );
+    const renderStickyRightColumn = () => {
+        if (hid && hike) {
+            return (
+                <div>
+                    <NearbyHikes
+                        hid={hid}
+                        location={hike.coordinates.center}
+                        city={hike.city}
+                    />
+                    {shouldShowAd && <Ad />}
+                </div>
+            );
+        }
+        return null;
+    };
 
     const renderRightColumn = () => <Stats hike={hike} />;
 
