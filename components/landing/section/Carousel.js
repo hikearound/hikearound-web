@@ -1,5 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'next-i18next';
+// import dynamic from 'next/dynamic';
+import { slidesToShowPlugin } from '@brainhubeu/react-carousel';
 import { StyledSection } from '../../../styles/landing';
 import TextSection from '../Text';
 import { carousel } from '../../../constants/carousel';
@@ -7,6 +9,11 @@ import Card from '../../carousel/Card';
 import LoadingCard from '../../carousel/LoadingCard';
 import Carousel from '../../carousel/Carousel';
 import { getFeaturedHikes } from '../../../utils/hike';
+
+// const { slidesToShowPlugin } = dynamic(
+//     () => import('@brainhubeu/react-carousel'),
+//     { ssr: false },
+// );
 
 class CarouselSection extends React.PureComponent {
     constructor(props, context) {
@@ -31,14 +38,32 @@ class CarouselSection extends React.PureComponent {
 
         return (
             <Carousel
-                arrows
-                slidesPerPage={carousel.desktop.slidesPerPage}
-                infinite
-                centered
+                plugins={[
+                    'arrows',
+                    'centered',
+                    'infinite',
+                    {
+                        resolve: slidesToShowPlugin,
+                        options: {
+                            numberOfSlides: carousel.desktop.slidesPerPage,
+                        },
+                    },
+                ]}
                 itemWidth={carousel.desktop.itemWidth}
                 breakpoints={{
                     768: {
-                        slidesPerPage: carousel.mobile.slidesPerPage,
+                        plugins: [
+                            'arrows',
+                            'infinite',
+                            'centered',
+                            {
+                                resolve: slidesToShowPlugin,
+                                options: {
+                                    numberOfSlides:
+                                        carousel.mobile.slidesPerPage,
+                                },
+                            },
+                        ],
                         itemWidth: carousel.mobile.itemWidth,
                     },
                 }}
