@@ -1,11 +1,10 @@
 import React from 'react';
 import { withTranslation } from 'next-i18next';
+import Marquee from 'react-fast-marquee';
 import { StyledSection } from '../../../styles/landing';
 import TextSection from '../Text';
-import { carousel } from '../../../constants/carousel';
 import Card from '../../carousel/Card';
 import LoadingCard from '../../carousel/LoadingCard';
-import Carousel from '../../carousel/Carousel';
 import { getFeaturedHikes } from '../../../utils/hike';
 
 class CarouselSection extends React.PureComponent {
@@ -30,19 +29,7 @@ class CarouselSection extends React.PureComponent {
         const { hikes } = this.state;
 
         return (
-            <Carousel
-                arrows
-                slidesPerPage={carousel.desktop.slidesPerPage}
-                infinite
-                centered
-                itemWidth={carousel.desktop.itemWidth}
-                breakpoints={{
-                    768: {
-                        slidesPerPage: carousel.mobile.slidesPerPage,
-                        itemWidth: carousel.mobile.itemWidth,
-                    },
-                }}
-            >
+            <Marquee play pauseOnHover gradient={false} speed={30}>
                 {hikes.map(
                     (
                         {
@@ -72,28 +59,18 @@ class CarouselSection extends React.PureComponent {
                         />
                     ),
                 )}
-            </Carousel>
+            </Marquee>
         );
     };
 
     renderLoadingState = () => (
-        <Carousel
-            arrows
-            slidesPerPage={carousel.desktop.slidesPerPage}
-            infinite
-            centered
-            itemWidth={carousel.desktop.itemWidth}
-            breakpoints={{
-                768: {
-                    slidesPerPage: carousel.mobile.slidesPerPage,
-                    itemWidth: carousel.mobile.itemWidth,
-                },
-            }}
-        >
-            {[0].map((index) => (
-                <LoadingCard key={index} />
-            ))}
-        </Carousel>
+        <Marquee play={false} gradient={false} pauseOnHover>
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+        </Marquee>
     );
 
     render() {

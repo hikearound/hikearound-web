@@ -24,7 +24,7 @@ export const StyledRating = withStyles({
 export const CarouselCard = styled.a`
     box-shadow: 0 2px ${spacing.xs} 0 ${transparentColors.gray};
     height: 225px;
-    width: 100%;
+    width: 350px;
     margin: 40px ${cardMargin} 80px ${cardMargin};
     border-radius: ${borderRadius.sm};
     background-color: ${colors.grayMediumLight};
@@ -33,14 +33,11 @@ export const CarouselCard = styled.a`
 
     &:hover {
         cursor: pointer;
-
-        .cardBackground {
-            transform: scale(1.2);
-        }
     }
 
     @media ${device.tablet} {
         height: 200px;
+        width: 300px;
         margin-bottom: 40px;
 
         &:hover {

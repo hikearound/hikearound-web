@@ -8,10 +8,16 @@ class LoadingCard extends React.PureComponent {
     constructor(props, context) {
         super(props, context);
 
-        let dimensions = { height: 225, width: 355 };
+        let dimensions = {
+            height: 225,
+            width: 355,
+        };
 
         if (isMobile) {
-            dimensions = { height: 200, width: 300 };
+            dimensions = {
+                height: 200,
+                width: 300,
+            };
         }
 
         this.state = { dimensions };
