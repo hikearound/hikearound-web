@@ -31,7 +31,19 @@ const propTypes = {
     hid: PropTypes.string.isRequired,
 };
 
-class Card extends React.PureComponent {
+class Card extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            didLoad: false,
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ didLoad: true });
+    }
+
     renderGradient = () => <Gradient />;
 
     renderPills = () => {
@@ -85,10 +97,11 @@ class Card extends React.PureComponent {
 
     render() {
         const { coverPhoto, hid } = this.props;
+        const { didLoad } = this.state;
 
         return (
             <Link href='/hike/[hid]' as={`/hike/${hid}`}>
-                <CarouselCard href={`/hike/${hid}`}>
+                <CarouselCard href={`/hike/${hid}`} didLoad={didLoad}>
                     <CardInterior
                         className='cardBackground'
                         image={coverPhoto}

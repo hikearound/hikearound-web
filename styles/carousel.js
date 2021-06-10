@@ -30,6 +30,8 @@ export const CarouselCard = styled.a`
     background-color: ${colors.grayMediumLight};
     position: relative;
     overflow: hidden;
+    opacity: ${(props) => (props.didLoad ? 1 : 0)};
+    transition: opacity 0.25s ease-in;
 
     &:hover {
         cursor: pointer;
@@ -55,7 +57,6 @@ export const CardInterior = styled.div`
     background-image: ${(props) => `url(${props.image})`};
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s;
 `;
 
 export const InfoSection = styled.div`
