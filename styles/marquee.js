@@ -21,7 +21,7 @@ export const StyledRating = withStyles({
     },
 })(Rating);
 
-export const CarouselCard = styled.a`
+export const MarqueeCard = styled.a`
     box-shadow: 0 2px ${spacing.xs} 0 ${transparentColors.gray};
     height: 225px;
     width: 350px;

@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Page from '../layouts/main';
 import IntroSection from '../components/landing/section/Intro';
-import CarouselSection from '../components/landing/section/Carousel';
+import MarqueeSection from '../components/landing/section/Marquee';
 import MapSection from '../components/landing/section/Map';
 import DownloadSection from '../components/landing/section/Download';
 import FooterSection from '../components/landing/section/Footer';
@@ -15,7 +15,7 @@ const Homepage = () => {
     const renderMainColumn = () => (
         <RootView>
             <IntroSection />
-            <CarouselSection />
+            <MarqueeSection />
             <MapSection />
             <DownloadSection />
             <FooterSection centered />

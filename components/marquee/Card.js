@@ -12,12 +12,12 @@ import {
     Name,
     Distance,
     Elevation,
-    CarouselCard,
+    MarqueeCard,
     CardInterior,
     RatingWrapper,
     RatingText,
     StyledRating,
-} from '../../styles/carousel';
+} from '../../styles/marquee';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
@@ -101,7 +101,7 @@ class Card extends React.Component {
 
         return (
             <Link href='/hike/[hid]' as={`/hike/${hid}`}>
-                <CarouselCard href={`/hike/${hid}`} didLoad={didLoad}>
+                <MarqueeCard href={`/hike/${hid}`} didLoad={didLoad}>
                     <CardInterior
                         className='cardBackground'
                         image={coverPhoto}
@@ -109,7 +109,7 @@ class Card extends React.Component {
                     {this.renderGradient()}
                     {this.renderPills()}
                     {this.renderInfo()}
-                </CarouselCard>
+                </MarqueeCard>
             </Link>
         );
     }
