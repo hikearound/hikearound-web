@@ -37,6 +37,7 @@ class AppStoreBadge extends React.PureComponent {
                         width={125}
                         height={42}
                         unoptimized
+                        priority
                     />
                 </ImageWrapper>
             </Link>
