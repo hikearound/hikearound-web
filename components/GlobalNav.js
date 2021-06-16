@@ -21,7 +21,7 @@ class GlobalNav extends React.PureComponent {
         return (
             <LinkContainer>
                 <InstantSearch />
-                <Link href='/about'>
+                <Link href='/about' passHref>
                     <GlobalLink href='/about' invertHeader={invertHeader}>
                         {t('common.about')}
                     </GlobalLink>

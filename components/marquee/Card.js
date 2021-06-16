@@ -100,7 +100,7 @@ class Card extends React.Component {
         const { didLoad } = this.state;
 
         return (
-            <Link href='/hike/[hid]' as={`/hike/${hid}`}>
+            <Link href='/hike/[hid]' as={`/hike/${hid}`} passHref>
                 <MarqueeCard href={`/hike/${hid}`} didLoad={didLoad}>
                     <CardInterior
                         className='cardBackground'

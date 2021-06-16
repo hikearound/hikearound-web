@@ -14,7 +14,7 @@ class AppLogo extends React.PureComponent {
         const { alt } = this.props;
 
         return (
-            <Link href='/'>
+            <Link href='/' passHref>
                 <LogoLink href='/' aria-label={alt}>
                     <ImageWrapper>
                         <Image

@@ -143,7 +143,7 @@ class Footer extends React.Component {
         }
 
         return (
-            <Link href={link} key={index}>
+            <Link href={link} key={index} passHref>
                 <RightRailLink href={link}>{text}</RightRailLink>
             </Link>
         );

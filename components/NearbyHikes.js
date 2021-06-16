@@ -72,7 +72,7 @@ class NearbyHikes extends React.PureComponent {
 
         return nearbyHikes.map(({ name, hid }, index) => (
             <ListItem key={index}>
-                <Link href='[hid]' as={hid} prefetch={prefetch} scroll>
+                <Link href='[hid]' as={hid} prefetch={prefetch} scroll passHref>
                     <RightRailLink href={hid}>{name}</RightRailLink>
                 </Link>
             </ListItem>
