@@ -29,9 +29,6 @@ module.exports = withSourceMaps({
     images: {
         domains: ['firebasestorage.googleapis.com', 'googleapis.com'],
     },
-    future: {
-        webpack5: true,
-    },
     webpack: (config, options) => {
         if (!options.isServer) {
             config.resolve.alias['@sentry/node'] = '@sentry/browser';
