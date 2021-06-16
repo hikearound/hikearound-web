@@ -27,7 +27,8 @@ class MapSection extends React.PureComponent {
                         width={351}
                         height={620}
                         loading='eager'
-                        quality={75}
+                        placeholder='blur'
+                        blurDataURL={landing.phone.preview.map}
                     />
                 </ImageWrapper>
             </ContentImage>

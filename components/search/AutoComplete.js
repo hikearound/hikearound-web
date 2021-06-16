@@ -4,7 +4,6 @@ import { Highlight, connectAutoComplete } from 'react-instantsearch-dom';
 import AutoSuggest from 'react-autosuggest';
 import { withRouter } from 'next/router';
 import { withTranslation } from 'next-i18next';
-import Image from 'next/image';
 import {
     NameWrapper,
     LocationWrapper,
@@ -125,12 +124,11 @@ class AutoComplete extends Component {
 
         return (
             <div className='inputContainer'>
-                <Image
+                {/* eslint-disable-next-line */}
+                <img
                     className='search_icon'
                     src='../images/icons/search.svg'
                     alt={t('search.icon')}
-                    width={15}
-                    height={15}
                 />
                 <input {...inputProps} />
             </div>

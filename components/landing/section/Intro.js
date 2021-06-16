@@ -30,7 +30,9 @@ class IntroSection extends React.PureComponent {
                         })}
                         width={584}
                         height={588}
-                        unoptimized
+                        priority
+                        placeholder='blur'
+                        blurDataURL={landing.phone.preview.hike}
                     />
                 </ImageWrapper>
             </ContentImage>
