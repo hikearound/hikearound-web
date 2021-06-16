@@ -1,6 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'next-i18next';
 import Marquee from 'react-fast-marquee';
+import styled from 'styled-components';
 import { StyledSection } from '../../../styles/landing';
 import TextSection from '../Text';
 import Card from '../../marquee/Card';
@@ -64,13 +65,13 @@ class MarqueeSection extends React.PureComponent {
     };
 
     renderLoadingState = () => (
-        <Marquee play={false} gradient={false} pauseOnHover>
+        <LoadingWrapper>
             <LoadingCard />
             <LoadingCard />
             <LoadingCard />
             <LoadingCard />
             <LoadingCard />
-        </Marquee>
+        </LoadingWrapper>
     );
 
     render() {
@@ -92,3 +93,7 @@ class MarqueeSection extends React.PureComponent {
 }
 
 export default withTranslation('landing')(MarqueeSection);
+
+export const LoadingWrapper = styled.div`
+    display: flex;
+`;
