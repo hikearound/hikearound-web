@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 import { withTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import AppStoreBadge from '../Badge';
@@ -30,7 +30,8 @@ class IntroSection extends React.PureComponent {
                         })}
                         width={584}
                         height={588}
-                        unoptimized
+                        placeholder='blur'
+                        blurDataURL={landing.phone.blur.hike}
                     />
                 </ImageWrapper>
             </ContentImage>

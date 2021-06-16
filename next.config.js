@@ -27,7 +27,13 @@ module.exports = withSourceMaps({
         ];
     },
     images: {
-        domains: ['firebasestorage.googleapis.com', 'googleapis.com'],
+        domains: [
+            'res.cloudinary.com',
+            'firebasestorage.googleapis.com',
+            'googleapis.com',
+        ],
+        loader: 'cloudinary',
+        path: 'https://res.cloudinary.com/hikearound/',
     },
     webpack: (config, options) => {
         if (!options.isServer) {

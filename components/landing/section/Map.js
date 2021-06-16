@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 import { withTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
 import TextSection from '../Text';
 import { device } from '../../../constants/breakpoints';
@@ -26,9 +26,8 @@ class MapSection extends React.PureComponent {
                         })}
                         width={351}
                         height={620}
-                        loading='eager'
                         placeholder='blur'
-                        blurDataURL={landing.phone.preview.map}
+                        blurDataURL={landing.phone.blur.hike}
                     />
                 </ImageWrapper>
             </ContentImage>

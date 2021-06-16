@@ -37,6 +37,7 @@ class AppStoreBadge extends React.PureComponent {
                         alt={t('image.alt.badge')}
                         width={125}
                         height={42}
+                        unoptimized
                     />
                 </ImageWrapper>
             </Link>
