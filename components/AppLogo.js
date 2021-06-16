@@ -23,6 +23,7 @@ class AppLogo extends React.PureComponent {
                             alt={alt}
                             width={166}
                             height={20}
+                            unoptimized
                         />
                     </ImageWrapper>
                 </LogoLink>
