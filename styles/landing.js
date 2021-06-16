@@ -110,7 +110,7 @@ export const ContentDescription = styled.span`
 export const ContentImage = styled.div`
     display: flex;
     align-items: flex-start;
-    width: ${(props) => (props.justifyLeft ? '50%' : '60%')};
+    width: ${(props) => (props.justifyLeft ? '50%' : 'initial')};
     justify-content: ${(props) => (props.justifyLeft ? 'left' : 'end')};
 
     @media ${device.tablet} {

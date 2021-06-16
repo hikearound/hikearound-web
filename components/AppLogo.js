@@ -19,7 +19,6 @@ class AppLogo extends React.PureComponent {
                     <ImageWrapper>
                         <Image
                             src='/images/logo/logo.svg'
-                            priority
                             alt={alt}
                             width={166}
                             height={20}

@@ -33,7 +33,6 @@ class AppStoreBadge extends React.PureComponent {
                 <ImageWrapper>
                     <Image
                         src={this.getSrc()}
-                        priority
                         alt={t('image.alt.badge')}
                         width={125}
                         height={42}
