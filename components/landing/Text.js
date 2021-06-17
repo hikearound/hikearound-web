@@ -13,6 +13,7 @@ const propTypes = {
     renderExtra: PropTypes.object,
     centered: PropTypes.bool,
     includeBlock: PropTypes.bool,
+    includeMaxWidth: PropTypes.bool,
     offsetTop: PropTypes.bool,
 };
 
@@ -20,6 +21,7 @@ const defaultProps = {
     renderExtra: <></>,
     centered: false,
     includeBlock: false,
+    includeMaxWidth: false,
     offsetTop: false,
 };
 
@@ -37,12 +39,15 @@ class TextSection extends React.PureComponent {
     };
 
     render() {
-        const { includeBlock, offsetTop, centered } = this.props;
+        const { includeBlock, includeMaxWidth, offsetTop, centered } =
+            this.props;
 
         return (
             <TextBlock offsetTop={offsetTop} centered={centered}>
                 {includeBlock && (
-                    <ContentBlock>{this.renderContent()}</ContentBlock>
+                    <ContentBlock includeMaxWidth={includeMaxWidth}>
+                        {this.renderContent()}
+                    </ContentBlock>
                 )}
                 {!includeBlock && this.renderContent()}
             </TextBlock>

@@ -79,6 +79,7 @@ export const ContentBlock = styled.div`
     text-align: left;
     margin: auto 0;
     width: 90%;
+    max-width: ${(props) => (props.includeMaxWidth ? `525px` : '100%')};
 
     @media ${device.tablet} {
         width: 100%;

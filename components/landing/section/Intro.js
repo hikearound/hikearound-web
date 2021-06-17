@@ -50,6 +50,7 @@ class IntroSection extends React.PureComponent {
                         description={t('section.intro.description')}
                         renderExtra={this.renderBadge()}
                         includeBlock
+                        includeMaxWidth
                         offsetTop
                     />
                     {this.renderPhone()}
