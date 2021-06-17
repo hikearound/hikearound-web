@@ -127,7 +127,7 @@ class AutoComplete extends Component {
                 {/* eslint-disable-next-line */}
                 <img
                     className='search_icon'
-                    src='../images/icons/search.svg'
+                    src='/images/icons/search.svg'
                     alt={t('search.icon')}
                 />
                 <input {...inputProps} />

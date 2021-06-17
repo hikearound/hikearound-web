@@ -39,6 +39,7 @@ export async function getServerSideProps({ locale }) {
                 'notifications',
                 'header',
                 'footer',
+                'common',
             ])),
         },
     };
