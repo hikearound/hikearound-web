@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
@@ -7,6 +8,16 @@ import TextSection from '../Text';
 import Card from '../../marquee/Card';
 import LoadingCard from '../../marquee/LoadingCard';
 import { getFeaturedHikes } from '../../../utils/hike';
+
+const propTypes = {
+    speed: PropTypes.number,
+    direction: PropTypes.string,
+};
+
+const defaultProps = {
+    speed: 40,
+    direction: 'right',
+};
 
 class MarqueeSection extends React.PureComponent {
     constructor(props, context) {
@@ -27,10 +38,18 @@ class MarqueeSection extends React.PureComponent {
     };
 
     renderMarquee = () => {
+        const { speed, direction } = this.props;
         const { hikes } = this.state;
 
         return (
-            <Marquee play pauseOnHover gradient={false} speed={30}>
+            <Marquee
+                play
+                pauseOnHover
+                gradient={false}
+                pauseOnClick={false}
+                speed={speed}
+                direction={direction}
+            >
                 {hikes.map(
                     (
                         {
@@ -91,6 +110,9 @@ class MarqueeSection extends React.PureComponent {
         );
     }
 }
+
+MarqueeSection.propTypes = propTypes;
+MarqueeSection.defaultProps = defaultProps;
 
 export default withTranslation('landing')(MarqueeSection);
 
