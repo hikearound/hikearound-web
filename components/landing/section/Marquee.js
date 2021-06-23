@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
-import { StyledSection } from '../../../styles/landing';
-import TextSection from '../Text';
-import Card from '../../marquee/Card';
-import LoadingCard from '../../marquee/LoadingCard';
-import { getFeaturedHikes } from '../../../utils/hike';
+import { StyledSection } from '@styles/landing';
+import TextSection from '@components/landing/Text';
+import Card from '@components/marquee/Card';
+import LoadingCard from '@components/marquee/LoadingCard';
+import { getFeaturedHikes } from '@utils/hike';
 
 const propTypes = {
     speed: PropTypes.number,

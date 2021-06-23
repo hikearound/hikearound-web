@@ -1,8 +1,8 @@
 import React from 'react';
 import { withTranslation } from 'next-i18next';
-import { Section } from '../../../styles/landing';
-import TextSection from '../Text';
-import AppStoreBadge from '../Badge';
+import { Section } from '@styles/landing';
+import TextSection from '@components/landing/Text';
+import AppStoreBadge from '@components/landing/Badge';
 
 class DownloadSection extends React.PureComponent {
     renderBadge = () => <AppStoreBadge />;

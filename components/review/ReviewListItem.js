@@ -9,12 +9,12 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import { withTranslation } from 'next-i18next';
-import { colors } from '../../constants/colors';
-import timestamps from '../../constants/timestamps';
-import { parseText } from '../../utils/text';
-import { device } from '../../constants/breakpoints';
-import { spacing } from '../../constants/spacing';
-import { fontWeight } from '../../constants/type';
+import { colors } from '@constants/colors';
+import timestamps from '@constants/timestamps';
+import { parseText } from '@utils/text';
+import { device } from '@constants/breakpoints';
+import { spacing } from '@constants/spacing';
+import { fontWeight } from '@constants/type';
 
 const propTypes = {
     rating: PropTypes.number.isRequired,

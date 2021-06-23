@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { colors } from '../../constants/colors';
+import { colors } from '@constants/colors';
 
 const propTypes = {
     size: PropTypes.number,

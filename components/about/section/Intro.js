@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { withTranslation } from 'next-i18next';
-import { Section } from '../../../styles/landing';
-import { ContentSection } from '../../../styles/static';
-import { device } from '../../../constants/breakpoints';
+import { device } from '@constants/breakpoints';
+import { Section } from '@styles/landing';
+import { ContentSection } from '@styles/static';
 
 const propTypes = {
     title: PropTypes.array.isRequired,

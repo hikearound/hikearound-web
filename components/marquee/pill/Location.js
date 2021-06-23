@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GenericPill } from '../../../styles/pill';
+import { GenericPill } from '@styles/pill';
 
 const propTypes = {
     label: PropTypes.string.isRequired,

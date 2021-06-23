@@ -4,10 +4,10 @@ import Rating from '@material-ui/lab/Rating';
 import Button from '@material-ui/core/Button';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { spacing } from '../constants/spacing';
-import { colors } from '../constants/colors';
-import { Card } from './card';
-import { fontSize } from '../constants/type';
+import { spacing } from '@constants/spacing';
+import { colors } from '@constants/colors';
+import { Card } from '@styles/card';
+import { fontSize } from '@constants/type';
 
 export const RatingWrapper = styled.div`
     margin: ${spacing.xs} 0 -2px 0;

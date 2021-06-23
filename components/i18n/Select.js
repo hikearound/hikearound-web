@@ -5,7 +5,7 @@ import { withTranslation } from 'next-i18next';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { withRouter } from 'next/router';
-import { spacing } from '../../constants/spacing';
+import { spacing } from '@constants/spacing';
 
 const propTypes = {
     i18n: PropTypes.object.isRequired,

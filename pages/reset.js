@@ -3,10 +3,10 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import Page from '../layouts/main';
-import PasswordForm from '../components/reset/PasswordForm';
-import { fetcher } from '../utils/pages/reset';
-import ExternalPage from '../components/ExternalPage';
+import Page from '@layouts/main';
+import PasswordForm from '@components/reset/PasswordForm';
+import { fetcher } from '@utils/pages/reset';
+import ExternalPage from '@components/ExternalPage';
 
 const ResetPasswordPage = () => {
     const router = useRouter();

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { Card } from '../styles/card';
-import { getRecentHikes } from '../utils/hike';
-import { RightRailLink } from '../styles/links';
-import { ListHeading, UnorderedList, ListItem } from '../styles/lists';
+import { Card } from '@styles/card';
+import { getRecentHikes } from '@utils/hike';
+import { RightRailLink } from '@styles/links';
+import { ListHeading, UnorderedList, ListItem } from '@styles/lists';
 
 const propTypes = {
     hikeCount: PropTypes.number,

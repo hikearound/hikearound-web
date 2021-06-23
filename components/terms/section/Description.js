@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 import { withTranslation } from 'next-i18next';
-import { Section } from '../../../styles/landing';
-import { spacing } from '../../../constants/spacing';
-import { device } from '../../../constants/breakpoints';
-import { fontSize } from '../../../constants/landing';
-import { colors } from '../../../constants/colors';
+import { Section } from '@styles/landing';
+import { spacing } from '@constants/spacing';
+import { device } from '@constants/breakpoints';
+import { fontSize } from '@constants/landing';
+import { colors } from '@constants/colors';
 
 const propTypes = {
     title: PropTypes.array.isRequired,

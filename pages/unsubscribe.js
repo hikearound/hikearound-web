@@ -3,10 +3,10 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import Page from '../layouts/main';
-import Confirmation from '../components/unsubscribe/Confirmation';
-import { fetcher } from '../utils/pages/unsubscribe';
-import ExternalPage from '../components/ExternalPage';
+import Page from '@layouts/main';
+import Confirmation from '@components/unsubscribe/Confirmation';
+import { fetcher } from '@utils/pages/unsubscribe';
+import ExternalPage from '@components/ExternalPage';
 
 const UnsubscribePage = () => {
     const router = useRouter();

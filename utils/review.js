@@ -1,8 +1,8 @@
 import firebase from '@firebase/app';
 import '@firebase/firestore';
 import '@firebase/storage';
-import { getUserProfileData } from './user';
-import { avatar } from '../constants/images';
+import { getUserProfileData } from '@utils/user';
+import { avatar } from '@constants/images';
 
 export async function buildReviewArray(t, data) {
     const reviews = [];

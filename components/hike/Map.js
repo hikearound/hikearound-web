@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import { Card } from '../../styles/card';
-import { device } from '../../constants/breakpoints';
-import { colors } from '../../constants/colors';
-import { SecondaryHeading } from '../../styles/headings';
-import { getHikeXmlUrl, parseHikeXml } from '../../utils/hike';
-import AppleMap from '../Map';
-import MapLoadingState from '../loading/Map';
-import { mapHeight, gutterWidth } from '../../constants/dimensions';
+import { Card } from '@styles/card';
+import { device } from '@constants/breakpoints';
+import { colors } from '@constants/colors';
+import { SecondaryHeading } from '@styles/headings';
+import { getHikeXmlUrl, parseHikeXml } from '@utils/hike';
+import AppleMap from '@components/Map';
+import MapLoadingState from '@components/loading/Map';
+import { mapHeight, gutterWidth } from '@constants/dimensions';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,

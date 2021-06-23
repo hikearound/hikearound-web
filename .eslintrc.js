@@ -20,6 +20,17 @@ module.exports = {
             node: {
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
+            alias: {
+                map: [
+                    ['@components', './components'],
+                    ['@config', './config'],
+                    ['@constants', './constants'],
+                    ['@layouts', './layouts'],
+                    ['@lib', './lib'],
+                    ['@styles', './styles'],
+                    ['@utils', './utils'],
+                ],
+            },
         },
     },
     plugins: ['react', 'prettier'],

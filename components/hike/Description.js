@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import nl2br from 'react-nl2br';
 import ShowMoreText from 'react-show-more-text';
 import { withTranslation } from 'next-i18next';
-import { Card, CardContent } from '../../styles/card';
-import { SecondaryHeading } from '../../styles/headings';
-import { colors } from '../../constants/colors';
+import { Card, CardContent } from '@styles/card';
+import { SecondaryHeading } from '@styles/headings';
+import { colors } from '@constants/colors';
 
 const propTypes = {
     description: PropTypes.string.isRequired,

@@ -8,8 +8,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { googleMapUrl, appleMapUrl } from '../../constants/common';
-import { menuStyle } from '../../styles/actionbar';
+import { googleMapUrl, appleMapUrl } from '@constants/common';
+import { menuStyle } from '@styles/actionbar';
 
 const propTypes = {
     classes: PropTypes.object.isRequired,

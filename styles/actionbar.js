@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { borderRadius } from '../constants/dimensions';
-import { Card } from './card';
-import { fontSize } from '../constants/type';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { borderRadius } from '@constants/dimensions';
+import { Card } from '@styles/card';
+import { fontSize } from '@constants/type';
 
 export const ActionBarWrapper = styled(Card)`
     padding: 0;

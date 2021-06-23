@@ -1,5 +1,5 @@
 import { withSentry } from '@sentry/nextjs';
-import { signInWithCustomToken } from '../../utils/auth';
+import { signInWithCustomToken } from '@utils/auth';
 
 const decodeToken = async (req, res) => {
     const { token } = req.headers;

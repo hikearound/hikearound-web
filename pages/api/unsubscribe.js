@@ -1,6 +1,6 @@
 import { withSentry } from '@sentry/nextjs';
 import { decode } from 'js-base64';
-import { unsubscribe } from '../../utils/admin/unsubscribe';
+import { unsubscribe } from '@utils/admin/unsubscribe';
 
 const unsubscribeUser = async (req, res) => {
     const { token, type } = req.headers;

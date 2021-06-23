@@ -4,18 +4,18 @@ import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 import { withTranslation } from 'next-i18next';
-import { Section } from '../../../styles/landing';
-import { colors, transparentColors } from '../../../constants/colors';
-import { device } from '../../../constants/breakpoints';
-import { mapHeight } from '../../../constants/dimensions';
-import { coverageAreas } from '../../../constants/data';
+import { colors, transparentColors } from '@constants/colors';
+import { Section } from '@styles/landing';
+import { device } from '@constants/breakpoints';
+import { mapHeight } from '@constants/dimensions';
+import { coverageAreas } from '@constants/data';
 import {
     ContentSection,
     ContentTitle,
     ContentDescription,
-} from '../../../styles/static';
-import { withMap } from '../../../utils/map';
-import { spacing } from '../../../constants/spacing';
+} from '@styles/static';
+import { withMap } from '@utils/map';
+import { spacing } from '@constants/spacing';
 
 const propTypes = {
     mapProps: PropTypes.object.isRequired,

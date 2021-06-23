@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Section } from '../../../styles/landing';
-import { fontSize } from '../../../constants/landing';
-import { spacing } from '../../../constants/spacing';
-import Footer from '../../page/Footer';
-import { device } from '../../../constants/breakpoints';
-import { colors } from '../../../constants/colors';
+import { Section } from '@styles/landing';
+import { fontSize } from '@constants/landing';
+import { spacing } from '@constants/spacing';
+import Footer from '@components/page/Footer';
+import { device } from '@constants/breakpoints';
+import { colors } from '@constants/colors';
 
 const propTypes = {
     centered: PropTypes.bool,

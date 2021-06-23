@@ -1,9 +1,9 @@
 import React from 'react';
 import { withTranslation } from 'next-i18next';
-import { Card } from '../../styles/card';
-import { RightRailLink } from '../../styles/links';
-import { renderLinks } from '../../utils/privacy';
-import { ListHeading, OrderedList, ListItem } from '../../styles/lists';
+import { Card } from '@styles/card';
+import { RightRailLink } from '@styles/links';
+import { renderLinks } from '@utils/privacy';
+import { ListHeading, OrderedList, ListItem } from '@styles/lists';
 
 class PrivacyNavigation extends React.PureComponent {
     renderNavLinks = () => {

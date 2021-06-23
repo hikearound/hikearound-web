@@ -5,12 +5,12 @@ import { ToastProvider } from 'react-toast-notifications';
 import SimpleReactLightbox from 'simple-react-lightbox';
 import { appWithTranslation } from 'next-i18next';
 import { withRouter } from 'next/router';
-import MapkitProvider from '../components/map/MapKitProvider';
-import Toast from '../components/Toast';
-import { getTheme, initSentry } from '../utils/app';
-import { initAnalytics } from '../utils/analytics';
-import { settings } from '../constants/toast';
-import { initFirebase } from '../utils/firebase/app';
+import MapkitProvider from '@components/map/MapKitProvider';
+import Toast from '@components/Toast';
+import { getTheme, initSentry } from '@utils/app';
+import { initAnalytics } from '@utils/analytics';
+import { settings } from '@constants/toast';
+import { initFirebase } from '@utils/firebase/app';
 
 import '../css/reset.css';
 import '../scss/components/_index.scss';

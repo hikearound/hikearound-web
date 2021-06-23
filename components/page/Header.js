@@ -3,9 +3,9 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import { withTranslation } from 'next-i18next';
-import GlobalHeader from '../GlobalHeader';
-import { baseUrl } from '../../constants/common';
-import { openGraph } from '../../constants/images';
+import GlobalHeader from '@components/GlobalHeader';
+import { baseUrl } from '@constants/common';
+import { openGraph } from '@constants/images';
 
 const propTypes = {
     hideHeader: PropTypes.bool.isRequired,

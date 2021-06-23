@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiSheets } from '@material-ui/core/styles';
-import { gtagConfig } from '../constants/analytics';
+import { gtagConfig } from '@constants/analytics';
 
 const { NEXT_PUBLIC_GA_TRACKING_ID } = process.env;
 

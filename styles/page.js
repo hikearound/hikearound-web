@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontWeight, fontSize, lineHeight } from '../constants/type';
-import { device } from '../constants/breakpoints';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontWeight, fontSize, lineHeight } from '@constants/type';
+import { device } from '@constants/breakpoints';
 
 export const RootView = styled.div`
     width: 100%;

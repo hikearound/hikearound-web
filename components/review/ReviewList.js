@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import ReviewListItem from './ReviewListItem';
+import ReviewListItem from '@components/review/ReviewListItem';
 
 const propTypes = {
     reviews: PropTypes.array.isRequired,

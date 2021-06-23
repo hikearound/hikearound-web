@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import * as gtag from '../lib/gtag';
+import * as gtag from '@lib/gtag';
 
 export function initAnalytics() {
     Router.events.on('routeChangeComplete', (url) => {

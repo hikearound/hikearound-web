@@ -2,7 +2,7 @@ import firebase from '@firebase/app';
 import '@firebase/firestore';
 import '@firebase/storage';
 import { parseString } from 'xml2js';
-import { getDistanceToHike } from './location';
+import { getDistanceToHike } from '@utils/location';
 
 global.XMLHttpRequest = require('xhr2');
 

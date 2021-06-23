@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { initFirebaseAdmin } from '../firebase/admin';
+import { initFirebaseAdmin } from '@utils/firebase/admin';
 
 export async function checkUserExists(uid) {
     const userSnapshot = await admin

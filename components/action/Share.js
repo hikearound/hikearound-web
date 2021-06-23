@@ -8,10 +8,10 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { withRouter } from 'next/router';
 import { TwitterShareButton } from 'react-share';
 import { withTranslation } from 'next-i18next';
-import ShareIcon from '../icons/Share';
-import { withToast } from '../../utils/toast';
-import { baseUrl } from '../../constants/common';
-import { menuStyle } from '../../styles/actionbar';
+import { withToast } from '@utils/toast';
+import { baseUrl } from '@constants/common';
+import { menuStyle } from '@styles/actionbar';
+import ShareIcon from '@components/icons/Share';
 
 const propTypes = {
     classes: PropTypes.object.isRequired,

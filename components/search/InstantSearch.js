@@ -4,15 +4,15 @@ import { withRouter } from 'next/router';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import { withTranslation } from 'next-i18next';
-import AutoComplete from './AutoComplete';
-import SearchIcon from '../icons/Search';
-import CloseIcon from '../icons/Dismiss';
-import { colors } from '../../constants/colors';
+import AutoComplete from '@components/search/AutoComplete';
+import SearchIcon from '@components/icons/Search';
+import CloseIcon from '@components/icons/Dismiss';
+import { colors } from '@constants/colors';
 import {
     SearchIconWrapper,
     SearchWrapper,
     CloseIconWrapper,
-} from '../../styles/search';
+} from '@styles/search';
 
 const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,

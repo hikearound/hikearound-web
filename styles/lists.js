@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontSize } from '../constants/type';
-import { SecondaryHeading } from './headings';
-import { device } from '../constants/breakpoints';
-import { gutterWidth } from '../constants/dimensions';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontSize } from '@constants/type';
+import { SecondaryHeading } from '@styles/headings';
+import { device } from '@constants/breakpoints';
+import { gutterWidth } from '@constants/dimensions';
 
 export const OrderedList = styled.ol`
     padding: 0 ${spacing.md} ${spacing.md} ${spacing.md};
