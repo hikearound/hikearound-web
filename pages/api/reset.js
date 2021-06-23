@@ -1,3 +1,4 @@
+import { withSentry } from '@sentry/nextjs';
 import { signInWithCustomToken } from '../../utils/auth';
 
 const decodeToken = async (req, res) => {
@@ -6,4 +7,4 @@ const decodeToken = async (req, res) => {
     return res.json({ uid: result.uid, email: result.email });
 };
 
-export default decodeToken;
+export default withSentry(decodeToken);

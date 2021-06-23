@@ -1,3 +1,4 @@
+import { withSentry } from '@sentry/nextjs';
 import { decode } from 'js-base64';
 import { unsubscribe } from '../../utils/admin/unsubscribe';
 
@@ -10,4 +11,4 @@ const unsubscribeUser = async (req, res) => {
     return res.json({ status, type });
 };
 
-export default unsubscribeUser;
+export default withSentry(unsubscribeUser);
