@@ -1,4 +1,4 @@
-defaults.url=INSERT_URL
-defaults.org=INSERT_ORG
-defaults.project=INSERT_PROJECT
-auth.token=INSERT_AUTH_TOKEN
+defaults.url=https://sentry.io/
+defaults.org=hikearound
+defaults.project=hikearound-web
+auth.token=
