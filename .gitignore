@@ -7,4 +7,3 @@ out/*
 .env.local
 .env.production
 keys/*
-sentry.properties
