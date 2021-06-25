@@ -69,8 +69,10 @@ class Page extends React.PureComponent {
         const { title } = this.props;
         let pageTitle = title;
 
-        if (!pageTitle.includes('Hikearound')) {
-            pageTitle = `${pageTitle} | Hikearound`;
+        if (pageTitle) {
+            if (!pageTitle.includes('Hikearound')) {
+                pageTitle = `${pageTitle} | Hikearound`;
+            }
         }
 
         if (type !== 'firstRun') {
