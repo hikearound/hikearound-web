@@ -5,7 +5,7 @@ import TextSection from '@components/landing/Text';
 import AppStoreBadge from '@components/landing/Badge';
 
 class DownloadSection extends React.PureComponent {
-    renderBadge = () => <AppStoreBadge />;
+    renderBadge = () => <AppStoreBadge priority={false} />;
 
     render() {
         const { t } = this.props;

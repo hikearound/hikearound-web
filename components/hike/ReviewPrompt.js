@@ -70,7 +70,10 @@ class ReviewPrompt extends React.Component {
                     <StyledTitle>{t('review.dialog.title')}</StyledTitle>
                     <DialogContent>
                         <StyledText>{t('review.dialog.content')}</StyledText>
-                        <AppStoreBadge includeTopMargin={false} />
+                        <AppStoreBadge
+                            includeTopMargin={false}
+                            priority={false}
+                        />
                     </DialogContent>
                     <DialogActions />
                 </Dialog>
