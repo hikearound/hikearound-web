@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontSize, lineHeight } from '../constants/type';
-import { device } from '../constants/breakpoints';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontSize, lineHeight } from '@constants/type';
+import { device } from '@constants/breakpoints';
 
 export const RightRailLink = styled.a`
     display: inline-block;

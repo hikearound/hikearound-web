@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { withTranslation } from 'next-i18next';
-import { Card, CardContent } from '../../styles/card';
-import { SecondaryHeading } from '../../styles/headings';
-import { getHikeImageGallery } from '../../utils/hike';
-import Thumbnail from '../Thumbnail';
-import { options } from '../../constants/lightbox';
-import GalleryLoadingState from '../loading/Gallery';
+import { Card, CardContent } from '@styles/card';
+import { SecondaryHeading } from '@styles/headings';
+import { getHikeImageGallery } from '@utils/hike';
+import Thumbnail from '@components/Thumbnail';
+import { options } from '@constants/lightbox';
+import GalleryLoadingState from '@components/loading/Gallery';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,

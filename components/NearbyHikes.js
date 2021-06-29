@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { Card } from '../styles/card';
-import { getNearbyHikes } from '../utils/hike';
-import { getRange } from '../utils/location';
-import { RightRailLink } from '../styles/links';
-import { ListHeading, UnorderedList, ListItem } from '../styles/lists';
-import ListLoadingState from './loading/List';
+import { Card } from '@styles/card';
+import { getNearbyHikes } from '@utils/hike';
+import { getRange } from '@utils/location';
+import { RightRailLink } from '@styles/links';
+import { ListHeading, UnorderedList, ListItem } from '@styles/lists';
+import ListLoadingState from '@components/loading/List';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,

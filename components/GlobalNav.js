@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { withTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontSize } from '../constants/type';
-import { device } from '../constants/breakpoints';
-import InstantSearch from './search/InstantSearch';
-import { appStoreUrl } from '../constants/common';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontSize } from '@constants/type';
+import { device } from '@constants/breakpoints';
+import InstantSearch from '@components/search/InstantSearch';
+import { appStoreUrl } from '@constants/common';
 
 const propTypes = {
     invertHeader: PropTypes.bool.isRequired,

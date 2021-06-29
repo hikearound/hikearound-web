@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import { BlankCard } from '../../styles/card';
-import UnsubscribeLoadingState from '../loading/Unsubscribe';
+import { BlankCard } from '@styles/card';
+import UnsubscribeLoadingState from '@components/loading/Unsubscribe';
 
 const propTypes = {
     data: PropTypes.object,

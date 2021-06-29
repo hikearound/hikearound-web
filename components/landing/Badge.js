@@ -3,15 +3,17 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'next-i18next';
-import { componentSpacing } from '../../constants/landing';
-import { appStoreUrl } from '../../constants/common';
+import { componentSpacing } from '@constants/landing';
+import { appStoreUrl } from '@constants/common';
 
 const propTypes = {
     includeTopMargin: PropTypes.bool,
+    priority: PropTypes.bool,
 };
 
 const defaultProps = {
     includeTopMargin: true,
+    priority: true,
 };
 
 class AppStoreBadge extends React.PureComponent {
@@ -21,7 +23,7 @@ class AppStoreBadge extends React.PureComponent {
     };
 
     render() {
-        const { t, includeTopMargin } = this.props;
+        const { t, includeTopMargin, priority } = this.props;
 
         return (
             <Link
@@ -34,10 +36,10 @@ class AppStoreBadge extends React.PureComponent {
                     <Image
                         src={this.getSrc()}
                         alt={t('image.alt.badge')}
+                        priority={priority}
                         width={125}
                         height={42}
                         unoptimized
-                        priority
                     />
                 </ImageWrapper>
             </Link>

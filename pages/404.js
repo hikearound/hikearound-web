@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Page from '../layouts/main';
-import { BlankCard } from '../styles/card';
-import ExternalPage from '../components/ExternalPage';
+import Page from '@layouts/main';
+import { BlankCard } from '@styles/card';
+import ExternalPage from '@components/ExternalPage';
 
 const ErrorPage = () => {
     const { t } = useTranslation('error');

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { borderRadius } from '../constants/dimensions';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontSize } from '../constants/type';
+import { borderRadius } from '@constants/dimensions';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontSize } from '@constants/type';
 
 export const GenericPill = styled.div`
     margin-left: 6px;

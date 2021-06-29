@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { withTranslation } from 'next-i18next';
-import { Card } from '../../styles/card';
-import { SecondaryHeading } from '../../styles/headings';
-import { getRecentReviews } from '../../utils/review';
-import ReviewList from '../review/ReviewList';
-import { colors } from '../../constants/colors';
-import { device } from '../../constants/breakpoints';
-import ReviewLoadingState from '../loading/Review';
-import { gutterWidth } from '../../constants/dimensions';
+import { Card } from '@styles/card';
+import { SecondaryHeading } from '@styles/headings';
+import { getRecentReviews } from '@utils/review';
+import ReviewList from '@components/review/ReviewList';
+import { colors } from '@constants/colors';
+import { device } from '@constants/breakpoints';
+import ReviewLoadingState from '@components/loading/Review';
+import { gutterWidth } from '@constants/dimensions';
 
 const propTypes = {
     hid: PropTypes.string.isRequired,

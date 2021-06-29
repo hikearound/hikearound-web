@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FooterSection from './landing/section/Footer';
-import { GenericRootView, WhiteBackground } from '../styles/page';
+import FooterSection from '@components/landing/section/Footer';
+import { GenericRootView, WhiteBackground } from '@styles/page';
 
 const propTypes = {
     component: PropTypes.object,

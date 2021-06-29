@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { fontSize } from '../constants/type';
-import { device } from '../constants/breakpoints';
+import { colors } from '@constants/colors';
+import { fontSize } from '@constants/type';
+import { device } from '@constants/breakpoints';
 
 export const SuggestionWrapper = styled.div`
     display: block;

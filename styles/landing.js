@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { offsets } from '../constants/dimensions';
-import { colors } from '../constants/colors';
-import { device } from '../constants/breakpoints';
-import { fontSize, componentSpacing } from '../constants/landing';
-import { spacing } from '../constants/spacing';
-import { lineHeight } from '../constants/type';
+import { offsets } from '@constants/dimensions';
+import { colors } from '@constants/colors';
+import { device } from '@constants/breakpoints';
+import { fontSize, componentSpacing } from '@constants/landing';
+import { spacing } from '@constants/spacing';
+import { lineHeight } from '@constants/type';
 
 export const RootView = styled.div`
     width: 100%;

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { borderRadius, gutterWidth } from '../constants/dimensions';
-import { lineHeight, fontSize } from '../constants/type';
-import { device } from '../constants/breakpoints';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { borderRadius, gutterWidth } from '@constants/dimensions';
+import { lineHeight, fontSize } from '@constants/type';
+import { device } from '@constants/breakpoints';
 
 export const Card = styled.div`
     background-color: ${colors.white};

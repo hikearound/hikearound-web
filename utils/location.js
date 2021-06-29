@@ -1,5 +1,5 @@
 import geohash from 'ngeohash';
-import { geoDistances } from '../constants/location';
+import { geoDistances } from '@constants/location';
 
 export function getModifier(type, distance, latitude) {
     const { latMilesPerDegree, lonMilesPerDegreeAtEquator } = geoDistances;

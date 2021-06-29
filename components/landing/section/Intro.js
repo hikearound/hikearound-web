@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { withTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
-import TextSection from '../Text';
-import AppStoreBadge from '../Badge';
-import { device } from '../../../constants/breakpoints';
-import { spacing } from '../../../constants/spacing';
-import { landing } from '../../../constants/images';
+import { Section, SectionBlock, ContentImage } from '@styles/landing';
+import TextSection from '@components/landing/Text';
+import AppStoreBadge from '@components/landing/Badge';
+import { device } from '@constants/breakpoints';
+import { spacing } from '@constants/spacing';
+import { landing } from '@constants/images';
 
 class IntroSection extends React.PureComponent {
     renderBadge = () => <AppStoreBadge />;

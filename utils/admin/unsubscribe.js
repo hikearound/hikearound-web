@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
-import { initFirebaseAdmin } from '../firebase/admin';
-import { checkUserExists } from './verify';
+import { initFirebaseAdmin } from '@utils/firebase/admin';
+import { checkUserExists } from '@utils/admin/verify';
 
 export async function getUserSubscriptions(uid) {
     initFirebaseAdmin();

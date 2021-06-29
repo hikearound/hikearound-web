@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { colors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { fontSize } from '../constants/type';
-import { borderRadius } from '../constants/dimensions';
-import { transforms } from '../constants/toast';
+import { colors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { fontSize } from '@constants/type';
+import { borderRadius } from '@constants/dimensions';
+import { transforms } from '@constants/toast';
 
 const propTypes = {
     children: PropTypes.string.isRequired,

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { withTranslation } from 'next-i18next';
 import Link from 'next/link';
-import LocationPill from './pill/Location';
-import DifficultyPill from './pill/Difficulty';
+import LocationPill from '@components/marquee/pill/Location';
+import DifficultyPill from '@components/marquee/pill/Difficulty';
 import {
     PillSection,
     Gradient,
@@ -17,7 +17,7 @@ import {
     RatingWrapper,
     RatingText,
     StyledRating,
-} from '../../styles/marquee';
+} from '@styles/marquee';
 
 const propTypes = {
     name: PropTypes.string.isRequired,

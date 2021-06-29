@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import { withTranslation } from 'next-i18next';
-import AppStoreBadge from '../landing/Badge';
+import AppStoreBadge from '@components/landing/Badge';
 import {
     PromptWrapper,
     PromptTitle,
@@ -12,7 +12,7 @@ import {
     StyledRating,
     StyledTitle,
     StyledText,
-} from '../../styles/reviewPrompt';
+} from '@styles/reviewPrompt';
 
 class ReviewPrompt extends React.Component {
     constructor(props) {
@@ -70,7 +70,10 @@ class ReviewPrompt extends React.Component {
                     <StyledTitle>{t('review.dialog.title')}</StyledTitle>
                     <DialogContent>
                         <StyledText>{t('review.dialog.content')}</StyledText>
-                        <AppStoreBadge includeTopMargin={false} />
+                        <AppStoreBadge
+                            includeTopMargin={false}
+                            priority={false}
+                        />
                     </DialogContent>
                     <DialogActions />
                 </Dialog>

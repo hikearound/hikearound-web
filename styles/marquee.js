@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
-import { colors, transparentColors } from '../constants/colors';
-import { spacing } from '../constants/spacing';
-import { borderRadius } from '../constants/dimensions';
-import { fontSize, fontWeight } from '../constants/type';
-import { device } from '../constants/breakpoints';
+import { colors, transparentColors } from '@constants/colors';
+import { spacing } from '@constants/spacing';
+import { borderRadius } from '@constants/dimensions';
+import { fontSize, fontWeight } from '@constants/type';
+import { device } from '@constants/breakpoints';
 
 const cardMargin = '10px';
 

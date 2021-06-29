@@ -5,7 +5,7 @@ import {
     ContentBlock,
     ContentTitle,
     ContentDescription,
-} from '../../styles/landing';
+} from '@styles/landing';
 
 const propTypes = {
     title: PropTypes.string.isRequired,

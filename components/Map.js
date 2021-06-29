@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Map } from 'react-mapkit';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
-import { colors } from '../constants/colors';
-import { withMap, getMapPadding } from '../utils/map';
-import { device } from '../constants/breakpoints';
-import { mapHeight } from '../constants/dimensions';
+import { colors } from '@constants/colors';
+import { withMap, getMapPadding } from '@utils/map';
+import { device } from '@constants/breakpoints';
+import { mapHeight } from '@constants/dimensions';
 
 const propTypes = {
     center: PropTypes.object,

@@ -8,7 +8,7 @@ import {
     NameWrapper,
     LocationWrapper,
     SuggestionWrapper,
-} from '../../styles/search';
+} from '@styles/search';
 
 const propTypes = {
     hits: PropTypes.arrayOf(PropTypes.object).isRequired,

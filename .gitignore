@@ -3,5 +3,7 @@ out/*
 .firebase/*
 .next/*
 .DS_Store
-.env.*
+.env.development
+.env.local
+.env.production
 keys/*

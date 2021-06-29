@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import Header from '../components/page/Header';
-import Footer from '../components/page/Footer';
+import Header from '@components/page/Header';
+import Footer from '@components/page/Footer';
 import {
     GlobalStyle,
     ContentGrid,
@@ -11,8 +11,8 @@ import {
     FullWidthMainColumn,
     RightColumn,
     StickyContainer,
-} from '../styles/layout';
-import { Card } from '../styles/card';
+} from '@styles/layout';
+import { Card } from '@styles/card';
 
 const columnType = [PropTypes.object, PropTypes.array];
 
@@ -69,8 +69,10 @@ class Page extends React.PureComponent {
         const { title } = this.props;
         let pageTitle = title;
 
-        if (!pageTitle.includes('Hikearound')) {
-            pageTitle = `${pageTitle} | Hikearound`;
+        if (pageTitle) {
+            if (!pageTitle.includes('Hikearound')) {
+                pageTitle = `${pageTitle} | Hikearound`;
+            }
         }
 
         if (type !== 'firstRun') {

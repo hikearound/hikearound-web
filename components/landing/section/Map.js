@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { withTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { Section, SectionBlock, ContentImage } from '../../../styles/landing';
-import TextSection from '../Text';
-import { device } from '../../../constants/breakpoints';
-import { landing } from '../../../constants/images';
+import { Section, SectionBlock, ContentImage } from '@styles/landing';
+import TextSection from '@components/landing/Text';
+import { device } from '@constants/breakpoints';
+import { landing } from '@constants/images';
 
 class MapSection extends React.PureComponent {
     getSrc = () => {

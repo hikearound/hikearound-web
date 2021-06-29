@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { RichText } from 'prismic-reactjs';
-import Page from '../layouts/main';
-import { getPageData } from '../utils/page';
-import IntroSection from '../components/about/section/Intro';
-import MapSection from '../components/about/section/Map';
-import FooterSection from '../components/landing/section/Footer';
-import { RootView } from '../styles/page';
+import Page from '@layouts/main';
+import { getPageData } from '@utils/page';
+import IntroSection from '@components/about/section/Intro';
+import MapSection from '@components/about/section/Map';
+import FooterSection from '@components/landing/section/Footer';
+import { RootView } from '@styles/page';
 
 const propTypes = {
     title: PropTypes.array.isRequired,

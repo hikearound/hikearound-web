@@ -1,7 +1,6 @@
 import Prismic from 'prismic-javascript';
-// import { i18n } from './i18n';
-import { apiEndpoint } from '../config/prismic';
-import { languages } from '../constants/i18n';
+import { apiEndpoint } from '@config/prismic';
+import { languages } from '@constants/i18n';
 
 export async function getPageType(req) {
     let pageType = req.url;

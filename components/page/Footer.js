@@ -5,12 +5,12 @@ import { withTranslation } from 'next-i18next';
 import Link from 'next/link';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { colors } from '../../constants/colors';
-import { fontSize, lineHeight } from '../../constants/type';
-import { RightRailLink } from '../../styles/links';
-import LanguageSelect from '../i18n/Select';
-import { device } from '../../constants/breakpoints';
-import { spacing } from '../../constants/spacing';
+import { colors } from '@constants/colors';
+import { fontSize, lineHeight } from '@constants/type';
+import { RightRailLink } from '@styles/links';
+import LanguageSelect from '@components/i18n/Select';
+import { device } from '@constants/breakpoints';
+import { spacing } from '@constants/spacing';
 
 const propTypes = {
     inlineCopyright: PropTypes.bool,

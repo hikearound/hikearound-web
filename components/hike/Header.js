@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { spacing } from '../../constants/spacing';
-import { Card } from '../../styles/card';
-import { PrimaryHeading, SubHeading } from '../../styles/headings';
+import { spacing } from '@constants/spacing';
+import { Card } from '@styles/card';
+import { PrimaryHeading, SubHeading } from '@styles/headings';
 
 const propTypes = {
     name: PropTypes.string.isRequired,

@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from '@material-ui/lab/Skeleton';
 import styled from 'styled-components';
 import { isMobile } from 'react-device-detect';
-import { device } from '../../constants/breakpoints';
+import { device } from '@constants/breakpoints';
 
 class LoadingCard extends React.PureComponent {
     constructor(props, context) {
