@@ -1,10 +1,10 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import * as Sentry from '@sentry/node';
 import { typeface } from '@constants/type';
 import { colors } from '@constants/colors';
 
 export function getTheme() {
-    const theme = createMuiTheme({
+    const theme = createTheme({
         typography: {
             fontFamily: typeface.sansSerif,
         },

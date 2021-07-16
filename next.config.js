@@ -35,4 +35,4 @@ const moduleExports = {
 
 const sentryWebpackPluginOptions = {};
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)();
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
