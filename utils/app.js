@@ -1,9 +1,8 @@
 import { createTheme } from '@material-ui/core/styles';
-import * as Sentry from '@sentry/node';
 import { typeface } from '@constants/type';
 import { colors } from '@constants/colors';
 
-export function getTheme() {
+export default function getTheme() {
     const theme = createTheme({
         typography: {
             fontFamily: typeface.sansSerif,
@@ -15,11 +14,4 @@ export function getTheme() {
         },
     });
     return theme;
-}
-
-export function initSentry() {
-    Sentry.init({
-        enabled: process.env.NODE_ENV === 'production',
-        dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    });
 }

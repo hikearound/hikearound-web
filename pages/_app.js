@@ -7,7 +7,7 @@ import { appWithTranslation } from 'next-i18next';
 import { withRouter } from 'next/router';
 import MapkitProvider from '@components/map/MapKitProvider';
 import Toast from '@components/Toast';
-import { getTheme, initSentry } from '@utils/app';
+import getTheme from '@utils/app';
 import { initAnalytics } from '@utils/analytics';
 import { settings } from '@constants/toast';
 import { initFirebase } from '@utils/firebase/app';
@@ -17,7 +17,6 @@ import '../scss/components/_index.scss';
 
 const { NEXT_PUBLIC_MAPKIT_TOKEN } = process.env;
 
-initSentry();
 initFirebase();
 initAnalytics();
 

@@ -24,12 +24,6 @@ const moduleExports = {
         loader: 'cloudinary',
         path: 'https://res.cloudinary.com/hikearound/',
     },
-    webpack: (config, options) => {
-        if (!options.isServer) {
-            config.resolve.alias['@sentry/node'] = '@sentry/browser';
-        }
-        return config;
-    },
     i18n,
 };
 
