@@ -2,9 +2,7 @@ import { initFirebaseAdmin } from '@utils/firebase/admin';
 import { checkUserExists } from '@utils/admin/verify';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase-admin/firestore';
 
-export async function getUserSubscriptions(uid) {
-    const db = getFirestore();
-
+export async function getUserSubscriptions(db, uid) {
     const userRef = doc(db, 'users', uid);
     const userSnapshot = await getDoc(userRef);
 
@@ -14,9 +12,7 @@ export async function getUserSubscriptions(uid) {
     return notifs;
 }
 
-export async function updateUserSubscriptions(uid, type, subscriptions) {
-    const db = getFirestore();
-
+export async function updateUserSubscriptions(db, uid, type, subscriptions) {
     subscriptions.email[type].enabled = false;
 
     const userRef = doc(db, 'users', uid);
@@ -26,13 +22,14 @@ export async function updateUserSubscriptions(uid, type, subscriptions) {
 export async function unsubscribe(uid, type) {
     initFirebaseAdmin();
 
+    const db = getFirestore();
     const user = await checkUserExists(uid);
 
     if (user) {
-        const subscriptions = await getUserSubscriptions(uid);
+        const subscriptions = await getUserSubscriptions(db, uid);
 
         if (subscriptions.email) {
-            updateUserSubscriptions(uid, type, subscriptions);
+            updateUserSubscriptions(db, uid, type, subscriptions);
             return true;
         }
     }

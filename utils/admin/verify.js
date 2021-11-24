@@ -2,18 +2,14 @@ import { initFirebaseAdmin } from '@utils/firebase/admin';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase-admin/firestore';
 
-export async function checkUserExists(uid) {
-    const db = getFirestore();
-
+export async function checkUserExists(db, uid) {
     const userRef = doc(db, 'users', uid);
     const userSnapshot = await getDoc(userRef);
 
     return userSnapshot.data();
 }
 
-export async function updateUserRecord(uid) {
-    const db = getFirestore();
-
+export async function updateUserRecord(db, uid) {
     getAuth().updateUser(uid, {
         emailVerified: true,
     });
@@ -25,10 +21,11 @@ export async function updateUserRecord(uid) {
 export async function verify(uid) {
     initFirebaseAdmin();
 
-    const user = await checkUserExists(uid);
+    const db = getFirestore();
+    const user = await checkUserExists(db, uid);
 
     if (user) {
-        updateUserRecord(uid);
+        updateUserRecord(db, uid);
         return true;
     }
 
