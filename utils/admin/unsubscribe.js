@@ -1,15 +1,12 @@
-import * as admin from 'firebase-admin';
 import { initFirebaseAdmin } from '@utils/firebase/admin';
 import { checkUserExists } from '@utils/admin/verify';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase-admin/firestore';
 
 export async function getUserSubscriptions(uid) {
-    initFirebaseAdmin();
+    const db = getFirestore();
 
-    const userSnapshot = await admin
-        .firestore()
-        .collection('users')
-        .doc(uid)
-        .get();
+    const userRef = doc(db, 'users', uid);
+    const userSnapshot = await getDoc(userRef);
 
     const userData = userSnapshot.data();
     const { notifs } = userData;
@@ -18,13 +15,12 @@ export async function getUserSubscriptions(uid) {
 }
 
 export async function updateUserSubscriptions(uid, type, subscriptions) {
+    const db = getFirestore();
+
     subscriptions.email[type].enabled = false;
 
-    admin
-        .firestore()
-        .collection('users')
-        .doc(uid)
-        .set({ notifs: subscriptions }, { merge: true });
+    const userRef = doc(db, 'users', uid);
+    setDoc(userRef, { notifs: subscriptions }, { merge: true });
 }
 
 export async function unsubscribe(uid, type) {

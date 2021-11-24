@@ -1,26 +1,25 @@
-import * as admin from 'firebase-admin';
 import { initFirebaseAdmin } from '@utils/firebase/admin';
+import { getAuth } from 'firebase-admin/auth';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase-admin/firestore';
 
 export async function checkUserExists(uid) {
-    const userSnapshot = await admin
-        .firestore()
-        .collection('users')
-        .doc(uid)
-        .get();
+    const db = getFirestore();
+
+    const userRef = doc(db, 'users', uid);
+    const userSnapshot = await getDoc(userRef);
 
     return userSnapshot.data();
 }
 
 export async function updateUserRecord(uid) {
-    admin.auth().updateUser(uid, {
+    const db = getFirestore();
+
+    getAuth().updateUser(uid, {
         emailVerified: true,
     });
 
-    admin
-        .firestore()
-        .collection('users')
-        .doc(uid)
-        .set({ emailVerified: true }, { merge: true });
+    const userRef = doc(db, 'users', uid);
+    setDoc(userRef, { emailVerified: true }, { merge: true });
 }
 
 export async function verify(uid) {
