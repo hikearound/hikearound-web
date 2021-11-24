@@ -194,12 +194,10 @@ class PasswordForm extends React.Component {
 
     render() {
         return (
-            <>
-                <BlankCard>
-                    {this.renderHeading()}
-                    {this.renderPasswordGroup()}
-                </BlankCard>
-            </>
+            <BlankCard>
+                {this.renderHeading()}
+                {this.renderPasswordGroup()}
+            </BlankCard>
         );
     }
 }

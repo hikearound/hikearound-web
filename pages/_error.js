@@ -9,7 +9,7 @@ const propTypes = {
     err: PropTypes.string.isRequired,
 };
 
-const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
+const MyError = function ({ statusCode, hasGetInitialPropsRun, err }) {
     if (!hasGetInitialPropsRun && err) {
         Sentry.captureException(err);
     }

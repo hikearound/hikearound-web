@@ -14,7 +14,7 @@ const propTypes = {
     contentOnly: PropTypes.bool.isRequired,
 };
 
-const TermsPage = ({ title, description, contentOnly }) => {
+const TermsPage = function ({ title, description, contentOnly }) {
     const renderMainColumn = () => (
         <RootView>
             <DescriptionSection title={title} description={description} />

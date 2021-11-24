@@ -24,7 +24,7 @@ const defaultProps = {
     shouldShowAd: false,
 };
 
-const HikePage = ({ hike, hid, shouldShowAd }) => {
+const HikePage = function ({ hike, hid, shouldShowAd }) {
     hike = JSON.parse(hike);
 
     const scrollToTop = () => {

@@ -5,7 +5,7 @@ import Page from '@layouts/main';
 import { BlankCard } from '@styles/card';
 import ExternalPage from '@components/ExternalPage';
 
-const ErrorPage = () => {
+const ErrorPage = function () {
     const { t } = useTranslation('error');
 
     const errorMessage = () => (

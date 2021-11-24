@@ -1,4 +1,4 @@
-import Prismic from 'prismic-javascript';
+import Prismic from '@prismicio/client';
 import { apiEndpoint } from '@config/prismic';
 import { languages } from '@constants/i18n';
 

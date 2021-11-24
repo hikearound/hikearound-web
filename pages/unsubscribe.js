@@ -8,7 +8,7 @@ import Confirmation from '@components/unsubscribe/Confirmation';
 import { fetcher } from '@utils/pages/unsubscribe';
 import ExternalPage from '@components/ExternalPage';
 
-const UnsubscribePage = () => {
+const UnsubscribePage = function () {
     const router = useRouter();
     const { t } = useTranslation('unsubscribe');
 

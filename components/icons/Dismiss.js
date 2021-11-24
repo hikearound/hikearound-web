@@ -12,7 +12,7 @@ const defaultProps = {
     color: colors.white,
 };
 
-function DismissIcon({ size, color }) {
+const DismissIcon = function ({ size, color }) {
     return (
         <svg
             width={size}
@@ -27,7 +27,7 @@ function DismissIcon({ size, color }) {
             />
         </svg>
     );
-}
+};
 
 DismissIcon.propTypes = propTypes;
 DismissIcon.defaultProps = defaultProps;

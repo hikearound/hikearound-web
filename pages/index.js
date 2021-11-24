@@ -9,7 +9,7 @@ import MapSection from '@components/landing/section/Map';
 import DownloadSection from '@components/landing/section/Download';
 import FooterSection from '@components/landing/section/Footer';
 
-const Homepage = () => {
+const Homepage = function () {
     const { t } = useTranslation('common');
 
     const renderMainColumn = () => (

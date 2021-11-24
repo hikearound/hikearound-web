@@ -8,7 +8,7 @@ import Confirmation from '@components/verify/Confirmation';
 import { fetcher } from '@utils/pages/verify';
 import ExternalPage from '@components/ExternalPage';
 
-const VerifyPage = () => {
+const VerifyPage = function () {
     const router = useRouter();
     const { t } = useTranslation('verify');
     const { data } = useSWR(['/api/verify', router.query.token], fetcher);

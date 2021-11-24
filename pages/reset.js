@@ -8,7 +8,7 @@ import PasswordForm from '@components/reset/PasswordForm';
 import { fetcher } from '@utils/pages/reset';
 import ExternalPage from '@components/ExternalPage';
 
-const ResetPasswordPage = () => {
+const ResetPasswordPage = function () {
     const router = useRouter();
     const { t } = useTranslation('reset');
     const { data } = useSWR(['/api/reset', router.query.token], fetcher);

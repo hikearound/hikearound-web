@@ -12,7 +12,7 @@ const defaultProps = {
     color: colors.white,
 };
 
-function SearchIcon({ size, color }) {
+const SearchIcon = function ({ size, color }) {
     return (
         <svg
             width={size}
@@ -27,7 +27,7 @@ function SearchIcon({ size, color }) {
             />
         </svg>
     );
-}
+};
 
 SearchIcon.propTypes = propTypes;
 SearchIcon.defaultProps = defaultProps;

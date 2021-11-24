@@ -14,7 +14,7 @@ const propTypes = {
     description: PropTypes.array.isRequired,
 };
 
-const AboutPage = ({ title, description }) => {
+const AboutPage = function ({ title, description }) {
     const renderMainColumn = () => (
         <RootView>
             <IntroSection title={title} description={description} />

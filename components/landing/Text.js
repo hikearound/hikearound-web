@@ -18,7 +18,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-    renderExtra: <></>,
+    renderExtra: null,
     centered: false,
     includeBlock: false,
     includeMaxWidth: false,

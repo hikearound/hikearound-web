@@ -18,7 +18,7 @@ class ExternalPage extends React.PureComponent {
         return (
             <GenericRootView>
                 <WhiteBackground />
-                <>{component}</>
+                {component}
                 <FooterSection centered topBorder />
             </GenericRootView>
         );
