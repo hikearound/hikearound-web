@@ -1,12 +1,10 @@
-import firebase from '@firebase/app';
-import '@firebase/firestore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
+const db = getFirestore();
 
 export async function getUserProfileData(t, uid) {
-    const userSnapshot = await firebase
-        .firestore()
-        .collection('users')
-        .doc(uid)
-        .get();
+    const userRef = doc(db, 'users', uid);
+    const userSnapshot = await getDoc(userRef);
 
     if (!userSnapshot.data()) {
         return {

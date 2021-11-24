@@ -1,6 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
 
 export function initApp() {
     const config = {
@@ -14,9 +12,7 @@ export function initApp() {
         measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     };
 
-    if (!firebase.apps.length) {
-        firebase.initializeApp(config);
-    }
+    return initializeApp(config);
 }
 
 export function initFirebase() {

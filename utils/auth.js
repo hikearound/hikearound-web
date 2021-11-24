@@ -1,12 +1,11 @@
-import firebase from '@firebase/app';
-import '@firebase/auth';
+import { getAuth, signInWithCustomToken } from 'firebase/auth';
 
-export async function signInWithCustomToken(token) {
+const auth = getAuth();
+
+export async function signInUser(token) {
     let result;
 
-    await firebase
-        .auth()
-        .signInWithCustomToken(token)
+    signInWithCustomToken(auth, token)
         .catch((error) => {
             result = error.toJSON();
         })

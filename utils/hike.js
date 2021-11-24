@@ -1,27 +1,32 @@
-import firebase from '@firebase/app';
-import '@firebase/firestore';
-import '@firebase/storage';
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    doc,
+    getDoc,
+    getDocs,
+    orderBy,
+    limit,
+} from 'firebase/firestore';
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import { parseString } from 'xml2js';
 import { getDistanceToHike } from '@utils/location';
+
+const db = getFirestore();
+const storage = getStorage();
 
 global.XMLHttpRequest = require('xhr2');
 
 export async function getHikeData(hid) {
-    const hikeSnapshot = await firebase
-        .firestore()
-        .collection('hikes')
-        .doc(hid)
-        .get();
+    const hikeRef = doc(db, 'hikes', hid);
+    const hikeSnapshot = await getDoc(hikeRef);
 
-    const hikeData = hikeSnapshot.data() || {};
-    return hikeData;
+    return hikeSnapshot.data() || {};
 }
 
 export async function getHikeXmlUrl(hid) {
-    const hikeXmlUrl = await firebase
-        .storage()
-        .ref(`gpx/${hid}.gpx`)
-        .getDownloadURL();
+    const hikeXmlUrl = await getDownloadURL(ref(storage, `gpx/${hid}.gpx`));
 
     return hikeXmlUrl;
 }
@@ -65,28 +70,26 @@ export async function reduceHikes(querySnapshot) {
 }
 
 export async function getRecentHikes(size) {
-    const hikeRef = firebase
-        .firestore()
-        .collection('hikes')
-        .orderBy('createdOn', 'desc')
-        .limit(size);
-
-    const querySnapshot = await hikeRef.get();
+    const q = query(collection(db, 'hikes'), orderBy('geohash'), limit(size));
+    const querySnapshot = await getDocs(q);
     const hikes = await reduceHikes(querySnapshot);
 
     return hikes;
 }
 
-export async function getNearbyHikes(size, range, currentCords) {
-    const hikeRef = firebase
-        .firestore()
-        .collection('hikes')
-        .where('geohash', '>=', range.lower)
-        .where('geohash', '<=', range.upper)
-        .orderBy('geohash')
-        .limit(20);
+export function getNearbyHikesQuery(range) {
+    return query(
+        collection(db, 'hikes'),
+        where('geohash', '>=', range.lower),
+        where('geohash', '<=', range.upper),
+        orderBy('geohash'),
+        limit(20),
+    );
+}
 
-    const querySnapshot = await hikeRef.get();
+export async function getNearbyHikes(size, range, currentCords) {
+    const q = getNearbyHikesQuery(range);
+    const querySnapshot = await getDocs(q);
     const hikes = await reduceHikes(querySnapshot);
 
     let reducedHikes = [];
@@ -117,24 +120,16 @@ export async function getNearbyHikes(size, range, currentCords) {
 }
 
 export async function getFeaturedHikes() {
-    const hikeRef = firebase
-        .firestore()
-        .collection('hikes')
-        .where('featured', '==', true);
-
-    const querySnapshot = await hikeRef.get();
+    const q = query(collection(db, 'hikes'), where('featured', '==', true));
+    const querySnapshot = await getDocs(q);
     const hikes = await reduceHikes(querySnapshot);
 
     return hikes;
 }
 
 export async function getHikeImageGallery(hid) {
-    const gallerySnapshot = await firebase
-        .firestore()
-        .collection('images')
-        .doc(hid)
-        .get();
-
+    const galleryRef = doc(db, 'images', hid);
+    const gallerySnapshot = await getDoc(galleryRef);
     const images = gallerySnapshot.data();
     const count = Object.keys(images).length;
 
@@ -142,9 +137,7 @@ export async function getHikeImageGallery(hid) {
 }
 
 export async function getMapImage(hid) {
-    return firebase
-        .storage()
-        .ref(`images/maps/light/${hid}.png`)
-        .getDownloadURL()
-        .catch(() => null);
+    return getDownloadURL(ref(storage, `images/maps/light/${hid}.png`)).catch(
+        () => null,
+    );
 }

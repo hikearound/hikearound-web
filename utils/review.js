@@ -1,8 +1,18 @@
-import firebase from '@firebase/app';
-import '@firebase/firestore';
-import '@firebase/storage';
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    doc,
+    getDoc,
+    getDocs,
+    orderBy,
+    limit,
+} from 'firebase/firestore';
 import { getUserProfileData } from '@utils/user';
 import { avatar } from '@constants/images';
+
+const db = getFirestore();
 
 export async function buildReviewArray(t, data) {
     const reviews = [];
@@ -33,11 +43,8 @@ export async function buildReviewArray(t, data) {
 }
 
 export async function getReviewData(rid) {
-    let reviewData = await firebase
-        .firestore()
-        .collection('reviews')
-        .doc(rid)
-        .get();
+    const reviewRef = doc(db, 'reviews', rid);
+    let reviewData = await getDoc(reviewRef);
 
     reviewData = reviewData.data();
     reviewData.id = rid;
@@ -45,22 +52,22 @@ export async function getReviewData(rid) {
     return reviewData;
 }
 
-export function getReviewRef(hid, sortDirection, querySize) {
-    return firebase
-        .firestore()
-        .collection('reviews')
-        .where('hid', '==', hid)
-        .orderBy('savedOn', sortDirection)
-        .limit(querySize);
+export function getRecentReviewsQuery(hid, sortDirection, querySize) {
+    return query(
+        collection(db, 'reviews'),
+        where('hid', '==', hid),
+        orderBy('savedOn', sortDirection),
+        limit(querySize),
+    );
 }
 
 export async function getRecentReviews(t, hid, sortDirection, querySize) {
-    const reviewRef = getReviewRef(hid, sortDirection, querySize);
-    const querySnapshot = await reviewRef.get();
+    const q = getRecentReviewsQuery(hid, sortDirection, querySize);
+    const querySnapshot = await getDocs(q);
 
     let recentReviews = [];
 
-    await querySnapshot.forEach((review) => {
+    querySnapshot.forEach((review) => {
         if (review.exists) {
             const reviewData = review.data() || {};
             reviewData.id = review.id;

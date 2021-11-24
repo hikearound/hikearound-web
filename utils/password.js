@@ -1,8 +1,9 @@
-import firebase from '@firebase/app';
-import '@firebase/functions';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+
+const functions = getFunctions();
 
 export async function maybeUpdatePassword(uid, password) {
-    const updatePassword = firebase.functions().httpsCallable('updatePassword');
+    const updatePassword = httpsCallable(functions, 'updatePassword');
 
     let status;
 
