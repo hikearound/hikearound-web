@@ -70,9 +70,14 @@ export async function reduceHikes(querySnapshot) {
 }
 
 export async function getRecentHikes(size) {
-    const q = query(collection(db, 'hikes'), orderBy('geohash'), limit(size));
-    const querySnapshot = await getDocs(q);
-    const hikes = await reduceHikes(querySnapshot);
+    const hikeQuery = query(
+        collection(db, 'hikes'),
+        orderBy('geohash'),
+        limit(size),
+    );
+
+    const hikeSnapshot = await getDocs(hikeQuery);
+    const hikes = await reduceHikes(hikeSnapshot);
 
     return hikes;
 }
@@ -88,9 +93,9 @@ export function getNearbyHikesQuery(range) {
 }
 
 export async function getNearbyHikes(size, range, currentCords) {
-    const q = getNearbyHikesQuery(range);
-    const querySnapshot = await getDocs(q);
-    const hikes = await reduceHikes(querySnapshot);
+    const hikeQuery = getNearbyHikesQuery(range);
+    const hikeSnapshot = await getDocs(hikeQuery);
+    const hikes = await reduceHikes(hikeSnapshot);
 
     let reducedHikes = [];
 
@@ -120,9 +125,12 @@ export async function getNearbyHikes(size, range, currentCords) {
 }
 
 export async function getFeaturedHikes() {
-    const q = query(collection(db, 'hikes'), where('featured', '==', true));
-    const querySnapshot = await getDocs(q);
-    const hikes = await reduceHikes(querySnapshot);
+    const hikeQuery = query(
+        collection(db, 'hikes'),
+        where('featured', '==', true),
+    );
+    const hikeSnapshot = await getDocs(hikeQuery);
+    const hikes = await reduceHikes(hikeSnapshot);
 
     return hikes;
 }
@@ -130,6 +138,7 @@ export async function getFeaturedHikes() {
 export async function getHikeImageGallery(hid) {
     const galleryRef = doc(db, 'images', hid);
     const gallerySnapshot = await getDoc(galleryRef);
+
     const images = gallerySnapshot.data();
     const count = Object.keys(images).length;
 
