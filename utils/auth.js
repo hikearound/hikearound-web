@@ -16,4 +16,4 @@ export async function signInUser(token) {
     return result;
 }
 
-export default signInWithCustomToken;
+export default signInUser;

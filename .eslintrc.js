@@ -19,6 +19,7 @@ module.exports = {
         'import/resolver': {
             node: {
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                moduleDirectory: ['node_modules', 'src/'],
             },
             alias: {
                 map: [
@@ -77,7 +78,6 @@ module.exports = {
                 jsxSingleQuote: true,
                 printWidth: 80,
                 semi: true,
-                jsxBracketSameLine: false,
                 tabWidth: 4,
                 arrowParens: 'always',
                 'max-len': 120,

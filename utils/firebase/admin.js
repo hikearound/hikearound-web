@@ -1,21 +1,20 @@
+/* eslint-disable import/no-unresolved */
 import { initializeApp, cert } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
+import { getAuth } from 'firebase-admin/auth';
 
-export function initAdmin() {
-    let privateKey = process.env.FIREBASE_PRIVATE_KEY;
-    privateKey = privateKey.replace(/\\n/g, '\n');
+let privateKey = process.env.FIREBASE_PRIVATE_KEY;
+privateKey = privateKey.replace(/\\n/g, '\n');
 
-    const config = {
-        credential: cert({
-            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-            clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-            privateKey,
-        }),
-        databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-    };
+const config = {
+    credential: cert({
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey,
+    }),
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+};
 
-    initializeApp(config);
-}
-
-export function initFirebaseAdmin() {
-    initAdmin();
-}
+export const app = initializeApp(config);
+export const db = getFirestore();
+export const auth = getAuth();

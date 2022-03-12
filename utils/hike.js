@@ -26,7 +26,8 @@ export async function getHikeData(hid) {
 }
 
 export async function getHikeXmlUrl(hid) {
-    const hikeXmlUrl = await getDownloadURL(ref(storage, `gpx/${hid}.gpx`));
+    const xmlRef = ref(storage, `gpx/${hid}.gpx`);
+    const hikeXmlUrl = await getDownloadURL(xmlRef);
 
     return hikeXmlUrl;
 }
