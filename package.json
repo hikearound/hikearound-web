@@ -21,7 +21,7 @@
     "@types/react": "^17.0.37",
     "algoliasearch": "^4.10.3",
     "cloudinary-build-url": "^0.2.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^9.6.1",
     "firebase-admin": "^10.0.0",
     "js-base64": "^3.6.1",
