@@ -23,7 +23,7 @@
     "cloudinary-build-url": "^0.2.1",
     "express": "^4.17.1",
     "firebase": "^9.6.1",
-    "firebase-admin": "^10.0.0",
+    "firebase-admin": "^11.4.1",
     "js-base64": "^3.6.1",
     "moment": "^2.29.1",
     "next": "^11.1.3",
