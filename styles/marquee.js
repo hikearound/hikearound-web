@@ -32,6 +32,7 @@ export const MarqueeCard = styled.a`
     overflow: hidden;
     opacity: ${(props) => (props.didLoad ? 1 : 0)};
     transition: opacity 0.25s ease-in;
+    display: inline-block;
 
     &:hover {
         cursor: pointer;
