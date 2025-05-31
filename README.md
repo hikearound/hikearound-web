@@ -50,6 +50,39 @@ npm run dev
 
 The application will be available at `http://localhost:3000`.
 
+## Storybook
+
+This project uses Storybook for component development and documentation. To run Storybook:
+
+```bash
+npm run storybook
+```
+
+Storybook will be available at `http://localhost:6006`.
+
+### Writing Stories
+
+Stories are located in the `stories` directory alongside their components. Each story file should:
+
+-   Use the `.stories.js` extension
+-   Export a default object with component metadata
+-   Include one or more stories that showcase different states of the component
+
+Example story structure:
+
+```jsx
+import React from 'react';
+import { MyComponent } from './MyComponent';
+
+export default {
+    title: 'Components/MyComponent',
+    component: MyComponent,
+};
+
+export const Default = () => <MyComponent />;
+export const WithProps = () => <MyComponent prop1='value' />;
+```
+
 ## Building for Production
 
 To create a production build:
