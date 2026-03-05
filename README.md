@@ -1,135 +1,64 @@
 # Hikearound Web
 
-A React-based web application serving as a companion to the Hikearound iOS app. This project is built with Next.js and provides a modern, responsive web interface for hikers to discover and share trails.
+[![CI](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml)
+[![Next.js](https://img.shields.io/badge/Next.js-12-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-17-61DAFB?logo=react&logoColor=white)](https://reactjs.org)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue?logo=opensourceinitiative&logoColor=white)](LICENSE)
+
+A Next.js web app for discovering and sharing curated hiking trails.
 
 ## Features
 
--   🚀 Modern React-based web application
--   ⚡ Next.js framework for server-side rendering
--   🌐 Internationalization support (i18n)
--   🔥 Firebase integration
--   🔍 Algolia search integration
--   🐛 Sentry error tracking
--   📱 Responsive design for all devices
+-   Server-rendered hike pages with SEO metadata
+-   Algolia-powered search
+-   Interactive Apple MapKit integration
+-   Firebase backend integration
+-   Internationalization (i18n)
+-   Storybook component library
+-   Sentry error tracking
 
-## Prerequisites
-
--   Node.js 18.x
--   npm package manager
-
-## Installation
-
-1. Clone the repository:
+## Getting Started
 
 ```bash
-git clone https://github.com/pdugan20/hikearound-web.git
-cd hikearound-web
-```
-
-2. Install dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-3. Set up environment variables:
-
-```bash
+# Set up environment
 cp env.local.tmp .env.local
-```
+# Fill in your API keys
 
-Then fill in your environment variables in the `.env.local` file.
-
-## Development
-
-To start the development server:
-
-```bash
+# Start dev server
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Storybook
-
-This project uses Storybook for component development and documentation. To run Storybook:
+## Development
 
 ```bash
-npm run storybook
-```
-
-Storybook will be available at `http://localhost:6006`.
-
-### Writing Stories
-
-Stories are located in the `stories` directory alongside their components. Each story file should:
-
--   Use the `.stories.js` extension
--   Export a default object with component metadata
--   Include one or more stories that showcase different states of the component
-
-Example story structure:
-
-```jsx
-import React from 'react';
-import { MyComponent } from './MyComponent';
-
-export default {
-    title: 'Components/MyComponent',
-    component: MyComponent,
-};
-
-export const Default = () => <MyComponent />;
-export const WithProps = () => <MyComponent prop1='value' />;
-```
-
-## Building for Production
-
-To create a production build:
-
-```bash
-npm run build
-```
-
-To start the production server:
-
-```bash
-npm run start
+npm run dev             # Start dev server
+npm run build           # Production build
+npm run storybook       # Component explorer (port 6006)
 ```
 
 ## Project Structure
 
-```
+```text
 hikearound-web/
 ├── components/    # Reusable React components
-├── pages/         # Next.js pages and API routes
-├── public/        # Static assets
-├── styles/        # Global styles and SCSS
-├── utils/         # Utility functions
+├── config/        # Configuration files
 ├── constants/     # Application constants
 ├── layouts/       # Page layouts
-├── lib/           # Library code and configurations
-└── config/        # Configuration files
+├── lib/           # Library code and integrations
+├── pages/         # Next.js pages and API routes
+├── public/        # Static assets
+├── scss/          # SCSS stylesheets
+├── stories/       # Storybook stories
+├── styles/        # Global styles
+└── utils/         # Utility functions
 ```
 
-## Technologies Used
+## Related
 
--   Next.js 12.x
--   React 17.x
--   Firebase
--   Algolia Search
--   Sentry
--   SCSS
--   i18next
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+-   [hikearound-app](https://github.com/hikearound/hikearound-app) - iOS client
+-   [hikearound-cloud-functions](https://github.com/hikearound/hikearound-cloud-functions) - Cloud Functions backend
