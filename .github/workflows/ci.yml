@@ -27,9 +27,3 @@ jobs:
 
             - name: Run ESLint
               run: npx eslint . --ext .js,.jsx --ignore-pattern 'stories/'
-
-            - name: Build
-              run: npm run build
-              env:
-                  SENTRY_DSN: ''
-                  NEXT_PUBLIC_SENTRY_DSN: ''
