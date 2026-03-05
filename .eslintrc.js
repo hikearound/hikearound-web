@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ['airbnb', 'airbnb/hooks', 'prettier', 'plugin:@next/next/recommended', 'plugin:storybook/recommended'],
+    extends: ['airbnb', 'airbnb/hooks', 'prettier', 'plugin:@next/next/recommended'],
     parser: '@babel/eslint-parser',
     parserOptions: {
         ecmaFeatures: {
