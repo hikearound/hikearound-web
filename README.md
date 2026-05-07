@@ -5,17 +5,7 @@
 [![React](https://img.shields.io/badge/React-17-61DAFB?logo=react&logoColor=white)](https://reactjs.org)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-A Next.js web app for discovering and sharing curated hiking trails.
-
-## Features
-
--   Server-rendered hike pages with SEO metadata
--   Algolia-powered search
--   Interactive Apple MapKit integration
--   Firebase backend integration
--   Internationalization (i18n)
--   Storybook component library
--   Sentry error tracking
+A Next.js web app for discovering and sharing curated hiking trails. Server-rendered hike pages with SEO metadata, Algolia search, and Apple MapKit integration; backed by Firebase and instrumented with Sentry.
 
 ## Getting Started
 
