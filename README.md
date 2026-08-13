@@ -1,9 +1,7 @@
-# Hikearound Web
+# hikearound-web
 
-[![CI](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml)
-[![Next.js](https://img.shields.io/badge/Next.js-12-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
-[![React](https://img.shields.io/badge/React-17-61DAFB?logo=react&logoColor=white)](https://reactjs.org)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue?logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![CI](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/hikearound/hikearound-web/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/hikearound/hikearound-web)](LICENSE)
 
 A Next.js web app for discovering and sharing curated hiking trails. Server-rendered hike pages with SEO metadata, Algolia search, and Apple MapKit integration; backed by Firebase and instrumented with Sentry.
 
